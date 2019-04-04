@@ -21,6 +21,13 @@ int d2i(double value)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+__int64 d2i64(double value)
+{
+	return (__int64)(value + (value < 0.0 ? -0.5 : 0.5));
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int s2i(char *line, int minval, int maxval, int defval)
 {
 	if(m_isEmpty(line) || !strchr("-0123456789", *line))
