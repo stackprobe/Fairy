@@ -9,6 +9,10 @@ extern int SmplMenu_BorderColor;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+extern int SmplMenu_WallColor;
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 extern int SmplMenu_WallPicId;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

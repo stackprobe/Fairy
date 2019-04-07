@@ -27,6 +27,8 @@ void Gnd_INIT(void)
 	Gnd.RealScreen_W = SCREEN_W;
 	Gnd.RealScreen_H = SCREEN_H;
 
+	Gnd.RealScreenDraw_W = -1;
+
 	Gnd.MusicVolume = DEFAULT_VOLUME;
 	Gnd.SEVolume = DEFAULT_VOLUME;
 
@@ -131,7 +133,7 @@ static int SD_ReadBoolean(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static int SD_ReadInt(int minval, int maxval)
+static int SD_ReadInt(int minval = -IMAX, int maxval = IMAX)
 {
 	int value = atoi(SD_ReadLine());
 	m_range(value, minval, maxval);
@@ -140,7 +142,7 @@ static int SD_ReadInt(int minval, int maxval)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __int64 SD_ReadInt64(__int64 minval, __int64 maxval)
+static __int64 SD_ReadInt64(__int64 minval = -IMAX_64, __int64 maxval = IMAX_64)
 {
 	__int64 value = _atoi64(SD_ReadLine());
 	m_range(value, minval, maxval);
@@ -359,6 +361,11 @@ void ImportSaveData(void)
 	Gnd.RealScreen_W = SD_ReadInt(SCREEN_W, SCREEN_W_MAX);
 	Gnd.RealScreen_H = SD_ReadInt(SCREEN_H, SCREEN_H_MAX);
 
+	Gnd.RealScreenDraw_L = SD_ReadInt();
+	Gnd.RealScreenDraw_T = SD_ReadInt();
+	Gnd.RealScreenDraw_W = SD_ReadInt();
+	Gnd.RealScreenDraw_H = SD_ReadInt();
+
 	Gnd.MusicVolume = SD_ReadDouble(0.0, 1.0, IMAX);
 	Gnd.SEVolume = SD_ReadDouble(0.0, 1.0, IMAX);
 
@@ -421,6 +428,11 @@ void ExportSaveData(void)
 
 	SD_WriteInt(Gnd.RealScreen_W);
 	SD_WriteInt(Gnd.RealScreen_H);
+
+	SD_WriteInt(Gnd.RealScreenDraw_L);
+	SD_WriteInt(Gnd.RealScreenDraw_T);
+	SD_WriteInt(Gnd.RealScreenDraw_W);
+	SD_WriteInt(Gnd.RealScreenDraw_H);
 
 	SD_WriteDouble(Gnd.MusicVolume, IMAX);
 	SD_WriteDouble(Gnd.SEVolume, IMAX);
