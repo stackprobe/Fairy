@@ -44,4 +44,8 @@ void SEStop(int seId);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+void SEPlayLoop(int seId);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UpdateSEVolume(void);
