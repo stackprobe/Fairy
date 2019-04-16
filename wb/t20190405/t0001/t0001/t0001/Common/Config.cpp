@@ -3,8 +3,11 @@
 */
 #include "all.h"
 
-// app > @ Conf_
+// 設定項目 >
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	-1 == デフォルト
 	0  == 最初のモニタ
@@ -14,7 +17,7 @@
 */
 int Conf_DisplayIndex = 1;
 
-// < app
+// < 設定項目
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -28,11 +31,11 @@ void ImportConfig(void)
 		autoList<uchar> *fileData = readAllBytes(confFile);
 		int rIndex = 0;
 
-		// app > @ LOAD Conf_
+		// 設定項目 >
 
 		Conf_DisplayIndex = atoi_x(neReadCfgLine(fileData, rIndex));
 
-		// < app
+		// < 設定項目
 
 		{
 			char *line = neReadCfgLine(fileData, rIndex);

@@ -1,11 +1,14 @@
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// app > @ Conf_
+// Ý’è€–Ú >
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 extern int Conf_DisplayIndex;
 
-// < app
+// < Ý’è€–Ú
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
