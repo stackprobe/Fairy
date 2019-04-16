@@ -86,7 +86,7 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	autoList<Element_t> *Molt()
+	autoList<Element_t> *Eject()
 	{
 		autoList<Element_t> *list_ret = new autoList<Element_t>();
 

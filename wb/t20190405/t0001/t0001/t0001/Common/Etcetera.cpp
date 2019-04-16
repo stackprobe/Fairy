@@ -8,7 +8,7 @@
 */
 static autoList<uchar> *LoadFileData(autoList<uchar> *fileData)
 {
-	return fileData->Molt();
+	return fileData->Eject();
 }
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
