@@ -23,7 +23,7 @@ namespace Charlotte
 
 		private void Main2(ArgsReader ar)
 		{
-			new GameProcMain().Main(() => { }, new GameMain().Main);
+			GameProcMain.GPMain(new GameMain());
 		}
 	}
 }

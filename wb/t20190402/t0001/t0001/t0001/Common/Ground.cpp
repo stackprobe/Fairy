@@ -331,7 +331,7 @@ void UnassignAllPadBtnId(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ImportSaveData(void)
+void LoadFromDatFile(void)
 {
 	if(!accessible(SAVE_FILE))
 	{
@@ -401,7 +401,7 @@ void ImportSaveData(void)
 
 	Gnd.RO_MouseDispMode = SD_ReadBoolean();
 
-	// app > @ ImportSaveData
+	// app > @ LoadFromDatFile
 
 	// < app
 
@@ -409,7 +409,7 @@ void ImportSaveData(void)
 
 	delete SaveData;
 
-	// app > @ post ImportSaveData
+	// app > @ post LoadFromDatFile
 
 	AntiPadBtnIdConflict();
 
@@ -418,7 +418,7 @@ void ImportSaveData(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ExportSaveData(void)
+void SaveToDatFile(void)
 {
 	SaveData = new autoList<uchar>();
 
@@ -469,7 +469,7 @@ void ExportSaveData(void)
 
 	SD_WriteInt(GetMouseDispMode());
 
-	// app > @ ExportSaveData
+	// app > @ SaveToDatFile
 
 	// < app
 

@@ -13,9 +13,25 @@ namespace Charlotte.Donut
 		public GameGround()
 		{ }
 
-		public HandleDam Finalizers;
-		public HandleDam EndProcFinalizers = new HandleDam();
+		public void LoadFromDatFile()
+		{
+			//
+		}
 
-		public I2Size ScreenSize = new I2Size(800, 600);
+		public void SaveToDatFile()
+		{
+			//
+		}
+
+		public GameConfig Config = new GameConfig();
+
+		public HandleDam Handles;
+		public HandleDam GameHandles = new HandleDam();
+
+		public I2Size ScreenSize = new I2Size(800, 600); // Codevil の Gnd.RealScreen_WH
+		public I4Rect ScreenDrawRect = null; // Codeliv の Gnd.RealScreenDraw_LTWH, null == 不使用
+		public I4Rect MonitorRect; // Codevil の Monitor_LTWH
+
+		public bool RO_MouseDispMode = false;
 	}
 }

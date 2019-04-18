@@ -48,11 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Donut\GameConsts.cs" />
+    <Compile Include="Donut\GameConfig.cs" />
+    <Compile Include="Donut\GameDefine.cs" />
     <Compile Include="Donut\GameGround.cs" />
     <Compile Include="Donut\GameProcMain.cs" />
     <Compile Include="Donut\I2Point.cs" />
     <Compile Include="Donut\I2Size.cs" />
+    <Compile Include="Donut\I4Rect.cs" />
+    <Compile Include="Donut\IGameMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

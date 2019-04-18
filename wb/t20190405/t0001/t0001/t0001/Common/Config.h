@@ -13,7 +13,7 @@ extern int Conf_DisplayIndex;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ImportConfig(void);
+void LoadConfig(void);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

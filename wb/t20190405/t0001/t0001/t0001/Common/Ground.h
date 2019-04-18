@@ -85,11 +85,11 @@ void Gnd_FNLZ(void);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ImportSaveData(void);
+void LoadFromDatFile(void);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ExportSaveData(void);
+void SaveToDatFile(void);
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

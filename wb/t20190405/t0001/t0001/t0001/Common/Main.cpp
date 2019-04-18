@@ -63,7 +63,7 @@ void EndProc(void)
 {
 	GetEndProcFinalizers()->Flush();
 
-	ExportSaveData();
+	SaveToDatFile();
 	ReleaseAllFontHandle(); // Finalizers ‚É RemoveAllFontFile() ‚ª“ü‚Á‚Ä‚¢‚éBEndProcFinalizers ‚¶‚á‚È‚¢‚Ì‚ÅA‚±‚±‚Å—Ç‚¢I
 	Gnd_FNLZ();
 
@@ -103,8 +103,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	Gnd_INIT();
-	ImportSaveData();
-	ImportConfig();
+	LoadFromDatFile();
+	LoadConfig();
 
 	// DxLib >
 

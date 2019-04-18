@@ -10,6 +10,9 @@ namespace Charlotte.Donut
 		public int X;
 		public int Y;
 
+		public I2Point()
+		{ }
+
 		public I2Point(int x, int y)
 		{
 			this.X = x;
