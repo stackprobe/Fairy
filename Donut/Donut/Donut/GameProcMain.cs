@@ -112,7 +112,7 @@ namespace Charlotte.Donut
 
 			gameMain.Main();
 
-			// EndProc ...
+			// Codevil の EndProc ...
 
 			GameGround.I.GameHandles.Burst();
 
@@ -123,7 +123,7 @@ namespace Charlotte.Donut
 			if (DX.DxLib_End() != 0)
 				throw new Exception("Error on DxLib_End()");
 
-			// ... EndProc
+			// ... Codevil の EndProc
 		}
 
 		private static void PostSetScreenSize(int w, int h)
