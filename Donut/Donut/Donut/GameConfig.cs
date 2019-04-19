@@ -23,6 +23,6 @@ namespace Charlotte.Donut
 		// 1  == 2番目のモニタ
 		// 2  == 3番目のモニタ
 		// ...
-		public int DisplayIndex = -1;
+		public int DisplayIndex = 1;
 	}
 }
