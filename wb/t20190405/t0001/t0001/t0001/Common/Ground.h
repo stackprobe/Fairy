@@ -7,9 +7,6 @@ typedef struct Gnd_st
 	int PrimaryPadId; // -1 == –¢Ý’è
 	SubScreen_t *MainScreen; // NULL == •sŽg—p
 
-	iRect_t Monitors[MONITOR_MAX];
-	int MonitorNum;
-
 	// app > @ Gnd_t
 
 	// < app
@@ -95,3 +92,7 @@ void SaveToDatFile(void);
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
 void UnassignAllPadBtnId(void);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void UnassignAllKbdKeyId(void);

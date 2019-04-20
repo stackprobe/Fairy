@@ -113,6 +113,20 @@ i2D_t makeI2D(int x, int y)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+iRect_t makeIRect(int l, int t, int w, int h)
+{
+	iRect_t rect;
+
+	rect.L = l;
+	rect.T = t;
+	rect.W = w;
+	rect.H = h;
+
+	return rect;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 d2D_t makeD2D(double x, double y)
 {
 	d2D_t pos;
