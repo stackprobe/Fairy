@@ -1,6 +1,11 @@
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+// ---- FontFile ----
+
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void AddFontFile(int etcId, char *localFile);
 
 // ---- FontHandle ----
@@ -29,12 +34,12 @@ FontHandle_t *CreateFontHandle(char *fontName, int fontSize, int fontThick = 6, 
 */
 void ReleaseFontHandle(FontHandle_t *fh);
 
-// ---- GetFontHandle ----
+// <-- cdtor
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-FontHandle_t *GetFontHandle(char *fontName, int fontSize, int fontThick, int antiAliasing = 1, int edgeSize = 0, int italicFlag = 0);
+FontHandle_t *GetFontHandle(char *fontName, int fontSize, int fontThick = 6, int antiAliasing = 1, int edgeSize = 0, int italicFlag = 0);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

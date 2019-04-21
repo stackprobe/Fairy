@@ -144,10 +144,24 @@ char *refLocalPath(char *path)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+void createFile(char *file)
+{
+	fileClose(fileOpen(file, "wb"));
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void createDir(char *dir)
 {
 	errorCase(m_isEmpty(dir));
 	errorCase(Game_mkdir(dir)); // ? 失敗
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void deleteFile(char *file)
+{
+	remove(file);
 }
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -166,7 +180,7 @@ void deleteDir(char *dir)
 		deleteDir(subDirs->GetElement(index));
 
 	for(int index = 0; index < files->GetCount(); index++)
-		remove(files->GetElement(index));
+		deleteFile(files->GetElement(index));
 
 	unaddCwd();
 	_rmdir(dir);
@@ -249,6 +263,10 @@ static char *GetSystemTempDir(void)
 */
 static void DeleteAppTempDir(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+LOGPOS(); // test
 	deleteDir(getAppTempDir());
 }
 /*
@@ -268,6 +286,62 @@ char *getAppTempDir(void)
 		createDir(dir);
 		GetFinalizers()->AddFunc(DeleteAppTempDir);
 	}
+	return dir;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+static char *NextTempLocalName(void)
+{
+	static char name[32] = "zzz"; // 長さ適当、ここまで長くなることは無いだろう。また "prn" など使用出来ないので４文字から開始する。
+
+	for(char *p = name; ; p++)
+	{
+		if(!*p)
+		{
+			*p = 'a';
+			p[1] = '\0';
+			break;
+		}
+		if(*p < 'z')
+		{
+			++*p;
+			break;
+		}
+		*p = 'a';
+	}
+	return name;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+char *makeTempPath(char *ext) // ext: NULL ok
+{
+	char *path = combine(getAppTempDir(), NextTempLocalName());
+
+	if(ext)
+	{
+		path = addChar(path, '.');
+		path = addLine(path, ext);
+	}
+	return path;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+char *makeTempFile(char *ext) // ext: NULL ok
+{
+	char *file = makeTempPath(ext);
+	createFile(file);
+	return file;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+char *makeTempDir(char *ext) // ext: NULL ok
+{
+	char *dir = makeTempPath(ext);
+	createDir(dir);
 	return dir;
 }
 

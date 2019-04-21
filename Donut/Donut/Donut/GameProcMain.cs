@@ -114,10 +114,8 @@ namespace Charlotte.Donut
 
 			// Codevil の EndProc ...
 
-			GameGround.I.GameHandles.Burst();
-
 			GameGround.I.SaveToDatFile();
-			//ReleaseAllFontHandle(); // Only in Codevil
+			GameGround.I.GameHandles.Burst();
 			//Gnd_FNLZ(); // Only in Codevil
 
 			if (DX.DxLib_End() != 0)

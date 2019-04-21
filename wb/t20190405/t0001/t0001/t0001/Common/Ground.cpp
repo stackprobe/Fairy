@@ -75,6 +75,10 @@ void Gnd_INIT(void)
 */
 void Gnd_FNLZ(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+LOGPOS(); // test
 	delete Gnd.EL;
 
 	// app > @ Gnd_FNLZ

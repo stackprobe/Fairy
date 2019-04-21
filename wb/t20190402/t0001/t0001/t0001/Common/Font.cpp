@@ -19,7 +19,7 @@ static char *GetFontDir(void)
 
 	if(!dir)
 	{
-		dir = combine(getAppTempDir(), "Font");
+		dir = makeTempDir();
 		createDir(dir);
 	}
 	return dir;
@@ -29,6 +29,10 @@ static char *GetFontDir(void)
 */
 static void RemoveAllFontFile(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+LOGPOS(); // test
 	while(FontFileList->GetCount())
 	{
 		errorCase(!RemoveFontResourceEx(FontFileList->UnaddElement(), FR_PRIVATE, NULL)); // ? Ž¸”s
@@ -55,6 +59,7 @@ void AddFontFile(int etcId, char *localFile)
 	if(!FontFileList)
 	{
 		FontFileList = new autoList<char *>();
+		GetEndProcFinalizers()->AddFunc(ReleaseAllFontHandle);
 		GetFinalizers()->AddFunc(RemoveAllFontFile);
 	}
 	FontFileList->AddElement(file);
@@ -111,7 +116,7 @@ void ReleaseFontHandle(FontHandle_t *fh)
 	memFree(fh);
 }
 
-// ---- GetFontHandle ----
+// <-- cdtor
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -153,6 +158,10 @@ found:
 */
 void ReleaseAllFontHandle(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+LOGPOS(); // test
 	while(GetFontHandleList()->GetCount())
 	{
 		ReleaseFontHandle(GetFontHandleList()->UnaddElement());

@@ -25,12 +25,12 @@ namespace Charlotte.Donut
 
 		public GameConfig Config = new GameConfig();
 
-		public HandleDam Handles;
-		public HandleDam GameHandles = new HandleDam();
+		public HandleDam Handles; // Codevil の GetFinalizers() に相当する。
+		public HandleDam GameHandles = new HandleDam(); // Codevil の GetEndProcFinalizers() に相当する。
 
 		public I2Size ScreenSize = new I2Size(800, 600); // Codevil の Gnd.RealScreen_WH
 		public I4Rect ScreenDrawRect = null; // Codeliv の Gnd.RealScreenDraw_LTWH, null == 不使用
-		public I4Rect MonitorRect; // Codevil の Monitor_LTWH
+		public I4Rect MonitorRect;
 
 		public bool RO_MouseDispMode = false;
 	}

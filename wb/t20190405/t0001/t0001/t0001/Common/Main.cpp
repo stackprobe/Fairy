@@ -24,23 +24,6 @@ int DxLibInited;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int Monitor_L;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int Monitor_T;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int Monitor_W;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int Monitor_H;
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void ReleaseProcMtxHdl(void)
 {
 	mutexRelease(ProcMtxHdl);
@@ -51,9 +34,9 @@ static void ReleaseProcMtxHdl(void)
 */
 static void PostSetScreenSize(int w, int h)
 {
-	if(Monitor_W == w && Monitor_H == h)
+	if(Gnd.MonitorRect.W == w && Gnd.MonitorRect.H == h)
 	{
-		SetScreenPosition(Monitor_L, Monitor_T);
+		SetScreenPosition(Gnd.MonitorRect.L, Gnd.MonitorRect.T);
 	}
 }
 /*
@@ -61,10 +44,8 @@ static void PostSetScreenSize(int w, int h)
 */
 void EndProc(void)
 {
-	GetEndProcFinalizers()->Flush();
-
 	SaveToDatFile();
-	ReleaseAllFontHandle(); // Finalizers ‚É RemoveAllFontFile() ‚ª“ü‚Á‚Ä‚¢‚éBEndProcFinalizers ‚¶‚á‚È‚¢‚Ì‚ÅA‚±‚±‚Å—Ç‚¢I
+	GetEndProcFinalizers()->Flush();
 	Gnd_FNLZ();
 
 	if(DxLibInited)
@@ -155,12 +136,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		PE_Reset();
 	}
 
-	GetDefaultState(&Monitor_W, &Monitor_H, NULL, NULL, &Monitor_L, &Monitor_T);
+	GetDefaultState(&Gnd.MonitorRect.W, &Gnd.MonitorRect.H, NULL, NULL, &Gnd.MonitorRect.L, &Gnd.MonitorRect.T);
 
-	errorCase(!m_isRange(Monitor_W, 1, IMAX));
-	errorCase(!m_isRange(Monitor_H, 1, IMAX));
-	errorCase(!m_isRange(Monitor_L, -IMAX, IMAX));
-	errorCase(!m_isRange(Monitor_T, -IMAX, IMAX));
+	errorCase(!m_isRange(Gnd.MonitorRect.W, 1, IMAX));
+	errorCase(!m_isRange(Gnd.MonitorRect.H, 1, IMAX));
+	errorCase(!m_isRange(Gnd.MonitorRect.L, -IMAX, IMAX));
+	errorCase(!m_isRange(Gnd.MonitorRect.T, -IMAX, IMAX));
 
 	PostSetScreenSize(Gnd.RealScreen_W, Gnd.RealScreen_H);
 
