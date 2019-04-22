@@ -20,5 +20,10 @@ namespace Charlotte.Donut
 				pinnedData.Free();
 			}
 		}
+
+		public static OneObject<T> GetOneObject<T>(Func<T> getter)
+		{
+			return new OneObject<T>(getter);
+		}
 	}
 }

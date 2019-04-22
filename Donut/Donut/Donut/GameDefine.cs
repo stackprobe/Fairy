@@ -13,6 +13,9 @@ namespace Charlotte.Donut
 		public const bool DEBUG_MODE = false;
 #endif
 
-		public static readonly I2Size SCREEN_SIZE = new I2Size(800, 600);
+		public const int SCREEN_W_MIN = 100;
+		public const int SCREEN_H_MIN = 100;
+		public const int SCREEN_W_MAX = 4000;
+		public const int SCREEN_H_MAX = 3000;
 	}
 }

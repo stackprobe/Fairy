@@ -61,7 +61,7 @@ namespace Charlotte.Donut
 			public int W;
 			public int H;
 
-			public void Dispose()
+			public void Dispose() // Codevil の Pic_ReleasePicInfo
 			{
 				if (DX.DeleteGraph(this.Handle) != 0)
 					throw new GameError();
@@ -88,10 +88,10 @@ namespace Charlotte.Donut
 			if (DX.GetSoftImageSize(si_h, out w, out h) != 0)
 				throw new GameError();
 
-			if (w < 1 || IntTools.IMAX < w)
-				throw new GameError();
-
-			if (h < 1 || IntTools.IMAX < h)
+			if (
+				w < 1 || IntTools.IMAX < w ||
+				h < 1 || IntTools.IMAX < h
+				)
 				throw new GameError();
 		}
 
@@ -100,13 +100,136 @@ namespace Charlotte.Donut
 			if (DX.GetGraphSize(handle, out w, out h) != 0)
 				throw new GameError();
 
-			if (w < 1 || IntTools.IMAX < w)
-				throw new GameError();
-
-			if (h < 1 || IntTools.IMAX < h)
+			if (
+				w < 1 || IntTools.IMAX < w ||
+				h < 1 || IntTools.IMAX < h
+				)
 				throw new GameError();
 		}
 
-		// TODO
+		public class SIPixel
+		{
+			public int R;
+			public int G;
+			public int B;
+			public int A;
+		}
+
+		public static SIPixel GetSIPixel(int si_h, int x, int y)
+		{
+			SIPixel i = new SIPixel();
+
+			if (DX.GetPixelSoftImage(si_h, x, y, out i.R, out i.G, out i.B, out i.A) != 0)
+				throw new GameError();
+
+			if (
+				i.R < 0 || 255 < i.R ||
+				i.G < 0 || 255 < i.G ||
+				i.B < 0 || 255 < i.B ||
+				i.A < 0 || 255 < i.A
+				)
+				throw new GameError();
+
+			return i;
+		}
+
+		public static void SetSIPixel(int si_h, int x, int y, SIPixel i)
+		{
+			i.R = IntTools.Range(i.R, 0, 255);
+			i.G = IntTools.Range(i.G, 0, 255);
+			i.B = IntTools.Range(i.B, 0, 255);
+			i.A = IntTools.Range(i.A, 0, 255);
+
+			if (DX.DrawPixelSoftImage(si_h, x, y, i.R, i.G, i.B, i.A) != 0)
+				throw new GameError();
+		}
+
+		public static int CreateSoftImage(int w, int h)
+		{
+			if (
+				w < 1 || IntTools.IMAX < w ||
+				h < 1 || IntTools.IMAX < h
+				)
+				throw new GameError();
+
+			int handle = DX.MakeARGB8ColorSoftImage(w, h);
+
+			if (handle == -1)
+				throw new GameError();
+
+			return handle;
+		}
+
+		public static void ReleaseSoftImage(int si_h)
+		{
+			if (DX.DeleteSoftImage(si_h) != 0)
+				throw new GameError();
+		}
+
+		public static void ReleaseGraphicHandle(int handle)
+		{
+			if (DX.DeleteGraph(handle) != 0)
+				throw new GameError();
+		}
+
+		// Codevil の Pic_* ここまで
+
+		private static List<ResourceCluster<PicInfo>> PicResList = new List<ResourceCluster<PicInfo>>();
+
+		public static ResourceCluster<PicInfo> CreatePicRes(Func<byte[], PicInfo> handleLoader, Action<PicInfo> handleUnloader)
+		{
+			var res = new ResourceCluster<PicInfo>("Picture.dat", @"..\..\Picture.txt", handleLoader, handleUnloader);
+			PicResList.Add(res);
+			return res;
+		}
+
+		public static void UnloadAllPicResHandle() // スクリーンモード切り替え直前に呼ぶこと。
+		{
+			foreach (var res in PicResList)
+			{
+				res.UnloadAllHandle();
+			}
+		}
+
+		private static ResourceCluster<PicInfo> CurrPicRes = null;
+
+		public static void SetPicRes(ResourceCluster<PicInfo> resclu) // resclu: null == reset
+		{
+			CurrPicRes = resclu;
+		}
+
+		public static ResourceCluster<PicInfo> GetPicRes()
+		{
+			if (CurrPicRes == null)
+				return GamePictureResource.StdPicRes.I;
+
+			return CurrPicRes;
+		}
+
+		public static void ResetPicRes()
+		{
+			CurrPicRes = null;
+		}
+
+		public static int Pic(int picId)
+		{
+			// TODO DTP
+
+			return GetPicRes().GetHandle(picId).Handle;
+		}
+
+		public static int Pic_W(int picId)
+		{
+			// TODO DTP
+
+			return GetPicRes().GetHandle(picId).Handle;
+		}
+
+		public static int Pic_H(int picId)
+		{
+			// TODO DTP
+
+			return GetPicRes().GetHandle(picId).Handle;
+		}
 	}
 }

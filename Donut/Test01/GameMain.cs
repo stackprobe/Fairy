@@ -11,7 +11,7 @@ namespace Charlotte
 	{
 		public void Init()
 		{
-			// noop
+			//GameGround.I.ScreenSize = new I2Size(500, 500);
 		}
 
 		public void Main()

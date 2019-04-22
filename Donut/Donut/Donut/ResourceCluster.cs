@@ -7,7 +7,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Donut
 {
-	public abstract class ResourceCluster<Handle_t>
+	public class ResourceCluster<Handle_t>
 	{
 		private enum ResMode_e
 		{
@@ -17,6 +17,8 @@ namespace Charlotte.Donut
 
 		private string ClusterFile;
 		private string FileListFile;
+		private Func<byte[], Handle_t> HandleLoader;
+		private Action<Handle_t> HandleUnloader;
 		private ResMode_e ResMode;
 		private ResourceClusterFile RCF = null;
 		private string[] FileList = null;
@@ -24,10 +26,12 @@ namespace Charlotte.Donut
 		private Handle_t[] HandleList;
 		private bool[] LoadedList;
 
-		public ResourceCluster(string clusterFile, string fileListFile)
+		public ResourceCluster(string clusterFile, string fileListFile, Func<byte[], Handle_t> handleLoader, Action<Handle_t> handleUnloader)
 		{
 			this.ClusterFile = clusterFile;
 			this.FileListFile = fileListFile;
+			this.HandleLoader = handleLoader;
+			this.HandleUnloader = handleUnloader;
 
 			if (File.Exists(this.ClusterFile))
 			{
@@ -64,19 +68,23 @@ namespace Charlotte.Donut
 
 					rawData = File.ReadAllBytes(file);
 				}
-				this.HandleList[resId] = this.LoadHandle(rawData);
+				this.HandleList[resId] = this.HandleLoader(rawData);
 				this.LoadedList[resId] = true;
 			}
 			return this.HandleList[resId];
 		}
 
+		public List<int> DerHandleList = new List<int>(); // for Derivation.cs
+
 		public void UnloadAllHandle()
 		{
+			GameDerivation.UnloadAllDer(DerHandleList);
+
 			for (int resId = 0; resId < this.ResCount; resId++)
 			{
 				if (this.LoadedList[resId])
 				{
-					this.UnloadHandle(this.HandleList[resId]);
+					this.HandleUnloader(this.HandleList[resId]);
 					this.LoadedList[resId] = false;
 				}
 			}
@@ -92,8 +100,5 @@ namespace Charlotte.Donut
 				}
 			}
 		}
-
-		protected abstract Handle_t LoadHandle(byte[] rawData);
-		protected abstract void UnloadHandle(Handle_t handle);
 	}
 }

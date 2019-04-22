@@ -48,10 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Donut\GameDerivation.cs" />
     <Compile Include="Donut\GameError.cs" />
     <Compile Include="Donut\GamePicture.cs" />
     <Compile Include="Donut\GamePictureResource.cs" />
     <Compile Include="Donut\GameHelper.cs" />
+    <Compile Include="Donut\GameWin32.cs" />
+    <Compile Include="Donut\OneObject.cs" />
     <Compile Include="Donut\ResourceClusterFile.cs" />
     <Compile Include="Donut\GameConfig.cs" />
     <Compile Include="Donut\GameDefine.cs" />
