@@ -72,7 +72,7 @@ namespace Charlotte.Donut
 				DX.SetUseDirectDrawDeviceIndex(GameGround.I.Config.DisplayIndex);
 
 			if (DX.DxLib_Init() != 0)
-				throw new Exception("Error on DxLib_Init()");
+				throw new GameError("Error on DxLib_Init()");
 
 			SetMouseDispMode(GameGround.I.RO_MouseDispMode); // ? マウスを表示 true: する false: しない
 			DX.SetWindowSizeChangeEnableFlag(0); // ウィンドウの右下をドラッグで伸縮 1: する 0: しない
@@ -108,7 +108,7 @@ namespace Charlotte.Donut
 				GameGround.I.MonitorRect.L < -IntTools.IMAX || IntTools.IMAX < GameGround.I.MonitorRect.L ||
 				GameGround.I.MonitorRect.T < -IntTools.IMAX || IntTools.IMAX < GameGround.I.MonitorRect.T
 				)
-				throw new Exception();
+				throw new GameError();
 
 			gameMain.Main();
 
@@ -119,7 +119,7 @@ namespace Charlotte.Donut
 			//Gnd_FNLZ(); // Only in Codevil
 
 			if (DX.DxLib_End() != 0)
-				throw new Exception("Error on DxLib_End()");
+				throw new GameError("Erred on DxLib_End()");
 
 			// ... Codevil の EndProc
 		}
