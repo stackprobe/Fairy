@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using Charlotte.Tools;
 using Charlotte.Donut;
+using DxLibDLL;
 
 namespace Charlotte
 {
