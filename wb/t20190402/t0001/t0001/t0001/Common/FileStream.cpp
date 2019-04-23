@@ -56,7 +56,7 @@ void fileClose(FILE *fp)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int readChar(FILE *fp)
+int readChar(FILE *fp) // バイナリ・テキスト問わずストリームから１バイト(１文字)読み込む。
 {
 	int chr = fgetc(fp);
 
@@ -164,7 +164,7 @@ autoList<char *> *readLines_x(char *file)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void writeChar(FILE *fp, int chr)
+void writeChar(FILE *fp, int chr) // バイナリ・テキスト問わずストリームに１バイト(１文字)書き出す。
 {
 	errorCase(fputc(chr, fp) == EOF);
 }

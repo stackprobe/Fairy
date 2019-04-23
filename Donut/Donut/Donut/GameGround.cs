@@ -13,6 +13,16 @@ namespace Charlotte.Donut
 		public GameGround()
 		{ }
 
+		public void Init()
+		{
+			this.RealScreenSize = this.ScreenSize;
+		}
+
+		public void Fnlz()
+		{
+			this.EL.Clear();
+		}
+
 		public void LoadFromDatFile()
 		{
 			//
@@ -28,11 +38,19 @@ namespace Charlotte.Donut
 		public HandleDam Handles; // Codevil の GetFinalizers() に相当する。
 		public HandleDam GameHandles = new HandleDam(); // Codevil の GetEndProcFinalizers() に相当する。
 
+		public TaskList EL = new TaskList();
+		public int PrimaryPadId = -1; // -1 == 未設定
+		public SubScreen MainScreen = null; // null == 不使用
+		public I4Rect MonitorRect;
+
+		// SaveData {
+
 		public I2Size ScreenSize = new I2Size(800, 600);
 		public I2Size RealScreenSize;
 		public I4Rect RealScreenDrawRect = null; // null == 不使用
-		public I4Rect MonitorRect;
 
 		public bool RO_MouseDispMode = false;
+
+		// } SaveData
 	}
 }

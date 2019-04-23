@@ -7,23 +7,26 @@ namespace Charlotte.Donut
 {
 	public class OneObject<T>
 	{
-		private Func<T> _getter;
+		private Func<T> Getter;
 
 		public OneObject(Func<T> getter)
 		{
-			_getter = getter;
+			this.Getter = getter;
 		}
 
-		private T[] _i = null;
+		private bool Loaded = false;
+		private T Value;
 
 		public T I
 		{
 			get
 			{
-				if (_i == null)
-					_i = new T[] { _getter() };
-
-				return _i[0];
+				if (this.Loaded == false)
+				{
+					this.Value = this.Getter();
+					this.Loaded = true;
+				}
+				return this.Value;
 			}
 		}
 	}

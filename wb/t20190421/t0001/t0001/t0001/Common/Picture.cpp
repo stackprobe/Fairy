@@ -28,7 +28,7 @@ int Pic_FileData2SoftImage(autoList<uchar> *fileData) // fileData: unbind
 
 		errorCase(h2 == -1); // ? Ž¸”s
 		errorCase(BltSoftImage(0, 0, w, h, hdl, 0, 0, h2)); // ? Ž¸”s
-		errorCase(DeleteSoftImage(hdl) == -1); // ? Ž¸”s
+		errorCase(DeleteSoftImage(hdl)); // ? Ž¸”s
 
 		hdl = h2;
 	}
@@ -43,7 +43,7 @@ int Pic_SoftImage2GraphicHandle(int si_h) // si_h: bind
 	int h = CreateGraphFromSoftImage(si_h);
 
 	errorCase(h == -1); // ? Ž¸”s
-	errorCase(DeleteSoftImage(si_h) == -1); // ? Ž¸”s
+	errorCase(DeleteSoftImage(si_h)); // ? Ž¸”s
 
 	return h;
 }
@@ -153,7 +153,7 @@ int Pic_CreateSoftImage(int w, int h)
 */
 void Pic_ReleaseSoftImage(int si_h)
 {
-	errorCase(DeleteSoftImage(si_h) == -1); // ? Ž¸”s
+	errorCase(DeleteSoftImage(si_h)); // ? Ž¸”s
 }
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

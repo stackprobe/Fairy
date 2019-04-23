@@ -41,9 +41,7 @@ namespace Charlotte.Donut
 		{
 			gameMain.Init();
 
-			GameGround.I.RealScreenSize = GameGround.I.ScreenSize;
-
-			//Gnd_INIT(); // Codevil のみ
+			GameGround.I.Init();
 			GameGround.I.LoadFromDatFile();
 			GameGround.I.Config.LoadConfig();
 
@@ -56,11 +54,7 @@ namespace Charlotte.Donut
 
 			DX.SetAlwaysRunFlag(1); // ? 非アクティブ時に 1: 動く 0: 止まる
 
-			DX.SetMainWindowText(
-				(GameDefine.DEBUG_MODE ? "(DEBUGGING_MODE) " : "") +
-				ProcMain.APP_TITLE + " " +
-				GameGround.I.Config.Version
-				);
+			SetMainWindowTitle();
 
 			//DX.SetGraphMode(GameDefine.SCREEN_SIZE.W, GameDefine.SCREEN_SIZE.H, 32);
 			DX.SetGraphMode(GameGround.I.RealScreenSize.W, GameGround.I.RealScreenSize.H, 32);
@@ -112,18 +106,32 @@ namespace Charlotte.Donut
 				)
 				throw new GameError();
 
-			gameMain.Main();
+			try
+			{
+				gameMain.Main();
+			}
+			catch (GameEndProc)
+			{ }
 
 			// Codevil の EndProc() ...
 
 			GameGround.I.SaveToDatFile();
 			GameGround.I.GameHandles.Burst();
-			//Gnd_FNLZ(); // Codevil のみ
+			GameGround.I.Fnlz();
 
 			if (DX.DxLib_End() != 0)
 				throw new GameError("Erred on DxLib_End()");
 
 			// ... Codevil の EndProc()
+		}
+
+		public static void SetMainWindowTitle()
+		{
+			DX.SetMainWindowText(
+				(GameDefine.DEBUG_MODE ? "(DEBUGGING_MODE) " : "") +
+				ProcMain.APP_TITLE + " " +
+				GameGround.I.Config.Version
+				);
 		}
 
 		private static void PostSetScreenSize(int w, int h)
@@ -207,13 +215,13 @@ namespace Charlotte.Donut
 
 			GameWin32.POINT p;
 
-			p.x = 0;
-			p.y = 0;
+			p.X = 0;
+			p.Y = 0;
 
 			GameWin32.ClientToScreen(GameWin32.GetMainWindowHandle(), out p);
 
-			int pToTrgX = l - (int)p.x;
-			int pToTrgY = t - (int)p.y;
+			int pToTrgX = l - (int)p.X;
+			int pToTrgY = t - (int)p.Y;
 
 			DX.SetWindowPosition(l + pToTrgX, t + pToTrgY);
 		}

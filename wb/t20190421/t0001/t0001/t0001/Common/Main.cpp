@@ -185,17 +185,6 @@ static void DxPrv_SetMouseDispMode(int mode)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void UnloadGraph(int &hdl)
-{
-	if(hdl != -1)
-	{
-		errorCase(DeleteGraph(hdl)); // ? Ž¸”s
-		hdl = -1;
-	}
-}
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void DxPrv_SetScreenSize(int w, int h)
 {
 	int mdm = GetMouseDispMode();

@@ -16,7 +16,10 @@ namespace Charlotte
 
 		public void Main()
 		{
-			// TODO ???
+			for (; ; )
+			{
+				GameEngine.EachFrame();
+			}
 		}
 
 		public IntPtr GetIcon()
