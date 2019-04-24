@@ -41,11 +41,31 @@ namespace Charlotte.Donut
 			return new OneObject<T>(getter);
 		}
 
+		// 終了時の counter ... (-1): 放した, 0: 放している, 1: 押した, 2-: 押している
+		//
+		public static void UpdateInput(ref int counter, bool status)
+		{
+			if (status)
+				counter = counter < 0 ? 1 : counter + 1;
+			else
+				counter = 0 < counter ? -1 : 0;
+		}
+
 		// ---- GameTools ----
 
 		public static void CurtainEachFrame()
 		{
 			// TODO
+		}
+
+		// ---- GameTools2 ----
+
+		private const int POUND_FIRST_DELAY = 17;
+		private const int POUND_DELAY = 4;
+
+		public static bool IsPound(int counter)
+		{
+			return counter == 1 || (POUND_FIRST_DELAY < counter && (counter - POUND_FIRST_DELAY) % POUND_DELAY == 1);
 		}
 
 		// ---- System ----

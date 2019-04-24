@@ -76,9 +76,9 @@ namespace Charlotte.Donut
 			GameHelper.CountDown(ref FreezeInputFrame);
 			WindowIsActive = GameHelper.IsWindowActive();
 
-			//PadEachFrame(); // TODO
-			//KeyEachFrame(); // TODO
-			//InputEachFrame(); // TODO
+			GamePad.PadEachFrame();
+			GameKeyboard.KeyEachFrame();
+			GameInput.InputEachFrame();
 			//MouseEachFrame(); // TODO
 
 			if (GameGround.I.RealScreenSize.W != GameGround.I.ScreenSize.W || GameGround.I.RealScreenSize.H != GameGround.I.ScreenSize.H)

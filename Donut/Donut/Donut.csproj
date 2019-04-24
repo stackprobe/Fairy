@@ -52,6 +52,9 @@
     <Compile Include="Donut\GameEndProc.cs" />
     <Compile Include="Donut\GameEngine.cs" />
     <Compile Include="Donut\GameError.cs" />
+    <Compile Include="Donut\GameInput.cs" />
+    <Compile Include="Donut\GameKeyboard.cs" />
+    <Compile Include="Donut\GamePad.cs" />
     <Compile Include="Donut\GamePicture.cs" />
     <Compile Include="Donut\GamePictureResource.cs" />
     <Compile Include="Donut\GameHelper.cs" />
