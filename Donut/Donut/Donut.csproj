@@ -48,16 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Donut\DD.cs" />
+    <Compile Include="Donut\GameHelper.cs" />
+    <Compile Include="Donut\GameCommonEffect.cs" />
     <Compile Include="Donut\GameDerivation.cs" />
-    <Compile Include="Donut\GameEndProc.cs" />
     <Compile Include="Donut\GameEngine.cs" />
-    <Compile Include="Donut\GameError.cs" />
+    <Compile Include="Donut\GameToolkit2.cs" />
     <Compile Include="Donut\GameInput.cs" />
     <Compile Include="Donut\GameKeyboard.cs" />
+    <Compile Include="Donut\GameMouse.cs" />
     <Compile Include="Donut\GamePad.cs" />
     <Compile Include="Donut\GamePicture.cs" />
     <Compile Include="Donut\GamePictureResource.cs" />
-    <Compile Include="Donut\GameHelper.cs" />
+    <Compile Include="Donut\GameToolkit.cs" />
+    <Compile Include="Donut\GameSystem.cs" />
+    <Compile Include="Donut\GameSystem2.cs" />
     <Compile Include="Donut\GameWin32.cs" />
     <Compile Include="Donut\OneObject.cs" />
     <Compile Include="Donut\ResourceClusterFile.cs" />

@@ -18,18 +18,18 @@ namespace Charlotte.Donut
 			if (GameEngine.WindowIsActive)
 			{
 				if (DX.GetHitKeyStateAll(StatusMap) != 0) // ? 失敗
-					throw new GameError();
+					throw new DD.Error();
 
 				for (int keyId = 0; keyId < KEY_MAX; keyId++)
 				{
-					GameHelper.UpdateInput(ref KeyStatus[keyId], StatusMap[keyId] != 0);
+					GameDefine.UpdateInput(ref KeyStatus[keyId], StatusMap[keyId] != 0);
 				}
 			}
 			else // ? 非アクティブ -> 無入力
 			{
 				for (int keyId = 0; keyId < KEY_MAX; keyId++)
 				{
-					GameHelper.UpdateInput(ref KeyStatus[keyId], false);
+					GameDefine.UpdateInput(ref KeyStatus[keyId], false);
 				}
 			}
 		}
@@ -39,14 +39,14 @@ namespace Charlotte.Donut
 		public static int GetKeyInput(int keyId)
 		{
 			if (keyId < 0 || KEY_MAX <= keyId)
-				throw new GameError();
+				throw new DD.Error();
 
 			return GameEngine.FreezeInputFrame != 0 ? 0 : KeyStatus[keyId];
 		}
 
 		public static bool GetKeyPound(int keyId)
 		{
-			return GameHelper.IsPound(GetKeyInput(keyId));
+			return GameToolkit2.IsPound(GetKeyInput(keyId));
 		}
 	}
 }

@@ -64,7 +64,7 @@ namespace Charlotte.Donut
 			});
 
 			if (handleFound == false)
-				throw new GameError();
+				throw new DD.Error();
 
 			GameProcMain.SetMainWindowTitle();
 

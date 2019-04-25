@@ -16,6 +16,8 @@ namespace Charlotte.Donut
 
 		public void Init()
 		{
+			GameMouse.I = new GameMouse();
+
 			this.RealScreenSize = this.ScreenSize;
 
 			this.PadBtnId.Dir_2 = (int)GamePad.SNWPB.DIR_2;
@@ -79,6 +81,9 @@ namespace Charlotte.Donut
 		public I2Size ScreenSize = new I2Size(800, 600);
 		public I2Size RealScreenSize;
 		public I4Rect RealScreenDrawRect = null; // null == 不使用
+
+		public int ScreenCenterX { get { return ScreenSize.W / 2; } }
+		public int ScreenCenterY { get { return ScreenSize.H / 2; } }
 
 		// 音量
 		// 0.0 - 1.0

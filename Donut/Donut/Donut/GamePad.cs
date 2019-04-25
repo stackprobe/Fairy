@@ -58,7 +58,7 @@ namespace Charlotte.Donut
 				PadCount = DX.GetJoypadNum();
 
 				if (PadCount < 0 || PAD_MAX < PadCount)
-					throw new GameError();
+					throw new DD.Error();
 			}
 			return PadCount;
 		}
@@ -83,14 +83,14 @@ namespace Charlotte.Donut
 				{
 					for (int btnId = 0; btnId < PAD_BUTTON_MAX; btnId++)
 					{
-						GameHelper.UpdateInput(ref Pads[padId].ButtonStatus[btnId], (status & (1u << btnId)) != 0u);
+						GameDefine.UpdateInput(ref Pads[padId].ButtonStatus[btnId], (status & (1u << btnId)) != 0u);
 					}
 				}
 				else
 				{
 					for (int btnId = 0; btnId < PAD_BUTTON_MAX; btnId++)
 					{
-						GameHelper.UpdateInput(ref Pads[padId].ButtonStatus[btnId], false);
+						GameDefine.UpdateInput(ref Pads[padId].ButtonStatus[btnId], false);
 					}
 				}
 
@@ -113,14 +113,14 @@ namespace Charlotte.Donut
 				padId < 0 || PAD_MAX <= padId ||
 				btnId < 0 || PAD_BUTTON_MAX <= btnId
 				)
-				throw new GameError();
+				throw new DD.Error();
 
 			return GameEngine.FreezeInputFrame != 0 ? 0 : Pads[padId].ButtonStatus[btnId];
 		}
 
 		public static bool GetPadPound(int padId, int btnId)
 		{
-			return GameHelper.IsPound(GetPadInput(padId, btnId));
+			return GameToolkit2.IsPound(GetPadInput(padId, btnId));
 		}
 	}
 }

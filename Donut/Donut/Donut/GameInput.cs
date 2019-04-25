@@ -39,7 +39,7 @@ namespace Charlotte.Donut
 
 			GameEngine.FreezeInputFrame = freezeInputFrame_BKUP;
 
-			GameHelper.UpdateInput(ref InputStatus[(int)inpId], keyDown || btnDown);
+			GameDefine.UpdateInput(ref InputStatus[(int)inpId], keyDown || btnDown);
 		}
 
 		public static void InputEachFrame()
@@ -67,7 +67,7 @@ namespace Charlotte.Donut
 
 		public static bool GetPound(INP inpId)
 		{
-			return GameHelper.IsPound(GetInput(inpId));
+			return GameToolkit2.IsPound(GetInput(inpId));
 		}
 	}
 }

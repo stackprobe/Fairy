@@ -18,7 +18,7 @@ namespace Charlotte.Donut
 			handle.Dispose();
 		}
 
-		public static OneObject<ResourceCluster<GamePicture.PicInfo>> StdPicRes = GameHelper.GetOneObject(() =>
+		public static OneObject<ResourceCluster<GamePicture.PicInfo>> StdPicRes = GameDefine.GetOneObject(() =>
 		{
 			return GamePicture.CreatePicRes(LoadPic, UnloadPic);
 		});
@@ -47,7 +47,7 @@ namespace Charlotte.Donut
 			return GamePicture.GraphicHandle2PicInfo(GamePicture.SoftImage2GraphicHandle(si_h));
 		}
 
-		public static OneObject<ResourceCluster<GamePicture.PicInfo>> InvPicRes = GameHelper.GetOneObject(() =>
+		public static OneObject<ResourceCluster<GamePicture.PicInfo>> InvPicRes = GameDefine.GetOneObject(() =>
 		{
 			return GamePicture.CreatePicRes(LoadInvPic, UnloadPic);
 		});
@@ -76,7 +76,7 @@ namespace Charlotte.Donut
 			return GamePicture.GraphicHandle2PicInfo(GamePicture.SoftImage2GraphicHandle(new_si_h));
 		}
 
-		public static OneObject<ResourceCluster<GamePicture.PicInfo>> MirrorPicRes = GameHelper.GetOneObject(() =>
+		public static OneObject<ResourceCluster<GamePicture.PicInfo>> MirrorPicRes = GameDefine.GetOneObject(() =>
 		{
 			return GamePicture.CreatePicRes(LoadMirrorPic, UnloadPic);
 		});

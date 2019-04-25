@@ -8,22 +8,22 @@ namespace Charlotte.Donut
 {
 	public class TaskList : IDisposable
 	{
-		public class Info
+		public class TaskInfo
 		{
 			public Func<object, bool> Routine;
 			public object Param;
 			public Action<object> ReleaseParam;
 		}
 
-		private List<Info> Infos = new List<Info>();
+		private List<TaskInfo> Infos = new List<TaskInfo>();
 		private int LastFrame = -1;
 
-		public void AddTask(Info ti)
+		public void AddTask(TaskInfo ti)
 		{
 			this.Infos.Add(ti);
 		}
 
-		public void AddTopTask(Info ti)
+		public void AddTopTask(TaskInfo ti)
 		{
 			this.Infos.Insert(0, ti);
 		}
@@ -41,7 +41,7 @@ namespace Charlotte.Donut
 
 			for (int index = 0; index < this.Infos.Count; index++)
 			{
-				Info ti = this.Infos[index];
+				TaskInfo ti = this.Infos[index];
 
 				if (ti.Routine(ti.Param) == false)
 				{
@@ -62,7 +62,7 @@ namespace Charlotte.Donut
 		{
 			while (1 <= this.Infos.Count)
 			{
-				Info ti = ExtraTools.UnaddElement(this.Infos);
+				TaskInfo ti = ExtraTools.UnaddElement(this.Infos);
 
 				if (ti.ReleaseParam != null)
 					ti.ReleaseParam(ti.Param);
@@ -72,6 +72,26 @@ namespace Charlotte.Donut
 		public void Dispose()
 		{
 			this.Clear();
+		}
+
+		public static void AddTask(TaskList tl, bool topMode, Func<object, bool> tf, object tp = null, Action<object> tr = null)
+		{
+			if (tl == null)
+				throw new DD.Error();
+
+			if (tf == null)
+				throw new DD.Error();
+
+			TaskInfo ti = new TaskInfo();
+
+			ti.Routine = tf;
+			ti.Param = tp;
+			ti.ReleaseParam = tr;
+
+			if (topMode)
+				tl.AddTopTask(ti);
+			else
+				tl.AddTask(ti);
 		}
 	}
 }

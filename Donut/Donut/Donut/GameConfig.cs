@@ -16,6 +16,7 @@ namespace Charlotte.Donut
 		// "0.02"
 		// "1.00"
 		// etc.
+		//
 		public string Version = "1.00";
 
 		// -1 == デフォルト
@@ -23,6 +24,7 @@ namespace Charlotte.Donut
 		// 1  == 2番目のモニタ
 		// 2  == 3番目のモニタ
 		// ...
+		//
 		public int DisplayIndex = 1;
 	}
 }

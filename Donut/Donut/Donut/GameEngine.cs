@@ -30,7 +30,7 @@ namespace Charlotte.Donut
 			}
 			*/
 			GameGround.I.EL.ExecuteAllTask();
-			GameHelper.CurtainEachFrame();
+			GameToolkit.CurtainEachFrame();
 
 			if (GameGround.I.MainScreen != null && SubScreen.CurrDrawScreenHandle == GameGround.I.MainScreen.GetHandle())
 			{
@@ -39,19 +39,19 @@ namespace Charlotte.Donut
 				if (GameGround.I.RealScreenDrawRect.W == -1)
 				{
 					if (DX.DrawExtendGraph(0, 0, GameGround.I.RealScreenSize.W, GameGround.I.RealScreenSize.H, GameGround.I.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new GameError();
+						throw new DD.Error();
 				}
 				else
 				{
 					if (DX.DrawBox(0, 0, GameGround.I.RealScreenSize.W, GameGround.I.RealScreenSize.H, DX.GetColor(0, 0, 0), 1) != 0) // ? 失敗
-						throw new GameError();
+						throw new DD.Error();
 
 					if (DX.DrawExtendGraph(
 						GameGround.I.RealScreenDrawRect.L,
 						GameGround.I.RealScreenDrawRect.T,
 						GameGround.I.RealScreenDrawRect.L + GameGround.I.RealScreenDrawRect.W,
 						GameGround.I.RealScreenDrawRect.T + GameGround.I.RealScreenDrawRect.H, GameGround.I.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new GameError();
+						throw new DD.Error();
 				}
 			}
 
@@ -61,7 +61,7 @@ namespace Charlotte.Donut
 
 			if ((IgnoreEscapeKey == false && DX.CheckHitKey(DX.KEY_INPUT_ESCAPE) == 1) || DX.ProcessMessage() == -1)
 			{
-				throw new GameEndProc();
+				throw new DD.EndProc();
 			}
 
 			// < DxLib
@@ -71,15 +71,15 @@ namespace Charlotte.Donut
 			ProcFrame++;
 			if (IntTools.IMAX < ProcFrame) // 192.9日程度でカンスト
 			{
-				throw new GameError();
+				throw new DD.Error();
 			}
-			GameHelper.CountDown(ref FreezeInputFrame);
-			WindowIsActive = GameHelper.IsWindowActive();
+			GameDefine.CountDown(ref FreezeInputFrame);
+			WindowIsActive = GameSystem.IsWindowActive();
 
 			GamePad.PadEachFrame();
 			GameKeyboard.KeyEachFrame();
 			GameInput.InputEachFrame();
-			//MouseEachFrame(); // TODO
+			GameMouse.I.MouseEachFrame();
 
 			if (GameGround.I.RealScreenSize.W != GameGround.I.ScreenSize.W || GameGround.I.RealScreenSize.H != GameGround.I.ScreenSize.H)
 			{
@@ -92,7 +92,7 @@ namespace Charlotte.Donut
 
 		private static void CheckHz()
 		{
-			long currTime = GameHelper.GetCurrTime();
+			long currTime = GameSystem.GetCurrTime();
 			long diffTime = currTime - FrameStartTime;
 
 			if (diffTime < 15 || 18 < diffTime) // ? frame rate drop

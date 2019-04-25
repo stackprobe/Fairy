@@ -5,13 +5,7 @@ using System.Text;
 
 namespace Charlotte.Donut
 {
-	public class GameError : Exception
+	public class GameSystem2
 	{
-		public GameError()
-		{ }
-
-		public GameError(string message)
-			: base(message)
-		{ }
 	}
 }
