@@ -26,17 +26,36 @@ namespace Charlotte.Donut
 			public int IgnoreCamera;
 			public int BlendAddOn;
 
-			// change by method -->
+			// change by this.*() -->
 
-			public int BrightOn;
+			public bool BrightOn;
 			public double Bright_R;
 			public double Bright_G;
 			public double Bright_B;
-			public int GrphHdlFlag;
+			public bool GrphHdlFlag;
 			public I2Size GrphSize;
+
+			public void SetBright(double r, double g, double b)
+			{
+				this.BrightOn = true;
+				this.Bright_R = r;
+				this.Bright_G = g;
+				this.Bright_B = b;
+			}
+
+			public void SetGraphicSize(I2Size size)
+			{
+				this.GrphHdlFlag = true;
+				this.GrphSize = size;
+			}
+
+			public void Reset()
+			{
+				CEE = new ExtraInfo();
+			}
 		}
 
-		public static ExtraInfo CEE = null;
+		public static ExtraInfo CEE = new ExtraInfo();
 
 		public static double CameraX;
 		public static double CameraY;
@@ -88,13 +107,7 @@ namespace Charlotte.Donut
 
 			i.Frame = 0;
 			i.PicId = picId;
-			if (CEE != null)
-			{
-				i.Extra = CEE;
-				CEE = null;
-			}
-			else
-				i.Extra = new ExtraInfo();
+			i.Extra = CEE;
 
 			i.X = x;
 			i.Y = y;

@@ -12,13 +12,6 @@ namespace Charlotte.Donut
 			// TODO
 		}
 
-		// "0.01"
-		// "0.02"
-		// "1.00"
-		// etc.
-		//
-		public string Version = "1.00";
-
 		// -1 == デフォルト
 		// 0  == 最初のモニタ
 		// 1  == 2番目のモニタ

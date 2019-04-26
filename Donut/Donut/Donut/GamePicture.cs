@@ -213,23 +213,17 @@ namespace Charlotte.Donut
 
 		public static int Pic(int picId)
 		{
-			// TODO DTP
-
 			return GetPicRes().GetHandle(picId).Handle;
 		}
 
 		public static int Pic_W(int picId)
 		{
-			// TODO DTP
-
-			return GetPicRes().GetHandle(picId).Handle;
+			return GetPicRes().GetHandle(picId).W;
 		}
 
 		public static int Pic_H(int picId)
 		{
-			// TODO DTP
-
-			return GetPicRes().GetHandle(picId).Handle;
+			return GetPicRes().GetHandle(picId).H;
 		}
 	}
 }

@@ -11,7 +11,9 @@ namespace Charlotte.Donut
 {
 	public class GameProcMain
 	{
+#if DEBUG
 		private static bool LogWrote = false;
+#endif
 
 		public static void GPMain(IGameMain gameMain)
 		{
@@ -45,7 +47,7 @@ namespace Charlotte.Donut
 			GameGround.I.LoadFromDatFile();
 			GameGround.I.Config.LoadConfig();
 
-			// DxLib 初期化 ...
+			// DxLib >
 
 #if DEBUG
 			DX.SetApplicationLogSaveDirectory(@"C:\tmp");
@@ -76,7 +78,14 @@ namespace Charlotte.Donut
 			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
 			DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR); // これをデフォルトとする。
 
-			// ... DxLib 初期化
+			// < DxLib
+
+			// *.Reset
+			{
+				//DPE_Reset(); // TODO
+				GameCommonEffect.CEE.Reset();
+				//PE_Reset(); // TODO
+			}
 
 			GameGround.I.MonitorRect = new I4Rect();
 
@@ -129,8 +138,7 @@ namespace Charlotte.Donut
 		{
 			DX.SetMainWindowText(
 				(GameDefine.DEBUG_MODE ? "(DEBUGGING_MODE) " : "") +
-				ProcMain.APP_TITLE + " " +
-				GameGround.I.Config.Version
+				ProcMain.APP_TITLE
 				);
 		}
 
@@ -159,7 +167,7 @@ namespace Charlotte.Donut
 			bool mdm = GetMouseDispMode();
 
 			GamePicture.UnloadAllPicResHandle();
-			//UnloadAllSubScreenHandle(); // TODO
+			SubScreen.UnloadAllSubScreenHandle();
 			//ReleaseAllFontHandle(); // TODO
 
 			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
