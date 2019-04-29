@@ -37,7 +37,7 @@
       <HintPath>C:\Dev\CSharp\Chocolate\Chocolate\bin\Release\Chocolate.dll</HintPath>
     </Reference>
     <Reference Include="DxLibDotNet">
-      <HintPath>..\..\..\..\Dat\DxLibDotNet\3_20e\DxLibDotNet.dll</HintPath>
+      <HintPath>C:\Dat\DxLibDotNet\3_20e\DxLibDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
