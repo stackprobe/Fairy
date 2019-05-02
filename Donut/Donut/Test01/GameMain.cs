@@ -22,6 +22,8 @@ namespace Charlotte
 		{
 			for (; ; )
 			{
+				//AA.Pic(AA.P.WHITEBOX);
+
 				GameEngine.EachFrame();
 			}
 		}

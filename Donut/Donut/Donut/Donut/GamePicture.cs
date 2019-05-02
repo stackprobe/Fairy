@@ -178,7 +178,7 @@ namespace Charlotte.Donut
 
 		public static ResourceCluster<PicInfo> CreatePicRes(Func<byte[], PicInfo> handleLoader, Action<PicInfo> handleUnloader)
 		{
-			var res = new ResourceCluster<PicInfo>("Picture.dat", @"..\..\Picture.txt", handleLoader, handleUnloader);
+			var res = new ResourceCluster<PicInfo>("Picture.dat", @"..\..\..\..\Picture.txt", handleLoader, handleUnloader);
 			PicResList.Add(res);
 			return res;
 		}
