@@ -77,10 +77,10 @@ namespace Charlotte.Donut
 		public static void AddTask(TaskList tl, bool topMode, Func<object, bool> tf, object tp = null, Action<object> tr = null)
 		{
 			if (tl == null)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			if (tf == null)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			TaskInfo ti = new TaskInfo();
 

@@ -16,7 +16,7 @@ namespace Charlotte.Donut
 			GameHelper.PinOn(fileData, p => handle = DX.LoadSoftImageToMem(p, fileData.Length));
 
 			if (handle == -1)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			int w;
 			int h;
@@ -28,13 +28,13 @@ namespace Charlotte.Donut
 				int h2 = DX.MakeARGB8ColorSoftImage(w, h);
 
 				if (h2 == -1)
-					throw new DD.Error();
+					throw new GameHelper.Error();
 
 				if (DX.BltSoftImage(0, 0, w, h, handle, 0, 0, h2) != 0)
-					throw new DD.Error();
+					throw new GameHelper.Error();
 
 				if (DX.DeleteSoftImage(handle) != 0)
-					throw new DD.Error();
+					throw new GameHelper.Error();
 
 				handle = h2;
 			}
@@ -47,10 +47,10 @@ namespace Charlotte.Donut
 			int h = DX.CreateGraphFromSoftImage(si_h);
 
 			if (h == -1)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			if (DX.DeleteSoftImage(si_h) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			return h;
 		}
@@ -64,7 +64,7 @@ namespace Charlotte.Donut
 			public void Dispose() // Codevil の Pic_ReleasePicInfo
 			{
 				if (DX.DeleteGraph(this.Handle) != 0)
-					throw new DD.Error();
+					throw new GameHelper.Error();
 			}
 		}
 
@@ -86,25 +86,25 @@ namespace Charlotte.Donut
 		public static void GetSoftImageSize(int si_h, out int w, out int h)
 		{
 			if (DX.GetSoftImageSize(si_h, out w, out h) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			if (
 				w < 1 || IntTools.IMAX < w ||
 				h < 1 || IntTools.IMAX < h
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public static void GetGraphicHandleSize(int handle, out int w, out int h)
 		{
 			if (DX.GetGraphSize(handle, out w, out h) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			if (
 				w < 1 || IntTools.IMAX < w ||
 				h < 1 || IntTools.IMAX < h
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public class SIPixel
@@ -120,7 +120,7 @@ namespace Charlotte.Donut
 			SIPixel i = new SIPixel();
 
 			if (DX.GetPixelSoftImage(si_h, x, y, out i.R, out i.G, out i.B, out i.A) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			if (
 				i.R < 0 || 255 < i.R ||
@@ -128,7 +128,7 @@ namespace Charlotte.Donut
 				i.B < 0 || 255 < i.B ||
 				i.A < 0 || 255 < i.A
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			return i;
 		}
@@ -141,7 +141,7 @@ namespace Charlotte.Donut
 			i.A = IntTools.Range(i.A, 0, 255);
 
 			if (DX.DrawPixelSoftImage(si_h, x, y, i.R, i.G, i.B, i.A) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public static int CreateSoftImage(int w, int h)
@@ -150,12 +150,12 @@ namespace Charlotte.Donut
 				w < 1 || IntTools.IMAX < w ||
 				h < 1 || IntTools.IMAX < h
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			int handle = DX.MakeARGB8ColorSoftImage(w, h);
 
 			if (handle == -1)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			return handle;
 		}
@@ -163,13 +163,13 @@ namespace Charlotte.Donut
 		public static void ReleaseSoftImage(int si_h)
 		{
 			if (DX.DeleteSoftImage(si_h) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public static void ReleaseGraphicHandle(int handle)
 		{
 			if (DX.DeleteGraph(handle) != 0)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		// Codevil の Pic_* ここまで

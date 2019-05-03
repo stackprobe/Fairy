@@ -61,7 +61,7 @@ namespace Charlotte.Donut
 		public void UpdateMousePos()
 		{
 			if (DX.GetMousePoint(out MouseX, out MouseY) != 0) // ? 失敗
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			MouseX *= GameGround.I.ScreenSize.W;
 			MouseX /= GameGround.I.RealScreenSize.W;
@@ -80,7 +80,7 @@ namespace Charlotte.Donut
 			my /= GameGround.I.ScreenSize.H;
 
 			if (DX.SetMousePoint(mx, my) != 0) // ? 失敗
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public int MouseMoveX;
@@ -93,7 +93,7 @@ namespace Charlotte.Donut
 		public void UpdateMouseMove()
 		{
 			if (GameEngine.ProcFrame <= UMM_LastFrame) // ? 2回以上更新した。
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			UpdateMousePos();
 

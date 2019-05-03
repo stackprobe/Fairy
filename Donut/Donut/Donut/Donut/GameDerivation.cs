@@ -59,19 +59,19 @@ namespace Charlotte.Donut
 				w < 1 || IntTools.IMAX - x < w ||
 				h < 1 || IntTools.IMAX - y < h
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			// ? 範囲外
 			if (
 				parent.W < x + w ||
 				parent.H < y + h
 				)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			der_h = DX.DerivationGraph(x, y, w, h, parent.Handle);
 
 			if (der_h == -1) // ? 失敗
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			return der_h;
 		}
@@ -82,7 +82,7 @@ namespace Charlotte.Donut
 				return;
 
 			if (DX.DeleteGraph(handle) != 0) // ? 失敗
-				throw new DD.Error();
+				throw new GameHelper.Error();
 		}
 
 		public static int Der(int derId)
@@ -93,7 +93,7 @@ namespace Charlotte.Donut
 		public static int Der(int derId, ResourceCluster<GamePicture.PicInfo> resclu)
 		{
 			if (derId < 0 || DerList.Count <= derId)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			while (resclu.DerHandleList.Count <= derId)
 				resclu.DerHandleList.Add(-1);

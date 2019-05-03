@@ -39,19 +39,19 @@ namespace Charlotte.Donut
 				if (GameGround.I.RealScreenDrawRect.W == -1)
 				{
 					if (DX.DrawExtendGraph(0, 0, GameGround.I.RealScreenSize.W, GameGround.I.RealScreenSize.H, GameGround.I.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new DD.Error();
+						throw new GameHelper.Error();
 				}
 				else
 				{
 					if (DX.DrawBox(0, 0, GameGround.I.RealScreenSize.W, GameGround.I.RealScreenSize.H, DX.GetColor(0, 0, 0), 1) != 0) // ? 失敗
-						throw new DD.Error();
+						throw new GameHelper.Error();
 
 					if (DX.DrawExtendGraph(
 						GameGround.I.RealScreenDrawRect.L,
 						GameGround.I.RealScreenDrawRect.T,
 						GameGround.I.RealScreenDrawRect.L + GameGround.I.RealScreenDrawRect.W,
 						GameGround.I.RealScreenDrawRect.T + GameGround.I.RealScreenDrawRect.H, GameGround.I.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new DD.Error();
+						throw new GameHelper.Error();
 				}
 			}
 
@@ -61,7 +61,7 @@ namespace Charlotte.Donut
 
 			if ((IgnoreEscapeKey == false && DX.CheckHitKey(DX.KEY_INPUT_ESCAPE) == 1) || DX.ProcessMessage() == -1)
 			{
-				throw new DD.EndProc();
+				throw new GameHelper.EndProc();
 			}
 
 			// < DxLib
@@ -71,7 +71,7 @@ namespace Charlotte.Donut
 			ProcFrame++;
 			if (IntTools.IMAX < ProcFrame) // 192.9日程度でカンスト
 			{
-				throw new DD.Error();
+				throw new GameHelper.Error();
 			}
 			GameDefine.CountDown(ref FreezeInputFrame);
 			WindowIsActive = GameSystem.IsWindowActive();

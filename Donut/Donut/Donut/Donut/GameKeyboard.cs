@@ -18,7 +18,7 @@ namespace Charlotte.Donut
 			if (GameEngine.WindowIsActive)
 			{
 				if (DX.GetHitKeyStateAll(StatusMap) != 0) // ? 失敗
-					throw new DD.Error();
+					throw new GameHelper.Error();
 
 				for (int keyId = 0; keyId < KEY_MAX; keyId++)
 				{
@@ -39,7 +39,7 @@ namespace Charlotte.Donut
 		public static int GetKeyInput(int keyId)
 		{
 			if (keyId < 0 || KEY_MAX <= keyId)
-				throw new DD.Error();
+				throw new GameHelper.Error();
 
 			return GameEngine.FreezeInputFrame != 0 ? 0 : KeyStatus[keyId];
 		}

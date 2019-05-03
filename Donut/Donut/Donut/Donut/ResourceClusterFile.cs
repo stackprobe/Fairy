@@ -27,12 +27,12 @@ namespace Charlotte.Donut
 				byte[] signature = FileTools.Read(reader, SIGNATURE.Length);
 
 				if (BinTools.Comp(signature, SIGNATURE) != 0)
-					throw new DD.Error("Bad signature");
+					throw new GameHelper.Error("Bad signature");
 
 				this.ResCount = BinTools.ToInt(FileTools.Read(reader, 4));
 
 				if (this.ResCount < 0 || IntTools.IMAX < this.ResCount)
-					throw new DD.Error("Bad ResCount");
+					throw new GameHelper.Error("Bad ResCount");
 
 				this.ResStartPositions = new long[this.ResCount];
 				this.ResSizes = new int[this.ResCount];
@@ -44,18 +44,18 @@ namespace Charlotte.Donut
 					int resSize = BinTools.ToInt(FileTools.Read(reader, 4));
 
 					if (resSize < 0 || IntTools.IMAX < resSize)
-						throw new DD.Error("Bad resSize " + resSize);
+						throw new GameHelper.Error("Bad resSize " + resSize);
 
 					this.ResStartPositions[index] = count;
 					this.ResSizes[index] = resSize;
 
 					if (LongTools.IMAX_64 - count < (long)resSize)
-						throw new DD.Error("Bad resSize " + resSize + ", " + count);
+						throw new GameHelper.Error("Bad resSize " + resSize + ", " + count);
 
 					count += (long)resSize;
 				}
 				if (count + 64L != fileSize)
-					throw new DD.Error("Bad fileSize " + fileSize + ", " + count);
+					throw new GameHelper.Error("Bad fileSize " + fileSize + ", " + count);
 
 				reader.Seek(0L, SeekOrigin.Begin);
 
@@ -63,7 +63,7 @@ namespace Charlotte.Donut
 				byte[] hash2 = FileTools.Read(reader, 64);
 
 				if (BinTools.Comp(hash, hash2) != 0)
-					throw new DD.Error("Bad hash");
+					throw new GameHelper.Error("Bad hash");
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace Charlotte.Donut
 		public byte[] LoadResFile(int index)
 		{
 			if (index < 0 || this.ResCount <= index)
-				throw new DD.Error("そんなリソースありません。" + index + ", " + this.ResCount);
+				throw new GameHelper.Error("そんなリソースありません。" + index + ", " + this.ResCount);
 
 			using (FileStream reader = new FileStream(this.ClusterFile, FileMode.Open, FileAccess.Read))
 			{
