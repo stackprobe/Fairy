@@ -22,7 +22,7 @@ namespace Charlotte.Donut
 				w < 1 || IntTools.IMAX < w ||
 				h < 1 || IntTools.IMAX < h
 				)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			this.W = w;
 			this.H = h;
@@ -44,7 +44,7 @@ namespace Charlotte.Donut
 				this.Handle = DX.MakeScreen(this.W, this.H, this.AFlag ? 1 : 0);
 
 				if (this.Handle == -1)
-					throw new GameHelper.Error();
+					throw new GameError();
 			}
 			return this.Handle;
 		}
@@ -65,7 +65,7 @@ namespace Charlotte.Donut
 		public static void ChangeDrawScreen(int handle)
 		{
 			if (DX.SetDrawScreen(handle) != 0)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			CurrDrawScreenHandle = handle;
 		}
@@ -91,7 +91,7 @@ namespace Charlotte.Donut
 				if (i.Handle != -1)
 				{
 					if (DX.DeleteGraph(i.Handle) != 0) // ? 失敗
-						throw new GameHelper.Error();
+						throw new GameError();
 
 					i.Handle = -1;
 				}

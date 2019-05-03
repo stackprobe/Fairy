@@ -129,7 +129,7 @@ namespace Charlotte.Donut
 
 			i.OutOfScreenFrame = 0;
 
-			TaskList.AddTask(tl, topMode, CommonEffectFunc, i, CommonEffectReleaseParam);
+			TaskList.AddTask_NT(tl, topMode, CommonEffectFunc, i, CommonEffectReleaseParam);
 		}
 	}
 }

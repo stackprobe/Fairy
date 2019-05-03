@@ -74,13 +74,13 @@ namespace Charlotte.Donut
 			this.Clear();
 		}
 
-		public static void AddTask(TaskList tl, bool topMode, Func<object, bool> tf, object tp = null, Action<object> tr = null)
+		public static void AddTask_NT(TaskList tl, bool topMode, Func<object, bool> tf, object tp = null, Action<object> tr = null)
 		{
 			if (tl == null)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			if (tf == null)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			TaskInfo ti = new TaskInfo();
 
@@ -92,6 +92,11 @@ namespace Charlotte.Donut
 				tl.AddTopTask(ti);
 			else
 				tl.AddTask(ti);
+		}
+
+		public static void AddTask<T>(TaskList tl, bool topMode, Func<T, bool> tf, T tp = null, Action<T> tr = null) where T : class
+		{
+			AddTask_NT(tl, topMode, p => tf((T)p), tp, p => tr((T)p));
 		}
 	}
 }

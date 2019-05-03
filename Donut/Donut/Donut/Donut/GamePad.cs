@@ -58,7 +58,7 @@ namespace Charlotte.Donut
 				PadCount = DX.GetJoypadNum();
 
 				if (PadCount < 0 || PAD_MAX < PadCount)
-					throw new GameHelper.Error();
+					throw new GameError();
 			}
 			return PadCount;
 		}
@@ -113,7 +113,7 @@ namespace Charlotte.Donut
 				padId < 0 || PAD_MAX <= padId ||
 				btnId < 0 || PAD_BUTTON_MAX <= btnId
 				)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			return GameEngine.FreezeInputFrame != 0 ? 0 : Pads[padId].ButtonStatus[btnId];
 		}

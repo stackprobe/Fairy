@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Donut\GameDrawPicture.cs" />
+    <Compile Include="Donut\GameError.cs" />
     <Compile Include="Donut\GameHelper.cs" />
     <Compile Include="Donut\GameCommonEffect.cs" />
     <Compile Include="Donut\GameDerivation.cs" />

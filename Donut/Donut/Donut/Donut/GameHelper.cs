@@ -8,16 +8,6 @@ namespace Charlotte.Donut
 {
 	public class GameHelper
 	{
-		public class EndProc : Exception
-		{ }
-
-		public class Error : Exception
-		{
-			public Error(string message = null)
-				: base(message)
-			{ }
-		}
-
 		public static void PinOn<T>(T data, Action<IntPtr> routine)
 		{
 			GCHandle pinnedData = GCHandle.Alloc(data, GCHandleType.Pinned);

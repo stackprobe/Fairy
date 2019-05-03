@@ -70,7 +70,7 @@ namespace Charlotte.Donut
 				DX.SetUseDirectDrawDeviceIndex(GameGround.I.Config.DisplayIndex);
 
 			if (DX.DxLib_Init() != 0)
-				throw new GameHelper.Error("Error on DxLib_Init()");
+				throw new GameError("Error on DxLib_Init()");
 
 			SetMouseDispMode(GameGround.I.RO_MouseDispMode); // ? マウスを表示 true: する false: しない
 			DX.SetWindowSizeChangeEnableFlag(0); // ウィンドウの右下をドラッグで伸縮 1: する 0: しない
@@ -82,7 +82,7 @@ namespace Charlotte.Donut
 
 			// *.Reset
 			{
-				//DPE_Reset(); // TODO
+				GameDrawPicture.DPE.Reset();
 				GameCommonEffect.CEE.Reset();
 				//PE_Reset(); // TODO
 			}
@@ -113,13 +113,13 @@ namespace Charlotte.Donut
 				GameGround.I.MonitorRect.L < -IntTools.IMAX || IntTools.IMAX < GameGround.I.MonitorRect.L ||
 				GameGround.I.MonitorRect.T < -IntTools.IMAX || IntTools.IMAX < GameGround.I.MonitorRect.T
 				)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			try
 			{
 				gameMain.Main();
 			}
-			catch (GameHelper.EndProc)
+			catch (GameError.EndProc)
 			{ }
 
 			// Codevil の EndProc() ...
@@ -129,7 +129,7 @@ namespace Charlotte.Donut
 			GameGround.I.Fnlz();
 
 			if (DX.DxLib_End() != 0)
-				throw new GameHelper.Error("Erred on DxLib_End()");
+				throw new GameError("Erred on DxLib_End()");
 
 			// ... Codevil の EndProc()
 		}
@@ -171,7 +171,7 @@ namespace Charlotte.Donut
 			//ReleaseAllFontHandle(); // TODO
 
 			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
 			DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
@@ -202,7 +202,7 @@ namespace Charlotte.Donut
 				w < GameDefine.SCREEN_W_MIN || GameDefine.SCREEN_W_MAX < w ||
 				h < GameDefine.SCREEN_H_MIN || GameDefine.SCREEN_H_MAX < h
 				)
-				throw new GameHelper.Error();
+				throw new GameError();
 
 			GameGround.I.RealScreenDrawRect.W = -1; // 無効化
 
