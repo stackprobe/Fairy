@@ -28,7 +28,11 @@ DerInfo_t;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int Der(resCluster<PicInfo_t *> *resclu, int derId);
+int Der(int derId);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+int Der(int derId, resCluster<PicInfo_t *> *resclu);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

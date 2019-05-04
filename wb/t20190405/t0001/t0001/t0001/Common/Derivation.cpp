@@ -108,7 +108,14 @@ static void UnloadDer(int h)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int Der(resCluster<PicInfo_t *> *resclu, int derId)
+int Der(int derId)
+{
+	return Der(derId, GetPicRes());
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+int Der(int derId, resCluster<PicInfo_t *> *resclu)
 {
 	errorCase(derId < 0 || D_MAX <= derId);
 

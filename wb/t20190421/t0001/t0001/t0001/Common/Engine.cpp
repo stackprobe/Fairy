@@ -16,6 +16,14 @@ __int64 FrameStartTime;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+__int64 LangolierTime;
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+double EatenByLangolierEval = 0.5;
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int ProcFrame;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -25,14 +33,6 @@ int FreezeInputFrame;
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
 int WindowIsActive;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int FrameRateDropCount;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int NoFrameRateDropCount;
 // }
 
 /*
@@ -41,20 +41,38 @@ int NoFrameRateDropCount;
 static void CheckHz(void)
 {
 	__int64 currTime = GetCurrTime();
-	__int64 diffTime = currTime - FrameStartTime;
 
-	if(diffTime < 15 || 18 < diffTime) // ? frame rate drop
-		FrameRateDropCount++;
+	if(!ProcFrame)
+		LangolierTime = currTime;
 	else
-		NoFrameRateDropCount++;
+		LangolierTime += 16; // 16.666 ‚æ‚è¬‚³‚¢‚Ì‚ÅA60Hz‚È‚ç‚Ç‚ñ‚Ç‚ñˆø‚«—£‚³‚ê‚é‚Í‚¸B
+//		LangolierTime += 17; // test -- EBLE 0.20 ‚ ‚½‚è
+//		LangolierTime += 18; // test -- EBLE 0.45 ‚ ‚½‚è
+//		LangolierTime += 19; // test -- EBLE 0.59 ‚ ‚½‚è
+//		LangolierTime += 20; // test -- EBLE 0.67 ‚ ‚½‚è
+
+	while(currTime < LangolierTime)
+	{
+		Sleep(1);
+
+		// DxLib >
+
+		ScreenFlip();
+
+		if(ProcessMessage() == -1)
+		{
+			EndProc();
+		}
+
+		// < DxLib
+
+		currTime = GetCurrTime();
+		m_approach(EatenByLangolierEval, 1.0, 0.9);
+	}
+	EatenByLangolierEval *= 0.99;
 
 	FrameStartTime = currTime;
 }
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-int InnerDrawScrHdl = -1;
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -67,6 +85,24 @@ void EachFrame(void)
 	}
 	Gnd.EL->ExecuteAllTask();
 	CurtainEachFrame();
+
+	if(900 < ProcFrame && 0.1 < EatenByLangolierEval) // Žb’è Žb’è Žb’è Žb’è Žb’è
+	{
+		static int passedCount = 900;
+
+		if(m_countDown(passedCount))
+		{
+			DPE_SetBright(GetColor(128, 0, 0));
+			DPE_SetAlpha(0.5);
+			DrawRect(P_WHITEBOX, 0, 0, SCREEN_W, 16);
+			DPE_Reset();
+
+			SetPrint();
+			PE.Color = GetColor(255, 255, 0);
+			Print_x(xcout("V-SYNC ALERT / EBLE=%.3f FST=%I64d LT=%I64d (%d) %d", EatenByLangolierEval, FrameStartTime, LangolierTime, passedCount, ProcFrame));
+			PE_Reset();
+		}
+	}
 
 	// app > @ before draw screen
 

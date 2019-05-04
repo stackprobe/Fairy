@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Charlotte.Tools;
 using DxLibDLL;
 
@@ -13,12 +14,48 @@ namespace Charlotte.Donut
 
 		// 他のファイルからは read only {
 		public static long FrameStartTime = 0L;
+		public static long LangolierTime;
+		public static double EatenByLangolierEval = 0.5;
 		public static int ProcFrame = 0;
 		public static int FreezeInputFrame = 0;
 		public static bool WindowIsActive = false;
-		public static int FrameRateDropCount = 0;
-		public static int NoFrameRateDropCount = 0;
 		// }
+
+		private static void CheckHz()
+		{
+			long currTime = GameSystem.GetCurrTime();
+
+			if (ProcFrame == 0)
+				LangolierTime = currTime;
+			else
+				LangolierTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
+			//LangolierTime += 17; // test
+			//LangolierTime += 18; // test
+			//LangolierTime += 19; // test
+			//LangolierTime += 20; // test
+
+			while (currTime < LangolierTime)
+			{
+				Thread.Sleep(1);
+
+				// DxLib >
+
+				DX.ScreenFlip();
+
+				if (DX.ProcessMessage() == -1)
+				{
+					throw new GameError.EndProc();
+				}
+
+				// < DxLib
+
+				currTime = GameSystem.GetCurrTime();
+				GameDefine.Approach(ref EatenByLangolierEval, 1.0, 0.9);
+			}
+			EatenByLangolierEval *= 0.99;
+
+			FrameStartTime = currTime;
+		}
 
 		public static void EachFrame()
 		{
@@ -88,19 +125,6 @@ namespace Charlotte.Donut
 
 				SubScreen.ChangeDrawScreen(GameGround.I.MainScreen);
 			}
-		}
-
-		private static void CheckHz()
-		{
-			long currTime = GameSystem.GetCurrTime();
-			long diffTime = currTime - FrameStartTime;
-
-			if (diffTime < 15 || 18 < diffTime) // ? frame rate drop
-				FrameRateDropCount++;
-			else
-				NoFrameRateDropCount++;
-
-			FrameStartTime = currTime;
 		}
 	}
 }

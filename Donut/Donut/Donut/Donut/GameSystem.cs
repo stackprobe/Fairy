@@ -15,7 +15,7 @@ namespace Charlotte.Donut
 
 		public static long GetCurrTime()
 		{
-			return (long)GameWin32.GetTickCount64();
+			return (long)GameWin32.GetTickCount64(); // TODO 精度がイマイチ
 		}
 	}
 }

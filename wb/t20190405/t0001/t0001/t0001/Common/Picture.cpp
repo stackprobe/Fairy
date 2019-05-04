@@ -227,7 +227,7 @@ void ResetPicRes(void)
 int Pic(int picId)
 {
 	if(picId & DTP)
-		return Der(GetPicRes(), picId & ~DTP);
+		return Der(picId & ~DTP);
 
 	return GetPicRes()->GetHandle(picId)->Handle;
 }

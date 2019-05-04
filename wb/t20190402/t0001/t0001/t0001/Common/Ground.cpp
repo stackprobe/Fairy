@@ -466,7 +466,7 @@ void LoadFromDatFile(void)
 
 	// < app
 
-	// }
+	// } セーブデータ項目
 
 	delete SaveData;
 
@@ -534,7 +534,7 @@ void SaveToDatFile(void)
 
 	// < app
 
-	// }
+	// } セーブデータ項目
 
 #if LOG_ENABLED == 0
 	errorCase(!Jammer(SaveData, 1));

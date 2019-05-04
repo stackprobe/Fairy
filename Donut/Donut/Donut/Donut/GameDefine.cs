@@ -31,6 +31,13 @@ namespace Charlotte.Donut
 				count--;
 		}
 
+		public static void Approach(ref double var, double dest, double rate)
+		{
+			var -= dest;
+			var *= rate;
+			var += dest;
+		}
+
 		public static OneObject<T> GetOneObject<T>(Func<T> getter)
 		{
 			return new OneObject<T>(getter);

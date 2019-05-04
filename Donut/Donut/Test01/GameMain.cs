@@ -22,15 +22,17 @@ namespace Charlotte
 		{
 			for (; ; )
 			{
+				Console.WriteLine("EBLE=" + GameEngine.EatenByLangolierEval);
+
 				GameDrawPicture.DPE.SetBright(DX.GetColor(0, 0, 0));
 				GameDrawPicture.DrawRect((int)AA.P.WHITEBOX, 0.0, 0.0, GameGround.I.ScreenSize.W, GameGround.I.ScreenSize.H);
 				GameDrawPicture.DPE.Reset();
 
 				GameDrawPicture.DrawBegin((int)AA.P.DUMMY, GameGround.I.ScreenCenterX, GameGround.I.ScreenCenterY);
-				GameDrawPicture.DrawRotate(GameEngine.ProcFrame / 0.001);
+				GameDrawPicture.DrawRotate(GameEngine.ProcFrame * 0.01);
 				GameDrawPicture.DrawEnd();
 
-				GameEngine.EachFrame(); // あれ、60fpsになってなくね？？？
+				GameEngine.EachFrame();
 			}
 		}
 
