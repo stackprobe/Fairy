@@ -20,7 +20,15 @@ __int64 LangolierTime;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+__int64 LowHzTime;
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double EatenByLangolierEval = 0.5;
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+double LowHzErrorRate = 0.0;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -43,13 +51,15 @@ static void CheckHz(void)
 	__int64 currTime = GetCurrTime();
 
 	if(!ProcFrame)
+	{
 		LangolierTime = currTime;
+		LowHzTime = currTime;
+	}
 	else
+	{
 		LangolierTime += 16; // 16.666 ÇÊÇËè¨Ç≥Ç¢ÇÃÇ≈ÅA60HzÇ»ÇÁÇ«ÇÒÇ«ÇÒà¯Ç´ó£Ç≥ÇÍÇÈÇÕÇ∏ÅB
-//		LangolierTime += 17; // test -- EBLE 0.20 Ç†ÇΩÇË
-//		LangolierTime += 18; // test -- EBLE 0.45 Ç†ÇΩÇË
-//		LangolierTime += 19; // test -- EBLE 0.59 Ç†ÇΩÇË
-//		LangolierTime += 20; // test -- EBLE 0.67 Ç†ÇΩÇË
+		LowHzTime += 17;
+	}
 
 	while(currTime < LangolierTime)
 	{
@@ -71,6 +81,19 @@ static void CheckHz(void)
 	}
 	EatenByLangolierEval *= 0.99;
 
+	if(LowHzTime < currTime)
+	{
+		m_maxim(LowHzTime, currTime - 10);
+		m_approach(LowHzErrorRate, 1.0, 0.999);
+	}
+	else
+	{
+		m_minim(LowHzTime, currTime + 20);
+		LowHzErrorRate *= 0.99;
+	}
+
+//	LOG("%I64d\n", currTime - FrameStartTime); // test
+
 	FrameStartTime = currTime;
 }
 
@@ -86,22 +109,13 @@ void EachFrame(void)
 	Gnd.EL->ExecuteAllTask();
 	CurtainEachFrame();
 
-	if(900 < ProcFrame && 0.1 < EatenByLangolierEval) // ébíË ébíË ébíË ébíË ébíË
+	if(600 < ProcFrame && (0.1 < EatenByLangolierEval || 0.1 < LowHzErrorRate)) // ébíË ébíË ébíË ébíË ébíË
 	{
-		static int passedCount = 900;
-
-		if(m_countDown(passedCount))
-		{
-			DPE_SetBright(GetColor(128, 0, 0));
-			DPE_SetAlpha(0.5);
-			DrawRect(P_WHITEBOX, 0, 0, SCREEN_W, 16);
-			DPE_Reset();
-
-			SetPrint();
-			PE.Color = GetColor(255, 255, 0);
-			Print_x(xcout("V-SYNC ALERT / EBLE=%.3f FST=%I64d LT=%I64d (%d) %d", EatenByLangolierEval, FrameStartTime, LangolierTime, passedCount, ProcFrame));
-			PE_Reset();
-		}
+		SetPrint();
+		PE.Color = GetColor(255, 255, 255);
+		PE_Border(GetColor(0, 0, 255));
+		Print_x(xcout("FPS TUNING EBLE=%.3f LHzER=%.3f", EatenByLangolierEval, LowHzErrorRate));
+		PE_Reset();
 	}
 
 	// app > @ before draw screen
