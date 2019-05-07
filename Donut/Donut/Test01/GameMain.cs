@@ -22,7 +22,7 @@ namespace Charlotte
 		{
 			for (; ; )
 			{
-				Console.WriteLine("EBLE=" + GameEngine.EatenByLangolierEval);
+				Console.WriteLine(string.Format("EBLE={0:F3},LHzER={1:F3}", GameEngine.EatenByLangolierEval, GameEngine.LowHzErrorRate));
 
 				GameDrawPicture.DPE.SetBright(DX.GetColor(0, 0, 0));
 				GameDrawPicture.DrawRect((int)AA.P.WHITEBOX, 0.0, 0.0, GameGround.I.ScreenSize.W, GameGround.I.ScreenSize.H);

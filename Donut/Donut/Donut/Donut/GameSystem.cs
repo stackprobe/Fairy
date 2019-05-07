@@ -13,9 +13,31 @@ namespace Charlotte.Donut
 			return DX.GetActiveFlag() != 0;
 		}
 
+		private static long GCT_LastTime = -1L;
+		private static long GCT_BaseTime;
+		private static uint GCT_LastCount;
+
 		public static long GetCurrTime()
 		{
-			return (long)GameWin32.GetTickCount64(); // TODO 精度がイマイチ
+#if false // 精度がいまいち
+			return (long)GameWin32.GetTickCount64(); 
+#else
+			uint currCount = (uint)DX.GetNowCount();
+
+			if (currCount < GCT_LastCount) // ? DX.GetNowCount()のカンスト(オーバーフロー)
+			{
+				GCT_BaseTime += (long)uint.MaxValue + 1;
+			}
+			GCT_LastCount = currCount;
+			long currTime = GCT_BaseTime + currCount;
+
+			if (currTime < 0) throw null; // ? __int64のカンスト(オーバーフロー)
+			if (currTime < GCT_LastTime) throw null; // ? 時間が戻った || カンスト(オーバーフロー)
+			//if (GCT_LastTime != -1L && GCT_LastTime + 60000L < currTime) throw null; // ? 1分以上経過 <- 飛び過ぎ // タイトルバーを長時間掴んでいれば有り得る。
+
+			GCT_LastTime = currTime;
+			return currTime;
+#endif
 		}
 	}
 }

@@ -15,7 +15,9 @@ namespace Charlotte.Donut
 		// 他のファイルからは read only {
 		public static long FrameStartTime = 0L;
 		public static long LangolierTime;
+		public static long LowHzTime;
 		public static double EatenByLangolierEval = 0.5;
+		public static double LowHzErrorRate = 0.0;
 		public static int ProcFrame = 0;
 		public static int FreezeInputFrame = 0;
 		public static bool WindowIsActive = false;
@@ -26,13 +28,15 @@ namespace Charlotte.Donut
 			long currTime = GameSystem.GetCurrTime();
 
 			if (ProcFrame == 0)
+			{
 				LangolierTime = currTime;
+				LowHzTime = currTime;
+			}
 			else
+			{
 				LangolierTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
-			//LangolierTime += 17; // test
-			//LangolierTime += 18; // test
-			//LangolierTime += 19; // test
-			//LangolierTime += 20; // test
+				LowHzTime += 17;
+			}
 
 			while (currTime < LangolierTime)
 			{
@@ -53,6 +57,19 @@ namespace Charlotte.Donut
 				GameDefine.Approach(ref EatenByLangolierEval, 1.0, 0.9);
 			}
 			EatenByLangolierEval *= 0.99;
+
+			if (LowHzTime < currTime)
+			{
+				LowHzTime = Math.Max(LowHzTime, currTime - 10);
+				GameDefine.Approach(ref LowHzErrorRate, 1.0, 0.999);
+			}
+			else
+			{
+				LowHzTime = Math.Min(LowHzTime, currTime + 20);
+				LowHzErrorRate *= 0.99;
+			}
+
+			//Console.WriteLine("" + (currTime - FrameStartTime)); // test
 
 			FrameStartTime = currTime;
 		}
