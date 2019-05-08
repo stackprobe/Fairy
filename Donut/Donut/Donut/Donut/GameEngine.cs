@@ -69,7 +69,7 @@ namespace Charlotte.Donut
 				LowHzErrorRate *= 0.99;
 			}
 
-			//Console.WriteLine("" + (currTime - FrameStartTime)); // test
+			Console.WriteLine(currTime + ", " + (currTime - FrameStartTime)); // test
 
 			FrameStartTime = currTime;
 		}

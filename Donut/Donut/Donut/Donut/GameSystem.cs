@@ -13,6 +13,25 @@ namespace Charlotte.Donut
 			return DX.GetActiveFlag() != 0;
 		}
 
+#if false // test
+		private static bool GNCT_Inited = false;
+		private static int GNCT_StartCount;
+
+		private static int GetNowCount_TEST()
+		{
+			int currCount = DX.GetNowCount();
+
+			if (GNCT_Inited == false)
+			{
+				GNCT_StartCount = currCount;
+				GNCT_Inited = true;
+			}
+			currCount -= GNCT_StartCount;
+			currCount -= 10000; // 要調整
+			return currCount;
+		}
+#endif
+
 		private static long GCT_LastTime = -1L;
 		private static long GCT_BaseTime;
 		private static uint GCT_LastCount;
@@ -22,6 +41,7 @@ namespace Charlotte.Donut
 #if false // 精度がいまいち
 			return (long)GameWin32.GetTickCount64(); 
 #else
+			//uint currCount = (uint)GetNowCount_TEST(); // test
 			uint currCount = (uint)DX.GetNowCount();
 
 			if (currCount < GCT_LastCount) // ? DX.GetNowCount()のカンスト(オーバーフロー)
