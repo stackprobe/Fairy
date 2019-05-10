@@ -76,13 +76,10 @@ namespace Charlotte.Donut
 
 		public static void EachFrame()
 		{
-			// TODO
-			/*
-			if (SEEachFrame())
+			//if (SEEachFrame()) // TODO
 			{
-				MusicEachFrame();
+				GameMusic.MusicEachFrame();
 			}
-			*/
 			GameGround.I.EL.ExecuteAllTask();
 			GameToolkit.CurtainEachFrame();
 

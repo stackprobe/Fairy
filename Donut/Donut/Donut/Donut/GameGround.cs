@@ -89,7 +89,7 @@ namespace Charlotte.Donut
 		// 0.0 - 1.0
 		// def: DEFAULT_VOLUME
 		//
-		public double MouseVolume = GameDefine.DEFAULT_VOLUME;
+		public double MusicVolume = GameDefine.DEFAULT_VOLUME;
 		public double SEVolume = GameDefine.DEFAULT_VOLUME;
 
 		public class PadBtnId_t

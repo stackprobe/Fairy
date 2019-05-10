@@ -54,6 +54,9 @@
     <Compile Include="Donut\GameCommonEffect.cs" />
     <Compile Include="Donut\GameDerivation.cs" />
     <Compile Include="Donut\GameEngine.cs" />
+    <Compile Include="Donut\GameMusic.cs" />
+    <Compile Include="Donut\GameSound.cs" />
+    <Compile Include="Donut\GameSoundEffect.cs" />
     <Compile Include="Donut\GameToolkit2.cs" />
     <Compile Include="Donut\GameInput.cs" />
     <Compile Include="Donut\GameKeyboard.cs" />
