@@ -78,7 +78,7 @@ namespace Charlotte.Donut
 
 		// SaveData {
 
-		public I2Size ScreenSize = new I2Size(800, 600);
+		public I2Size ScreenSize; // init @ IGameMain.Init()
 		public I2Size RealScreenSize;
 		public I4Rect RealScreenDrawRect = null; // null == 不使用
 

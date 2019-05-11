@@ -13,6 +13,7 @@ namespace Charlotte
 	{
 		public void Init()
 		{
+			GameGround.I.ScreenSize = new I2Size(800, 600);
 			//GameGround.I.ScreenSize = new I2Size(600, 400);
 			//GameGround.I.ScreenSize = new I2Size(500, 500);
 			//GameGround.I.ScreenSize = new I2Size(400, 600);
