@@ -1,0 +1,4 @@
+Etcetera\DatStrings.txt
+C:\Dat\JChar.bin
+Resource\Font\riitf\RiiT_F.otf
+Resource\Font\Genkai-Mincho-font\genkai-mincho.ttf
