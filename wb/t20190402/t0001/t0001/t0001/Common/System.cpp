@@ -130,6 +130,30 @@ int IsWindowActive(void) // ret: ? このウィンドウはアクティブ
 {
 	return GetActiveFlag() ? 1 : 0;
 }
+#if 0 // test
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+static int GetNowCount_TEST()
+{
+	static int inited = 0;
+	static int startCount;
+	int currCount = GetNowCount();
+
+	if(!inited)
+	{
+		startCount = GetNowCount();
+		inited = 1;
+	}
+	currCount -= startCount;
+	currCount -= 10000; // 要調整
+	return currCount;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+#define GetNowCount() GetNowCount_TEST()
+#endif
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

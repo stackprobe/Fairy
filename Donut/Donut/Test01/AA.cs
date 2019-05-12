@@ -19,5 +19,15 @@ namespace Charlotte
 		{
 			DUMMY,
 		}
+
+		public enum MUS
+		{
+			DUMMY,
+		}
+
+		public enum SE
+		{
+			DUMMY,
+		}
 	}
 }
