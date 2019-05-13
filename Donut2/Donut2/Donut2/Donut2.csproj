@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonEffect.cs" />
+    <Compile Include="Common\Define.cs" />
+    <Compile Include="Common\Ground.cs" />
     <Compile Include="Common\Main.cs" />
     <Compile Include="GameMain.cs" />
     <Compile Include="Program.cs" />
