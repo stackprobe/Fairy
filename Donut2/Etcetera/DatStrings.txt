@@ -1,4 +1,0 @@
-Donut2
-cerulean.charlotte
-(c) 2019 cerulean.charlotte
-%s %s
