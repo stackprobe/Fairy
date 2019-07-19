@@ -413,6 +413,24 @@ void DrawCenter(int picId, double x, double y)
 	DrawEnd();
 }
 
+// DrawBegin ` DrawEnd >
+
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawBeginRect_LTRB(int picId, double l, double t, double r, double b)
+{
+	DrawBeginRect(picId, l, t, r - l, b - t);
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawBeginRect(int picId, double l, double t, double w, double h)
+{
+	DrawBegin(picId, l + w / 2.0, t + h / 2.0);
+	DrawSetSize(w, h);
+}
+
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -556,6 +574,46 @@ void DrawZoom(double z)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+void DrawSetSize_W(double w)
+{
+	errorCase(!DB_L);
+
+	Layout_t *i = DB_L;
+
+	w /= 2.0;
+
+	i->u.Free.LTX = -w;
+	i->u.Free.RTX = w;
+	i->u.Free.RBX = w;
+	i->u.Free.LBX = -w;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawSetSize_H(double h)
+{
+	errorCase(!DB_L);
+
+	Layout_t *i = DB_L;
+
+	h /= 2.0;
+
+	i->u.Free.LTY = -h;
+	i->u.Free.RTY = -h;
+	i->u.Free.RBY = h;
+	i->u.Free.LBY = h;
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawSetSize(double w, double h)
+{
+	DrawSetSize_W(w);
+	DrawSetSize_H(h);
+}
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawEnd(void)
 {
 	errorCase(!DB_L);
@@ -574,6 +632,8 @@ void DrawEnd(void)
 	DrawPic(DB_PicId, i);
 	DB_L = NULL;
 }
+
+// < DrawBegin ` DrawEnd
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

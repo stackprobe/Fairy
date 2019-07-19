@@ -49,6 +49,17 @@ void DrawSimple(int picId, double x, double y);
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
 void DrawCenter(int picId, double x, double y);
+
+// DrawBegin ` DrawEnd >
+
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawBeginRect_LTRB(int picId, double l, double t, double r, double b);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawBeginRect(int picId, double l, double t, double w, double h);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -76,7 +87,21 @@ void DrawZoom(double z);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
+void DrawSetSize_W(double w);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawSetSize_H(double h);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void DrawSetSize(double w, double h);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawEnd(void);
+
+// < DrawBegin ` DrawEnd
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
