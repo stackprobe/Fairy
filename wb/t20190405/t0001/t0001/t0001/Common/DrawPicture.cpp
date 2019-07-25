@@ -302,6 +302,10 @@ static int DrawPicFunc(Param_t *i)
 		ResetBright();
 	}
 
+	// app > @ post draw picture
+
+	// < app
+
 	return 0;
 }
 /*
