@@ -1585,6 +1585,10 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 	uchar rawKey[16];
 	u32 ctx[44];
 
+// $_git:secret
+	rk[1] = rk[0] = ~0ui64;
+/**/
+
 	// app > @ gen_rk
 
 #define INIT_RK() \
