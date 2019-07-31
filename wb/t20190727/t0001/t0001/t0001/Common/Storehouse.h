@@ -13,4 +13,4 @@ int SH_IsClusterMode(void);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int SH_ExistFile(char *file);
+int SH_IsExistFile(char *file);
