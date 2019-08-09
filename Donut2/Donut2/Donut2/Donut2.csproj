@@ -53,10 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameInput.cs" />
+    <Compile Include="Common\GameJammer.cs" />
     <Compile Include="Common\GameMain.cs" />
+    <Compile Include="Common\GameSaveData.cs" />
+    <Compile Include="Common\GameSystem.cs" />
+    <Compile Include="Common\GameUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,6 +7,12 @@ namespace Charlotte.Common
 {
 	public class GameEngine
 	{
+		public long FrameStartTime;
+		public long LangolierTime;
+		public int ProcFrame;
+		public int FreezeInputFrame;
+		public bool WindowIsActive;
+
 		public static void EachFrame()
 		{
 			// TODO
