@@ -61,6 +61,7 @@
     <Compile Include="Common\GameKey.cs" />
     <Compile Include="Common\GameMouse.cs" />
     <Compile Include="Common\GamePad.cs" />
+    <Compile Include="Common\GameResource.cs" />
     <Compile Include="Common\GameSubScreenUtils.cs" />
     <Compile Include="Common\GameInput.cs" />
     <Compile Include="Common\GameJammer.cs" />
