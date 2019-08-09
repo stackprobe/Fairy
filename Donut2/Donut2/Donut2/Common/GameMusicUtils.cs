@@ -15,17 +15,12 @@ namespace Charlotte.Common
 			Musics.Add(music);
 		}
 
-		public static bool Remove(GameMusic music) // ret: ? ! Already removed
-		{
-			return GameUtils.FastDesertElement(Musics, i => i == music) != null;
-		}
-
 		private class PlayInfo
 		{
 			public enum Command_e
 			{
 				PLAY = 1,
-				CHANGE_VOLUME,
+				VOLUME_RATE,
 				STOP,
 			}
 
@@ -33,15 +28,15 @@ namespace Charlotte.Common
 			public GameMusic Music;
 			public bool Once;
 			public bool Resume;
-			public double Volume;
+			public double VolumeRate;
 
-			public PlayInfo(Command_e command, GameMusic music, bool once, bool resume, double volume)
+			public PlayInfo(Command_e command, GameMusic music, bool once, bool resume, double volumeRate)
 			{
 				this.Command = command;
 				this.Music = music;
 				this.Once = once;
 				this.Resume = resume;
-				this.Volume = volume;
+				this.VolumeRate = volumeRate;
 			}
 		}
 
@@ -49,13 +44,37 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
-			throw null; // TODO
+			if (1 <= PlayInfos.Count)
+			{
+				PlayInfo info = PlayInfos.Dequeue();
+
+				if (info != null)
+				{
+					switch (info.Command)
+					{
+						case PlayInfo.Command_e.PLAY:
+							GameSoundUtils.Play(info.Music.Sound.GetHandle(0), info.Once, info.Resume);
+							break;
+
+						case PlayInfo.Command_e.VOLUME_RATE:
+							GameSoundUtils.SetVolume(info.Music.Sound.GetHandle(0), GameSoundUtils.MixVolume(GameGround.MusicVolume, info.Music.Volume) * info.VolumeRate);
+							break;
+
+						case PlayInfo.Command_e.STOP:
+							GameSoundUtils.Stop(info.Music.Sound.GetHandle(0));
+							break;
+
+						default:
+							throw new GameError();
+					}
+				}
+			}
 		}
 
 		public static GameMusic CurrDestMusic = null;
 		public static double CurrDestVolume = 0.0;
 
-		public static void Play(GameMusic music, bool once, bool resume, double volume, int fadeFrameMax)
+		public static void Play(GameMusic music, bool once = false, bool resume = false, double volume = 1.0, int fadeFrameMax = 30)
 		{
 			if (CurrDestMusic != null) // ? 再生中
 			{
@@ -69,7 +88,7 @@ namespace Charlotte.Common
 			}
 			PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.PLAY, music, once, resume, 0.0));
 			PlayInfos.Enqueue(null);
-			PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.CHANGE_VOLUME, music, false, false, volume));
+			PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.VOLUME_RATE, music, false, false, volume));
 			PlayInfos.Enqueue(null);
 			PlayInfos.Enqueue(null);
 			PlayInfos.Enqueue(null);
@@ -83,31 +102,27 @@ namespace Charlotte.Common
 			Fade(frameMax, destVolume, CurrDestVolume);
 		}
 
-		public static void Fade(int frameMax, double destVolume, double startVolume)
+		public static void Fade(int frameMax, double destVolumeRate, double startVolumeRate)
 		{
 			if (CurrDestMusic == null)
 				return;
 
-			frameMax = IntTools.Range(frameMax, 1, 3600); // 1 frame ～ 1 min
-			destVolume = DoubleTools.Range(destVolume, 0.0, 1.0);
-			startVolume = DoubleTools.Range(startVolume, 0.0, 1.0);
-
 			for (int frmcnt = 0; frmcnt <= frameMax; frmcnt++)
 			{
-				double volume;
+				double volumeRate;
 
 				if (frmcnt == 0)
-					volume = startVolume;
+					volumeRate = startVolumeRate;
 				else if (frmcnt == frameMax)
-					volume = destVolume;
+					volumeRate = destVolumeRate;
 				else
-					volume = startVolume + ((destVolume - startVolume) * frmcnt) / frameMax;
+					volumeRate = startVolumeRate + ((destVolumeRate - startVolumeRate) * frmcnt) / frameMax;
 
-				PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.CHANGE_VOLUME, CurrDestMusic, false, false, volume));
+				PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.VOLUME_RATE, CurrDestMusic, false, false, volumeRate));
 			}
-			CurrDestVolume = destVolume;
+			CurrDestVolume = destVolumeRate;
 
-			if (destVolume == 0.0)
+			if (destVolumeRate == 0.0) // ? フェード目標音量ゼロ -> 曲停止
 			{
 				Stop();
 			}
@@ -118,7 +133,7 @@ namespace Charlotte.Common
 			if (CurrDestMusic == null)
 				return;
 
-			PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.CHANGE_VOLUME, CurrDestMusic, false, false, 0.0));
+			PlayInfos.Enqueue(new PlayInfo(PlayInfo.Command_e.VOLUME_RATE, CurrDestMusic, false, false, 0.0));
 			PlayInfos.Enqueue(null);
 			PlayInfos.Enqueue(null);
 			PlayInfos.Enqueue(null);

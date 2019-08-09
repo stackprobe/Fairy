@@ -30,17 +30,7 @@ namespace Charlotte
 
 		private void Main2(ArgsReader ar)
 		{
-			try
-			{
-				GameMain.GameStart();
-				Main3();
-				GameMain.GameEnd();
-			}
-			catch
-			{
-				GameMain.GameErrorEnd();
-				throw;
-			}
+			GameMain2.Main(Main3);
 		}
 
 		private void Main3()

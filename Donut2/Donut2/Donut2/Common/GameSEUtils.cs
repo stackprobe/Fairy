@@ -14,11 +14,6 @@ namespace Charlotte.Common
 			SEList.Add(se);
 		}
 
-		public static bool Remove(GameSE se) // ret: ? ! Already removed
-		{
-			return GameUtils.FastDesertElement(SEList, i => i == se) != null;
-		}
-
 		private class PlayInfo
 		{
 			public enum AlterCommand_e

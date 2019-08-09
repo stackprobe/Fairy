@@ -5,37 +5,28 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameSE : IDisposable
+	public class GameSE
 	{
 		public const int HANDLE_COUNT = 64;
 
 		public GameSound Sound;
-		public double Volume; // 0.0 ～ 1.0
+		public double Volume = 0.5; // 0.0 ～ 1.0
 		public int HandleIndex = 0;
 
 		public GameSE(string file)
 			: this(new GameSound(file, HANDLE_COUNT))
 		{ }
 
-		public GameSE(GameSound sound_binding, double volume = 0.5)
+		public GameSE(Func<byte[]> getFileData)
+			: this(new GameSound(getFileData, HANDLE_COUNT))
+		{ }
+
+		public GameSE(GameSound sound_binding)
 		{
-			sound_binding.PostLoaded = this.UpdateVolume_NoCheck;
-
 			this.Sound = sound_binding;
-			this.Volume = volume;
-
-			//this.UpdateVolume();
+			this.Sound.PostLoaded = this.UpdateVolume_NoCheck;
 
 			GameSEUtils.Add(this);
-		}
-
-		public void Dispose()
-		{
-			if (GameSEUtils.Remove(this) == false) // ? Already disposed
-				return;
-
-			this.Sound.Dispose();
-			this.Sound = null;
 		}
 
 		public void Play()
@@ -66,6 +57,11 @@ namespace Charlotte.Common
 
 			for (int index = 0; index < HANDLE_COUNT; index++)
 				GameSoundUtils.SetVolume(this.Sound.GetHandle(index), mixedVolume);
+		}
+
+		public void Touch()
+		{
+			this.Sound.GetHandle(0);
 		}
 	}
 }

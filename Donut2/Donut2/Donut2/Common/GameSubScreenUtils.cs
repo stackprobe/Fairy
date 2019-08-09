@@ -17,17 +17,16 @@ namespace Charlotte.Common
 			SubScreens.Add(subScreen);
 		}
 
-		public static bool Remove(GameSubScreen subScreen) // ret: ? ! Already removed
+		public static void Remove(GameSubScreen subScreen)
 		{
-			return GameUtils.FastDesertElement(SubScreens, i => i == subScreen) != null;
+			if (GameUtils.FastDesertElement(SubScreens, i => i == subScreen) == null) // ? Already removed
+				throw new GameError();
 		}
 
 		public static void UnloadAll()
 		{
 			foreach (GameSubScreen subScreen in SubScreens)
-			{
 				subScreen.Unload();
-			}
 		}
 
 		public static int CurrDrawScreenHandle = DX.DX_SCREEN_BACK;

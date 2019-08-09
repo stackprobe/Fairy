@@ -16,11 +16,6 @@ namespace Charlotte.Common
 			Sounds.Add(sound);
 		}
 
-		public static bool Remove(GameSound sound) // ret: ? ! Already removed
-		{
-			return GameUtils.FastDesertElement(Sounds, i => i == sound) != null;
-		}
-
 		public static void UnloadAll()
 		{
 			foreach (GameSound sound in Sounds)

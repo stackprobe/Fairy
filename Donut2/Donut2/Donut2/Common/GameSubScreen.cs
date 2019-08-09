@@ -27,12 +27,16 @@ namespace Charlotte.Common
 
 		public void Dispose()
 		{
-			if (GameSubScreenUtils.Remove(this) == false) // ? Already disposed
+			if (this.W == -1) // ? Already disposed
 				return;
 
-			if (this.Handle != -1)
-				if (DX.DeleteGraph(this.Handle) != 0) // ? 失敗
-					throw new GameError();
+			GameSubScreenUtils.Remove(this);
+
+			this.Unload();
+
+			this.W = -1;
+			this.H = -1;
+			this.AFlag = false;
 		}
 
 		public void Unload()

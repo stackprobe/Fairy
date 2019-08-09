@@ -63,6 +63,7 @@
     <Compile Include="Common\GameFontUtils.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameKey.cs" />
+    <Compile Include="Common\GameMain2.cs" />
     <Compile Include="Common\GameMouse.cs" />
     <Compile Include="Common\GameMusic.cs" />
     <Compile Include="Common\GamePad.cs" />

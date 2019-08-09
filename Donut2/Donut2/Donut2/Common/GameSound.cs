@@ -7,7 +7,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
-	public class GameSound : IDisposable
+	public class GameSound
 	{
 		private Func<byte[]> Func_GetFileData;
 		private int HandleCount;
@@ -25,6 +25,18 @@ namespace Charlotte.Common
 			this.HandleCount = handleCount;
 
 			GameSoundUtils.Add(this);
+		}
+
+		public void Unload()
+		{
+			if (this.Handles != null)
+			{
+				foreach (int handle in this.Handles)
+					if (DX.DeleteSoundMem(handle) != 0) // ? 失敗
+						throw new GameError();
+
+				this.Handles = null;
+			}
 		}
 
 		public bool IsLoaded()
@@ -63,30 +75,6 @@ namespace Charlotte.Common
 				this.PostLoaded();
 			}
 			return this.Handles[index];
-		}
-
-		public void Dispose()
-		{
-			if (GameSoundUtils.Remove(this) == false) // ? Already disposed
-				return;
-
-			this.Unload();
-
-			this.Func_GetFileData = null;
-			this.HandleCount = -1;
-			this.Handles = null;
-		}
-
-		public void Unload()
-		{
-			if (this.Handles != null)
-			{
-				foreach (int handle in this.Handles)
-					if (DX.DeleteSoundMem(handle) != 0) // ? 失敗
-						throw new GameError();
-
-				this.Handles = null;
-			}
 		}
 	}
 }
