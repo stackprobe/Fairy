@@ -91,7 +91,7 @@ namespace Charlotte.Common
 					)
 					throw new GameError();
 
-				GameGround.MonitorRect = new Rectangle(l, t, w, h);
+				GameGround.MonitorRect = new I4Rect(l, t, w, h);
 			}
 
 			PostSetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
@@ -119,9 +119,9 @@ namespace Charlotte.Common
 
 		private static void PostSetScreenSize(int w, int h)
 		{
-			if (GameGround.MonitorRect.Width == w && GameGround.MonitorRect.Height == h)
+			if (GameGround.MonitorRect.W == w && GameGround.MonitorRect.H == h)
 			{
-				SetScreenPosition(GameGround.MonitorRect.Left, GameGround.MonitorRect.Top);
+				SetScreenPosition(GameGround.MonitorRect.L, GameGround.MonitorRect.T);
 			}
 		}
 

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DxLibDLL;
 using System.Drawing;
+using Charlotte.Tools;
+using DxLibDLL;
 
 namespace Charlotte.Common
 {
@@ -12,7 +13,7 @@ namespace Charlotte.Common
 		public static GameTaskList EL = new GameTaskList();
 		public static int PrimaryPadId = -1; // -1 == 未設定
 		public static GameSubScreen MainScreen = null; // null == 不使用
-		public static Rectangle MonitorRect;
+		public static I4Rect MonitorRect;
 
 		public static int RealScreen_W = GameConsts.Screen_W;
 		public static int RealScreen_H = GameConsts.Screen_H;

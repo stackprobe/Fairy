@@ -63,9 +63,9 @@ namespace Charlotte.Common
 			GameSubScreenUtils.ChangeDrawScreen(this);
 		}
 
-		public Size GetSize()
+		public I2Size GetSize()
 		{
-			return new Size(this.W, this.H);
+			return new I2Size(this.W, this.H);
 		}
 	}
 }
