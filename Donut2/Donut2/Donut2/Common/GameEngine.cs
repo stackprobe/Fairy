@@ -20,7 +20,7 @@ namespace Charlotte.Common
 		{
 			long currTime = GameSystem.GetCurrTime();
 
-			LangolierTime += 16L;
+			LangolierTime += 16L; // 16.666 == 60Hz
 			LangolierTime = LongTools.Range(LangolierTime, currTime - 100L, currTime + 100L);
 
 			while (currTime < LangolierTime)

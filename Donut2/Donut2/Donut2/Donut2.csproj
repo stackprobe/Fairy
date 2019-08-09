@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
+    <Compile Include="Common\GameDraw.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameKey.cs" />
