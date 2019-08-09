@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using Charlotte.Tools;
 using Charlotte.Common;
+using Charlotte.Tools;
 using Charlotte.Tests.Common;
 
 namespace Charlotte
@@ -38,7 +38,8 @@ namespace Charlotte
 			//Test01();
 			//new GameResourceTest().Test01();
 			//new GamePictureTest().Test01();
-			new GameDrawTest().Test01();
+			//new GameDrawTest().Test01();
+			new GameFontRegisterTest().Test01();
 		}
 
 		private void Test01()

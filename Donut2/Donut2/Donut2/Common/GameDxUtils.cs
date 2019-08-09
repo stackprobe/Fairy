@@ -31,5 +31,10 @@ namespace Charlotte.Common
 		{
 			DX.SetMouseDispFlag(mode ? 1 : 0);
 		}
+
+		public static uint GetColor(I3Color color)
+		{
+			return DX.GetColor(color.R, color.G, color.B);
+		}
 	}
 }

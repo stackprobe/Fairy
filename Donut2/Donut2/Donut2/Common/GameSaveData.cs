@@ -28,35 +28,35 @@ namespace Charlotte.Common
 				lines.Add("" + DoubleTools.ToLong(GameGround.MusicVolume * IntTools.IMAX));
 				lines.Add("" + DoubleTools.ToLong(GameGround.SEVolume * IntTools.IMAX));
 
-				lines.Add("" + GameInput.DIR_2.PadBtnId);
-				lines.Add("" + GameInput.DIR_4.PadBtnId);
-				lines.Add("" + GameInput.DIR_6.PadBtnId);
-				lines.Add("" + GameInput.DIR_8.PadBtnId);
-				lines.Add("" + GameInput.A.PadBtnId);
-				lines.Add("" + GameInput.B.PadBtnId);
-				lines.Add("" + GameInput.C.PadBtnId);
-				lines.Add("" + GameInput.D.PadBtnId);
-				lines.Add("" + GameInput.E.PadBtnId);
-				lines.Add("" + GameInput.F.PadBtnId);
-				lines.Add("" + GameInput.L.PadBtnId);
-				lines.Add("" + GameInput.R.PadBtnId);
-				lines.Add("" + GameInput.PAUSE.PadBtnId);
-				lines.Add("" + GameInput.START.PadBtnId);
+				lines.Add("" + GameInput.DIR_2.BtnId);
+				lines.Add("" + GameInput.DIR_4.BtnId);
+				lines.Add("" + GameInput.DIR_6.BtnId);
+				lines.Add("" + GameInput.DIR_8.BtnId);
+				lines.Add("" + GameInput.A.BtnId);
+				lines.Add("" + GameInput.B.BtnId);
+				lines.Add("" + GameInput.C.BtnId);
+				lines.Add("" + GameInput.D.BtnId);
+				lines.Add("" + GameInput.E.BtnId);
+				lines.Add("" + GameInput.F.BtnId);
+				lines.Add("" + GameInput.L.BtnId);
+				lines.Add("" + GameInput.R.BtnId);
+				lines.Add("" + GameInput.PAUSE.BtnId);
+				lines.Add("" + GameInput.START.BtnId);
 
-				lines.Add("" + GameInput.DIR_2.KbdKeyId);
-				lines.Add("" + GameInput.DIR_4.KbdKeyId);
-				lines.Add("" + GameInput.DIR_6.KbdKeyId);
-				lines.Add("" + GameInput.DIR_8.KbdKeyId);
-				lines.Add("" + GameInput.A.KbdKeyId);
-				lines.Add("" + GameInput.B.KbdKeyId);
-				lines.Add("" + GameInput.C.KbdKeyId);
-				lines.Add("" + GameInput.D.KbdKeyId);
-				lines.Add("" + GameInput.E.KbdKeyId);
-				lines.Add("" + GameInput.F.KbdKeyId);
-				lines.Add("" + GameInput.L.KbdKeyId);
-				lines.Add("" + GameInput.R.KbdKeyId);
-				lines.Add("" + GameInput.PAUSE.KbdKeyId);
-				lines.Add("" + GameInput.START.KbdKeyId);
+				lines.Add("" + GameInput.DIR_2.KeyId);
+				lines.Add("" + GameInput.DIR_4.KeyId);
+				lines.Add("" + GameInput.DIR_6.KeyId);
+				lines.Add("" + GameInput.DIR_8.KeyId);
+				lines.Add("" + GameInput.A.KeyId);
+				lines.Add("" + GameInput.B.KeyId);
+				lines.Add("" + GameInput.C.KeyId);
+				lines.Add("" + GameInput.D.KeyId);
+				lines.Add("" + GameInput.E.KeyId);
+				lines.Add("" + GameInput.F.KeyId);
+				lines.Add("" + GameInput.L.KeyId);
+				lines.Add("" + GameInput.R.KeyId);
+				lines.Add("" + GameInput.PAUSE.KeyId);
+				lines.Add("" + GameInput.START.KeyId);
 
 				// 新しい項目をここへ追加...
 
@@ -107,35 +107,35 @@ namespace Charlotte.Common
 				GameGround.MusicVolume = long.Parse(lines[c++]) / (double)IntTools.IMAX;
 				GameGround.SEVolume = long.Parse(lines[c++]) / (double)IntTools.IMAX;
 
-				GameInput.DIR_2.PadBtnId = int.Parse(lines[c++]);
-				GameInput.DIR_4.PadBtnId = int.Parse(lines[c++]);
-				GameInput.DIR_6.PadBtnId = int.Parse(lines[c++]);
-				GameInput.DIR_8.PadBtnId = int.Parse(lines[c++]);
-				GameInput.A.PadBtnId = int.Parse(lines[c++]);
-				GameInput.B.PadBtnId = int.Parse(lines[c++]);
-				GameInput.C.PadBtnId = int.Parse(lines[c++]);
-				GameInput.D.PadBtnId = int.Parse(lines[c++]);
-				GameInput.E.PadBtnId = int.Parse(lines[c++]);
-				GameInput.F.PadBtnId = int.Parse(lines[c++]);
-				GameInput.L.PadBtnId = int.Parse(lines[c++]);
-				GameInput.R.PadBtnId = int.Parse(lines[c++]);
-				GameInput.PAUSE.PadBtnId = int.Parse(lines[c++]);
-				GameInput.START.PadBtnId = int.Parse(lines[c++]);
+				GameInput.DIR_2.BtnId = int.Parse(lines[c++]);
+				GameInput.DIR_4.BtnId = int.Parse(lines[c++]);
+				GameInput.DIR_6.BtnId = int.Parse(lines[c++]);
+				GameInput.DIR_8.BtnId = int.Parse(lines[c++]);
+				GameInput.A.BtnId = int.Parse(lines[c++]);
+				GameInput.B.BtnId = int.Parse(lines[c++]);
+				GameInput.C.BtnId = int.Parse(lines[c++]);
+				GameInput.D.BtnId = int.Parse(lines[c++]);
+				GameInput.E.BtnId = int.Parse(lines[c++]);
+				GameInput.F.BtnId = int.Parse(lines[c++]);
+				GameInput.L.BtnId = int.Parse(lines[c++]);
+				GameInput.R.BtnId = int.Parse(lines[c++]);
+				GameInput.PAUSE.BtnId = int.Parse(lines[c++]);
+				GameInput.START.BtnId = int.Parse(lines[c++]);
 
-				GameInput.DIR_2.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.DIR_4.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.DIR_6.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.DIR_8.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.A.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.B.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.C.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.D.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.E.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.F.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.L.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.R.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.PAUSE.KbdKeyId = int.Parse(lines[c++]);
-				GameInput.START.KbdKeyId = int.Parse(lines[c++]);
+				GameInput.DIR_2.KeyId = int.Parse(lines[c++]);
+				GameInput.DIR_4.KeyId = int.Parse(lines[c++]);
+				GameInput.DIR_6.KeyId = int.Parse(lines[c++]);
+				GameInput.DIR_8.KeyId = int.Parse(lines[c++]);
+				GameInput.A.KeyId = int.Parse(lines[c++]);
+				GameInput.B.KeyId = int.Parse(lines[c++]);
+				GameInput.C.KeyId = int.Parse(lines[c++]);
+				GameInput.D.KeyId = int.Parse(lines[c++]);
+				GameInput.E.KeyId = int.Parse(lines[c++]);
+				GameInput.F.KeyId = int.Parse(lines[c++]);
+				GameInput.L.KeyId = int.Parse(lines[c++]);
+				GameInput.R.KeyId = int.Parse(lines[c++]);
+				GameInput.PAUSE.KeyId = int.Parse(lines[c++]);
+				GameInput.START.KeyId = int.Parse(lines[c++]);
 
 				// 新しい項目をここへ追加...
 			}

@@ -9,12 +9,12 @@ namespace Charlotte.Common
 	{
 		public class Button
 		{
-			public int PadBtnId = -1;
-			public int KbdKeyId = -1;
+			public int BtnId = -1; // -1 == 未割り当て
+			public int KeyId = -1; // -1 == 未割り当て
 
 			// <---- prm
 
-			public int Status;
+			public int Status = 0;
 
 			public bool IsPress()
 			{
@@ -47,9 +47,35 @@ namespace Charlotte.Common
 		public static Button PAUSE = new Button();
 		public static Button START = new Button();
 
+		private static void MixInput(Button button)
+		{
+			bool keyDown = 1 <= GameKey.GetInput(button.KeyId);
+			bool btnDown = 1 <= GamePad.GetInput(GameGround.PrimaryPadId, button.BtnId);
+
+			GameUtils.UpdateInput(ref button.Status, keyDown || btnDown);
+		}
+
 		public static void EachFrame()
 		{
-			// TODO
+			int freezeInputFrame_BKUP = GameEngine.FreezeInputFrame;
+			GameEngine.FreezeInputFrame = 0;
+
+			MixInput(DIR_2);
+			MixInput(DIR_4);
+			MixInput(DIR_6);
+			MixInput(DIR_8);
+			MixInput(A);
+			MixInput(B);
+			MixInput(C);
+			MixInput(D);
+			MixInput(E);
+			MixInput(F);
+			MixInput(L);
+			MixInput(R);
+			MixInput(PAUSE);
+			MixInput(START);
+
+			GameEngine.FreezeInputFrame = freezeInputFrame_BKUP;
 		}
 	}
 }

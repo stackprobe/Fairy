@@ -35,35 +35,35 @@ namespace Charlotte.Common
 
 		public static void INIT()
 		{
-			GameInput.DIR_2.PadBtnId = 0;
-			GameInput.DIR_4.PadBtnId = 1;
-			GameInput.DIR_6.PadBtnId = 2;
-			GameInput.DIR_8.PadBtnId = 3;
-			GameInput.A.PadBtnId = 4;
-			GameInput.B.PadBtnId = 7;
-			GameInput.C.PadBtnId = 5;
-			GameInput.D.PadBtnId = 8;
-			GameInput.E.PadBtnId = 6;
-			GameInput.F.PadBtnId = 9;
-			GameInput.L.PadBtnId = 10;
-			GameInput.R.PadBtnId = 11;
-			GameInput.PAUSE.PadBtnId = 13;
-			GameInput.START.PadBtnId = 12;
+			GameInput.DIR_2.BtnId = 0;
+			GameInput.DIR_4.BtnId = 1;
+			GameInput.DIR_6.BtnId = 2;
+			GameInput.DIR_8.BtnId = 3;
+			GameInput.A.BtnId = 4;
+			GameInput.B.BtnId = 7;
+			GameInput.C.BtnId = 5;
+			GameInput.D.BtnId = 8;
+			GameInput.E.BtnId = 6;
+			GameInput.F.BtnId = 9;
+			GameInput.L.BtnId = 10;
+			GameInput.R.BtnId = 11;
+			GameInput.PAUSE.BtnId = 13;
+			GameInput.START.BtnId = 12;
 
-			GameInput.DIR_2.KbdKeyId = DX.KEY_INPUT_DOWN;
-			GameInput.DIR_4.KbdKeyId = DX.KEY_INPUT_LEFT;
-			GameInput.DIR_6.KbdKeyId = DX.KEY_INPUT_RIGHT;
-			GameInput.DIR_8.KbdKeyId = DX.KEY_INPUT_UP;
-			GameInput.A.KbdKeyId = DX.KEY_INPUT_Z;
-			GameInput.B.KbdKeyId = DX.KEY_INPUT_X;
-			GameInput.C.KbdKeyId = DX.KEY_INPUT_C;
-			GameInput.D.KbdKeyId = DX.KEY_INPUT_V;
-			GameInput.E.KbdKeyId = DX.KEY_INPUT_A;
-			GameInput.F.KbdKeyId = DX.KEY_INPUT_S;
-			GameInput.L.KbdKeyId = DX.KEY_INPUT_D;
-			GameInput.R.KbdKeyId = DX.KEY_INPUT_F;
-			GameInput.PAUSE.KbdKeyId = DX.KEY_INPUT_SPACE;
-			GameInput.START.KbdKeyId = DX.KEY_INPUT_RETURN;
+			GameInput.DIR_2.KeyId = DX.KEY_INPUT_DOWN;
+			GameInput.DIR_4.KeyId = DX.KEY_INPUT_LEFT;
+			GameInput.DIR_6.KeyId = DX.KEY_INPUT_RIGHT;
+			GameInput.DIR_8.KeyId = DX.KEY_INPUT_UP;
+			GameInput.A.KeyId = DX.KEY_INPUT_Z;
+			GameInput.B.KeyId = DX.KEY_INPUT_X;
+			GameInput.C.KeyId = DX.KEY_INPUT_C;
+			GameInput.D.KeyId = DX.KEY_INPUT_V;
+			GameInput.E.KeyId = DX.KEY_INPUT_A;
+			GameInput.F.KeyId = DX.KEY_INPUT_S;
+			GameInput.L.KeyId = DX.KEY_INPUT_D;
+			GameInput.R.KeyId = DX.KEY_INPUT_F;
+			GameInput.PAUSE.KeyId = DX.KEY_INPUT_SPACE;
+			GameInput.START.KeyId = DX.KEY_INPUT_RETURN;
 
 			// app > @ INIT
 

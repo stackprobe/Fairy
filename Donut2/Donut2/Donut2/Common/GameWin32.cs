@@ -70,5 +70,13 @@ namespace Charlotte.Common
 
 			return handle;
 		}
+
+		public const uint FR_PRIVATE = 0x10;
+
+		[DllImport("gdi32.dll")]
+		public static extern int AddFontResourceEx(string file, uint fl, IntPtr res);
+
+		[DllImport("gdi32.dll")]
+		public static extern int RemoveFontResourceEx(string file, uint fl, IntPtr res);
 	}
 }
