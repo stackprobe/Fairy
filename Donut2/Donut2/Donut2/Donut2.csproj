@@ -54,14 +54,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\GameConsts.cs" />
+    <Compile Include="Common\GameCurtain.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameInput.cs" />
     <Compile Include="Common\GameJammer.cs" />
     <Compile Include="Common\GameMain.cs" />
+    <Compile Include="Common\GameMusic.cs" />
+    <Compile Include="Common\GamePrint.cs" />
     <Compile Include="Common\GameSaveData.cs" />
+    <Compile Include="Common\GameSE.cs" />
     <Compile Include="Common\GameSystem.cs" />
+    <Compile Include="Common\GameTaskList.cs" />
     <Compile Include="Common\GameUtils.cs" />
+    <Compile Include="Common\IGameTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

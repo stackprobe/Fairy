@@ -19,6 +19,8 @@ namespace Charlotte.Common
 		public static double MusicVolume = GameConsts.DefaultVolume;
 		public static double SEVolume = GameConsts.DefaultVolume;
 
+		public static GameTaskList EL = new GameTaskList();
+
 		public static void INIT()
 		{
 			GameInput.DIR_2.PadBtnId = 0;
