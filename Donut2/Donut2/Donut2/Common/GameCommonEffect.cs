@@ -5,8 +5,18 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameCommonEffect
+	public class GameCommonEffect : IGameTask
 	{
-		// TODO
+		public int Frame;
+
+		public bool Routine()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Dispose()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

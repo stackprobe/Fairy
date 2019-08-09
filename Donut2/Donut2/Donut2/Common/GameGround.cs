@@ -30,6 +30,9 @@ namespace Charlotte.Common
 
 		public static GameResourceCommon CommonResource;
 
+		public static D2Point Camera;
+		public static I2Point ICamera;
+
 		public static void INIT()
 		{
 			GameInput.DIR_2.PadBtnId = 0;

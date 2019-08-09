@@ -225,6 +225,11 @@ namespace Charlotte.Common
 			return IsOut(pt, new D4Rect(0, 0, GameConsts.Screen_W, GameConsts.Screen_H), margin);
 		}
 
+		public static bool IsOutOfCamera(D2Point pt, double margin = 0.0)
+		{
+			return IsOut(pt, new D4Rect(GameGround.ICamera.X, GameGround.ICamera.Y, GameConsts.Screen_W, GameConsts.Screen_H), margin);
+		}
+
 		private const int POUND_FIRST_DELAY = 17;
 		private const int POUND_DELAY = 4;
 
