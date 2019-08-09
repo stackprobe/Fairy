@@ -9,7 +9,7 @@ namespace Charlotte.Common
 	/// <summary>
 	/// その他の機能の寄せ集め、そのうち DxLib に関係有るもの。関係無いものは GameUtils へ
 	/// </summary>
-	public class GameSystem
+	public static class GameSystem
 	{
 		public static bool IsWindowActive()
 		{

@@ -7,7 +7,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameSound
+	public static class GameSound
 	{
 		public static int LoadSound(byte[] fileData)
 		{

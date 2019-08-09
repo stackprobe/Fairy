@@ -7,7 +7,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameWin32
+	public static class GameWin32
 	{
 		[StructLayout(LayoutKind.Sequential)]
 		public struct POINT

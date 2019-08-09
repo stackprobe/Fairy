@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameSE
+	public static class GameSE
 	{
 		public static bool EachFrame() // ret: ? 処理した。
 		{

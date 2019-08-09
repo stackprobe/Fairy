@@ -6,7 +6,7 @@ using DxLibDLL;
 
 namespace Charlotte.Common
 {
-	public class GameGround
+	public static class GameGround
 	{
 		public static GameTaskList EL = new GameTaskList();
 		public static int PrimaryPadId = -1; // -1 == 未設定

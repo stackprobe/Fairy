@@ -8,7 +8,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
-	public class GameEngine
+	public static class GameEngine
 	{
 		public static long FrameStartTime;
 		public static long LangolierTime;

@@ -9,7 +9,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameProcMain
+	public static class GameProcMain
 	{
 #if DEBUG
 		private static bool LogWrote = false;

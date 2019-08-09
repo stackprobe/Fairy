@@ -6,7 +6,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameSystem
+	public static class GameSystem
 	{
 		public static bool IsWindowActive() // ret: ? このウィンドウはアクティブ
 		{

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameCurtain
+	public static class GameCurtain
 	{
 		public static double CurrWhiteLevel = 0.0;
 

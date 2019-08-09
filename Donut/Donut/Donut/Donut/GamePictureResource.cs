@@ -6,7 +6,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GamePictureResource
+	public static class GamePictureResource
 	{
 		private static GamePicture.PicInfo LoadPic(byte[] rawData)
 		{

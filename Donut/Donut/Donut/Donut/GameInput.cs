@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Donut
 {
-	public class GameInput
+	public static class GameInput
 	{
 		public enum INP
 		{

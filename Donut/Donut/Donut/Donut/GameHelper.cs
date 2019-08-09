@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace Charlotte.Donut
 {
-	public class GameHelper
+	public static class GameHelper
 	{
 		public static void PinOn<T>(T data, Action<IntPtr> routine)
 		{

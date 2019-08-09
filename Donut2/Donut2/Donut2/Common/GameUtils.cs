@@ -9,7 +9,7 @@ namespace Charlotte.Common
 	/// <summary>
 	/// その他の機能の寄せ集め、そのうち DxLib に関係無いもの。関係有るものは GameSystem へ
 	/// </summary>
-	public class GameUtils
+	public static class GameUtils
 	{
 		public static byte[] SplitableJoin(string[] lines)
 		{

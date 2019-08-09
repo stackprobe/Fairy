@@ -7,7 +7,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameDrawPicture
+	public static class GameDrawPicture
 	{
 		public class ExtraInfo
 		{

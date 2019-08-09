@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameInput
+	public static class GameInput
 	{
 		public class Button
 		{

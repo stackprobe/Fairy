@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameConsts
+	public static class GameConsts
 	{
 		public const string SaveDataFile = "SaveData.dat";
 

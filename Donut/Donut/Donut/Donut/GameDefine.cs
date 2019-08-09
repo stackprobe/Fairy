@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Donut
 {
-	public class GameDefine
+	public static class GameDefine
 	{
 #if DEBUG
 		public const bool DEBUG_MODE = true;

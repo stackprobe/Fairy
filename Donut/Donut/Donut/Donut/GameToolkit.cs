@@ -11,7 +11,7 @@ namespace Charlotte.Donut
 	/// <summary>
 	/// Codevil の GameTools
 	/// </summary>
-	public class GameToolkit
+	public static class GameToolkit
 	{
 		public class Scene
 		{

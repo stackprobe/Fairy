@@ -8,7 +8,7 @@ namespace Charlotte.Donut
 	/// <summary>
 	/// Codevil の GameTools2
 	/// </summary>
-	public class GameToolkit2
+	public static class GameToolkit2
 	{
 		private const int POUND_FIRST_DELAY = 17;
 		private const int POUND_DELAY = 4;

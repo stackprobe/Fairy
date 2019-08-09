@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameDraw
+	public static class GameDraw
 	{
 		// TODO
 	}

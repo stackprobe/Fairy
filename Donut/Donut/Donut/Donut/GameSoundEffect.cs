@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Donut
 {
-	public class GameSoundEffect
+	public static class GameSoundEffect
 	{
 		public const int SE_HANDLE_MAX = 64;
 

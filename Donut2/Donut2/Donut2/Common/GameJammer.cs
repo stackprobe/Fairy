@@ -6,7 +6,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
-	public class GameJammer
+	public static class GameJammer
 	{
 		public static byte[] Encode(byte[] data)
 		{

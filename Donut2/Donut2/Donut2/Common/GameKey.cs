@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameKey
+	public static class GameKey
 	{
 		public static void EachFrame()
 		{

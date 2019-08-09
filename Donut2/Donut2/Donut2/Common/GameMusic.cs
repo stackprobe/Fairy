@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameMusic
+	public static class GameMusic
 	{
 		public static void EachFrame()
 		{

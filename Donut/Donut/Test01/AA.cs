@@ -6,7 +6,7 @@ using Charlotte.Donut;
 
 namespace Charlotte
 {
-	public class AA
+	public static class AA
 	{
 		public enum P
 		{

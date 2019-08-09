@@ -7,7 +7,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameMusic
+	public static class GameMusic
 	{
 		public class MusicInfo : IDisposable
 		{

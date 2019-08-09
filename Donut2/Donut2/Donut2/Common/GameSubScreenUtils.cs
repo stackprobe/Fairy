@@ -9,7 +9,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
-	public class GameSubScreenUtils
+	public static class GameSubScreenUtils
 	{
 		public static List<GameSubScreen> SubScreens = new List<GameSubScreen>();
 

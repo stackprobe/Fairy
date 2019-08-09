@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Charlotte.Common
 {
-	public class GameSaveData
+	public static class GameSaveData
 	{
 		public static void Save()
 		{

@@ -6,7 +6,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameKeyboard
+	public static class GameKeyboard
 	{
 		public const int KEY_MAX = 256;
 

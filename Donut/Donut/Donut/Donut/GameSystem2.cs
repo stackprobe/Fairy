@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Donut
 {
-	public class GameSystem2
+	public static class GameSystem2
 	{
 	}
 }

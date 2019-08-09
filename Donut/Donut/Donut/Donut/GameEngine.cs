@@ -8,7 +8,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GameEngine
+	public static class GameEngine
 	{
 		public static bool IgnoreEscapeKey = false;
 

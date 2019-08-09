@@ -6,7 +6,7 @@ using DxLibDLL;
 
 namespace Charlotte.Donut
 {
-	public class GamePad
+	public static class GamePad
 	{
 		public enum SNWPB // SANWA Pad Btnno
 		{

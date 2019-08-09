@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GameMain
+	public static class GameMain
 	{
 		public static void GameStart()
 		{

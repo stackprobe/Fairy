@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class GamePrint
+	public static class GamePrint
 	{
 		public static void SetPrint(int x = 0, int y = 0, int yStep = 16)
 		{

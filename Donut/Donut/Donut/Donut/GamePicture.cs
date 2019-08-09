@@ -7,7 +7,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Donut
 {
-	public class GamePicture
+	public static class GamePicture
 	{
 		public static int FileData2SoftImage(byte[] fileData) // fileData: unbind
 		{
