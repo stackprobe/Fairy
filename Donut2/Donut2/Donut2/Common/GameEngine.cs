@@ -33,7 +33,7 @@ namespace Charlotte.Common
 
 				if (DX.ProcessMessage() == -1)
 				{
-					throw new Exception("Evacuate from the game");
+					throw new GameError("終了要求");
 				}
 
 				// < DxLib
@@ -58,19 +58,19 @@ namespace Charlotte.Common
 				if (GameGround.RealScreenDraw_W == -1)
 				{
 					if (DX.DrawExtendGraph(0, 0, GameGround.RealScreen_W, GameGround.RealScreen_H, GameGround.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new Exception("Failed to DX.DrawExtendGraph()");
+						throw new GameError();
 				}
 				else
 				{
 					if (DX.DrawBox(0, 0, GameGround.RealScreen_W, GameGround.RealScreen_H, DX.GetColor(0, 0, 0), 1) != 0) // ? 失敗
-						throw new Exception("Failed to DX.DrawBox()");
+						throw new GameError();
 
 					if (DX.DrawExtendGraph(
 						GameGround.RealScreenDraw_L,
 						GameGround.RealScreenDraw_T,
 						GameGround.RealScreenDraw_L + GameGround.RealScreenDraw_W,
 						GameGround.RealScreenDraw_T + GameGround.RealScreenDraw_H, GameGround.MainScreen.GetHandle(), 0) != 0) // ? 失敗
-						throw new Exception("Failed to DX.DrawExtendGraph()");
+						throw new GameError();
 				}
 			}
 
@@ -84,7 +84,7 @@ namespace Charlotte.Common
 
 			if (DX.CheckHitKey(DX.KEY_INPUT_ESCAPE) == 1 || DX.ProcessMessage() == -1)
 			{
-				throw new Exception("Evacuate from the game");
+				throw new GameError("終了要求");
 			}
 
 			// < DxLib
@@ -102,7 +102,7 @@ namespace Charlotte.Common
 			if (IntTools.IMAX < ProcFrame) // 192.9日程度でカンスト
 			{
 				ProcFrame = IntTools.IMAX; // 2bs
-				throw new Exception("Bad ProcFrame");
+				throw new GameError();
 			}
 
 			GamePad.EachFrame();
@@ -134,7 +134,7 @@ namespace Charlotte.Common
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...
 		{
 			if (frame < 1 || IntTools.IMAX < frame)
-				throw new Exception("Bad frame: " + frame);
+				throw new GameError("frame: " + frame);
 
 			FreezeInputFrame = frame;
 		}

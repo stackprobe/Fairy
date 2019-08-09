@@ -7,9 +7,11 @@ namespace Charlotte.Common
 {
 	public static class GameConsts
 	{
+		public const string ConfigFile = "Config.conf";
 		public const string SaveDataFile = "SaveData.dat";
 		public const string ResourceFile = "Resource.dat";
 		public const string ResourceDir = @"..\..\..\..\Resource";
+		public const string UserDatStringsFile = "Properties.dat";
 
 		// app > @ Screen_WH
 

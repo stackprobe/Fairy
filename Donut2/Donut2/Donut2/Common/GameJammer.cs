@@ -25,8 +25,11 @@ namespace Charlotte.Common
 
 		private static void MaskGZData(byte[] data)
 		{
-			data[0] ^= (0x1f ^ 0x44);
-			data[1] ^= (0x8b ^ 0x44);
+			if (data.Length != 0)
+			{
+				data[0] ^= (0x1f ^ 0x44);
+				data[1] ^= (0x8b ^ 0x44);
+			}
 		}
 	}
 }

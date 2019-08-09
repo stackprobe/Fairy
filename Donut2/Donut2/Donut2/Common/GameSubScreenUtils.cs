@@ -35,7 +35,7 @@ namespace Charlotte.Common
 		public static void ChangeDrawScreen(int handle)
 		{
 			if (DX.SetDrawScreen(handle) != 0) // ? 失敗
-				throw new Exception("Failed to DX.SetDrawScreen()");
+				throw new GameError();
 
 			CurrDrawScreenHandle = handle;
 		}
@@ -57,13 +57,13 @@ namespace Charlotte.Common
 			int cbd;
 
 			if (DX.GetScreenState(out w, out h, out cbd) != 0)
-				throw new Exception("Failed to DX.GetScreenState()");
+				throw new GameError();
 
 			if (w < 1 || IntTools.IMAX < w)
-				throw new Exception("Bad w: " + w);
+				throw new GameError("w: " + w);
 
 			if (h < 1 || IntTools.IMAX < h)
-				throw new Exception("Bad h: " + h);
+				throw new GameError("h: " + h);
 
 			return new Size(w, h);
 		}

@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GameConfig.cs" />
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
+    <Compile Include="Common\GameDatStrings.cs" />
     <Compile Include="Common\GameDraw.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameError.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Common\GameMouse.cs" />
     <Compile Include="Common\GamePad.cs" />
     <Compile Include="Common\GameResource.cs" />
+    <Compile Include="Common\GameUserDatStrings.cs" />
     <Compile Include="Common\GameSubScreenUtils.cs" />
     <Compile Include="Common\GameInput.cs" />
     <Compile Include="Common\GameJammer.cs" />

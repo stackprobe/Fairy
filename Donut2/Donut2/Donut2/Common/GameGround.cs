@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DxLibDLL;
+using System.Drawing;
 
 namespace Charlotte.Common
 {
@@ -11,6 +12,7 @@ namespace Charlotte.Common
 		public static GameTaskList EL = new GameTaskList();
 		public static int PrimaryPadId = -1; // -1 == 未設定
 		public static GameSubScreen MainScreen = null; // null == 不使用
+		public static Rectangle MonitorRect;
 
 		public static int RealScreen_W = GameConsts.Screen_W;
 		public static int RealScreen_H = GameConsts.Screen_H;
@@ -22,6 +24,8 @@ namespace Charlotte.Common
 
 		public static double MusicVolume = GameConsts.DefaultVolume;
 		public static double SEVolume = GameConsts.DefaultVolume;
+
+		public static bool RO_MouseDispMode = false;
 
 		public static void INIT()
 		{
@@ -56,6 +60,8 @@ namespace Charlotte.Common
 			GameInput.START.KbdKeyId = DX.KEY_INPUT_RETURN;
 
 			// app > @ INIT
+
+			//RO_MouseDispMode = true;
 
 			// < app
 		}
