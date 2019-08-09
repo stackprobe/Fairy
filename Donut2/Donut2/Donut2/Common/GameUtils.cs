@@ -13,7 +13,7 @@ namespace Charlotte.Common
 	{
 		public static byte[] SplitableJoin(string[] lines)
 		{
-			return BinTools.Join(lines.Select(line => Encoding.UTF8.GetBytes(line)).ToArray());
+			return BinTools.SplittableJoin(lines.Select(line => Encoding.UTF8.GetBytes(line)).ToArray());
 		}
 
 		public static string[] Split(byte[] data)
@@ -48,6 +48,15 @@ namespace Charlotte.Common
 			value -= target;
 			value *= rate;
 			value += target;
+		}
+
+		public static void Rotate(ref double x, ref double y, double rot)
+		{
+			double w;
+
+			w = x * Math.Cos(rot) - y * Math.Sin(rot);
+			y = x * Math.Sin(rot) + y * Math.Cos(rot);
+			x = w;
 		}
 	}
 }

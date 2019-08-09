@@ -434,6 +434,27 @@ namespace Charlotte.Donut
 				)
 				throw new GameError();
 
+			LayoutInfo i = new LayoutInfo();
+
+			i.Mode = 'S';
+			i.Entity = new LayoutInfo.SimpleInfo()
+			{
+				X = x,
+				Y = y,
+			};
+
+			DrawPic(picId, i);
+		}
+
+		public static void DrwaCenter(int picId, double x, double y)
+		{
+			// layout check
+			if (
+				x < -(double)IntTools.IMAX || (double)IntTools.IMAX < x ||
+				y < -(double)IntTools.IMAX || (double)IntTools.IMAX < y
+				)
+				throw new GameError();
+
 			DrawBegin(picId, x, y);
 			DrawEnd();
 		}
@@ -490,7 +511,7 @@ namespace Charlotte.Donut
 			DB_L = i;
 		}
 
-		public static void DrawClide(double x, double y)
+		public static void DrawSlide(double x, double y)
 		{
 			if (DB_L == null) throw new GameError();
 

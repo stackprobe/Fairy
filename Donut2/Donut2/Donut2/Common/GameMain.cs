@@ -35,6 +35,7 @@ namespace Charlotte.Common
 			{
 				GameGround.INIT();
 				GameResource.INIT();
+				GameDatStrings.INIT();
 				GameUserDatStrings.INIT();
 			}
 
@@ -108,6 +109,7 @@ namespace Charlotte.Common
 			// *.FNLZ
 			{
 				GameUserDatStrings.FNLZ();
+				GameDatStrings.FNLZ();
 				GameResource.FNLZ();
 				GameGround.FNLZ();
 			}

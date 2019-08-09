@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GameCoffeeBreak.cs" />
     <Compile Include="Common\GameConfig.cs" />
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Common\GamePad.cs" />
     <Compile Include="Common\GamePicture.cs" />
     <Compile Include="Common\GamePictureLoaders.cs" />
+    <Compile Include="Common\GamePictureLoaders2.cs" />
     <Compile Include="Common\GamePictureLoaderUtils.cs" />
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
@@ -96,6 +98,8 @@
     <Compile Include="Common\IGameTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Common\GameDrawTest.cs" />
+    <Compile Include="Tests\Common\GamePictureTest.cs" />
     <Compile Include="Tests\Common\GameResourceTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -36,7 +36,9 @@ namespace Charlotte
 		private void Main3()
 		{
 			//Test01();
-			new GameResourceTest().Test01();
+			//new GameResourceTest().Test01();
+			//new GamePictureTest().Test01();
+			new GameDrawTest().Test01();
 		}
 
 		private void Test01()

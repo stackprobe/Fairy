@@ -21,7 +21,7 @@ namespace Charlotte.Common
 			{
 				IGameTask task = this.Tasks[index];
 
-				if (task.Routine() == false)
+				if (task.Routine() == false) // ? 終了
 				{
 					task.Dispose();
 					ExtraTools.FastDesertElement(this.Tasks, index--);

@@ -33,7 +33,7 @@ namespace Charlotte.Common
 
 				if (DX.ProcessMessage() == -1)
 				{
-					throw new GameError("終了要求");
+					throw new GameCoffeeBreak();
 				}
 
 				// < DxLib
@@ -84,7 +84,7 @@ namespace Charlotte.Common
 
 			if (DX.CheckHitKey(DX.KEY_INPUT_ESCAPE) == 1 || DX.ProcessMessage() == -1)
 			{
-				throw new GameError("終了要求");
+				throw new GameCoffeeBreak();
 			}
 
 			// < DxLib

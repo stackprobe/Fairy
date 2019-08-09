@@ -11,7 +11,7 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
-			throw null; // TODO
+			// TODO
 		}
 
 		public static void SetCurtain(int frameMax, double destWhiteLevel)
@@ -21,7 +21,7 @@ namespace Charlotte.Common
 
 		public static void SetCurtain(int frameMax, double destWhiteLevel, double startWhiteLevel)
 		{
-			throw null; // TODO
+			// TODO
 		}
 	}
 }

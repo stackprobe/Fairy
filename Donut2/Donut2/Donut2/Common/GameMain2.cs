@@ -12,7 +12,14 @@ namespace Charlotte.Common
 			try
 			{
 				GameMain.GameStart();
-				routine();
+
+				try
+				{
+					routine();
+				}
+				catch (GameCoffeeBreak)
+				{ }
+
 				GameMain.GameEnd();
 			}
 			catch
