@@ -34,5 +34,20 @@ namespace Charlotte.Common
 
 			return defval;
 		}
+
+		public static void CountDown(ref int count)
+		{
+			if (count < 0)
+				count++;
+			else if (0 < count)
+				count--;
+		}
+
+		public static void Approach(ref double value, double target, double rate)
+		{
+			value -= target;
+			value *= rate;
+			value += target;
+		}
 	}
 }

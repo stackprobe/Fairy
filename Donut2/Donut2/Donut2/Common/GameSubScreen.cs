@@ -32,7 +32,7 @@ namespace Charlotte.Common
 
 			if (this.Handle != -1)
 				if (DX.DeleteGraph(this.Handle) != 0)
-					throw new Exception("Failed DX.DeleteGraph()");
+					throw new Exception("Failed to DX.DeleteGraph()");
 		}
 
 		public void Unload()
@@ -40,7 +40,7 @@ namespace Charlotte.Common
 			if (this.Handle != -1)
 			{
 				if (DX.DeleteGraph(this.Handle) != 0)
-					throw new Exception("Failed DX.DeleteGraph()");
+					throw new Exception("Failed to DX.DeleteGraph()");
 
 				this.Handle = -1;
 			}
@@ -53,7 +53,7 @@ namespace Charlotte.Common
 				this.Handle = DX.MakeScreen(this.W, this.H, this.AFlag ? 1 : 0);
 
 				if (this.Handle == -1)
-					throw new Exception("Failed DX.MaksScreen()");
+					throw new Exception("Failed to DX.MaksScreen()");
 			}
 			return this.Handle;
 		}

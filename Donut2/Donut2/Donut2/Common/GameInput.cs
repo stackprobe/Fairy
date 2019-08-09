@@ -46,5 +46,10 @@ namespace Charlotte.Common
 		public static Button R = new Button();
 		public static Button PAUSE = new Button();
 		public static Button START = new Button();
+
+		public static void EachFrame()
+		{
+			// TODO
+		}
 	}
 }

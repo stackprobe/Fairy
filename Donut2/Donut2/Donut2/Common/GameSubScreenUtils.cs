@@ -31,12 +31,12 @@ namespace Charlotte.Common
 			}
 		}
 
-		private static int CurrDrawScreenHandle = DX.DX_SCREEN_BACK;
+		public static int CurrDrawScreenHandle = DX.DX_SCREEN_BACK;
 
 		public static void ChangeDrawScreen(int handle)
 		{
 			if (DX.SetDrawScreen(handle) != 0) // ? 失敗
-				throw new Exception("Failed DX.SetDrawScreen()");
+				throw new Exception("Failed to DX.SetDrawScreen()");
 
 			CurrDrawScreenHandle = handle;
 		}
@@ -58,13 +58,13 @@ namespace Charlotte.Common
 			int cbd;
 
 			if (DX.GetScreenState(out w, out h, out cbd) != 0)
-				throw new Exception("Failed DX.GetScreenState()");
+				throw new Exception("Failed to DX.GetScreenState()");
 
 			if (w < 1 || IntTools.IMAX < w)
-				throw new Exception("Bad width " + w);
+				throw new Exception("Bad w: " + w);
 
 			if (h < 1 || IntTools.IMAX < h)
-				throw new Exception("Bad height " + h);
+				throw new Exception("Bad h: " + h);
 
 			return new Size(w, h);
 		}
