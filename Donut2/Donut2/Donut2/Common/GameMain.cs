@@ -11,7 +11,31 @@ namespace Charlotte.Common
 {
 	public static class GameMain
 	{
+		private static bool DxLibInited = false;
+
 		public static void GameStart()
+		{
+			try
+			{
+				GameStart_Main();
+			}
+			catch (Exception e)
+			{
+				ExceptionDam.Section(eDam =>
+				{
+					eDam.Add(e);
+
+					eDam.Invoke(() =>
+					{
+						if (DxLibInited)
+							if (DX.DxLib_End() != 0)
+								throw new GameError();
+					});
+				});
+			}
+		}
+
+		private static void GameStart_Main()
 		{
 			GameConfig.Load(); // LogFile, LOG_ENABLED を含むので真っ先に
 
@@ -47,7 +71,7 @@ namespace Charlotte.Common
 
 			DX.SetAlwaysRunFlag(1); // ? 非アクティブ時に 1: 動く 0: 止まる
 
-			DX.SetMainWindowText(GameDatStrings.Title + " " + GameUserDatStrings.Version);
+			SetMainWindowTitle();
 
 			//DX.SetGraphMode(GameConsts.Screen_W, GameConsts.Screen_H, 32);
 			DX.SetGraphMode(GameGround.RealScreen_W, GameGround.RealScreen_H, 32);
@@ -63,7 +87,9 @@ namespace Charlotte.Common
 			if (DX.DxLib_Init() != 0) // ? 失敗
 				throw new GameError();
 
-			SetMouseDispMode(GameGround.RO_MouseDispMode); // ? マウスを表示する。
+			DxLibInited = true;
+
+			GameDxUtils.SetMouseDispMode(GameGround.RO_MouseDispMode); // ? マウスを表示する。
 			DX.SetWindowSizeChangeEnableFlag(0); // ウィンドウの右下をドラッグで伸縮 1: する 0: しない
 
 			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
@@ -107,6 +133,14 @@ namespace Charlotte.Common
 				GameResource.FNLZ();
 				GameGround.FNLZ();
 			}
+
+			if (DX.DxLib_End() != 0)
+				throw new GameError();
+		}
+
+		public static void SetMainWindowTitle()
+		{
+			DX.SetMainWindowText(GameDatStrings.Title + " " + GameUserDatStrings.Version);
 		}
 
 		private static IntPtr GetAppIcon()
@@ -115,60 +149,6 @@ namespace Charlotte.Common
 			{
 				return new Icon(mem).Handle;
 			}
-		}
-
-		private static void PostSetScreenSize(int w, int h)
-		{
-			if (GameGround.MonitorRect.W == w && GameGround.MonitorRect.H == h)
-			{
-				SetScreenPosition(GameGround.MonitorRect.L, GameGround.MonitorRect.T);
-			}
-		}
-
-		// DxPrv_ >
-
-		private static bool DxPrv_GetMouseDispMode()
-		{
-			return DX.GetMouseDispFlag() != 0;
-		}
-
-		private static void DxPrv_SetMouseDispMode(bool mode)
-		{
-			DX.SetMouseDispFlag(mode ? 1 : 0);
-		}
-
-		private static void DxPrv_SetScreenSize(int w, int h)
-		{
-			bool mdm = GetMouseDispMode();
-
-			GamePictureUtils.UnloadAll();
-			GameSubScreenUtils.UnloadAll();
-			GameFontUtils.UnloadAll();
-
-			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
-				throw new GameError();
-
-			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
-			DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
-
-			SetMouseDispMode(mdm);
-		}
-
-		// < DxPrv_
-
-		public static bool GetMouseDispMode()
-		{
-			return DxPrv_GetMouseDispMode();
-		}
-
-		public static void SetMouseDispMode(bool mode)
-		{
-			DxPrv_SetMouseDispMode(mode);
-		}
-
-		public static void ApplyScreenSize()
-		{
-			DxPrv_SetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
 		}
 
 		public static void SetScreenSize(int w, int h)
@@ -192,9 +172,38 @@ namespace Charlotte.Common
 			}
 		}
 
+		public static void ApplyScreenSize()
+		{
+			ApplyScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
+		}
+
+		public static void ApplyScreenSize(int w, int h)
+		{
+			bool mdm = GameDxUtils.GetMouseDispMode();
+
+			GamePictureUtils.UnloadAll();
+			GameSubScreenUtils.UnloadAll();
+			GameFontUtils.UnloadAll();
+
+			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
+				throw new GameError();
+
+			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
+			DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
+
+			GameDxUtils.SetMouseDispMode(mdm);
+		}
+
+		public static void PostSetScreenSize(int w, int h)
+		{
+			if (GameGround.MonitorRect.W == w && GameGround.MonitorRect.H == h)
+			{
+				SetScreenPosition(GameGround.MonitorRect.L, GameGround.MonitorRect.T);
+			}
+		}
+
 		public static void SetScreenPosition(int l, int t)
 		{
-			/*
 			DX.SetWindowPosition(l, t);
 
 			GameWin32.POINT p;
@@ -208,7 +217,6 @@ namespace Charlotte.Common
 			int pToTrgY = t - (int)p.Y;
 
 			DX.SetWindowPosition(l + pToTrgX, t + pToTrgY);
-			 * */
 		}
 	}
 }

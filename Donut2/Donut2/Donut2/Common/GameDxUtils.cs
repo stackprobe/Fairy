@@ -20,5 +20,15 @@ namespace Charlotte.Common
 		{
 			return DX.GetNowHiPerformanceCount() / 1000L;
 		}
+
+		public static bool GetMouseDispMode()
+		{
+			return DX.GetMouseDispFlag() != 0;
+		}
+
+		public static void SetMouseDispMode(bool mode)
+		{
+			DX.SetMouseDispFlag(mode ? 1 : 0);
+		}
 	}
 }

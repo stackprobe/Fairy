@@ -44,7 +44,7 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
-			if (GameSE.EachFrame() == false)
+			if (GameSEUtils.EachFrame() == false)
 			{
 				GameMusic.EachFrame();
 			}

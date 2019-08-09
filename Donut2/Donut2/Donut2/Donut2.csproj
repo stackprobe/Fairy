@@ -67,6 +67,9 @@
     <Compile Include="Common\GamePad.cs" />
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
+    <Compile Include="Common\GameSEUtils.cs" />
+    <Compile Include="Common\GameSound.cs" />
+    <Compile Include="Common\GameSoundUtils.cs" />
     <Compile Include="Common\GameSystem.cs" />
     <Compile Include="Common\GameUserDatStrings.cs" />
     <Compile Include="Common\GameSubScreenUtils.cs" />
