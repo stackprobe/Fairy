@@ -167,6 +167,7 @@ namespace Charlotte.Common
 		{
 			bool mdm = GameDxUtils.GetMouseDispMode();
 
+			//GameDerivationUtils.UnloadAll(); // moved
 			GamePictureUtils.UnloadAll();
 			GameSubScreenUtils.UnloadAll();
 			GameFontUtils.UnloadAll();

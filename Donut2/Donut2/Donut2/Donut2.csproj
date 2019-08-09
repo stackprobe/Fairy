@@ -57,6 +57,9 @@
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
     <Compile Include="Common\GameDatStrings.cs" />
+    <Compile Include="Common\GameDerivations.cs" />
+    <Compile Include="Common\GameDerivationTable.cs" />
+    <Compile Include="Common\GameDerivationUtils.cs" />
     <Compile Include="Common\GameDraw.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameError.cs" />
@@ -67,6 +70,9 @@
     <Compile Include="Common\GameMouse.cs" />
     <Compile Include="Common\GameMusic.cs" />
     <Compile Include="Common\GamePad.cs" />
+    <Compile Include="Common\GamePicture.cs" />
+    <Compile Include="Common\GamePictureLoaders.cs" />
+    <Compile Include="Common\GamePictureLoaderUtils.cs" />
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
     <Compile Include="Common\GameSEUtils.cs" />

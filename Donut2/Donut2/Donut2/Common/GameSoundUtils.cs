@@ -19,9 +19,7 @@ namespace Charlotte.Common
 		public static void UnloadAll()
 		{
 			foreach (GameSound sound in Sounds)
-			{
 				sound.Unload();
-			}
 		}
 
 		public static void Play(int handle, bool once = true, bool resume = false)

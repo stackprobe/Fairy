@@ -30,7 +30,7 @@ namespace Charlotte
 
 		private void Main2(ArgsReader ar)
 		{
-			GameMain2.Main(Main3);
+			GameMain2.Perform(Main3);
 		}
 
 		private void Main3()

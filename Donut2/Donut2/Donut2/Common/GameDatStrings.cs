@@ -58,10 +58,6 @@ namespace Charlotte.Common
 			get { return GetValue("Copyright"); }
 		}
 
-		// app > @ Accessor
-
-		// < app
-
 		// < Accessor
 	}
 }

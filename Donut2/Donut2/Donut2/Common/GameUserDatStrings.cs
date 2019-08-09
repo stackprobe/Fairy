@@ -49,10 +49,6 @@ namespace Charlotte.Common
 			get { return GetValue("Version", "0.00"); }
 		}
 
-		// app > @ Accessor
-
-		// < app
-
 		// < Accessor
 	}
 }

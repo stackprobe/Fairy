@@ -7,12 +7,12 @@ namespace Charlotte.Common
 {
 	public static class GameMain2
 	{
-		public static void Main(Action gMain)
+		public static void Perform(Action routine)
 		{
 			try
 			{
 				GameMain.GameStart();
-				gMain();
+				routine();
 				GameMain.GameEnd();
 			}
 			catch

@@ -10,7 +10,7 @@ namespace Charlotte.Common
 {
 	public class GameSubScreen : IDisposable
 	{
-		private int W;
+		private int W; // -1 == Disposed
 		private int H;
 		private bool AFlag;
 		private int Handle = -1; // -1 == Unloaded
