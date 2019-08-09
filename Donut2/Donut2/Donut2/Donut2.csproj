@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="Common\GameCoffeeBreak.cs" />
     <Compile Include="Common\GameCommonEffect.cs" />
-    <Compile Include="Common\GameCommonEffectUtils.cs" />
     <Compile Include="Common\GameConfig.cs" />
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
@@ -67,6 +66,7 @@
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameError.cs" />
     <Compile Include="Common\GameFont.cs" />
+    <Compile Include="Common\GameFontRegister.cs" />
     <Compile Include="Common\GameFontUtils.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameKey.cs" />
@@ -86,7 +86,7 @@
     <Compile Include="Common\GameSound.cs" />
     <Compile Include="Common\GameSoundUtils.cs" />
     <Compile Include="Common\GameSystem.cs" />
-    <Compile Include="Common\GameTaskUtils.cs" />
+    <Compile Include="Common\GameIEnumerableTask.cs" />
     <Compile Include="Common\GameUserDatStrings.cs" />
     <Compile Include="Common\GameSubScreenUtils.cs" />
     <Compile Include="Common\GameInput.cs" />

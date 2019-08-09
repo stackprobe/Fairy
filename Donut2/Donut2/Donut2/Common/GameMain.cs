@@ -101,6 +101,10 @@ namespace Charlotte.Common
 
 			PostSetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
 
+			// app > @ Font
+
+			// < app
+
 			GameGround.CommonResource = new GameResourceCommon();
 		}
 
@@ -171,7 +175,7 @@ namespace Charlotte.Common
 		{
 			bool mdm = GameDxUtils.GetMouseDispMode();
 
-			//GameDerivationUtils.UnloadAll(); // moved
+			//GameDerivationUtils.UnloadAll(); // -> GamePictureUtils.UnloadAll
 			GamePictureUtils.UnloadAll();
 			GameSubScreenUtils.UnloadAll();
 			GameFontUtils.UnloadAll();
