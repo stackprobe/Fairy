@@ -7,7 +7,7 @@ using Charlotte.Tools;
 namespace Charlotte.Common
 {
 	/// <summary>
-	/// その他の機能の寄せ集め、そのうち DxLib に関係無いもの。関係有るものは GameSystem へ
+	/// その他の機能の寄せ集め、そのうち DxLib に関係無いもの。関係有るものは GameDxUtils へ
 	/// </summary>
 	public static class GameUtils
 	{

@@ -55,7 +55,7 @@ namespace Charlotte.Common
 
 			//DX.SetFullSceneAntiAliasingMode(4, 2); // 適当な値が分からん。フルスクリーン廃止したので不要
 
-			// TODO Icon
+			DX.SetWindowIconHandle(GetAppIcon()); // ウィンドウ左上のアイコン
 
 			if (GameConfig.DisplayIndex != -1)
 				DX.SetUseDirectDrawDeviceIndex(GameConfig.DisplayIndex);
@@ -63,7 +63,7 @@ namespace Charlotte.Common
 			if (DX.DxLib_Init() != 0) // ? 失敗
 				throw new GameError();
 
-			SetMouseDisplayMode(GameGround.RO_MouseDispMode); // ? マウスを表示する。
+			SetMouseDispMode(GameGround.RO_MouseDispMode); // ? マウスを表示する。
 			DX.SetWindowSizeChangeEnableFlag(0); // ウィンドウの右下をドラッグで伸縮 1: する 0: しない
 
 			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
@@ -109,14 +109,106 @@ namespace Charlotte.Common
 			}
 		}
 
-		private static void SetMouseDisplayMode(bool mode)
+		private static IntPtr GetAppIcon()
 		{
-			throw null; // TODO
+			using (MemoryStream mem = new MemoryStream(GameResource.Load("game_app.ico")))
+			{
+				return new Icon(mem).Handle;
+			}
 		}
 
 		private static void PostSetScreenSize(int w, int h)
 		{
-			throw null; // TODO
+			if (GameGround.MonitorRect.Width == w && GameGround.MonitorRect.Height == h)
+			{
+				SetScreenPosition(GameGround.MonitorRect.Left, GameGround.MonitorRect.Top);
+			}
+		}
+
+		// DxPrv_ >
+
+		private static bool DxPrv_GetMouseDispMode()
+		{
+			return DX.GetMouseDispFlag() != 0;
+		}
+
+		private static void DxPrv_SetMouseDispMode(bool mode)
+		{
+			DX.SetMouseDispFlag(mode ? 1 : 0);
+		}
+
+		private static void DxPrv_SetScreenSize(int w, int h)
+		{
+			bool mdm = GetMouseDispMode();
+
+			GamePictureUtils.UnloadAll();
+			GameSubScreenUtils.UnloadAll();
+			GameFontUtils.UnloadAll();
+
+			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
+				throw new GameError();
+
+			DX.SetDrawScreen(DX.DX_SCREEN_BACK);
+			DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
+
+			SetMouseDispMode(mdm);
+		}
+
+		// < DxPrv_
+
+		public static bool GetMouseDispMode()
+		{
+			return DxPrv_GetMouseDispMode();
+		}
+
+		public static void SetMouseDispMode(bool mode)
+		{
+			DxPrv_SetMouseDispMode(mode);
+		}
+
+		public static void ApplyScreenSize()
+		{
+			DxPrv_SetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
+		}
+
+		public static void SetScreenSize(int w, int h)
+		{
+			if (
+				w < GameConsts.Screen_W_Min || GameConsts.Screen_W_Max < w ||
+				h < GameConsts.Screen_H_Min || GameConsts.Screen_H_Max < h
+				)
+				throw new GameError();
+
+			GameGround.RealScreenDraw_W = -1; // 無効化
+
+			if (GameGround.RealScreen_W != w || GameGround.RealScreen_H != h)
+			{
+				GameGround.RealScreen_W = w;
+				GameGround.RealScreen_H = h;
+
+				ApplyScreenSize();
+
+				PostSetScreenSize(w, h);
+			}
+		}
+
+		public static void SetScreenPosition(int l, int t)
+		{
+			/*
+			DX.SetWindowPosition(l, t);
+
+			GameWin32.POINT p;
+
+			p.X = 0;
+			p.Y = 0;
+
+			GameWin32.ClientToScreen(GameWin32.GetMainWindowHandle(), out p);
+
+			int pToTrgX = l - (int)p.X;
+			int pToTrgY = t - (int)p.Y;
+
+			DX.SetWindowPosition(l + pToTrgX, t + pToTrgY);
+			 * */
 		}
 	}
 }

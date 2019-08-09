@@ -18,7 +18,7 @@ namespace Charlotte.Common
 
 		private static void CheckHz()
 		{
-			long currTime = GameSystem.GetCurrTime();
+			long currTime = GameDxUtils.GetCurrTime();
 
 			LangolierTime += 16L; // 16.666 == 60Hz
 			LangolierTime = LongTools.Range(LangolierTime, currTime - 100L, currTime + 100L);
@@ -38,7 +38,7 @@ namespace Charlotte.Common
 
 				// < DxLib
 
-				currTime = GameSystem.GetCurrTime();
+				currTime = GameDxUtils.GetCurrTime();
 			}
 		}
 
@@ -97,7 +97,7 @@ namespace Charlotte.Common
 
 			ProcFrame++;
 			GameUtils.CountDown(ref FreezeInputFrame);
-			WindowIsActive = GameSystem.IsWindowActive();
+			WindowIsActive = GameDxUtils.IsWindowActive();
 
 			if (IntTools.IMAX < ProcFrame) // 192.9日程度でカンスト
 			{

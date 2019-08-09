@@ -20,6 +20,11 @@ namespace Charlotte.Common
 
 		// < app
 
+		public const int Screen_W_Min = 100;
+		public const int Screen_H_Min = 100;
+		public const int Screen_W_Max = 4000;
+		public const int Screen_H_Max = 3000;
+
 		public const double DefaultVolume = 0.45;
 	}
 }
