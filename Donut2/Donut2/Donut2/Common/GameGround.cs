@@ -28,6 +28,8 @@ namespace Charlotte.Common
 
 		public static bool RO_MouseDispMode = false;
 
+		public static GameResourceCommon CommonResource;
+
 		public static void INIT()
 		{
 			GameInput.DIR_2.PadBtnId = 0;

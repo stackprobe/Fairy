@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\GameCoffeeBreak.cs" />
+    <Compile Include="Common\GameCommonEffect.cs" />
     <Compile Include="Common\GameConfig.cs" />
     <Compile Include="Common\GameConsts.cs" />
     <Compile Include="Common\GameCurtain.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Common\GameDraw.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameError.cs" />
+    <Compile Include="Common\GameFont.cs" />
     <Compile Include="Common\GameFontUtils.cs" />
     <Compile Include="Common\GameGround.cs" />
     <Compile Include="Common\GameKey.cs" />
@@ -77,7 +79,9 @@
     <Compile Include="Common\GamePictureLoaderUtils.cs" />
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
+    <Compile Include="Common\GameResourceCommon.cs" />
     <Compile Include="Common\GameSEUtils.cs" />
+    <Compile Include="Common\GameSimpleMenu.cs" />
     <Compile Include="Common\GameSound.cs" />
     <Compile Include="Common\GameSoundUtils.cs" />
     <Compile Include="Common\GameSystem.cs" />

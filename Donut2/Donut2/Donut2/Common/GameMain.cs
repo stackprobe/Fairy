@@ -100,6 +100,8 @@ namespace Charlotte.Common
 			}
 
 			PostSetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
+
+			GameGround.CommonResource = new GameResourceCommon();
 		}
 
 		public static void GameEnd()
