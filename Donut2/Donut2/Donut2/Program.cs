@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using Charlotte.Tools;
 using Charlotte.Common;
+using Charlotte.Tests.Common;
 
 namespace Charlotte
 {
@@ -45,6 +46,12 @@ namespace Charlotte
 		}
 
 		private void Main3()
+		{
+			//Test01();
+			new GameResourceTest().Test01();
+		}
+
+		private void Test01()
 		{
 			for (; ; )
 			{

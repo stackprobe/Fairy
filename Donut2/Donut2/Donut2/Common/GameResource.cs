@@ -29,23 +29,29 @@ namespace Charlotte.Common
 
 				using (FileStream reader = new FileStream(GameConsts.ResourceFile, FileMode.Open, FileAccess.Read))
 				{
-					int size = BinTools.ToInt(FileTools.Read(reader, 4));
-
-					resInfos.Add(new ResInfo()
+					while (reader.Position < reader.Length)
 					{
-						Offset = reader.Position,
-						Size = size,
-					});
+						int size = BinTools.ToInt(FileTools.Read(reader, 4));
 
-					reader.Seek((long)size, SeekOrigin.Current);
+						if (size < 0)
+							throw new GameError();
+
+						resInfos.Add(new ResInfo()
+						{
+							Offset = reader.Position,
+							Size = size,
+						});
+
+						reader.Seek((long)size, SeekOrigin.Current);
+					}
 				}
 				string[] files = FileTools.TextToLines(StringTools.ENCODING_SJIS.GetString(LoadFile(resInfos[0])));
 
-				if (files.Length + 1 != resInfos.Count)
-					throw new Exception("リソースファイルのエントリー数に問題があります。" + files.Length + ", " + resInfos.Count);
+				if (files.Length != resInfos.Count)
+					throw new GameError(files.Length + ", " + resInfos.Count);
 
 				for (int index = 0; index < files.Length; index++)
-					File2ResInfo.Add(files[index], resInfos[index + 1]);
+					File2ResInfo.Add(files[index], resInfos[index]);
 			}
 		}
 
@@ -85,7 +91,7 @@ namespace Charlotte.Common
 		{
 			if (ReleaseMode)
 			{
-				throw new InvalidOperationException("リリースモードなのでファイルを保存出来ません。");
+				throw new GameError();
 			}
 			else
 			{
