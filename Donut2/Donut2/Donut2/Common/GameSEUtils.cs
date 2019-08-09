@@ -51,12 +51,12 @@ namespace Charlotte.Common
 					switch (info.AlterCommand)
 					{
 						case PlayInfo.AlterCommand_e.NORMAL:
-							info.SE.HandleIndex %= GameSE.HANDLE_NUM;
+							info.SE.HandleIndex %= GameSE.HANDLE_COUNT;
 							GameSoundUtils.Play(info.SE.Sound.GetHandle(info.SE.HandleIndex++));
 							break;
 
 						case PlayInfo.AlterCommand_e.STOP:
-							for (int index = 0; index < GameSE.HANDLE_NUM; index++)
+							for (int index = 0; index < GameSE.HANDLE_COUNT; index++)
 							{
 								GameSoundUtils.Stop(info.SE.Sound.GetHandle(index));
 							}
@@ -97,6 +97,12 @@ namespace Charlotte.Common
 		{
 			PlayInfos.Enqueue(new PlayInfo(se, PlayInfo.AlterCommand_e.LOOP));
 			PlayInfos.Enqueue(null);
+		}
+
+		public static void UpdateVolume()
+		{
+			foreach (GameSE se in SEList)
+				se.UpdateVolume();
 		}
 	}
 }

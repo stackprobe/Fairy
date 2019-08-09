@@ -13,7 +13,7 @@ namespace Charlotte.Common
 		private int W;
 		private int H;
 		private bool AFlag;
-		private int Handle = -1; // -1 == 未設定
+		private int Handle = -1; // -1 == Unloaded
 
 		public GameSubScreen(int w, int h, bool aFlag = false)
 		{

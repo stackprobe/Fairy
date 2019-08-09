@@ -15,28 +15,6 @@ namespace Charlotte.Common
 
 		public static void GameStart()
 		{
-			try
-			{
-				GameStart_Main();
-			}
-			catch (Exception e)
-			{
-				ExceptionDam.Section(eDam =>
-				{
-					eDam.Add(e);
-
-					eDam.Invoke(() =>
-					{
-						if (DxLibInited)
-							if (DX.DxLib_End() != 0)
-								throw new GameError();
-					});
-				});
-			}
-		}
-
-		private static void GameStart_Main()
-		{
 			GameConfig.Load(); // LogFile, LOG_ENABLED を含むので真っ先に
 
 			// Log >
@@ -136,6 +114,14 @@ namespace Charlotte.Common
 
 			if (DX.DxLib_End() != 0)
 				throw new GameError();
+		}
+
+		public static void GameErrorEnd()
+		{
+			if (DxLibInited)
+			{
+				DX.DxLib_End();
+			}
 		}
 
 		public static void SetMainWindowTitle()

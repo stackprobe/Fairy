@@ -9,48 +9,58 @@ namespace Charlotte.Common
 {
 	public class GameSound : IDisposable
 	{
-		private Func<byte[]> Func_GetRawData;
-		private int[] Handles;
+		private Func<byte[]> Func_GetFileData;
+		private int HandleCount;
+		private int[] Handles = null; // null == Unloaded
 
-		public GameSound(string file, int count)
-			: this(() => GameResource.Load(file), count)
+		public Action PostLoaded = () => { };
+
+		public GameSound(string file, int handleCount)
+			: this(() => GameResource.Load(file), handleCount)
 		{ }
 
-		public GameSound(Func<byte[]> getRawData, int count)
+		public GameSound(Func<byte[]> getFileData, int handleCount)
 		{
-			this.Func_GetRawData = getRawData;
-			this.Handles = IntTools.Sequence(-1, count, 0).ToArray();
+			this.Func_GetFileData = getFileData;
+			this.HandleCount = handleCount;
 
 			GameSoundUtils.Add(this);
 		}
 
-		public bool IsHandleLoaded(int index)
+		public bool IsLoaded()
 		{
-			return this.Handles[index] != -1;
+			return this.Handles != null;
 		}
 
 		public int GetHandle(int index)
 		{
-			if (this.Handles[0] == -1)
+			if (this.Handles == null)
 			{
-				byte[] rawData = this.Func_GetRawData();
-				int handle = -1;
+				this.Handles = new int[this.HandleCount];
 
-				GameSystem.PinOn(rawData, p => handle = DX.LoadSoundMemByMemImage(p, rawData.Length));
+				{
+					byte[] fileData = this.Func_GetFileData();
+					int handle = -1;
 
-				if (handle == -1) // ? 失敗
-					throw new GameError();
+					GameSystem.PinOn(fileData, p => handle = DX.LoadSoundMemByMemImage(p, fileData.Length));
 
-				this.Handles[0] = handle;
-			}
-			if (this.Handles[index] == -1)
-			{
-				int handle = DX.DuplicateSoundMem(this.Handles[0]);
+					if (handle == -1) // ? 失敗
+						throw new GameError();
 
-				if (handle == -1) // ? 失敗
-					throw new GameError();
+					this.Handles[0] = handle;
+				}
 
-				this.Handles[index] = handle;
+				for (int ndx = 1; ndx < this.HandleCount; ndx++)
+				{
+					int handle = DX.DuplicateSoundMem(this.Handles[0]);
+
+					if (handle == -1) // ? 失敗
+						throw new GameError();
+
+					this.Handles[ndx] = handle;
+				}
+
+				this.PostLoaded();
 			}
 			return this.Handles[index];
 		}
@@ -62,21 +72,20 @@ namespace Charlotte.Common
 
 			this.Unload();
 
-			this.Func_GetRawData = null;
+			this.Func_GetFileData = null;
+			this.HandleCount = -1;
 			this.Handles = null;
 		}
 
 		public void Unload()
 		{
-			for (int index = 0; index < this.Handles.Length; index++)
+			if (this.Handles != null)
 			{
-				if (this.Handles[index] != -1)
-				{
-					if (DX.DeleteSoundMem(this.Handles[index]) != 0) // ? 失敗
+				foreach (int handle in this.Handles)
+					if (DX.DeleteSoundMem(handle) != 0) // ? 失敗
 						throw new GameError();
 
-					this.Handles[index] = -1;
-				}
+				this.Handles = null;
 			}
 		}
 	}

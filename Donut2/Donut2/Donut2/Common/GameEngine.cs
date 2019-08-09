@@ -46,7 +46,7 @@ namespace Charlotte.Common
 		{
 			if (GameSEUtils.EachFrame() == false)
 			{
-				GameMusic.EachFrame();
+				GameMusicUtils.EachFrame();
 			}
 			GameGround.EL.ExecuteAllTask();
 			GameCurtain.EachFrame();

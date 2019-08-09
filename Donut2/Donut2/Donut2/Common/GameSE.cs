@@ -7,22 +7,24 @@ namespace Charlotte.Common
 {
 	public class GameSE : IDisposable
 	{
-		public const int HANDLE_NUM = 64;
+		public const int HANDLE_COUNT = 64;
 
 		public GameSound Sound;
 		public double Volume; // 0.0 ～ 1.0
 		public int HandleIndex = 0;
 
 		public GameSE(string file)
-			: this(new GameSound(file, HANDLE_NUM))
+			: this(new GameSound(file, HANDLE_COUNT))
 		{ }
 
 		public GameSE(GameSound sound_binding, double volume = 0.5)
 		{
+			sound_binding.PostLoaded = this.UpdateVolume_NoCheck;
+
 			this.Sound = sound_binding;
 			this.Volume = volume;
 
-			this.UpdateVolume();
+			//this.UpdateVolume();
 
 			GameSEUtils.Add(this);
 		}
@@ -54,13 +56,16 @@ namespace Charlotte.Common
 
 		public void UpdateVolume()
 		{
-			for (int index = 0; index < HANDLE_NUM; index++)
-			{
-				if (this.Sound.IsHandleLoaded(index))
-				{
-					GameSoundUtils.SetVolume(this.Sound.GetHandle(index), GameSoundUtils.MixVolume(GameGround.SEVolume, this.Volume));
-				}
-			}
+			if (this.Sound.IsLoaded())
+				this.UpdateVolume_NoCheck();
+		}
+
+		public void UpdateVolume_NoCheck()
+		{
+			double mixedVolume = GameSoundUtils.MixVolume(GameGround.SEVolume, this.Volume);
+
+			for (int index = 0; index < HANDLE_COUNT; index++)
+				GameSoundUtils.SetVolume(this.Sound.GetHandle(index), mixedVolume);
 		}
 	}
 }

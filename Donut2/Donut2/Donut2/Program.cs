@@ -30,18 +30,16 @@ namespace Charlotte
 
 		private void Main2(ArgsReader ar)
 		{
-			GameMain.GameStart();
 			try
 			{
+				GameMain.GameStart();
 				Main3();
-			}
-			catch (Exception e)
-			{
-				ProcMain.WriteLog(e);
-			}
-			finally
-			{
 				GameMain.GameEnd();
+			}
+			catch
+			{
+				GameMain.GameErrorEnd();
+				throw;
 			}
 		}
 
