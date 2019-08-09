@@ -57,6 +57,7 @@
     <Compile Include="Common\GameCurtain.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameGround.cs" />
+    <Compile Include="Common\GameSubScreenUtils.cs" />
     <Compile Include="Common\GameInput.cs" />
     <Compile Include="Common\GameJammer.cs" />
     <Compile Include="Common\GameMain.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Common\GamePrint.cs" />
     <Compile Include="Common\GameSaveData.cs" />
     <Compile Include="Common\GameSE.cs" />
+    <Compile Include="Common\GameSubScreen.cs" />
     <Compile Include="Common\GameSystem.cs" />
     <Compile Include="Common\GameTaskList.cs" />
     <Compile Include="Common\GameUtils.cs" />

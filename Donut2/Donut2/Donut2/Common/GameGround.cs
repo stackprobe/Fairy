@@ -8,6 +8,10 @@ namespace Charlotte.Common
 {
 	public class GameGround
 	{
+		public static GameTaskList EL = new GameTaskList();
+		public static int PrimaryPadId = -1; // -1 == 未設定
+		public static GameSubScreen MainScreen = null; // null == 不使用
+
 		public static int RealScreen_W = GameConsts.Screen_W;
 		public static int RealScreen_H = GameConsts.Screen_H;
 
@@ -18,8 +22,6 @@ namespace Charlotte.Common
 
 		public static double MusicVolume = GameConsts.DefaultVolume;
 		public static double SEVolume = GameConsts.DefaultVolume;
-
-		public static GameTaskList EL = new GameTaskList();
 
 		public static void INIT()
 		{

@@ -6,6 +6,9 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
+	/// <summary>
+	/// その他の機能の寄せ集め、そのうち DxLib に関係無いもの。関係有るものは GameSystem へ
+	/// </summary>
 	public class GameUtils
 	{
 		public static byte[] SplitableJoin(string[] lines)
@@ -21,6 +24,15 @@ namespace Charlotte.Common
 		public static void Noop(params object[] dummyPrms)
 		{
 			// noop
+		}
+
+		public static T FastDesertElement<T>(List<T> list, Predicate<T> match, T defval = default(T))
+		{
+			for (int index = 0; index < list.Count; index++)
+				if (match(list[index]))
+					return ExtraTools.FastDesertElement(list, index);
+
+			return defval;
 		}
 	}
 }

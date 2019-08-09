@@ -15,7 +15,7 @@ namespace Charlotte.Common
 			this.Tasks.Add(task);
 		}
 
-		public void Fire()
+		public void ExecuteAllTask()
 		{
 			for (int index = 0; index < this.Tasks.Count; index++)
 			{
@@ -23,7 +23,7 @@ namespace Charlotte.Common
 
 				if (task.Routine() == false)
 				{
-					task.Destroy();
+					task.Dispose();
 					ExtraTools.FastDesertElement(this.Tasks, index--);
 				}
 			}
@@ -33,7 +33,7 @@ namespace Charlotte.Common
 		{
 			for (int index = 0; index < this.Tasks.Count; index++)
 			{
-				this.Tasks[index].Destroy();
+				this.Tasks[index].Dispose();
 			}
 			this.Tasks.Clear();
 		}

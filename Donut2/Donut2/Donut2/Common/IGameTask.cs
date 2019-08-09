@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public interface IGameTask
+	public interface IGameTask : IDisposable
 	{
 		bool Routine();
-		void Destroy();
 	}
 }

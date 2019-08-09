@@ -48,6 +48,10 @@ namespace Charlotte.Common
 			{
 				GameMusic.EachFrame();
 			}
+			GameGround.EL.ExecuteAllTask();
+			GameCurtain.EachFrame();
+
+			// TODO
 		}
 	}
 }
