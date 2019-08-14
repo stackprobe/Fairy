@@ -158,11 +158,15 @@ namespace Charlotte.Test01
 		{
 			GameMusicUtils.Fade();
 			GameCurtain.SetCurtain(30, -1.0);
+
+			GC.Collect();
 		}
 
 		private void ReturnTitleMenu()
 		{
 			Ground.I.Music.Title.Play();
+
+			GC.Collect();
 		}
 	}
 }

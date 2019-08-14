@@ -139,28 +139,31 @@ namespace Charlotte.Common
 				{
 					if (GameKey.GetInput(DX.KEY_INPUT_SPACE) == 1)
 					{
-						break;
+						return;
 					}
 					if (GameKey.GetInput(DX.KEY_INPUT_Z) == 1)
 					{
 						currBtnIndex++;
 						goto endInput;
 					}
-					int pressBtnId = -1;
 
-					for (int padId = 0; padId < GamePad.GetPadCount(); padId++)
-						for (int btnId = 0; btnId < GamePad.PAD_BUTTON_MAX; btnId++)
-							if (GamePad.GetInput(padId, btnId) == 1)
-								pressBtnId = btnId;
-
-					for (int c = 0; c < currBtnIndex; c++)
-						if (btnInfos[c].Button.BtnId == pressBtnId)
-							pressBtnId = -1;
-
-					if (pressBtnId != -1)
 					{
-						btnInfos[currBtnIndex].Button.BtnId = pressBtnId;
-						currBtnIndex++;
+						int pressBtnId = -1;
+
+						for (int padId = 0; padId < GamePad.GetPadCount(); padId++)
+							for (int btnId = 0; btnId < GamePad.PAD_BUTTON_MAX; btnId++)
+								if (GamePad.GetInput(padId, btnId) == 1)
+									pressBtnId = btnId;
+
+						for (int c = 0; c < currBtnIndex; c++)
+							if (btnInfos[c].Button.BtnId == pressBtnId)
+								pressBtnId = -1;
+
+						if (pressBtnId != -1)
+						{
+							btnInfos[currBtnIndex].Button.BtnId = pressBtnId;
+							currBtnIndex++;
+						}
 					}
 				endInput:
 
@@ -210,14 +213,14 @@ namespace Charlotte.Common
 					GameEngine.EachFrame();
 				}
 				btnInfos = null;
-
-				GameEngine.FreezeInput();
 			}
 			finally
 			{
 				if (btnInfos != null)
 					foreach (ButtonInfo info in btnInfos)
 						info.Button.Restore();
+
+				GameEngine.FreezeInput();
 			}
 		}
 

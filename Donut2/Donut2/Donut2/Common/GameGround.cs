@@ -30,8 +30,8 @@ namespace Charlotte.Common
 
 		public static GameGeneralResource GeneralResource;
 
-		public static D2Point Camera;
-		public static I2Point ICamera;
+		public static D2Point Camera = new D2Point();
+		public static I2Point ICamera = new I2Point();
 
 		public static void INIT()
 		{

@@ -8,7 +8,6 @@ namespace Charlotte.Common
 {
 	public class GameCommonEffect
 	{
-		public GameTaskList TL = GameGround.EL;
 		public List<GamePicture> Pictures = new List<GamePicture>();
 		public int FramePerPicture = 1;
 		public double X = GameConsts.Screen_W / 2.0;
@@ -47,7 +46,6 @@ namespace Charlotte.Common
 				double drawX = this.X - GameGround.ICamera.X;
 				double drawY = this.Y - GameGround.ICamera.Y;
 
-				GameDraw.SetTaskList(this.TL);
 				GameDraw.SetAlpha(this.A);
 				GameDraw.DrawBegin(this.Pictures[(frame / this.FramePerPicture) % this.Pictures.Count], drawX, drawY);
 				GameDraw.DrawRotate(this.R);
@@ -87,6 +85,16 @@ namespace Charlotte.Common
 		public IGameTask GetTask()
 		{
 			return new GameIEnumerableTask(this.GetRoutine(), () => { });
+		}
+
+		public void Fire()
+		{
+			this.Fire(GameGround.EL);
+		}
+
+		public void Fire(GameTaskList tl)
+		{
+			tl.Add(this.GetTask());
 		}
 	}
 }

@@ -55,6 +55,7 @@ namespace Charlotte
 				// Font >
 
 				GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
+				GameFontRegister.Add(@"Font\riitf\RiiT_F.otf");
 
 				// < Font
 
@@ -93,7 +94,7 @@ namespace Charlotte
 		{
 			for (; ; )
 			{
-				if (GameInput.A.IsPress())
+				if (GameInput.A.GetInput() == 1)
 				{
 					break;
 				}

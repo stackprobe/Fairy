@@ -16,24 +16,14 @@ namespace Charlotte.Common
 
 			public int Status = 0;
 
-			public bool IsPress()
+			public int GetInput()
 			{
-				return this.Status == 1;
-			}
-
-			public bool IsHold()
-			{
-				return 1 <= this.Status;
-			}
-
-			public bool IsRelease()
-			{
-				return this.Status == -1;
+				return 1 <= GameEngine.FreezeInputFrame ? 0 : this.Status;
 			}
 
 			public bool IsPound()
 			{
-				return GameUtils.IsPound(this.Status);
+				return GameUtils.IsPound(this.GetInput());
 			}
 
 			private int[] BackupData = null;
