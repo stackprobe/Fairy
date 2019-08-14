@@ -17,8 +17,6 @@ namespace Charlotte.Common
 		{
 			if (GameEngine.WindowIsActive)
 			{
-				// FIXME これでいいのか？
-
 				if (DX.GetHitKeyStateAll(StatusMap) != 0) // ? 失敗
 					throw new GameError();
 
@@ -34,6 +32,8 @@ namespace Charlotte.Common
 
 		public static int GetInput(int keyId)
 		{
+			// keyId == DX.KEY_INPUT_RETURN etc.
+
 			return 1 <= GameEngine.FreezeInputFrame ? 0 : KeyStatus[keyId];
 		}
 

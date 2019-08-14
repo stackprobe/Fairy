@@ -74,9 +74,8 @@ namespace Charlotte.Common
 				}
 			}
 
-			// app > @ before ScreenFlip
-
-			// < app
+			if (GameEngine.ProcFrame % 120 == 0)
+				GC.Collect(0);
 
 			// DxLib >
 
@@ -88,10 +87,6 @@ namespace Charlotte.Common
 			}
 
 			// < DxLib
-
-			// app > @ after ScreenFlip
-
-			// < app
 
 			CheckHz();
 
@@ -125,10 +120,6 @@ namespace Charlotte.Common
 					GameGround.MainScreen = null;
 				}
 			}
-
-			// app > @ post EachFrame
-
-			// < app
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...

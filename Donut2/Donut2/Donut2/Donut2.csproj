@@ -65,6 +65,7 @@
     <Compile Include="Common\GameDraw.cs" />
     <Compile Include="Common\GameEngine.cs" />
     <Compile Include="Common\GameError.cs" />
+    <Compile Include="Common\GameAdditionalEvents.cs" />
     <Compile Include="Common\GameFont.cs" />
     <Compile Include="Common\GameFontRegister.cs" />
     <Compile Include="Common\GameFontUtils.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Common\GamePictureLoaderUtils.cs" />
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
-    <Compile Include="Common\GameResourceCommon.cs" />
+    <Compile Include="Common\GameGeneralResource.cs" />
     <Compile Include="Common\GameSEUtils.cs" />
     <Compile Include="Common\GameSimpleMenu.cs" />
     <Compile Include="Common\GameSound.cs" />
@@ -106,7 +107,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Common\GameDrawTest.cs" />
     <Compile Include="Tests\Common\GameFontRegisterTest.cs" />
+    <Compile Include="Tests\Common\GameKeyTest.cs" />
     <Compile Include="Tests\Common\GamePictureTest.cs" />
+    <Compile Include="Tests\Common\GamePrintTest.cs" />
     <Compile Include="Tests\Common\GameResourceTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

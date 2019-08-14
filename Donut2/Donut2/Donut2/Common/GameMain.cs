@@ -45,7 +45,7 @@ namespace Charlotte.Common
 			// DxLib >
 
 			if (GameConfig.LOG_ENABLED)
-				DX.SetApplicationLogSaveDirectory(@"C:\tmp");
+				DX.SetApplicationLogSaveDirectory(GameConfig.ApplicationLogSaveDirectory);
 
 			DX.SetOutApplicationLogValidFlag(GameConfig.LOG_ENABLED ? 1 : 0); // DxLib のログを出力 1: する 0: しない
 
@@ -102,13 +102,15 @@ namespace Charlotte.Common
 
 			PostSetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
 
-			// app > @ Font
+			GameAdditionalEvents.Main_Font();
 
-			//GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
+			GameGround.CommonResource = new GameGeneralResource();
 
-			// < app
+			//GameWin32.SetForegroundWindow(GameWin32.GetMainWindowHandle()); // このウィンドウを最前面に表示する。
+			//GameWin32.ActivateWindow(GameWin32.GetMainWindowHandle()); // このウィンドウをアクティブにする。
 
-			GameGround.CommonResource = new GameResourceCommon();
+			GameAdditionalEvents.PostMain_G2();
+			GameAdditionalEvents.PostMain();
 		}
 
 		public static void GameEnd()
@@ -143,7 +145,7 @@ namespace Charlotte.Common
 
 		private static IntPtr GetAppIcon()
 		{
-			using (MemoryStream mem = new MemoryStream(GameResource.Load("game_app.ico")))
+			using (MemoryStream mem = new MemoryStream(GameResource.Load(@"General\game_app.ico")))
 			{
 				return new Icon(mem).Handle;
 			}

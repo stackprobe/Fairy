@@ -111,7 +111,7 @@ namespace Charlotte.Common
 				});
 			}
 
-			int w = DX.GetDrawStringWidth(line, StringTools.ENCODING_SJIS.GetByteCount(line)); // FIXME これでいいのか？
+			int w = DX.GetDrawStringWidth(line, StringTools.ENCODING_SJIS.GetByteCount(line));
 
 			if (w < 0 || IntTools.IMAX < w)
 				throw new GameError();

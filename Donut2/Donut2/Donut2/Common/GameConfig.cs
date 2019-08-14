@@ -22,6 +22,7 @@ namespace Charlotte.Common
 
 		public static string LogFile = @"C:\tmp\Game.log";
 		public static bool LOG_ENABLED = true;
+		public static string ApplicationLogSaveDirectory = @"C:\tmp";
 
 		// < 設定項目
 
@@ -41,6 +42,7 @@ namespace Charlotte.Common
 			DisplayIndex = int.Parse(lines[c++]);
 			LogFile = lines[c++];
 			LOG_ENABLED = int.Parse(lines[c++]) != 0;
+			ApplicationLogSaveDirectory = lines[c++];
 
 			// < 設定項目
 		}

@@ -28,7 +28,7 @@ namespace Charlotte.Common
 
 		public static bool RO_MouseDispMode = false;
 
-		public static GameResourceCommon CommonResource;
+		public static GameGeneralResource CommonResource;
 
 		public static D2Point Camera;
 		public static I2Point ICamera;
@@ -65,18 +65,12 @@ namespace Charlotte.Common
 			GameInput.PAUSE.KeyId = DX.KEY_INPUT_SPACE;
 			GameInput.START.KeyId = DX.KEY_INPUT_RETURN;
 
-			// app > @ INIT
-
-			//RO_MouseDispMode = true;
-
-			// < app
+			GameAdditionalEvents.Ground_INIT();
 		}
 
 		public static void FNLZ()
 		{
-			// app > @ FNLZ
-
-			// < app
+			GameAdditionalEvents.Ground_FNLZ();
 		}
 	}
 }

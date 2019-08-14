@@ -39,7 +39,9 @@ namespace Charlotte
 			//new GameResourceTest().Test01();
 			//new GamePictureTest().Test01();
 			//new GameDrawTest().Test01();
-			new GameFontRegisterTest().Test01();
+			//new GameFontRegisterTest().Test01();
+			new GameKeyTest().Test01();
+			//new GamePrintTest().Test01();
 		}
 
 		private void Test01()

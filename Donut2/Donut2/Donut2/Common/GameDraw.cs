@@ -18,8 +18,8 @@ namespace Charlotte.Common
 			public bool Mosaic = false;
 			public bool IntPos = false;
 			public bool IgnoreError = false;
-			public int A = -1;
-			public int BlendAdd = -1;
+			public int A = -1; // -1 == 無効
+			public int BlendAdd = -1; // -1 == 無効
 			public I3Color Bright = null;
 		};
 
@@ -150,26 +150,26 @@ namespace Charlotte.Common
 
 		private static void DrawPicMain(DrawInfo info)
 		{
-			if (Extra.A != -1)
+			if (info.Extra.A != -1)
 			{
-				SetBlend(DX.DX_BLENDMODE_ALPHA, Extra.A);
+				SetBlend(DX.DX_BLENDMODE_ALPHA, info.Extra.A);
 			}
-			else if (Extra.BlendAdd != -1)
+			else if (info.Extra.BlendAdd != -1)
 			{
-				SetBlend(DX.DX_BLENDMODE_ADD, Extra.BlendAdd);
+				SetBlend(DX.DX_BLENDMODE_ADD, info.Extra.BlendAdd);
 			}
-			else if (Extra.BlendInv)
+			else if (info.Extra.BlendInv)
 			{
 				SetBlend(DX.DX_BLENDMODE_INVSRC, 255);
 			}
 
-			if (Extra.Mosaic)
+			if (info.Extra.Mosaic)
 			{
 				DX.SetDrawMode(DX.DX_DRAWMODE_NEAREST);
 			}
-			if (Extra.Bright != null)
+			if (info.Extra.Bright != null)
 			{
-				SetBright(Extra.Bright.R, Extra.Bright.G, Extra.Bright.B);
+				SetBright(info.Extra.Bright.R, info.Extra.Bright.G, info.Extra.Bright.B);
 			}
 
 			{
@@ -178,7 +178,7 @@ namespace Charlotte.Common
 				if (u != null)
 				{
 					if (
-						Extra.IntPos ?
+						info.Extra.IntPos ?
 						DX.DrawModiGraph(
 							DoubleTools.ToInt(u.LTX),
 							DoubleTools.ToInt(u.LTY),
@@ -209,7 +209,7 @@ namespace Charlotte.Common
 						)
 					// ? 失敗
 					{
-						if (Extra.IgnoreError == false)
+						if (info.Extra.IgnoreError == false)
 							throw new GameError();
 					}
 					goto endDraw;
@@ -222,7 +222,7 @@ namespace Charlotte.Common
 				if (u != null)
 				{
 					if (
-						Extra.IntPos ?
+						info.Extra.IntPos ?
 						DX.DrawExtendGraph(
 							DoubleTools.ToInt(u.L),
 							DoubleTools.ToInt(u.T),
@@ -245,7 +245,7 @@ namespace Charlotte.Common
 						)
 					// ? 失敗
 					{
-						if (Extra.IgnoreError == false)
+						if (info.Extra.IgnoreError == false)
 							throw new GameError();
 					}
 					goto endDraw;
@@ -258,7 +258,7 @@ namespace Charlotte.Common
 				if (u != null)
 				{
 					if (
-						Extra.IntPos ?
+						info.Extra.IntPos ?
 						DX.DrawGraph(
 							DoubleTools.ToInt(u.X),
 							DoubleTools.ToInt(u.Y),
@@ -277,7 +277,7 @@ namespace Charlotte.Common
 						)
 					// ? 失敗
 					{
-						if (Extra.IgnoreError == false)
+						if (info.Extra.IgnoreError == false)
 							throw new GameError();
 					}
 					goto endDraw;
@@ -287,15 +287,15 @@ namespace Charlotte.Common
 			throw new GameError(); // ? 不明なレイアウト
 		endDraw:
 
-			if (Extra.A != -1 || Extra.BlendAdd != -1 || Extra.BlendInv)
+			if (info.Extra.A != -1 || info.Extra.BlendAdd != -1 || info.Extra.BlendInv)
 			{
 				ResetBlend();
 			}
-			if (Extra.Mosaic)
+			if (info.Extra.Mosaic)
 			{
 				DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
 			}
-			if (Extra.Bright != null)
+			if (info.Extra.Bright != null)
 			{
 				ResetBright();
 			}

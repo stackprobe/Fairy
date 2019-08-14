@@ -44,31 +44,37 @@ namespace Charlotte.Common
 			EnumWindows((hWnd, lParam) => routine(hWnd, GetWindowTitleByHandle(hWnd)), IntPtr.Zero);
 		}
 
+		private static IntPtr? MainWindowHandle = null;
+
 		public static IntPtr GetMainWindowHandle()
 		{
-			string markTitle = Guid.NewGuid().ToString("B");
-			IntPtr handle = IntPtr.Zero;
-			bool handleFound = false;
-
-			DX.SetMainWindowText(markTitle);
-
-			EnumWindowsHandleTitle((hWnd, title) =>
+			if (MainWindowHandle == null)
 			{
-				if (title == markTitle)
+				string markTitle = Guid.NewGuid().ToString("B");
+				IntPtr handle = IntPtr.Zero;
+				bool handleFound = false;
+
+				DX.SetMainWindowText(markTitle);
+
+				EnumWindowsHandleTitle((hWnd, title) =>
 				{
-					handle = hWnd;
-					handleFound = true;
-					return false;
-				}
-				return true;
-			});
+					if (title == markTitle)
+					{
+						handle = hWnd;
+						handleFound = true;
+						return false;
+					}
+					return true;
+				});
 
-			if (handleFound == false)
-				throw new GameError();
+				if (handleFound == false)
+					throw new GameError();
 
-			GameMain.SetMainWindowTitle();
+				GameMain.SetMainWindowTitle();
 
-			return handle;
+				MainWindowHandle = handle;
+			}
+			return MainWindowHandle.Value;
 		}
 
 		public const uint FR_PRIVATE = 0x10;
@@ -78,5 +84,24 @@ namespace Charlotte.Common
 
 		[DllImport("gdi32.dll")]
 		public static extern int RemoveFontResourceEx(string file, uint fl, IntPtr res);
+
+		[DllImport("user32.dll")]
+		public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+		[DllImport("user32.dll")]
+		private static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int cx, int cy, int uFlags);
+
+		public static void ActivateWindow(IntPtr hWnd)
+		{
+			const int SWP_NOSIZE = 0x0001;
+			const int SWP_NOMOVE = 0x0002;
+			const int SWP_SHOWWINDOW = 0x0040;
+
+			const int HWND_TOPMOST = -1;
+			const int HWND_NOTOPMOST = -2;
+
+			SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+			SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOMOVE | SWP_NOSIZE);
+		}
 	}
 }

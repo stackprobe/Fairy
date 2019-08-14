@@ -67,11 +67,7 @@ namespace Charlotte.Common
 			{
 				List<string> lines = new List<string>();
 
-				// app > @ Save
-
-				lines.Add(DateTimeUnit.Now().ToString()); // Dummy
-
-				// < app
+				GameAdditionalEvents.Save(lines);
 
 				blocks.Add(GameUtils.SplitableJoin(lines.ToArray()));
 			}
@@ -147,13 +143,8 @@ namespace Charlotte.Common
 			try // for app
 			{
 				string[] lines = GameUtils.Split(blocks[bc++]);
-				int c = 0;
 
-				// app > @ Load
-
-				GameUtils.Noop(lines[c++]); // Dummy
-
-				// < app
+				GameAdditionalEvents.Load(lines);
 			}
 			catch (Exception e)
 			{
