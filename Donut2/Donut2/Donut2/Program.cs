@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Charlotte.Common;
 using Charlotte.Tools;
 using Charlotte.Tests.Common;
+using Charlotte.Test01;
 
 namespace Charlotte
 {
@@ -28,20 +29,64 @@ namespace Charlotte
 #endif
 		}
 
-		private void Main2(ArgsReader ar)
+		public void Main2(ArgsReader ar)
 		{
-			GameMain2.Perform(Main3);
+			Main3();
 		}
 
 		private void Main3()
 		{
-			Test01();
+			GameAdditionalEvents.Ground_INIT = () =>
+			{
+				ProcMain.WriteLog("Ground_INIT");
+
+				//GameGround.RO_MouseDispMode = true;
+			};
+
+			GameAdditionalEvents.Ground_FNLZ = () =>
+			{
+				ProcMain.WriteLog("Ground_FNLZ");
+			};
+
+			GameAdditionalEvents.PostGameStart = () =>
+			{
+				ProcMain.WriteLog("PostGameStart");
+
+				// Font >
+
+				GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
+
+				// < Font
+
+				Ground.I = new Ground();
+			};
+
+			GameAdditionalEvents.Save = lines =>
+			{
+				lines.Add(DateTime.Now.ToString()); // Dummy
+			};
+
+			GameAdditionalEvents.Load = lines =>
+			{
+				int c = 0;
+
+				GameUtils.Noop(lines[c++]); // Dummy
+			};
+
+			GameMain2.Perform(Main4);
+		}
+
+		private void Main4()
+		{
+			//Test01();
 			//new GameResourceTest().Test01();
 			//new GamePictureTest().Test01();
 			//new GameDrawTest().Test01();
 			//new GameFontRegisterTest().Test01();
 			//new GameKeyTest().Test01();
 			//new GamePrintTest().Test01();
+			//new GamePadTest().Test01();
+			new TitleMenu().Perform();
 		}
 
 		private void Test01()

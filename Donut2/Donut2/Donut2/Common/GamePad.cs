@@ -8,8 +8,8 @@ namespace Charlotte.Common
 {
 	public static class GamePad
 	{
-		private const int PAD_MAX = 16;
-		private const int PAD_BUTTON_MAX = 32;
+		public const int PAD_MAX = 16;
+		public const int PAD_BUTTON_MAX = 32;
 
 		private static int[] ButtonStatus = new int[PAD_MAX * PAD_BUTTON_MAX]; // [padId * PAD_BUTTON_MAX + btnId]
 		private static uint[] PadStatus = new uint[PAD_MAX];

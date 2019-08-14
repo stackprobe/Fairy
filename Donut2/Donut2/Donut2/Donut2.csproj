@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GameSimpleMenu.cs" />
+    <Compile Include="Ground.cs" />
+    <Compile Include="ResourceMusic.cs" />
     <Compile Include="Common\GameCoffeeBreak.cs" />
     <Compile Include="Common\GameCommonEffect.cs" />
     <Compile Include="Common\GameConfig.cs" />
@@ -85,7 +88,6 @@
     <Compile Include="Common\GameScene.cs" />
     <Compile Include="Common\GameSceneUtils.cs" />
     <Compile Include="Common\GameSEUtils.cs" />
-    <Compile Include="Common\GameSimpleMenu.cs" />
     <Compile Include="Common\GameSound.cs" />
     <Compile Include="Common\GameSoundUtils.cs" />
     <Compile Include="Common\GameSystem.cs" />
@@ -107,13 +109,19 @@
     <Compile Include="Common\IGameTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcePicture.cs" />
+    <Compile Include="ResourceSE.cs" />
+    <Compile Include="Test01\AppGameMain.cs" />
+    <Compile Include="Test01\TitleMenu.cs" />
     <Compile Include="Tests\Common\GameDrawTest.cs" />
     <Compile Include="Tests\Common\GameFontRegisterTest.cs" />
     <Compile Include="Tests\Common\GameKeyTest.cs" />
+    <Compile Include="Tests\Common\GamePadTest.cs" />
     <Compile Include="Tests\Common\GamePictureTest.cs" />
     <Compile Include="Tests\Common\GamePrintTest.cs" />
     <Compile Include="Tests\Common\GameResourceTest.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>COPY C:\Dat\DxLibDotNet\3_20f\DxLib.dll $(TargetDir).

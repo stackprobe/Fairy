@@ -30,6 +30,28 @@ namespace Charlotte.Common
 			{
 				return this.Status == -1;
 			}
+
+			public bool IsPound()
+			{
+				return GameUtils.IsPound(this.Status);
+			}
+
+			private int[] BackupData = null;
+
+			public void Backup()
+			{
+				this.BackupData = new int[] { this.BtnId, this.KeyId };
+			}
+
+			public void Restore()
+			{
+				int c = 0;
+
+				this.BtnId = this.BackupData[c++];
+				this.KeyId = this.BackupData[c++];
+
+				this.BackupData = null;
+			}
 		}
 
 		public static Button DIR_2 = new Button();

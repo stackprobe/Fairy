@@ -145,5 +145,10 @@ namespace Charlotte.Common
 			CurrDestMusic = null;
 			CurrDestVolume = 0.0;
 		}
+
+		public static void UpdateVolume()
+		{
+			Fade(0, 1.0);
+		}
 	}
 }
