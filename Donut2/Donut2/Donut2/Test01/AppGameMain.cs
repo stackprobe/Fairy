@@ -84,13 +84,13 @@ namespace Charlotte.Test01
 
 
 				// フォントのテスト
-				GameFontUtils.DrawString(
-					10, 20,
+				GameFontUtils.DrawString_XCenter(
+					400, 20,
 					"げんかいみんちょう",
 					GameFontUtils.GetFont("源界明朝", 70, 6, true, 2)
 					);
-				GameFontUtils.DrawString(
-					10, 550,
+				GameFontUtils.DrawString_XCenter(
+					400, 520,
 					"りいてがき",
 					GameFontUtils.GetFont("りいてがき筆", 50, 60, true, 2)
 					);
@@ -117,7 +117,7 @@ namespace Charlotte.Test01
 					, GameEngine.FrameProcessingMillis
 					, frmProcMilAvg
 					, effectPerFrm
-					, effectCount 
+					, effectCount
 					));
 				GamePrint.Reset();
 

@@ -52,7 +52,7 @@ namespace Charlotte.Common
 
 		public static void DrawString_XCenter(int x, int y, string str, GameFont font, bool tategakiFlag = false, I3Color color = null, I3Color edgeColor = null)
 		{
-			x -= GetDrawStringWidth(str, font, tategakiFlag);
+			x -= GetDrawStringWidth(str, font, tategakiFlag) / 2;
 
 			DrawString(x, y, str, font, tategakiFlag, color, edgeColor);
 		}

@@ -7,7 +7,7 @@ namespace Charlotte.Common
 {
 	public class GameError : Exception
 	{
-		public GameError(string message = "Sorry, An error has occurred")
+		public GameError(string message = "エラーが発生しました。")
 			: base(message)
 		{ }
 	}
