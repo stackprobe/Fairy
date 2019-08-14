@@ -169,6 +169,9 @@ namespace Charlotte.Common
 
 					GameCurtain.DrawCurtain();
 
+					if (this.WallColor != null)
+						DX.DrawBox(0, 0, GameConsts.Screen_W, GameConsts.Screen_H, GameDxUtils.GetColor(this.WallColor), 1);
+
 					if (this.WallPicture != null)
 					{
 						GameDraw.DrawRect(this.WallPicture, 0, 0, GameConsts.Screen_W, GameConsts.Screen_H);
@@ -389,6 +392,9 @@ namespace Charlotte.Common
 				}
 
 				GameCurtain.DrawCurtain();
+
+				if (this.WallColor != null)
+					DX.DrawBox(0, 0, GameConsts.Screen_W, GameConsts.Screen_H, GameDxUtils.GetColor(this.WallColor), 1);
 
 				if (this.WallPicture != null)
 				{

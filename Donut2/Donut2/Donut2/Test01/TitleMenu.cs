@@ -44,7 +44,7 @@ namespace Charlotte.Test01
 							this.LeaveTitleMenu();
 
 							{
-								AppGameMain appGameMain = new AppGameMain();
+								AGameMain appGameMain = new AGameMain();
 
 								appGameMain.INIT();
 								appGameMain.Perform();

@@ -50,6 +50,16 @@ namespace Charlotte.Common
 			value += target;
 		}
 
+		public static void Range(ref double value, double minval, double maxval)
+		{
+			value = DoubleTools.Range(value, minval, maxval);
+		}
+
+		public static void Range(ref int value, int minval, int maxval)
+		{
+			value = IntTools.Range(value, minval, maxval);
+		}
+
 		public static void Rotate(ref double x, ref double y, double rot)
 		{
 			double w;

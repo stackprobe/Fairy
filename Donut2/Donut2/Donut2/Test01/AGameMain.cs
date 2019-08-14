@@ -8,7 +8,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Test01
 {
-	public class AppGameMain
+	public class AGameMain
 	{
 		public void INIT()
 		{
