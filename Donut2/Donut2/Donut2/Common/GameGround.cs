@@ -67,10 +67,5 @@ namespace Charlotte.Common
 
 			GameAdditionalEvents.Ground_INIT();
 		}
-
-		public static void FNLZ()
-		{
-			GameAdditionalEvents.Ground_FNLZ();
-		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
@@ -9,24 +10,24 @@ namespace Charlotte.Common
 	{
 		public static void Perform(Action routine)
 		{
-			try
+			ExceptionDam.Section(eDam =>
 			{
-				GameMain.GameStart();
-
-				try
+				eDam.Invoke(() =>
 				{
-					routine();
-				}
-				catch (GameCoffeeBreak)
-				{ }
+					GameMain.GameStart();
 
-				GameMain.GameEnd();
-			}
-			catch
-			{
-				GameMain.GameErrorEnd();
-				throw;
-			}
+					try
+					{
+						routine();
+					}
+					catch (GameCoffeeBreak)
+					{ }
+
+					GameMain.GameEnd();
+				});
+
+				GameMain.GameEnd2(eDam);
+			});
 		}
 	}
 }

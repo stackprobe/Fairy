@@ -14,14 +14,14 @@ namespace Charlotte.Common
 		public static void INIT()
 		{
 			WD = new WorkingDir();
-		}
 
-		public static void FNLZ()
-		{
-			UnloadAll();
+			GameMain.Finalizers.Add(() =>
+			{
+				UnloadAll();
 
-			WD.Dispose();
-			WD = null;
+				WD.Dispose();
+				WD = null;
+			});
 		}
 
 		public static void Add(string file)

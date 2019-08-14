@@ -28,11 +28,6 @@ namespace Charlotte.Common
 			}
 		}
 
-		public static void FNLZ()
-		{
-			// noop
-		}
-
 		private static string GetValue(string name)
 		{
 			if (Name2Value.ContainsKey(name) == false)

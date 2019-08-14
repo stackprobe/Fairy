@@ -55,11 +55,6 @@ namespace Charlotte.Common
 			}
 		}
 
-		public static void FNLZ()
-		{
-			// noop
-		}
-
 		private static byte[] LoadFile(long offset, int size)
 		{
 			using (FileStream reader = new FileStream(GameConsts.ResourceFile, FileMode.Open, FileAccess.Read))

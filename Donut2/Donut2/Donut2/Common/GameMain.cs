@@ -11,7 +11,8 @@ namespace Charlotte.Common
 {
 	public static class GameMain
 	{
-		private static bool DxLibInited = false;
+		public static List<Action> Finalizers = new List<Action>();
+
 		private static int LogCount = 0;
 
 		public static void GameStart()
@@ -72,7 +73,11 @@ namespace Charlotte.Common
 			if (DX.DxLib_Init() != 0) // ? 失敗
 				throw new GameError();
 
-			DxLibInited = true;
+			Finalizers.Add(() =>
+			{
+				if (DX.DxLib_End() != 0) // ? 失敗
+					throw new GameError();
+			});
 
 			GameDxUtils.SetMouseDispMode(GameGround.RO_MouseDispMode); // ? マウスを表示する。
 			DX.SetWindowSizeChangeEnableFlag(0); // ウィンドウの右下をドラッグで伸縮 1: する 0: しない
@@ -116,25 +121,13 @@ namespace Charlotte.Common
 		public static void GameEnd()
 		{
 			GameSaveData.Save();
-
-			// *.FNLZ
-			{
-				GameFontRegister.FNLZ();
-				GameUserDatStrings.FNLZ();
-				GameDatStrings.FNLZ();
-				GameResource.FNLZ();
-				GameGround.FNLZ();
-			}
-
-			if (DX.DxLib_End() != 0)
-				throw new GameError();
 		}
 
-		public static void GameErrorEnd()
+		public static void GameEnd2(ExceptionDam eDam)
 		{
-			if (DxLibInited)
+			while (1 <= Finalizers.Count)
 			{
-				DX.DxLib_End();
+				eDam.Invoke(ExtraTools.UnaddElement(Finalizers));
 			}
 		}
 
