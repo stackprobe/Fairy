@@ -224,27 +224,26 @@ namespace Charlotte.Common
 			}
 		}
 
+		private static int WinSzExp(int size, int index)
+		{
+			return (size * (8 + index)) / 8;
+		}
+
 		public void WindowSizeConfig()
 		{
-			if (GameConsts.Screen_W % 8 != 0) throw new GameError();
-			if (GameConsts.Screen_H % 8 != 0) throw new GameError();
-
-			const int W8 = GameConsts.Screen_W / 8;
-			const int H8 = GameConsts.Screen_H / 8;
-
 			string[] items = new string[]
 			{
 				string.Format("{0} x {1} (デフォルト)", GameConsts.Screen_W, GameConsts.Screen_H),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  1, GameConsts.Screen_H + H8 *  1),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  2, GameConsts.Screen_H + H8 *  2),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  3, GameConsts.Screen_H + H8 *  3),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  4, GameConsts.Screen_H + H8 *  4),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  5, GameConsts.Screen_H + H8 *  5),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  6, GameConsts.Screen_H + H8 *  6),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  7, GameConsts.Screen_H + H8 *  7),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  8, GameConsts.Screen_H + H8 *  8),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 *  9, GameConsts.Screen_H + H8 *  9),
-				string.Format("{0} x {1}", GameConsts.Screen_W + W8 * 10, GameConsts.Screen_H + H8 * 10),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  1), WinSzExp(GameConsts.Screen_H,  1)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  2), WinSzExp(GameConsts.Screen_H,  2)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  3), WinSzExp(GameConsts.Screen_H,  3)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  4), WinSzExp(GameConsts.Screen_H,  4)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  5), WinSzExp(GameConsts.Screen_H,  5)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  6), WinSzExp(GameConsts.Screen_H,  6)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  7), WinSzExp(GameConsts.Screen_H,  7)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  8), WinSzExp(GameConsts.Screen_H,  8)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W,  9), WinSzExp(GameConsts.Screen_H,  9)),
+				string.Format("{0} x {1}", WinSzExp(GameConsts.Screen_W, 10), WinSzExp(GameConsts.Screen_H, 10)),
 				"フルスクリーン 画面に合わせる",
 				"フルスクリーン 縦横比維持",
 				"フルスクリーン 黒背景 (推奨)",
@@ -270,7 +269,7 @@ namespace Charlotte.Common
 					case 8:
 					case 9:
 					case 10:
-						GameMain.SetScreenSize(GameConsts.Screen_W + W8 * selectIndex, GameConsts.Screen_H + H8 * selectIndex);
+						GameMain.SetScreenSize(WinSzExp(GameConsts.Screen_W, selectIndex), WinSzExp(GameConsts.Screen_H, selectIndex));
 						break;
 
 					case 11:
