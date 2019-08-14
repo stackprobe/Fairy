@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Charlotte.Tools;
 using System.IO;
-using DxLibDLL;
 using System.Drawing;
+using Charlotte.Tools;
+using DxLibDLL;
 
 namespace Charlotte.Common
 {
 	public static class GameMain
 	{
 		private static bool DxLibInited = false;
+		private static int LogCount = 0;
 
 		public static void GameStart()
 		{
-			GameConfig.Load(); // LogFile, LOG_ENABLED を含むので真っ先に
+			GameConfig.Load(); // LogFile, LOG_ENABLED 等を含むので真っ先に
 
 			// Log >
 
@@ -23,9 +24,13 @@ namespace Charlotte.Common
 
 			ProcMain.WriteLog = message =>
 			{
-				using (StreamWriter writer = new StreamWriter(GameConfig.LogFile, true, Encoding.UTF8))
+				if (LogCount < GameConfig.LogCountMax)
 				{
-					writer.WriteLine("[" + DateTime.Now + "] " + message);
+					using (StreamWriter writer = new StreamWriter(GameConfig.LogFile, true, Encoding.UTF8))
+					{
+						writer.WriteLine("[" + DateTime.Now + "] " + message);
+					}
+					LogCount++;
 				}
 			};
 
@@ -102,15 +107,10 @@ namespace Charlotte.Common
 
 			PostSetScreenSize(GameGround.RealScreen_W, GameGround.RealScreen_H);
 
-			GameAdditionalEvents.Main_Font();
+			GameGround.GeneralResource = new GameGeneralResource();
 
-			GameGround.CommonResource = new GameGeneralResource();
-
-			//GameWin32.SetForegroundWindow(GameWin32.GetMainWindowHandle()); // このウィンドウを最前面に表示する。
-			//GameWin32.ActivateWindow(GameWin32.GetMainWindowHandle()); // このウィンドウをアクティブにする。
-
-			GameAdditionalEvents.PostMain_G2();
-			GameAdditionalEvents.PostMain();
+			GameAdditionalEvents.PostGameStart();
+			GameAdditionalEvents.PostGameStart_G2();
 		}
 
 		public static void GameEnd()

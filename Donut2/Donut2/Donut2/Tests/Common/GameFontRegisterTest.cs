@@ -10,7 +10,7 @@ namespace Charlotte.Tests.Common
 	{
 		public void Test01()
 		{
-			GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
+			//GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf"); // -> GameAdditionalEvents.PostGameStart()
 			GameFontRegister.Add(@"Font\riitf\RiiT_F.otf");
 		}
 	}

@@ -12,12 +12,14 @@ namespace Charlotte.Common
 			//GameGround.RO_MouseDispMode = true;
 		};
 		public static Action Ground_FNLZ = () => { };
-		public static Action Main_Font = () =>
+		public static Action PostGameStart = () =>
 		{
 			//GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
 		};
-		public static Action PostMain_G2 = () => { };
-		public static Action PostMain = () => { };
+		public static Action PostGameStart_G2 = () =>
+		{
+			//this.Visible = false;
+		};
 		public static Action<List<string>> Save = lines =>
 		{
 			lines.Add(DateTime.Now.ToString()); // Dummy

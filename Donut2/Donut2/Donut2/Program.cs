@@ -35,12 +35,12 @@ namespace Charlotte
 
 		private void Main3()
 		{
-			//Test01();
+			Test01();
 			//new GameResourceTest().Test01();
 			//new GamePictureTest().Test01();
 			//new GameDrawTest().Test01();
 			//new GameFontRegisterTest().Test01();
-			new GameKeyTest().Test01();
+			//new GameKeyTest().Test01();
 			//new GamePrintTest().Test01();
 		}
 
@@ -52,6 +52,16 @@ namespace Charlotte
 				{
 					break;
 				}
+
+				GameCurtain.DrawCurtain();
+
+				GamePrint.SetPrint();
+				GamePrint.Print("FrameProcessingMillis: " + GameEngine.FrameProcessingMillis);
+
+				GameDraw.DrawBegin(GameGround.GeneralResource.WhiteBox, GameConsts.Screen_W / 2.0, GameConsts.Screen_H / 2.0);
+				GameDraw.DrawZoom(10.0);
+				GameDraw.DrawRotate(GameEngine.ProcFrame / 20.0);
+				GameDraw.DrawEnd();
 
 				GameEngine.EachFrame();
 			}

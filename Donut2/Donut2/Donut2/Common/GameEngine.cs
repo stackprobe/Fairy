@@ -12,6 +12,7 @@ namespace Charlotte.Common
 	{
 		public static long FrameStartTime;
 		public static long LangolierTime;
+		public static long FrameProcessingMillis;
 		public static int ProcFrame;
 		public static int FreezeInputFrame;
 		public static bool WindowIsActive;
@@ -40,6 +41,8 @@ namespace Charlotte.Common
 
 				currTime = GameDxUtils.GetCurrTime();
 			}
+
+			FrameStartTime = currTime;
 		}
 
 		public static void EachFrame()
@@ -74,8 +77,9 @@ namespace Charlotte.Common
 				}
 			}
 
-			if (GameEngine.ProcFrame % 120 == 0)
-				GC.Collect(0);
+			GC.Collect(0);
+
+			FrameProcessingMillis = GameDxUtils.GetCurrTime() - FrameStartTime;
 
 			// DxLib >
 

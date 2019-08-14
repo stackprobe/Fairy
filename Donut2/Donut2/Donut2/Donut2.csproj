@@ -82,6 +82,8 @@
     <Compile Include="Common\GamePictureUtils.cs" />
     <Compile Include="Common\GameResource.cs" />
     <Compile Include="Common\GameGeneralResource.cs" />
+    <Compile Include="Common\GameScene.cs" />
+    <Compile Include="Common\GameSceneUtils.cs" />
     <Compile Include="Common\GameSEUtils.cs" />
     <Compile Include="Common\GameSimpleMenu.cs" />
     <Compile Include="Common\GameSound.cs" />

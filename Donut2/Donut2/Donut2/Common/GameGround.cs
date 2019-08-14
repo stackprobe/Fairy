@@ -28,7 +28,7 @@ namespace Charlotte.Common
 
 		public static bool RO_MouseDispMode = false;
 
-		public static GameGeneralResource CommonResource;
+		public static GameGeneralResource GeneralResource;
 
 		public static D2Point Camera;
 		public static I2Point ICamera;

@@ -79,7 +79,7 @@ namespace Charlotte.Common
 			else
 				GameDraw.SetAlpha(whiteLevel);
 
-			GameDraw.DrawRect(GameGround.CommonResource.WhiteBox, 0, 0, GameConsts.Screen_W, GameConsts.Screen_H);
+			GameDraw.DrawRect(GameGround.GeneralResource.WhiteBox, 0, 0, GameConsts.Screen_W, GameConsts.Screen_H);
 			GameDraw.Reset();
 		}
 	}

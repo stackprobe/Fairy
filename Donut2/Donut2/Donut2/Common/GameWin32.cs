@@ -84,24 +84,5 @@ namespace Charlotte.Common
 
 		[DllImport("gdi32.dll")]
 		public static extern int RemoveFontResourceEx(string file, uint fl, IntPtr res);
-
-		[DllImport("user32.dll")]
-		public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-		[DllImport("user32.dll")]
-		private static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int cx, int cy, int uFlags);
-
-		public static void ActivateWindow(IntPtr hWnd)
-		{
-			const int SWP_NOSIZE = 0x0001;
-			const int SWP_NOMOVE = 0x0002;
-			const int SWP_SHOWWINDOW = 0x0040;
-
-			const int HWND_TOPMOST = -1;
-			const int HWND_NOTOPMOST = -2;
-
-			SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-			SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOMOVE | SWP_NOSIZE);
-		}
 	}
 }
