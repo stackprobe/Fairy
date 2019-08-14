@@ -34,6 +34,10 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
+			// app > @ enter EachFrame
+
+			// < app
+
 			if (GameSEUtils.EachFrame() == false)
 			{
 				GameMusicUtils.EachFrame();
@@ -64,6 +68,10 @@ namespace Charlotte.Common
 				}
 			}
 
+			// app > @ before ScreenFlip
+
+			// < app
+
 			GC.Collect(0);
 
 			FrameProcessingMillis = (int)(GameDxUtils.GetCurrTime() - FrameStartTime);
@@ -78,6 +86,10 @@ namespace Charlotte.Common
 			}
 
 			// < DxLib
+
+			// app > @ after ScreenFlip
+
+			// < app
 
 			CheckHz();
 
@@ -111,6 +123,10 @@ namespace Charlotte.Common
 					GameGround.MainScreen = null;
 				}
 			}
+
+			// app > @ leave EachFrame
+
+			// < app
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...
