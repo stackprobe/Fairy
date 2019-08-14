@@ -36,7 +36,8 @@ namespace Charlotte.Test01
 			long frmProcMilAvgNumer = 0L;
 			long frmProcMilAvgDenom = 0L;
 
-			int efPerFrm = 10;
+			int effectPerFrm = 10;
+			int effectCount = 1;
 
 			for (; ; )
 			{
@@ -44,30 +45,39 @@ namespace Charlotte.Test01
 				{
 					break;
 				}
-				if (GameInput.A.GetInput() == 1)
+				if (GameInput.A.IsPound())
 				{
-					efPerFrm = 1;
+					effectPerFrm--;
 				}
-				if (GameInput.B.GetInput() == 1)
+				if (GameInput.B.IsPound())
 				{
-					efPerFrm = 10;
+					effectPerFrm++;
 				}
-				if (GameInput.C.GetInput() == 1)
+				if (GameInput.C.IsPound())
 				{
-					frmProcMilAvgNumer = 0L;
-					frmProcMilAvgDenom = 0L;
+					effectCount++;
 				}
-				if (GameEngine.ProcFrame % efPerFrm == 0)
+				if (GameInput.D.IsPound())
 				{
-					new GameCommonEffect(GameGround.GeneralResource.Dummy)
+					effectCount--;
+				}
+				effectPerFrm = IntTools.Range(effectPerFrm, 1, 10);
+				effectCount = IntTools.Range(effectCount, 1, 100);
+
+				if (GameEngine.ProcFrame % effectPerFrm == 0)
+				{
+					for (int c = 0; c < effectCount; c++)
 					{
-						X = 400.0,
-						Y = 300.0,
-						Z = 0.5,
-						XAdd2 = Math.Cos(GameEngine.ProcFrame / 100.0) * 0.1,
-						YAdd2 = Math.Sin(GameEngine.ProcFrame / 100.0) * 0.1,
+						new GameCommonEffect(GameGround.GeneralResource.Dummy)
+						{
+							X = 400.0,
+							Y = 300.0,
+							Z = 0.5,
+							XAdd2 = Math.Cos(GameEngine.ProcFrame / 100.0 + c) * 0.1,
+							YAdd2 = Math.Sin(GameEngine.ProcFrame / 100.0 + c) * 0.1,
+						}
+						.Fire();
 					}
-					.Fire();
 				}
 				this.DrawWall();
 
@@ -92,14 +102,22 @@ namespace Charlotte.Test01
 
 				double frmProcMilAvg = (double)frmProcMilAvgNumer / frmProcMilAvgDenom;
 
+				if (GameEngine.ProcFrame % 100 == 0)
+				{
+					frmProcMilAvgNumer /= 2;
+					frmProcMilAvgDenom /= 2;
+				}
+
 				GamePrint.SetPrint();
 				GamePrint.SetColor(new I3Color(255, 128, 0));
 				GamePrint.Print(string.Format(
-					"FST={0},LT={1},FPM={2},FPMA={3:F3}"
+					"FST={0},LT={1},FPM={2},FPMA={3:F3}(EPF={4},EC={5})"
 					, GameEngine.FrameStartTime
 					, GameEngine.LangolierTime
 					, GameEngine.FrameProcessingMillis
 					, frmProcMilAvg
+					, effectPerFrm
+					, effectCount 
 					));
 				GamePrint.Reset();
 
