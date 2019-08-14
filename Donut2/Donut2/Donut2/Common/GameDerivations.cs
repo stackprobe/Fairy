@@ -9,28 +9,26 @@ namespace Charlotte.Common
 {
 	public static class GameDerivations
 	{
-		public static GamePicture GetPicture(Func<GamePicture> getPicture, int l, int t, int w, int h)
+		public static GamePicture GetPicture(GamePicture picture, int l, int t, int w, int h)
 		{
+			if (
+				l < 0 || IntTools.IMAX < l ||
+				t < 0 || IntTools.IMAX < t ||
+				w < 1 || IntTools.IMAX - l < w ||
+				h < 1 || IntTools.IMAX - t < h
+				)
+				throw new GameError();
+
+			// ? 範囲外
+			if (
+				picture.Get_W() < l + w ||
+				picture.Get_H() < t + h
+				)
+				throw new GameError();
+
 			return new GamePicture(
 				() =>
 				{
-					GamePicture picture = getPicture();
-
-					if (
-						l < 0 || IntTools.IMAX < l ||
-						t < 0 || IntTools.IMAX < t ||
-						w < 1 || IntTools.IMAX - l < w ||
-						h < 1 || IntTools.IMAX - t < h
-						)
-						throw new GameError();
-
-					// ? 範囲外
-					if (
-						picture.Get_W() < l + w ||
-						picture.Get_H() < t + h
-						)
-						throw new GameError();
-
 					int handle = DX.DerivationGraph(l, t, w, h, picture.GetHandle());
 
 					if (handle == -1) // ? 失敗
