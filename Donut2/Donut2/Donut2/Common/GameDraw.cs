@@ -299,6 +299,10 @@ namespace Charlotte.Common
 			{
 				ResetBright();
 			}
+
+			// app > @ post draw picture
+
+			// < app
 		}
 
 		private class DrawPicTask : IGameTask
