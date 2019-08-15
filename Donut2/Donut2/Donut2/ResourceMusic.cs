@@ -8,8 +8,8 @@ namespace Charlotte
 {
 	public class ResourceMusic
 	{
-		public GameMusic Dummy = new GameMusic(@"General\muon.wav");
-		public GameMusic Title = new GameMusic(@"hmix\c22.mp3");
-		public GameMusic Filed_01 = new GameMusic(@"hmix\n4.mp3");
+		public DDMusic Dummy = new DDMusic(@"General\muon.wav");
+		public DDMusic Title = new DDMusic(@"hmix\c22.mp3");
+		public DDMusic Filed_01 = new DDMusic(@"hmix\n4.mp3");
 	}
 }

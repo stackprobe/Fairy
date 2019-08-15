@@ -36,57 +36,57 @@ namespace Charlotte
 
 		private void Main3()
 		{
-			GameAdditionalEvents.Ground_INIT = () =>
+			DDAdditionalEvents.Ground_INIT = () =>
 			{
 				//GameGround.RO_MouseDispMode = true;
 			};
 
-			GameAdditionalEvents.Ground_FNLZ = () =>
+			DDAdditionalEvents.Ground_FNLZ = () =>
 			{
 				// none
 			};
 
-			GameAdditionalEvents.PostGameStart = () =>
+			DDAdditionalEvents.PostGameStart = () =>
 			{
 				// Font >
 
-				GameFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
-				GameFontRegister.Add(@"Font\riitf\RiiT_F.otf");
+				DDFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
+				DDFontRegister.Add(@"Font\riitf\RiiT_F.otf");
 
 				// < Font
 
 				Ground.I = new Ground();
 			};
 
-			GameAdditionalEvents.Save = lines =>
+			DDAdditionalEvents.Save = lines =>
 			{
 				lines.Add(DateTime.Now.ToString()); // Dummy
 				lines.Add(DateTime.Now.ToString()); // Dummy
 				lines.Add(DateTime.Now.ToString()); // Dummy
 			};
 
-			GameAdditionalEvents.Load = lines =>
+			DDAdditionalEvents.Load = lines =>
 			{
 				int c = 0;
 
-				GameUtils.Noop(lines[c++]); // Dummy
-				GameUtils.Noop(lines[c++]); // Dummy
-				GameUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
 			};
 
-			GameMain2.Perform(Main4);
+			DDMain2.Perform(Main4);
 		}
 
 		private void Main4()
 		{
 			//Test01();
-			//new GameResourceTest().Test01();
-			//new GamePictureTest().Test01();
-			//new GameDrawTest().Test01();
-			//new GameFontRegisterTest().Test01();
-			//new GameKeyTest().Test01();
-			//new GamePrintTest().Test01();
-			//new GamePadTest().Test01();
+			//new DDResourceTest().Test01();
+			//new DDPictureTest().Test01();
+			//new DDDrawTest().Test01();
+			//new DDFontRegisterTest().Test01();
+			//new DDKeyTest().Test01();
+			//new DDPrintTest().Test01();
+			//new DDPadTest().Test01();
 			new TitleMenu().Perform();
 		}
 
@@ -94,22 +94,22 @@ namespace Charlotte
 		{
 			for (; ; )
 			{
-				if (GameInput.A.GetInput() == 1)
+				if (DDInput.A.GetInput() == 1)
 				{
 					break;
 				}
 
-				GameCurtain.DrawCurtain();
+				DDCurtain.DrawCurtain();
 
-				GamePrint.SetPrint();
-				GamePrint.Print("FrameProcessingMillis: " + GameEngine.FrameProcessingMillis);
+				DDPrint.SetPrint();
+				DDPrint.Print("FrameProcessingMillis: " + DDEngine.FrameProcessingMillis);
 
-				GameDraw.DrawBegin(GameGround.GeneralResource.WhiteBox, GameConsts.Screen_W / 2.0, GameConsts.Screen_H / 2.0);
-				GameDraw.DrawZoom(10.0);
-				GameDraw.DrawRotate(GameEngine.ProcFrame / 20.0);
-				GameDraw.DrawEnd();
+				DDDraw.DrawBegin(DDGround.GeneralResource.WhiteBox, DDConsts.Screen_W / 2.0, DDConsts.Screen_H / 2.0);
+				DDDraw.DrawZoom(10.0);
+				DDDraw.DrawRotate(DDEngine.ProcFrame / 20.0);
+				DDDraw.DrawEnd();
 
-				GameEngine.EachFrame();
+				DDEngine.EachFrame();
 			}
 		}
 	}

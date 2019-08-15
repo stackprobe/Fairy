@@ -9,12 +9,12 @@ namespace Charlotte.Test01
 {
 	public class TitleMenu
 	{
-		private GameSimpleMenu SmplMenu;
+		private DDSimpleMenu SmplMenu;
 
 		public void Perform()
 		{
-			GameCurtain.SetCurtain();
-			GameEngine.FreezeInput();
+			DDCurtain.SetCurtain();
+			DDEngine.FreezeInput();
 
 			Ground.I.Music.Title.Play();
 
@@ -28,7 +28,7 @@ namespace Charlotte.Test01
 
 			int selectIndex = 0;
 
-			this.SmplMenu = new GameSimpleMenu();
+			this.SmplMenu = new DDSimpleMenu();
 
 			//this.SmplMenu.WallColor = new I3Color(0, 0, 64); // test
 			this.SmplMenu.WallPicture = Ground.I.Picture.TitleWall;
@@ -44,11 +44,11 @@ namespace Charlotte.Test01
 							this.LeaveTitleMenu();
 
 							{
-								AGameMain appGameMain = new AGameMain();
+								GameMain gameMain = new GameMain();
 
-								appGameMain.INIT();
-								appGameMain.Perform();
-								appGameMain.FNLZ();
+								gameMain.INIT();
+								gameMain.Perform();
+								gameMain.FNLZ();
 							}
 
 							this.ReturnTitleMenu();
@@ -67,27 +67,27 @@ namespace Charlotte.Test01
 						goto endMenu;
 
 					default:
-						throw new GameError();
+						throw new DDError();
 				}
 			}
 		endMenu:
-			GameEngine.FreezeInput();
-			GameMusicUtils.Fade();
-			GameCurtain.SetCurtain(30, -1.0);
+			DDEngine.FreezeInput();
+			DDMusicUtils.Fade();
+			DDCurtain.SetCurtain(30, -1.0);
 
-			foreach (GameScene scene in GameSceneUtils.Create(40))
+			foreach (DDScene scene in DDSceneUtils.Create(40))
 			{
 				this.DrawWall();
-				GameEngine.EachFrame();
+				DDEngine.EachFrame();
 			}
 		}
 
 		private void Setting()
 		{
-			GameCurtain.SetCurtain();
-			GameEngine.FreezeInput();
+			DDCurtain.SetCurtain();
+			DDEngine.FreezeInput();
 
-			string[] items = new string[] 
+			string[] items = new string[]
 			{
 				"パッドのボタン設定",
 				"ウィンドウサイズ変更",
@@ -113,20 +113,20 @@ namespace Charlotte.Test01
 						break;
 
 					case 2:
-						this.SmplMenu.VolumeConfig("ＢＧＭ音量", GameGround.MusicVolume, 0, 100, 1, 10, volume =>
+						this.SmplMenu.VolumeConfig("ＢＧＭ音量", DDGround.MusicVolume, 0, 100, 1, 10, volume =>
 						{
-							GameGround.MusicVolume = volume;
-							GameMusicUtils.UpdateVolume();
+							DDGround.MusicVolume = volume;
+							DDMusicUtils.UpdateVolume();
 						},
 						() => { }
 						);
 						break;
 
 					case 3:
-						this.SmplMenu.VolumeConfig("ＳＥ音量", GameGround.SEVolume, 0, 100, 1, 10, volume =>
+						this.SmplMenu.VolumeConfig("ＳＥ音量", DDGround.SEVolume, 0, 100, 1, 10, volume =>
 						{
-							GameGround.SEVolume = volume;
-							GameSEUtils.UpdateVolume();
+							DDGround.SEVolume = volume;
+							DDSEUtils.UpdateVolume();
 						},
 						() =>
 						{
@@ -142,22 +142,22 @@ namespace Charlotte.Test01
 						goto endMenu;
 
 					default:
-						throw new GameError();
+						throw new DDError();
 				}
 			}
 		endMenu:
-			GameEngine.FreezeInput();
+			DDEngine.FreezeInput();
 		}
 
 		private void DrawWall()
 		{
-			GameDraw.DrawRect(Ground.I.Picture.TitleWall, 0, 0, GameConsts.Screen_W, GameConsts.Screen_H);
+			DDDraw.DrawRect(Ground.I.Picture.TitleWall, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
 		}
 
 		private void LeaveTitleMenu()
 		{
-			GameMusicUtils.Fade();
-			GameCurtain.SetCurtain(30, -1.0);
+			DDMusicUtils.Fade();
+			DDCurtain.SetCurtain(30, -1.0);
 
 			GC.Collect();
 		}
