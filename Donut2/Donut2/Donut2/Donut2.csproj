@@ -63,7 +63,6 @@
     <Compile Include="Common\DDCurtain.cs" />
     <Compile Include="Common\DDDatStrings.cs" />
     <Compile Include="Common\DDDerivations.cs" />
-    <Compile Include="Common\DDDerivationTable.cs" />
     <Compile Include="Common\DDDerivationUtils.cs" />
     <Compile Include="Common\DDDraw.cs" />
     <Compile Include="Common\DDEngine.cs" />
