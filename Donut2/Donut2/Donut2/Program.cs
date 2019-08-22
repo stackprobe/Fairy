@@ -8,6 +8,7 @@ using Charlotte.Common;
 using Charlotte.Tools;
 using Charlotte.Tests.Common;
 using Charlotte.Test01;
+using Charlotte.Test02;
 
 namespace Charlotte
 {
@@ -83,8 +84,9 @@ namespace Charlotte
 			//new DDKeyTest().Test01();
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
-			new DDMouseTest().Test01();
+			//new DDMouseTest().Test01();
 			//new TitleMenu().Perform();
+			new InputStringDemo().Perform();
 		}
 
 		private void Test01()

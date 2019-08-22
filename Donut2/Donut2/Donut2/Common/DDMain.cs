@@ -50,6 +50,7 @@ namespace Charlotte.Common
 				DDDatStrings.INIT();
 				DDUserDatStrings.INIT();
 				DDFontRegister.INIT();
+				DDKey.INIT();
 			}
 
 			DDSaveData.Load();

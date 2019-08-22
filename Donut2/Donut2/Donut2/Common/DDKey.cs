@@ -13,6 +13,11 @@ namespace Charlotte.Common
 		private static int[] KeyStatus = new int[KEY_MAX];
 		private static byte[] StatusMap = new byte[KEY_MAX];
 
+		public static void INIT()
+		{
+			DDSystem.Pin(StatusMap);
+		}
+
 		public static void EachFrame()
 		{
 			if (DDEngine.WindowIsActive)

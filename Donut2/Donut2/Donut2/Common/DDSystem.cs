@@ -20,5 +20,15 @@ namespace Charlotte.Common
 				pinnedData.Free();
 			}
 		}
+
+		public static void Pin<T>(T data)
+		{
+			GCHandle h = GCHandle.Alloc(data, GCHandleType.Pinned);
+
+			DDMain.Finalizers.Add(() =>
+			{
+				h.Free();
+			});
+		}
 	}
 }
