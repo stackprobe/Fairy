@@ -17,6 +17,8 @@ namespace Charlotte.Common
 
 		public static void GameStart()
 		{
+			DX.GetColor(0, 0, 0); // DxLibDotNet.dll 等の存在確認
+
 			DDConfig.Load(); // LogFile, LOG_ENABLED 等を含むので真っ先に
 
 			// Log >
