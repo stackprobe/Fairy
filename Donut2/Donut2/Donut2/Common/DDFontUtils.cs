@@ -47,7 +47,7 @@ namespace Charlotte.Common
 			if (edgeColor == null)
 				edgeColor = new I3Color(0, 0, 0);
 
-			DX.DrawStringToHandle(x, y, str, DDDxUtils.GetColor(color), font.GetHandle(), DDDxUtils.GetColor(edgeColor), tategakiFlag ? 1 : 0);
+			DX.DrawStringToHandle(x, y, str, DDUtils.GetColor(color), font.GetHandle(), DDUtils.GetColor(edgeColor), tategakiFlag ? 1 : 0);
 		}
 
 		public static void DrawString_XCenter(int x, int y, string str, DDFont font, bool tategakiFlag = false, I3Color color = null, I3Color edgeColor = null)

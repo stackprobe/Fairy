@@ -72,9 +72,9 @@ namespace Charlotte.Common
 			if (info.BorderWidth != 0)
 				for (int xc = -info.BorderWidth; xc <= info.BorderWidth; xc++)
 					for (int yc = -info.BorderWidth; yc <= info.BorderWidth; yc++)
-						DX.DrawString(info.X + xc, info.Y + yc, info.Line, DDDxUtils.GetColor(info.BorderColor), 0);
+						DX.DrawString(info.X + xc, info.Y + yc, info.Line, DDUtils.GetColor(info.BorderColor), 0);
 
-			DX.DrawString(info.X, info.Y, info.Line, DDDxUtils.GetColor(info.Color), 0);
+			DX.DrawString(info.X, info.Y, info.Line, DDUtils.GetColor(info.Color), 0);
 		}
 
 		private class PrintTask : IDDTask

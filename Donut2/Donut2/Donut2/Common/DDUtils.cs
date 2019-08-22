@@ -3,14 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Charlotte.Tools;
+using DxLibDLL;
 
 namespace Charlotte.Common
 {
-	/// <summary>
-	/// その他の機能の寄せ集め、そのうち DxLib に関係無いもの。関係有るものは DDDxUtils へ
-	/// </summary>
 	public static class DDUtils
 	{
+		// DX.* >
+
+		public static bool IsWindowActive()
+		{
+			return DX.GetActiveFlag() != 0;
+		}
+
+		public static long GetCurrTime()
+		{
+			return DX.GetNowHiPerformanceCount() / 1000L;
+		}
+
+		public static bool GetMouseDispMode()
+		{
+			return DX.GetMouseDispFlag() != 0;
+		}
+
+		public static void SetMouseDispMode(bool mode)
+		{
+			DX.SetMouseDispFlag(mode ? 1 : 0);
+		}
+
+		public static uint GetColor(I3Color color)
+		{
+			return DX.GetColor(color.R, color.G, color.B);
+		}
+
+		// < DX.*
+
 		public static byte[] SplitableJoin(string[] lines)
 		{
 			return BinTools.SplittableJoin(lines.Select(line => Encoding.UTF8.GetBytes(line)).ToArray());

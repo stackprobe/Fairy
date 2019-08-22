@@ -101,7 +101,6 @@
     <Compile Include="Common\DDSaveData.cs" />
     <Compile Include="Common\DDSE.cs" />
     <Compile Include="Common\DDSubScreen.cs" />
-    <Compile Include="Common\DDDxUtils.cs" />
     <Compile Include="Common\DDTaskList.cs" />
     <Compile Include="Common\DDUtils.cs" />
     <Compile Include="Common\DDWin32.cs" />
