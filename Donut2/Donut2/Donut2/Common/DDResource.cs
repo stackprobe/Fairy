@@ -9,15 +9,15 @@ namespace Charlotte.Common
 {
 	public static class DDResource
 	{
-		public static bool ReleaseMode;
+		private static bool ReleaseMode;
 
-		public class ResInfo
+		private class ResInfo
 		{
 			public long Offset;
 			public int Size;
 		}
 
-		public static Dictionary<string, ResInfo> File2ResInfo = DictionaryTools.CreateIgnoreCase<ResInfo>();
+		private static Dictionary<string, ResInfo> File2ResInfo = DictionaryTools.CreateIgnoreCase<ResInfo>();
 
 		public static void INIT()
 		{
@@ -92,6 +92,21 @@ namespace Charlotte.Common
 			{
 				File.WriteAllBytes(Path.Combine(DDConsts.ResourceDir, file), fileData);
 			}
+		}
+
+		public static IEnumerable<string> GetFiles()
+		{
+			IEnumerable<string> files;
+
+			if (ReleaseMode)
+			{
+				files = File2ResInfo.Keys;
+			}
+			else
+			{
+				files = Directory.GetFiles(DDConsts.ResourceDir, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir));
+			}
+			return files.Where(file => Path.GetFileName(file)[0] != '_');
 		}
 	}
 }

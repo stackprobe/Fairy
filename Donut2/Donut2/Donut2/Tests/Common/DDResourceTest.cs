@@ -15,5 +15,13 @@ namespace Charlotte.Tests.Common
 			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用\Dummy02.txt")));
 			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用\Dummy03.txt")));
 		}
+
+		public void Test02()
+		{
+			foreach (string file in EnumerableTools.Sort(DDResource.GetFiles(), StringTools.CompIgnoreCase))
+			{
+				ProcMain.WriteLog("resource file ==> " + file);
+			}
+		}
 	}
 }

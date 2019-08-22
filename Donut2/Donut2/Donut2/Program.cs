@@ -76,13 +76,14 @@ namespace Charlotte
 		{
 			//Test01();
 			//new DDResourceTest().Test01();
+			new DDResourceTest().Test02();
 			//new DDPictureTest().Test01();
 			//new DDDrawTest().Test01();
 			//new DDFontRegisterTest().Test01();
 			//new DDKeyTest().Test01();
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
-			new TitleMenu().Perform();
+			//new TitleMenu().Perform();
 		}
 
 		private void Test01()
