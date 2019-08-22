@@ -310,9 +310,6 @@ namespace Charlotte.Common
 			return counter == 1 || POUND_FIRST_DELAY < counter && (counter - POUND_FIRST_DELAY) % POUND_DELAY == 1;
 		}
 
-		public static double Random() // ret: 0.0 以上 1.0 未満
-		{
-			return SecurityTools.CRandom.GetReal2();
-		}
+		public static DDRandom Random = new DDRandom();
 	}
 }
