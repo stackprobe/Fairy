@@ -17,7 +17,10 @@ namespace Charlotte.Common
 
 		public static void GameStart()
 		{
-			DX.GetColor(0, 0, 0); // DxLibDotNet.dll 等の存在確認
+			if (File.Exists("DxLibDotNet.dll") == false) // DxLibDotNet.dll 等の存在確認 (1)
+				throw new DDError();
+
+			DX.GetColor(0, 0, 0); // DxLibDotNet.dll 等の存在確認 (2)
 
 			DDConfig.Load(); // LogFile, LOG_ENABLED 等を含むので真っ先に
 
@@ -31,7 +34,11 @@ namespace Charlotte.Common
 				{
 					using (StreamWriter writer = new StreamWriter(DDConfig.LogFile, true, Encoding.UTF8))
 					{
-						writer.WriteLine("[" + DateTime.Now + "] " + message);
+						string line = "[" + DateTime.Now + "] " + message;
+
+						line = JString.ToJString(line, true, true, true, true);
+
+						writer.WriteLine(line);
 					}
 					LogCount++;
 				}
