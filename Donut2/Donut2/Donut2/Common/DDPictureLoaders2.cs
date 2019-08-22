@@ -6,6 +6,9 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
+	/// <summary>
+	/// Unload()する必要なし。必要あり -> DDPictureLoader
+	/// </summary>
 	public static class DDPictureLoaders2
 	{
 		public static DDPicture Wrapper(int handle, int w, int h)

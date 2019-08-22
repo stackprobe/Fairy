@@ -17,8 +17,9 @@ namespace Charlotte.Common
 
 		public static void GameStart()
 		{
-			if (File.Exists("DxLibDotNet.dll") == false) // DxLibDotNet.dll 等の存在確認 (1)
-				throw new DDError();
+			foreach (string dllFile in "DxLib.dll:DxLib_x64.dll:DxLibDotNet.dll".Split(':')) // DxLibDotNet.dll 等の存在確認 (1)
+				if (File.Exists(dllFile) == false)
+					throw new DDError();
 
 			DX.GetColor(0, 0, 0); // DxLibDotNet.dll 等の存在確認 (2)
 
@@ -34,11 +35,7 @@ namespace Charlotte.Common
 				{
 					using (StreamWriter writer = new StreamWriter(DDConfig.LogFile, true, Encoding.UTF8))
 					{
-						string line = "[" + DateTime.Now + "] " + message;
-
-						line = JString.ToJString(line, true, true, true, true);
-
-						writer.WriteLine(line);
+						writer.WriteLine("[" + DateTime.Now + "] " + message);
 					}
 					LogCount++;
 				}

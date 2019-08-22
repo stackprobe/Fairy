@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Charlotte.Common
 {
+	/// <summary>
+	/// Unload()する必要あり。必要なし -> DDPictureLoader2
+	/// </summary>
 	public static class DDPictureLoaders
 	{
 		public static DDPicture Standard(string file)
