@@ -11,9 +11,24 @@ namespace Charlotte.Common
 	{
 		public static int Rot;
 
-		private static int L;
-		private static int R;
-		private static int M;
+		public class Button
+		{
+			public int Status = 0;
+
+			public int GetInput()
+			{
+				return 1 <= DDEngine.FreezeInputFrame ? 0 : this.Status;
+			}
+
+			public bool IsPound()
+			{
+				return DDUtils.IsPound(this.GetInput());
+			}
+		}
+
+		public static Button L = new Button();
+		public static Button R = new Button();
+		public static Button M = new Button();
 
 		public static void EachFrame()
 		{
@@ -21,7 +36,7 @@ namespace Charlotte.Common
 
 			if (DDEngine.WindowIsActive)
 			{
-				Rot = DX.GetMouseHWheelRotVol();
+				Rot = DX.GetMouseWheelRotVol();
 				status = (uint)DX.GetMouseInput();
 			}
 			else
@@ -31,29 +46,9 @@ namespace Charlotte.Common
 			}
 			Rot = IntTools.Range(Rot, -IntTools.IMAX, IntTools.IMAX);
 
-			DDUtils.UpdateInput(ref L, (status & (uint)DX.MOUSE_INPUT_LEFT) != 0u);
-			DDUtils.UpdateInput(ref R, (status & (uint)DX.MOUSE_INPUT_RIGHT) != 0u);
-			DDUtils.UpdateInput(ref M, (status & (uint)DX.MOUSE_INPUT_MIDDLE) != 0u);
-		}
-
-		private static int GetInput(int status)
-		{
-			return 1 <= DDEngine.FreezeInputFrame ? 0 : status;
-		}
-
-		public static int Get_L()
-		{
-			return GetInput(L);
-		}
-
-		public static int Get_R()
-		{
-			return GetInput(R);
-		}
-
-		public static int Get_M()
-		{
-			return GetInput(M);
+			DDUtils.UpdateInput(ref L.Status, (status & (uint)DX.MOUSE_INPUT_LEFT) != 0u);
+			DDUtils.UpdateInput(ref R.Status, (status & (uint)DX.MOUSE_INPUT_RIGHT) != 0u);
+			DDUtils.UpdateInput(ref M.Status, (status & (uint)DX.MOUSE_INPUT_MIDDLE) != 0u);
 		}
 
 		public static int X = (int)(DDConsts.Screen_W / 2.0);

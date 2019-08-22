@@ -114,6 +114,7 @@
     <Compile Include="Tests\Common\DDDrawTest.cs" />
     <Compile Include="Tests\Common\DDFontRegisterTest.cs" />
     <Compile Include="Tests\Common\DDKeyTest.cs" />
+    <Compile Include="Tests\Common\DDMouseTest.cs" />
     <Compile Include="Tests\Common\DDPadTest.cs" />
     <Compile Include="Tests\Common\DDPictureTest.cs" />
     <Compile Include="Tests\Common\DDPrintTest.cs" />

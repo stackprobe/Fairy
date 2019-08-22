@@ -83,7 +83,8 @@ namespace Charlotte
 			//new DDKeyTest().Test01();
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
-			new TitleMenu().Perform();
+			new DDMouseTest().Test01();
+			//new TitleMenu().Perform();
 		}
 
 		private void Test01()
