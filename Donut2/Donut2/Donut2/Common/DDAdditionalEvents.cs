@@ -11,7 +11,6 @@ namespace Charlotte.Common
 		{
 			//DDGround.RO_MouseDispMode = true;
 		};
-		public static Action Ground_FNLZ = () => { };
 		public static Action PostGameStart = () =>
 		{
 			//DDFontRegister.Add(@"Font\Genkai-Mincho-font\genkai-mincho.ttf");
