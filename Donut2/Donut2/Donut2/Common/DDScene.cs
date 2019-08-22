@@ -10,5 +10,13 @@ namespace Charlotte.Common
 		public int Numer;
 		public int Denom;
 		public double Rate;
+
+		public int Remaining
+		{
+			get
+			{
+				return this.Denom - this.Numer;
+			}
+		}
 	}
 }
