@@ -113,6 +113,7 @@
     <Compile Include="Test01\GameMain.cs" />
     <Compile Include="Test01\TitleMenu.cs" />
     <Compile Include="Test02\InputStringDemo.cs" />
+    <Compile Include="Test02\InputStringDemo2.cs" />
     <Compile Include="Tests\Common\DDDrawTest.cs" />
     <Compile Include="Tests\Common\DDFontRegisterTest.cs" />
     <Compile Include="Tests\Common\DDKeyTest.cs" />
