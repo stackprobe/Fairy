@@ -118,5 +118,11 @@ namespace Charlotte.Common
 
 			P_X += w;
 		}
+
+		public static void PrintLine(string line)
+		{
+			Print(line);
+			PrintRet();
+		}
 	}
 }
