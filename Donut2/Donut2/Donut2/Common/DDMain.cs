@@ -58,7 +58,7 @@ namespace Charlotte.Common
 			// DxLib >
 
 			if (DDConfig.LOG_ENABLED)
-				DX.SetApplicationLogSaveDirectory(DDConfig.ApplicationLogSaveDirectory);
+				DX.SetApplicationLogSaveDirectory(FileTools.MakeFullPath(DDConfig.ApplicationLogSaveDirectory));
 
 			DX.SetOutApplicationLogValidFlag(DDConfig.LOG_ENABLED ? 1 : 0); // DxLib のログを出力 1: する 0: しない
 
