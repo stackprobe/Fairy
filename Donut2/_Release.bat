@@ -1,6 +1,6 @@
 C:\Factory\Tools\RDMD.exe /RC out
 
-C:\Factory\SubTools\makeDDResourceFile.exe Resource out\Resource.dat
+C:\Factory\SubTools\makeDDResourceFile.exe Resource out\Resource.dat C:\Factory\Tools\Noop.exe
 
 COPY /B Donut2\Donut2\bin\Release\Donut2.exe out
 COPY /B Donut2\Donut2\bin\Release\Chocolate.dll out
