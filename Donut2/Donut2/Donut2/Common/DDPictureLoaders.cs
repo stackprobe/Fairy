@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
@@ -114,6 +115,98 @@ namespace Charlotte.Common
 
 								DDPictureLoaderUtils.SetSoftImageDot(siHandle, x, y, dot);
 							}
+						}
+					}
+					return DDPictureLoaderUtils.GraphicHandle2Info(DDPictureLoaderUtils.SoftImage2GraphicHandle(siHandle));
+				},
+				DDPictureLoaderUtils.ReleaseInfo,
+				DDPictureUtils.Add
+				);
+		}
+
+		public static DDPicture OrderRGB(string file, int mode = 1) // mode: 0 - 5
+		{
+			// mode == 0 : RGB
+			// mode == 1 : GRB
+			// mode == 2 : BRG
+			// mode == 3 : RBG
+			// mode == 4 : GBR
+			// mode == 5 : BGR
+
+			return new DDPicture(
+				() =>
+				{
+					int siHandle = DDPictureLoaderUtils.FileData2SoftImage(DDPictureLoaderUtils.File2FileData(file));
+					int w;
+					int h;
+
+					DDPictureLoaderUtils.GetSoftImageSize(siHandle, out w, out h);
+
+					for (int x = 0; x < w; x++)
+					{
+						for (int y = 0; y < h; y++)
+						{
+							DDPictureLoaderUtils.Dot dot = DDPictureLoaderUtils.GetSoftImageDot(siHandle, x, y);
+
+							List<int> rgb = new int[]
+							{
+								dot.R,
+								dot.G,
+								dot.B,
+							}
+							.ToList();
+
+							dot.R = ExtraTools.DesertElement(rgb, mode % 3);
+							dot.G = ExtraTools.DesertElement(rgb, mode / 3);
+							dot.B = rgb[0];
+
+							DDPictureLoaderUtils.SetSoftImageDot(siHandle, x, y, dot);
+						}
+					}
+					return DDPictureLoaderUtils.GraphicHandle2Info(DDPictureLoaderUtils.SoftImage2GraphicHandle(siHandle));
+				},
+				DDPictureLoaderUtils.ReleaseInfo,
+				DDPictureUtils.Add
+				);
+		}
+
+		public static DDPicture SelectRGB(string file, string mode) // mode: "XXXX", X == "ARGB"
+		{
+			int ia = "ARGB".IndexOf(mode[0]);
+			int ir = "ARGB".IndexOf(mode[1]);
+			int ig = "ARGB".IndexOf(mode[2]);
+			int ib = "ARGB".IndexOf(mode[3]);
+
+			return new DDPicture(
+				() =>
+				{
+					int siHandle = DDPictureLoaderUtils.FileData2SoftImage(DDPictureLoaderUtils.File2FileData(file));
+					int w;
+					int h;
+
+					DDPictureLoaderUtils.GetSoftImageSize(siHandle, out w, out h);
+
+					for (int x = 0; x < w; x++)
+					{
+						for (int y = 0; y < h; y++)
+						{
+							DDPictureLoaderUtils.Dot dot = DDPictureLoaderUtils.GetSoftImageDot(siHandle, x, y);
+
+							List<int> argb = new int[]
+							{
+								dot.A,
+								dot.R,
+								dot.G,
+								dot.B,
+							}
+							.ToList();
+
+							dot.A = argb[ia];
+							dot.R = argb[ir];
+							dot.G = argb[ig];
+							dot.B = argb[ib];
+
+							DDPictureLoaderUtils.SetSoftImageDot(siHandle, x, y, dot);
 						}
 					}
 					return DDPictureLoaderUtils.GraphicHandle2Info(DDPictureLoaderUtils.SoftImage2GraphicHandle(siHandle));
