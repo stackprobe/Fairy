@@ -108,7 +108,14 @@ namespace Charlotte.Test01
 					frmProcMilAvgDenom /= 2;
 				}
 
+				DDDraw.SetTaskList(DDGround.EL);
+				DDDraw.SetAlpha(0.5);
+				DDDraw.SetBright(new I3Color(0, 0, 0));
+				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W, 16);
+				DDDraw.Reset();
+
 				DDPrint.SetPrint();
+				DDPrint.SetTaskList(DDGround.EL);
 				DDPrint.SetColor(new I3Color(255, 128, 0));
 				DDPrint.Print(string.Format(
 					"FST={0},LT={1},FPM={2},FPW={3},FPMA={4:F3}(EPF={5},EC={6},ELC={7})"

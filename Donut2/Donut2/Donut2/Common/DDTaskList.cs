@@ -8,7 +8,7 @@ namespace Charlotte.Common
 {
 	public class DDTaskList
 	{
-		private List<IDDTask> Tasks = new List<IDDTask>();
+		private DDList<IDDTask> Tasks = new DDList<IDDTask>();
 
 		public void Add(IDDTask task)
 		{
@@ -24,9 +24,13 @@ namespace Charlotte.Common
 				if (task.Routine() == false) // ? 終了
 				{
 					task.Dispose();
-					ExtraTools.FastDesertElement(this.Tasks, index--);
+
+					this.Tasks[index] = null;
+					//this.Tasks.FastRemoveAt(index--); // old
 				}
 			}
+			//this.Tasks.FastRemoveAll(task => task == null);
+			this.Tasks.RemoveAll(task => task == null);
 		}
 
 		public void Clear()

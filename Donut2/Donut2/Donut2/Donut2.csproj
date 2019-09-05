@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DDList.cs" />
     <Compile Include="Common\DDRandom.cs" />
     <Compile Include="Common\DDSimpleMenu.cs" />
     <Compile Include="Ground.cs" />
