@@ -65,5 +65,13 @@ namespace Charlotte.Common
 				}
 			}
 		}
+
+		public IEnumerable<T> Iterate()
+		{
+			for (int index = 0; index < this.Count; index++)
+			{
+				yield return this.Inner[index];
+			}
+		}
 	}
 }
