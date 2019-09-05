@@ -9,6 +9,7 @@ namespace Charlotte.Common
 	{
 		public DDPicture Dummy = DDPictureLoaders.Standard(@"General\Dummy.png");
 		public DDPicture WhiteBox = DDPictureLoaders.Standard(@"General\WhiteBox.png");
+		public DDPicture WhiteCircle = DDPictureLoaders.Standard(@"General\WhiteCircle.png");
 
 		// 新しいリソースをここへ追加...
 	}
