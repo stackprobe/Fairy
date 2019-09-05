@@ -45,15 +45,6 @@ namespace Charlotte.Common
 			this.Inner[this.Count] = default(T);
 		}
 
-#if false // ---> RemoveAll()
-		public void FastRemoveAll(Predicate<T> match)
-		{
-			for (int index = 0; index < this.Count; index++)
-				if (match(this.Inner[index]))
-					this.FastRemoveAt(index--);
-		}
-#endif
-
 		public void RemoveAll(Predicate<T> match)
 		{
 			for (int r = 0; r < this.Count; r++)

@@ -24,12 +24,9 @@ namespace Charlotte.Common
 				if (task.Routine() == false) // ? 終了
 				{
 					task.Dispose();
-
 					this.Tasks[index] = null;
-					//this.Tasks.FastRemoveAt(index--); // old
 				}
 			}
-			//this.Tasks.FastRemoveAll(task => task == null);
 			this.Tasks.RemoveAll(task => task == null);
 		}
 
