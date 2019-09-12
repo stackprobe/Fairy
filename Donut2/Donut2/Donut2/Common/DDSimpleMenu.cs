@@ -9,9 +9,9 @@ namespace Charlotte.Common
 {
 	public class DDSimpleMenu
 	{
-		public I3Color Color = null;
-		public I3Color BorderColor = null;
-		public I3Color WallColor = null;
+		public I3Color? Color = null;
+		public I3Color? BorderColor = null;
+		public I3Color? WallColor = null;
 		public DDPicture WallPicture = null;
 		public double WallCurtain = 0.0; // -1.0 ～ 1.0
 		public int X = 16;
@@ -53,7 +53,7 @@ namespace Charlotte.Common
 				DDCurtain.DrawCurtain();
 
 				if (this.WallColor != null)
-					DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor), 1);
+					DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor.Value), 1);
 
 				if (this.WallPicture != null)
 				{
@@ -62,10 +62,10 @@ namespace Charlotte.Common
 					DDCurtain.DrawCurtain(this.WallCurtain);
 				}
 				if (this.Color != null)
-					DDPrint.SetColor(this.Color);
+					DDPrint.SetColor(this.Color.Value);
 
 				if (this.BorderColor != null)
-					DDPrint.SetBorder(this.BorderColor);
+					DDPrint.SetBorder(this.BorderColor.Value);
 
 				DDPrint.SetPrint(this.X, this.Y, this.YStep);
 				//DDPrint.SetPrint(16, 16, 32); // old
@@ -170,7 +170,7 @@ namespace Charlotte.Common
 					DDCurtain.DrawCurtain();
 
 					if (this.WallColor != null)
-						DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor), 1);
+						DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor.Value), 1);
 
 					if (this.WallPicture != null)
 					{
@@ -179,10 +179,10 @@ namespace Charlotte.Common
 						DDCurtain.DrawCurtain(this.WallCurtain);
 					}
 					if (this.Color != null)
-						DDPrint.SetColor(this.Color);
+						DDPrint.SetColor(this.Color.Value);
 
 					if (this.BorderColor != null)
-						DDPrint.SetBorder(this.BorderColor);
+						DDPrint.SetBorder(this.BorderColor.Value);
 
 					DDPrint.SetPrint(this.X, this.Y, this.YStep);
 					//DDPrint.SetPrint(16, 16, 32); // old
@@ -394,7 +394,7 @@ namespace Charlotte.Common
 				DDCurtain.DrawCurtain();
 
 				if (this.WallColor != null)
-					DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor), 1);
+					DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DDUtils.GetColor(this.WallColor.Value), 1);
 
 				if (this.WallPicture != null)
 				{
@@ -402,10 +402,10 @@ namespace Charlotte.Common
 					DDCurtain.DrawCurtain(this.WallCurtain);
 				}
 				if (this.Color != null)
-					DDPrint.SetColor(this.Color);
+					DDPrint.SetColor(this.Color.Value);
 
 				if (this.BorderColor != null)
-					DDPrint.SetBorder(this.BorderColor);
+					DDPrint.SetBorder(this.BorderColor.Value);
 
 				DDPrint.SetPrint(this.X, this.Y, this.YStep);
 				DDPrint.Print(title);

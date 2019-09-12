@@ -13,7 +13,7 @@ namespace Charlotte.Common
 		{
 			public DDTaskList TL = null;
 			public I3Color Color = new I3Color(255, 255, 255);
-			public I3Color BorderColor = null;
+			public I3Color BorderColor = new I3Color(-1, 0, 0);
 			public int BorderWidth = 0;
 
 			// Print() --->

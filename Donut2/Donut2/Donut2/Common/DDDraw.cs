@@ -21,7 +21,7 @@ namespace Charlotte.Common
 			public bool IgnoreError = false;
 			public int A = -1; // -1 == 無効
 			public int BlendAdd = -1; // -1 == 無効
-			public I3Color Bright = null;
+			public I3Color Bright = new I3Color(-1, 0, 0);
 		};
 
 		private static ExtraInfo Extra = new ExtraInfo();
@@ -181,7 +181,7 @@ namespace Charlotte.Common
 			{
 				DX.SetDrawMode(DX.DX_DRAWMODE_NEAREST);
 			}
-			if (info.Extra.Bright != null)
+			if (info.Extra.Bright.R != -1)
 			{
 				SetBright(info.Extra.Bright.R, info.Extra.Bright.G, info.Extra.Bright.B);
 			}
@@ -309,7 +309,7 @@ namespace Charlotte.Common
 			{
 				DX.SetDrawMode(DX.DX_DRAWMODE_BILINEAR);
 			}
-			if (info.Extra.Bright != null)
+			if (info.Extra.Bright.R != -1)
 			{
 				ResetBright();
 			}
