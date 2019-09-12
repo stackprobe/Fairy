@@ -72,13 +72,16 @@ namespace Charlotte.Common
 			if (info.BorderWidth != 0)
 				for (int xc = -info.BorderWidth; xc <= info.BorderWidth; xc++)
 					for (int yc = -info.BorderWidth; yc <= info.BorderWidth; yc++)
-						DX.DrawString(info.X + xc, info.Y + yc, info.Line, DDUtils.GetColor(info.BorderColor), 0);
+						DX.DrawString(info.X + xc, info.Y + yc, info.Line, DDUtils.GetColor(info.BorderColor));
 
-			DX.DrawString(info.X, info.Y, info.Line, DDUtils.GetColor(info.Color), 0);
+			DX.DrawString(info.X, info.Y, info.Line, DDUtils.GetColor(info.Color));
 		}
 
 		public static void Print(string line)
 		{
+			if (line == null)
+				throw new DDError();
+
 			P_Info.X = P_BaseX + P_X;
 			P_Info.Y = P_BaseY + P_Y;
 			P_Info.Line = line;
@@ -89,9 +92,11 @@ namespace Charlotte.Common
 			}
 			else
 			{
+				PrintInfo info = P_Info;
+
 				P_Info.TL.Add(() =>
 				{
-					PrintMain(P_Info);
+					PrintMain(info);
 					return false;
 				});
 			}
