@@ -34,7 +34,7 @@ namespace Charlotte.Common
 			this.Pictures.Add(picture);
 		}
 
-		private IEnumerable<bool> GetRoutine()
+		private IEnumerable<bool> Sequencer()
 		{
 			if (this.Pictures.Count == 0) // ? 画像が追加されていない。
 				throw new DDError();
@@ -82,9 +82,9 @@ namespace Charlotte.Common
 			}
 		}
 
-		public IDDTask GetTask()
+		public Func<bool> GetTask()
 		{
-			return new DDIEnumerableTask(this.GetRoutine(), () => { });
+			return EnumerableTools.Supplier(this.Sequencer());
 		}
 
 		public void Fire()

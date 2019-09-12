@@ -92,7 +92,6 @@
     <Compile Include="Common\DDSound.cs" />
     <Compile Include="Common\DDSoundUtils.cs" />
     <Compile Include="Common\DDSystem.cs" />
-    <Compile Include="Common\DDIEnumerableTask.cs" />
     <Compile Include="Common\DDUserDatStrings.cs" />
     <Compile Include="Common\DDSubScreenUtils.cs" />
     <Compile Include="Common\DDInput.cs" />
@@ -106,7 +105,6 @@
     <Compile Include="Common\DDTaskList.cs" />
     <Compile Include="Common\DDUtils.cs" />
     <Compile Include="Common\DDWin32.cs" />
-    <Compile Include="Common\IDDTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcePicture.cs" />
