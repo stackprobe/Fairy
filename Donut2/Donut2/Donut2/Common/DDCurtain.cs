@@ -44,7 +44,8 @@ namespace Charlotte.Common
 
 			if (frameMax == 0)
 			{
-				WhiteLevels.Enqueue(destWhiteLevel);
+				CurrWhiteLevel = destWhiteLevel;
+				//WhiteLevels.Enqueue(destWhiteLevel); // old
 			}
 			else
 			{
