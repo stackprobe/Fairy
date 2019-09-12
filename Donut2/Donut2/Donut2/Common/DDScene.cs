@@ -18,5 +18,13 @@ namespace Charlotte.Common
 				return this.Denom - this.Numer;
 			}
 		}
+
+		public double RemainingRate
+		{
+			get
+			{
+				return (double)this.Remaining / this.Denom;
+			}
+		}
 	}
 }
