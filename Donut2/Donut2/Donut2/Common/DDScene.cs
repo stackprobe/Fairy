@@ -5,11 +5,24 @@ using System.Text;
 
 namespace Charlotte.Common
 {
-	public class DDScene
+	public struct DDScene
 	{
 		public int Numer;
 		public int Denom;
-		public double Rate;
+
+		public DDScene(int numer, int denom)
+		{
+			this.Numer = numer;
+			this.Denom = denom;
+		}
+
+		public double Rate
+		{
+			get
+			{
+				return this.Numer / (double)this.Denom;
+			}
+		}
 
 		public int Remaining
 		{
@@ -23,7 +36,7 @@ namespace Charlotte.Common
 		{
 			get
 			{
-				return (double)this.Remaining / this.Denom;
+				return this.Remaining / (double)this.Denom;
 			}
 		}
 	}

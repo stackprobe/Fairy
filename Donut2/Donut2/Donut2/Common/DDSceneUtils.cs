@@ -11,12 +11,7 @@ namespace Charlotte.Common
 		{
 			for (int frame = 0; frame <= frameMax; frame++)
 			{
-				yield return new DDScene()
-				{
-					Numer = frame,
-					Denom = frameMax,
-					Rate = (double)frame / frameMax,
-				};
+				yield return new DDScene(frame, frameMax);
 			}
 		}
 	}
