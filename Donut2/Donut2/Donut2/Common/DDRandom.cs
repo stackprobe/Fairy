@@ -45,9 +45,19 @@ namespace Charlotte.Common
 			return t;
 		}
 
+		public double Real() // ret: 0.0 <=, <= 1.0
+		{
+			return this.Next() / (double)uint.MaxValue;
+		}
+
 		public double Real2() // ret: 0.0 <=, < 1.0
 		{
 			return this.Next() / (double)(uint.MaxValue + 1L);
+		}
+
+		public double Real3() // ret: 0.0 <, < 1.0
+		{
+			return this.Next() / (double)(uint.MaxValue + 1L) + 0.5;
 		}
 	}
 }
