@@ -37,6 +37,8 @@ namespace Charlotte.Common
 			this.W = -1;
 			this.H = -1;
 			this.AFlag = false;
+
+			this.Picture = null;
 		}
 
 		public void Unload()
@@ -70,6 +72,22 @@ namespace Charlotte.Common
 		public I2Size GetSize()
 		{
 			return new I2Size(this.W, this.H);
+		}
+
+		private DDPicture Picture = null;
+
+		public DDPicture ToPicture()
+		{
+			if (this.Picture == null)
+				this.Picture = DDPictureLoaders2.Wrapper(this);
+
+			return this.Picture;
+		}
+
+		public IDisposable Section()
+		{
+			this.ChangeDrawScreen();
+			return new AnonyDisposable(() => DDSubScreenUtils.RestoreDrawScreen());
 		}
 	}
 }
