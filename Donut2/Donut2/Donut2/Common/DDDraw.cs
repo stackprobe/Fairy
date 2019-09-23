@@ -134,6 +134,11 @@ namespace Charlotte.Common
 			public ExtraInfo Extra;
 		}
 
+		private static DDObjectStock<FreeInfo> FreeInfoStock = new DDObjectStock<FreeInfo>(() => new FreeInfo());
+		private static DDObjectStock<RectInfo> RectInfoStock = new DDObjectStock<RectInfo>(() => new RectInfo());
+		private static DDObjectStock<SimpleInfo> SimpleInfoStock = new DDObjectStock<SimpleInfo>(() => new SimpleInfo());
+		private static DDObjectStock<DrawInfo> DrawInfoStock = new DDObjectStock<DrawInfo>(() => new DrawInfo());
+
 		private static void SetBlend(int mode, int pal)
 		{
 			if (DX.SetDrawBlendMode(mode, pal) != 0) // ? 失敗
@@ -226,6 +231,7 @@ namespace Charlotte.Common
 						if (info.Extra.IgnoreError == false)
 							throw new DDError();
 					}
+					FreeInfoStock.Give(u);
 					goto endDraw;
 				}
 			}
@@ -262,6 +268,7 @@ namespace Charlotte.Common
 						if (info.Extra.IgnoreError == false)
 							throw new DDError();
 					}
+					RectInfoStock.Give(u);
 					goto endDraw;
 				}
 			}
@@ -294,6 +301,7 @@ namespace Charlotte.Common
 						if (info.Extra.IgnoreError == false)
 							throw new DDError();
 					}
+					SimpleInfoStock.Give(u);
 					goto endDraw;
 				}
 			}
@@ -317,16 +325,17 @@ namespace Charlotte.Common
 			// app > @ leave DrawPicMain
 
 			// < app
+
+			DrawInfoStock.Give(info);
 		}
 
 		private static void DrawPic(DDPicture picture, ILayoutInfo layout_binding)
 		{
-			DrawInfo info = new DrawInfo()
-			{
-				Picture = picture,
-				Layout = layout_binding,
-				Extra = Extra,
-			};
+			DrawInfo info = DrawInfoStock.Take();
+
+			info.Picture = picture;
+			info.Layout = layout_binding;
+			info.Extra = Extra;
 
 			if (Extra.TL == null)
 			{
@@ -344,17 +353,16 @@ namespace Charlotte.Common
 
 		public static void DrawFree(DDPicture picture, double ltx, double lty, double rtx, double rty, double rbx, double rby, double lbx, double lby)
 		{
-			FreeInfo u = new FreeInfo()
-			{
-				LTX = ltx,
-				LTY = lty,
-				RTX = rtx,
-				RTY = rty,
-				RBX = rbx,
-				RBY = rby,
-				LBX = lbx,
-				LBY = lby,
-			};
+			FreeInfo u = FreeInfoStock.Take();
+
+			u.LTX = ltx;
+			u.LTY = lty;
+			u.RTX = rtx;
+			u.RTY = rty;
+			u.RBX = rbx;
+			u.RBY = rby;
+			u.LBX = lbx;
+			u.LBY = lby;
 
 			DrawPic(picture, u);
 		}
@@ -379,14 +387,12 @@ namespace Charlotte.Common
 				)
 				throw new DDError();
 
+			RectInfo u = RectInfoStock.Take();
 
-			RectInfo u = new RectInfo()
-			{
-				L = l,
-				T = t,
-				R = r,
-				B = b,
-			};
+			u.L = l;
+			u.T = t;
+			u.R = r;
+			u.B = b;
 
 			DrawPic(picture, u);
 		}
@@ -409,11 +415,10 @@ namespace Charlotte.Common
 				)
 				throw new DDError();
 
-			SimpleInfo u = new SimpleInfo()
-			{
-				X = x,
-				Y = y,
-			};
+			SimpleInfo u = SimpleInfoStock.Take();
+
+			u.X = x;
+			u.Y = y;
 
 			DrawPic(picture, u);
 		}
