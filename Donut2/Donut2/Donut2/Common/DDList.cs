@@ -9,7 +9,12 @@ namespace Charlotte.Common
 	{
 		private List<T> Inner = new List<T>();
 
-		public int Count = 0;
+		public int Count { get; private set; }
+
+		public DDList()
+		{
+			//this.Count = 0;
+		}
 
 		public void Clear()
 		{
@@ -68,10 +73,14 @@ namespace Charlotte.Common
 
 		public IEnumerable<T> Iterate()
 		{
+#if false
+			return this.Inner; // 要素が変更・追加されると例外を投げるっぽい。
+#else
 			for (int index = 0; index < this.Count; index++)
 			{
 				yield return this.Inner[index];
 			}
+#endif
 		}
 	}
 }

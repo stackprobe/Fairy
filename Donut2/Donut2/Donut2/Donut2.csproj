@@ -56,6 +56,7 @@
     <Compile Include="Common\DDList.cs" />
     <Compile Include="Common\DDRandom.cs" />
     <Compile Include="Common\DDSimpleMenu.cs" />
+    <Compile Include="Common\DDTable.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="ResourceMusic.cs" />
     <Compile Include="Common\DDCoffeeBreak.cs" />
