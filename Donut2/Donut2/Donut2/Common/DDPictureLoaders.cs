@@ -126,10 +126,12 @@ namespace Charlotte.Common
 
 		public static DDPicture SelectARGB(string file, string mode) // mode: "XXXX", X == "ARGB"
 		{
-			int ia = "ARGB".IndexOf(mode[0]);
-			int ir = "ARGB".IndexOf(mode[1]);
-			int ig = "ARGB".IndexOf(mode[2]);
-			int ib = "ARGB".IndexOf(mode[3]);
+			const string s_argb = "ARGB";
+
+			int ia = s_argb.IndexOf(mode[0]);
+			int ir = s_argb.IndexOf(mode[1]);
+			int ig = s_argb.IndexOf(mode[2]);
+			int ib = s_argb.IndexOf(mode[3]);
 
 			return new DDPicture(
 				() =>
