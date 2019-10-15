@@ -16,7 +16,7 @@ namespace Charlotte.Common
 			public I3Color BorderColor = new I3Color(-1, 0, 0);
 			public int BorderWidth = 0;
 
-			// Print() --->
+			// Print() 用 --->
 
 			public int X;
 			public int Y;
