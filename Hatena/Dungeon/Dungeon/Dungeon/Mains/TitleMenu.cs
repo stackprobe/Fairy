@@ -26,7 +26,7 @@ namespace Charlotte.Mains
 			string[] items = new string[]
 			{
 				"ゲームスタート",
-				"迷路設定",
+				"迷路の設定",
 				"設定",
 				"終了",
 			};
@@ -40,7 +40,7 @@ namespace Charlotte.Mains
 
 			for (; ; )
 			{
-				selectIndex = this.SimpleMenu.Perform("Donut2", items, selectIndex);
+				selectIndex = this.SimpleMenu.Perform("Dungeon", items, selectIndex);
 
 				switch (selectIndex)
 				{
@@ -89,11 +89,63 @@ namespace Charlotte.Mains
 
 		private void MakeMapSetting()
 		{
+			//DDCurtain.SetCurtain();
+			DDEngine.FreezeInput();
+
+			int selectIndex = 0;
+
+			for (; ; )
+			{
+				string[] items = new string[] 
+				{
+					"マップの幅　　　[ " + Ground.I.MakeMap_W + " ]",
+					"マップの高さ　　[ " + Ground.I.MakeMap_H + " ]",
+					"乱数のシード値　[ " + Ground.I.MakeMap_Seed + " ]",
+					"戻る",
+				};
+
+				selectIndex = this.SimpleMenu.Perform("設定", items, selectIndex);
+
+				switch (selectIndex)
+				{
+					case 0:
+
+						// TODO IntVolumeConfig
+
+						this.SimpleMenu.VolumeConfig("マップの幅", Ground.I.MakeMap_W, 10, 200, 1, 10,
+							volume => Ground.I.MakeMap_W = DoubleTools.ToInt(volume),
+							() => { }
+							);
+						break;
+
+					case 1:
+						this.SimpleMenu.VolumeConfig("マップの高さ", Ground.I.MakeMap_H, 10, 200, 1, 10,
+							volume => Ground.I.MakeMap_H = DoubleTools.ToInt(volume),
+							() => { }
+							);
+						break;
+
+					case 2:
+						this.SimpleMenu.VolumeConfig("乱数のシード値", Ground.I.MakeMap_Seed, 1, 1000000, 1, 1000,
+							volume => Ground.I.MakeMap_Seed = DoubleTools.ToInt(volume),
+							() => { }
+							);
+						break;
+
+					case 3:
+						goto endMenu;
+
+					default:
+						throw new DDError();
+				}
+			}
+		endMenu:
+			DDEngine.FreezeInput();
 		}
 
 		private void Setting()
 		{
-			DDCurtain.SetCurtain();
+			//DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
 			string[] items = new string[] 
@@ -157,8 +209,9 @@ namespace Charlotte.Mains
 
 		private void DrawWall()
 		{
-			DX.DrawBox(0, 0, DDConsts.Screen_W, DDConsts.Screen_H, DX.GetColor(16, 64, 32), 1);
-			//DDDraw.DrawRect(Ground.I.Picture.TitleWall, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
+			DDDraw.SetBright(WALL_COLOR);
+			DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
+			DDDraw.Reset();
 		}
 
 		private void LeaveTitleMenu()
@@ -168,9 +221,7 @@ namespace Charlotte.Mains
 
 			foreach (DDScene scene in DDSceneUtils.Create(40))
 			{
-				DDDraw.SetBright(WALL_COLOR);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
-				DDDraw.Reset();
+				this.DrawWall();
 
 				DDEngine.EachFrame();
 			}
