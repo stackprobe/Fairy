@@ -299,7 +299,7 @@ namespace Charlotte.Games
 				if (this.Map[this.Player.X, this.Player.Y].Script == MapCellScript.GOAL)
 				{
 					Ground.I.Music.Completed.Play();
-					DDCurtain.SetCurtain(60, -0.8);
+					DDCurtain.SetCurtain(30, -0.5);
 
 					foreach (DDScene scene in DDSceneUtils.Create(30))
 					{
