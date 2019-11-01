@@ -144,15 +144,15 @@ namespace Charlotte.Common
 				new ButtonInfo(DDInput.DIR_4, "左"),
 				new ButtonInfo(DDInput.DIR_6, "右"),
 				new ButtonInfo(DDInput.DIR_8, "上"),
-				new ButtonInfo(DDInput.A, "ショットボタン"),
-				new ButtonInfo(DDInput.B, "低速ボタン"),
-				new ButtonInfo(DDInput.C, "ボムボタン"),
+				new ButtonInfo(DDInput.A, "決定ボタン (Zキー)"),
+				new ButtonInfo(DDInput.B, "キャンセルボタン (Xキー)"),
+				//new ButtonInfo(DDInput.C, ""),
 				//new ButtonInfo(DDInput.D, ""),
 				//new ButtonInfo(DDInput.E, ""),
 				//new ButtonInfo(DDInput.F, ""),
 				//new ButtonInfo(DDInput.L, ""),
 				//new ButtonInfo(DDInput.R, ""),
-				new ButtonInfo(DDInput.PAUSE, "ポーズボタン"),
+				new ButtonInfo(DDInput.PAUSE, "ポーズ・メニューボタン (SPACEキー)"),
 				//new ButtonInfo(DDInput.START, ""),
 
 				// < app
@@ -374,20 +374,10 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		private static double VolumeValueToRate(int value, int minval, int valRange)
-		{
-			return (double)(value - minval) / valRange;
-		}
-
-		//
-		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-		//
-		public double VolumeConfig(string title, double rate, int minval, int maxval, int valStep, int valFastStep, Action<double> valChanged, Action pulse)
+		public int IntVolumeConfig(string title, int value, int minval, int maxval, int valStep, int valFastStep, Action<int> valChanged, Action pulse)
 		{
 			const int PULSE_FRM = 60;
 
-			int valRange = maxval - minval;
-			int value = minval + DoubleTools.ToInt(rate * valRange);
 			int origval = value;
 
 			DDCurtain.SetCurtain();
@@ -432,7 +422,7 @@ namespace Charlotte.Common
 				if (chgval)
 				{
 					value = IntTools.Range(value, minval, maxval);
-					valChanged(VolumeValueToRate(value, minval, valRange));
+					valChanged(value);
 				}
 				if (DDEngine.ProcFrame % PULSE_FRM == 0)
 				{
@@ -477,7 +467,44 @@ namespace Charlotte.Common
 			}
 			DDEngine.FreezeInput();
 
-			return VolumeValueToRate(value, minval, valRange);
+			return value;
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public double VolumeConfig(string title, double rate, int minval, int maxval, int valStep, int valFastStep, Action<double> valChanged, Action pulse)
+		{
+			return VolumeValueToRate(
+				IntVolumeConfig(
+					title,
+					RateToVolumeValue(rate, minval, maxval),
+					minval,
+					maxval,
+					valStep,
+					valFastStep,
+					v => valChanged(VolumeValueToRate(v, minval, maxval)),
+					pulse
+					),
+				minval,
+				maxval
+				);
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		private static double VolumeValueToRate(int value, int minval, int maxval)
+		{
+			return (double)(value - minval) / (maxval - minval);
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		private static int RateToVolumeValue(double rate, int minval, int maxval)
+		{
+			return minval + DoubleTools.ToInt(rate * (maxval - minval));
 		}
 	}
 }

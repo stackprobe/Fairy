@@ -19,6 +19,9 @@ namespace Charlotte.MakeMaps
 		/// <param name="h">マップの高さ</param>
 		public DungeonMap MakeDungeonMap(int w, int h, int seed)
 		{
+			if (seed == 0)
+				seed = (int)(DateTimeToSec.Now.GetSec() % IntTools.IMAX);
+
 			Rand = new Random(seed);
 
 			Map_W = w;

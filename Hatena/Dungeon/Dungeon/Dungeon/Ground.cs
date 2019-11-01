@@ -15,6 +15,6 @@ namespace Charlotte
 
 		public int MakeMap_W = 30;
 		public int MakeMap_H = 30;
-		public int MakeMap_Seed = 1;
+		public int MakeMap_Seed = 0;
 	}
 }

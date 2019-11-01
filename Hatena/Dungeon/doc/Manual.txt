@@ -1,10 +1,17 @@
 ===============================================================================
 
 　Dungeon / version $version$
-　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 20xx cerulean.charlotte
+　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 2019 cerulean.charlotte
 
 ===============================================================================
 
 
 TODO
 
+
+■素材 (敬称略)
+
+　●BGM
+
+　　甘茶の音楽工房 (Music Atelier Amacha)
+　　https://amachamusic.chagasi.com/

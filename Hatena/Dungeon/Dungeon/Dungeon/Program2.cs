@@ -44,9 +44,9 @@ namespace Charlotte
 
 			DDAdditionalEvents.Save = lines =>
 			{
-				lines.Add(DateTime.Now.ToString()); // Dummy
-				lines.Add(DateTime.Now.ToString()); // Dummy
-				lines.Add(DateTime.Now.ToString()); // Dummy
+				lines.Add("" + Ground.I.MakeMap_W);
+				lines.Add("" + Ground.I.MakeMap_H);
+				lines.Add("" + Ground.I.MakeMap_Seed);
 
 				// 新しい項目をここへ追加...
 			};
@@ -55,9 +55,9 @@ namespace Charlotte
 			{
 				int c = 0;
 
-				DDUtils.Noop(lines[c++]); // Dummy
-				DDUtils.Noop(lines[c++]); // Dummy
-				DDUtils.Noop(lines[c++]); // Dummy
+				Ground.I.MakeMap_W = int.Parse(lines[c++]);
+				Ground.I.MakeMap_H = int.Parse(lines[c++]);
+				Ground.I.MakeMap_Seed = int.Parse(lines[c++]);
 
 				// 新しい項目をここへ追加...
 			};

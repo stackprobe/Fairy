@@ -329,17 +329,10 @@ namespace Charlotte.Common
 			;
 		}
 
-		private static double VolumeValueToRate(int value, int minval, int valRange)
-		{
-			return (double)(value - minval) / valRange;
-		}
-
-		public double VolumeConfig(string title, double rate, int minval, int maxval, int valStep, int valFastStep, Action<double> valChanged, Action pulse)
+		public int IntVolumeConfig(string title, int value, int minval, int maxval, int valStep, int valFastStep, Action<int> valChanged, Action pulse)
 		{
 			const int PULSE_FRM = 60;
 
-			int valRange = maxval - minval;
-			int value = minval + DoubleTools.ToInt(rate * valRange);
 			int origval = value;
 
 			DDCurtain.SetCurtain();
@@ -384,7 +377,7 @@ namespace Charlotte.Common
 				if (chgval)
 				{
 					value = IntTools.Range(value, minval, maxval);
-					valChanged(VolumeValueToRate(value, minval, valRange));
+					valChanged(value);
 				}
 				if (DDEngine.ProcFrame % PULSE_FRM == 0)
 				{
@@ -429,7 +422,35 @@ namespace Charlotte.Common
 			}
 			DDEngine.FreezeInput();
 
-			return VolumeValueToRate(value, minval, valRange);
+			return value;
+		}
+
+		public double VolumeConfig(string title, double rate, int minval, int maxval, int valStep, int valFastStep, Action<double> valChanged, Action pulse)
+		{
+			return VolumeValueToRate(
+				IntVolumeConfig(
+					title,
+					RateToVolumeValue(rate, minval, maxval),
+					minval,
+					maxval,
+					valStep,
+					valFastStep,
+					v => valChanged(VolumeValueToRate(v, minval, maxval)),
+					pulse
+					),
+				minval,
+				maxval
+				);
+		}
+
+		private static double VolumeValueToRate(int value, int minval, int maxval)
+		{
+			return (double)(value - minval) / (maxval - minval);
+		}
+
+		private static int RateToVolumeValue(double rate, int minval, int maxval)
+		{
+			return minval + DoubleTools.ToInt(rate * (maxval - minval));
 		}
 	}
 }

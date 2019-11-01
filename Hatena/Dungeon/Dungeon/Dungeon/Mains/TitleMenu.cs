@@ -21,7 +21,7 @@ namespace Charlotte.Mains
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
-			//Ground.I.Music.Title.Play();
+			Ground.I.Music.Title.Play();
 
 			string[] items = new string[]
 			{
@@ -46,11 +46,29 @@ namespace Charlotte.Mains
 				{
 					case 0:
 						{
-							DungeonMap dungMap = new DungeonMapMaker().MakeDungeonMap(
-								Ground.I.MakeMap_W,
-								Ground.I.MakeMap_H,
-								Ground.I.MakeMap_Seed
-								);
+							DungeonMap dungMap = null;
+
+							ThreadEx th = new ThreadEx(() =>
+							{
+								dungMap = new DungeonMapMaker().MakeDungeonMap(
+									Ground.I.MakeMap_W,
+									Ground.I.MakeMap_H,
+									Ground.I.MakeMap_Seed
+									);
+							});
+
+							for (int c = 0; ; c++)
+							{
+								if (10 < c && th.IsEnded())
+									break;
+
+								this.DrawWall();
+
+								DDPrint.SetPrint();
+								DDPrint.Print("迷路作成中...");
+
+								DDEngine.EachFrame();
+							}
 
 							using (Game game = new Game())
 							{
@@ -100,7 +118,8 @@ namespace Charlotte.Mains
 				{
 					"マップの幅　　　[ " + Ground.I.MakeMap_W + " ]",
 					"マップの高さ　　[ " + Ground.I.MakeMap_H + " ]",
-					"乱数のシード値　[ " + Ground.I.MakeMap_Seed + " ]",
+					"乱数のシード値　[ " + Ground.I.MakeMap_Seed + " ] ( 0 のときは毎回ランダム )",
+					"デフォルトに戻す",
 					"戻る",
 				};
 
@@ -109,30 +128,33 @@ namespace Charlotte.Mains
 				switch (selectIndex)
 				{
 					case 0:
-
-						// TODO IntVolumeConfig
-
-						this.SimpleMenu.VolumeConfig("マップの幅", Ground.I.MakeMap_W, 10, 200, 1, 10,
-							volume => Ground.I.MakeMap_W = DoubleTools.ToInt(volume),
+						this.SimpleMenu.IntVolumeConfig("マップの幅", Ground.I.MakeMap_W, 10, 100, 1, 10,
+							value => Ground.I.MakeMap_W = value,
 							() => { }
 							);
 						break;
 
 					case 1:
-						this.SimpleMenu.VolumeConfig("マップの高さ", Ground.I.MakeMap_H, 10, 200, 1, 10,
-							volume => Ground.I.MakeMap_H = DoubleTools.ToInt(volume),
+						this.SimpleMenu.IntVolumeConfig("マップの高さ", Ground.I.MakeMap_H, 10, 100, 1, 10,
+							value => Ground.I.MakeMap_H = value,
 							() => { }
 							);
 						break;
 
 					case 2:
-						this.SimpleMenu.VolumeConfig("乱数のシード値", Ground.I.MakeMap_Seed, 1, 1000000, 1, 1000,
-							volume => Ground.I.MakeMap_Seed = DoubleTools.ToInt(volume),
+						this.SimpleMenu.IntVolumeConfig("乱数のシード値", Ground.I.MakeMap_Seed, 0, IntTools.IMAX, 1, 30000,
+							value => Ground.I.MakeMap_Seed = value,
 							() => { }
 							);
 						break;
 
 					case 3:
+						Ground.I.MakeMap_W = 30;
+						Ground.I.MakeMap_H = 30;
+						Ground.I.MakeMap_Seed = 0;
+						break;
+
+					case 4:
 						goto endMenu;
 
 					default:
@@ -150,7 +172,7 @@ namespace Charlotte.Mains
 
 			string[] items = new string[] 
 			{
-				"パッドのボタン設定",
+				"ゲームパッドのボタン設定",
 				"ウィンドウサイズ変更",
 				"ＢＧＭ音量",
 				"ＳＥ音量",
@@ -230,7 +252,7 @@ namespace Charlotte.Mains
 
 		private void ReturnTitleMenu()
 		{
-			//Ground.I.Music.Title.Play();
+			Ground.I.Music.Title.Play();
 
 			GC.Collect();
 		}
