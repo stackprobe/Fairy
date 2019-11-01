@@ -135,6 +135,8 @@ namespace Charlotte.Common
 
 			DDAdditionalEvents.PostGameStart();
 			DDAdditionalEvents.PostGameStart_G2();
+
+			DDSaveData.Load_Delay();
 		}
 
 		//

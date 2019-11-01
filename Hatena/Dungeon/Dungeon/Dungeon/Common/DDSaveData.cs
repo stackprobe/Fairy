@@ -158,16 +158,26 @@ namespace Charlotte.Common
 				ProcMain.WriteLog(e);
 			}
 
-			try // for app
+			Load_Delay = () =>
 			{
-				lines = DDUtils.Split(blocks[bc++]);
+				try // for app
+				{
+					lines = DDUtils.Split(blocks[bc++]);
 
-				DDAdditionalEvents.Load(lines);
-			}
-			catch (Exception e)
-			{
-				ProcMain.WriteLog(e);
-			}
+					DDAdditionalEvents.Load(lines);
+				}
+				catch (Exception e)
+				{
+					ProcMain.WriteLog(e);
+				}
+
+				Load_Delay = () => { }; // reset
+			};
 		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static Action Load_Delay = () => { };
 	}
 }
