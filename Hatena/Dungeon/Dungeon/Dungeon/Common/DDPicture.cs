@@ -61,7 +61,7 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		private PictureInfo GetInfo()
+		protected virtual PictureInfo GetInfo()
 		{
 			if (this.Info == null)
 				this.Info = this.Loader();

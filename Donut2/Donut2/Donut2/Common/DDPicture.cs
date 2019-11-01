@@ -37,7 +37,7 @@ namespace Charlotte.Common
 			}
 		}
 
-		private PictureInfo GetInfo()
+		protected virtual PictureInfo GetInfo()
 		{
 			if (this.Info == null)
 				this.Info = this.Loader();

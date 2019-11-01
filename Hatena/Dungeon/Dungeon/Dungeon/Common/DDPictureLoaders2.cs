@@ -18,6 +18,27 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
+		private class PictureWrapper : DDPicture
+		{
+			public Func<int> Func_GetHandle;
+			public DDPicture.PictureInfo Info;
+
+			// <---- prm
+
+			public PictureWrapper()
+				: base(() => null, v => { }, v => { })
+			{ }
+
+			protected override DDPicture.PictureInfo GetInfo()
+			{
+				this.Info.Handle = this.Func_GetHandle();
+				return this.Info;
+			}
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
 		public static DDPicture Wrapper(Func<int> getHandle, int w, int h)
 		{
 			DDPicture.PictureInfo info = new DDPicture.PictureInfo()
@@ -27,14 +48,11 @@ namespace Charlotte.Common
 				H = h,
 			};
 
-			return new DDPicture(() =>
+			return new PictureWrapper()
 			{
-				info.Handle = getHandle();
-				return info;
-			},
-			v => { },
-			v => { }
-			);
+				Func_GetHandle = getHandle,
+				Info = info,
+			};
 		}
 
 		//
