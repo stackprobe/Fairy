@@ -8,7 +8,7 @@ namespace Charlotte.Games
 	public class MapWall
 	{
 		public Kind_e Kind = Kind_e.NONE;
-		public string Script = null; // null == スクリプト無し
+		//public string Script = null; // null == スクリプト無し
 
 		// <---- prm
 

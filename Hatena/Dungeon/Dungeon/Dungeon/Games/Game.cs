@@ -97,6 +97,9 @@ namespace Charlotte.Games
 				}
 
 				DDPrint.SetPrint();
+				DDPrint.Print("※ [青]＝スタート地点 , [赤]＝ゴール地点 , 上方向が北　( パラメータ＝" + this.Map.DungeonMap.ParameterString + " )");
+
+				DDPrint.SetPrint(DDConsts.Screen_W / 2 - 90, DDConsts.Screen_H - 16);
 				DDPrint.Print("PRESS Z KEY TO START");
 
 				DDEngine.EachFrame();
@@ -112,6 +115,8 @@ namespace Charlotte.Games
 			{
 				if (DDInput.PAUSE.GetInput() == 1) // ポーズ・メニュー画面
 				{
+					Ground.I.SE.PauseEnter.Play();
+
 					DDEngine.FreezeInput();
 					DDCurtain.SetCurtain(30, -0.8);
 
@@ -137,9 +142,11 @@ namespace Charlotte.Games
 							switch (selectIndex)
 							{
 								case 0:
+									Ground.I.SE.Restart.Play();
 									goto restart;
 
 								case 1:
+									Ground.I.SE.ReturnToTitle.Play();
 									goto endGame;
 
 								case 2:
@@ -182,7 +189,10 @@ namespace Charlotte.Games
 					}
 				endPauseMenu:
 					DDCurtain.SetCurtain(30, 0.0);
+
+					Ground.I.SE.PauseLeave.Play();
 				}
+
 				if (1 <= DDInput.DIR_8.GetInput())
 				{
 					foreach (DDScene scene in DDSceneUtils.Create(5))
@@ -194,7 +204,9 @@ namespace Charlotte.Games
 					}
 					if (this.Map[this.Player.X, this.Player.Y].GetWall(this.Player.Direction).Kind == MapWall.Kind_e.WALL)
 					{
-						// 壁衝突 todo ???
+						// 壁衝突
+
+						Ground.I.SE.Poka.Play();
 					}
 					else
 					{
@@ -282,6 +294,47 @@ namespace Charlotte.Games
 
 						DDEngine.EachFrame();
 					}
+				}
+
+				if (this.Map[this.Player.X, this.Player.Y].Script == MapCellScript.GOAL)
+				{
+					Ground.I.Music.Completed.Play();
+					DDCurtain.SetCurtain(60, -0.8);
+
+					foreach (DDScene scene in DDSceneUtils.Create(30))
+					{
+						DungeonScreen.DrawFront(this.Layout);
+						this.DrawDungeon();
+
+						DDEngine.EachFrame();
+					}
+
+					DDEngine.FreezeInput();
+
+					for (; ; )
+					{
+						if (DDInput.A.GetInput() == 1)
+							break;
+
+						if (DDInput.B.GetInput() == 1)
+							break;
+
+						if (DDInput.PAUSE.GetInput() == 1)
+							break;
+
+						DungeonScreen.DrawFront(this.Layout);
+						this.DrawDungeon();
+
+						DDCurtain.EachFrame();
+
+						DDDraw.DrawCenter(Ground.I.Picture.CongratulationsPanel, DDConsts.Screen_W / 2, DDConsts.Screen_H / 2);
+
+						DDPrint.SetPrint(DDConsts.Screen_W / 2 - 100, DDConsts.Screen_H - 16);
+						DDPrint.Print("PRESS Z KEY TO CONTINUE");
+
+						DDEngine.EachFrame();
+					}
+					break;
 				}
 
 				// Draw ...

@@ -13,5 +13,6 @@ namespace Charlotte
 		public DDPicture Gate = DDPictureLoaders.Standard(@"Wall\Goal.png");
 
 		public DDPicture GameFrame = DDPictureLoaders.Standard(@"GameFrame.png");
+		public DDPicture CongratulationsPanel = DDPictureLoaders.Standard(@"Congratulations.png");
 	}
 }

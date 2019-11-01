@@ -36,6 +36,7 @@ namespace Charlotte.Mains
 			this.SimpleMenu = new DDSimpleMenu();
 
 			this.SimpleMenu.WallColor = WALL_COLOR;
+			this.SimpleMenu.BorderColor = new I3Color(30, 30, 30);
 			//this.SimpleMenu.WallPicture = Ground.I.Picture.TitleWall;
 
 			for (; ; )
@@ -59,13 +60,15 @@ namespace Charlotte.Mains
 
 							for (int c = 0; ; c++)
 							{
-								if (10 < c && th.IsEnded())
+								if (30 < c && th.IsEnded())
 									break;
 
 								this.DrawWall();
 
-								DDPrint.SetPrint();
-								DDPrint.Print("迷路作成中...");
+								DDPrint.SetPrint(10, 10);
+								DDPrint.SetBorder(new I3Color(128, 64, 0));
+								DDPrint.Print("マップデータ作成中...");
+								DDPrint.Reset();
 
 								DDEngine.EachFrame();
 							}
@@ -215,7 +218,15 @@ namespace Charlotte.Mains
 						},
 						() =>
 						{
-							//Ground.I.SE.PauseIn.Play();
+							SecurityTools.CRandom.ChooseOne(new DDSE[]
+							{
+								Ground.I.SE.PauseEnter,
+								Ground.I.SE.PauseLeave,
+								Ground.I.SE.Restart,
+								Ground.I.SE.ReturnToTitle,
+								Ground.I.SE.Poka,
+							})
+							.Play();
 						}
 						);
 						break;

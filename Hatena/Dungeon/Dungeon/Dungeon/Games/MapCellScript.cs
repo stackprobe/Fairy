@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Games
 {
-	public static class MapWallScript
+	public static class MapCellScript
 	{
 		public const string GOAL = "GOAL";
 	}

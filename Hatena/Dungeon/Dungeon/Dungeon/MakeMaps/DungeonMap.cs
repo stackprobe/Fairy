@@ -18,6 +18,8 @@ namespace Charlotte.MakeMaps
 		public I2Point StartPoint = new I2Point(0, 0);
 		public int StartDirection = 2;
 
+		public string ParameterString = "Dummy";
+
 		public DungeonMap(int w, int h)
 		{
 			if (w < 1 || IntTools.IMAX < w) throw null;

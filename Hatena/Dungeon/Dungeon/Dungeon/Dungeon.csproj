@@ -131,7 +131,7 @@
     <Compile Include="Games\MapCell.cs" />
     <Compile Include="Games\MapLoader.cs" />
     <Compile Include="Games\MapWall.cs" />
-    <Compile Include="Games\MapWallScript.cs" />
+    <Compile Include="Games\MapCellScript.cs" />
     <Compile Include="Games\Player.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="Mains\TitleMenu.cs" />

@@ -26,6 +26,7 @@ namespace Charlotte.MakeMaps
 
 			Map_W = w;
 			Map_H = h;
+			Map_Seed = seed;
 			Map = MakeLikeADungeonMap(24); // pattern == 24
 
 			//OutputToImageFile(); // 初期状態
@@ -120,11 +121,14 @@ namespace Charlotte.MakeMaps
 				dungMap[goalPt.X, goalPt.Y].Goal = true;
 			}
 
+			dungMap.ParameterString = string.Format("W:{0},H:{1},SEED:{2}", Map_W, Map_H, Map_Seed);
+
 			return dungMap;
 		}
 
 		private int Map_W; // マップの幅
 		private int Map_H; // マップの高さ
+		private int Map_Seed;
 
 		// Map[MAP_W, MAP_H]
 		//

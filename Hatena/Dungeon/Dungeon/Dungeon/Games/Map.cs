@@ -32,6 +32,9 @@ namespace Charlotte.Games
 					this.Cells[x, y].Wall_4.Kind = this.GetWallKind(this.DungeonMap[x - 1, y]);
 					this.Cells[x, y].Wall_6.Kind = this.GetWallKind(this.DungeonMap[x + 1, y]);
 					this.Cells[x, y].Wall_8.Kind = this.GetWallKind(this.DungeonMap[x, y - 1]);
+
+					if (this.DungeonMap[x, y].Goal)
+						this.Cells[x, y].Script = MapCellScript.GOAL;
 				}
 			}
 			this.DefaultCell_2_Wall.Wall_2.Kind = MapWall.Kind_e.WALL;

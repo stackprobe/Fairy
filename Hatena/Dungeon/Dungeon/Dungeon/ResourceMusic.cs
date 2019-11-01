@@ -10,5 +10,6 @@ namespace Charlotte
 	{
 		public DDMusic Title = new DDMusic(@"BGM\marbletechno1.mp3");
 		public DDMusic Maze = new DDMusic(@"BGM\marbletechno2.mp3");
+		public DDMusic Completed = new DDMusic(@"BGM\happytime.mp3");
 	}
 }
