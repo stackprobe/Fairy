@@ -101,7 +101,7 @@ namespace Charlotte.Games
 				default:
 					throw null; // never
 			}
-			double bright = 1.0 - y / 10.0;
+			double bright = 1.0 - y / 6.0;
 
 			DDDraw.SetBright(bright, bright, bright);
 			DDDraw.DrawFree(picture, poly);

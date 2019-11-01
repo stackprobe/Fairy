@@ -53,6 +53,12 @@ namespace Charlotte.Games
 				if (DDInput.A.GetInput() == 1)
 					break;
 
+				if (DDInput.B.GetInput() == 1)
+					break;
+
+				if (DDInput.PAUSE.GetInput() == 1)
+					break;
+
 				DungeonScreen.DrawFront(this.Layout);
 				this.DrawDungeon();
 
@@ -91,11 +97,12 @@ namespace Charlotte.Games
 				}
 
 				DDPrint.SetPrint();
-				DDPrint.Print("PRESS Z KEY START");
+				DDPrint.Print("PRESS Z KEY TO START");
 
 				DDEngine.EachFrame();
 			}
 
+			DDEngine.FreezeInput();
 			Ground.I.Music.Maze.Play();
 			DDCurtain.SetCurtain(30, 0.0);
 

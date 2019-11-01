@@ -69,12 +69,14 @@ namespace Charlotte.Mains
 
 								DDEngine.EachFrame();
 							}
+							this.LeaveTitleMenu();
 
 							using (Game game = new Game())
 							{
 								game.Map = MapLoader.Load(dungMap);
 								game.Perform();
 							}
+							this.ReturnTitleMenu();
 						}
 						break;
 
