@@ -18,24 +18,31 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public static DDPicture Wrapper(int handle, int w, int h)
+		public static DDPicture Wrapper(Func<int> getHandle, int w, int h)
 		{
 			DDPicture.PictureInfo info = new DDPicture.PictureInfo()
 			{
-				Handle = handle,
+				Handle = -1,
 				W = w,
 				H = h,
 			};
 
-			return new DDPicture(() => info, v => { }, v => { });
+			return new DDPicture(() =>
+			{
+				info.Handle = getHandle();
+				return info;
+			},
+			v => { },
+			v => { }
+			);
 		}
 
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public static DDPicture Wrapper(int handle, I2Size size)
+		public static DDPicture Wrapper(Func<int> getHandle, I2Size size)
 		{
-			return Wrapper(handle, size.W, size.H);
+			return Wrapper(getHandle, size.W, size.H);
 		}
 
 		//
@@ -43,7 +50,7 @@ namespace Charlotte.Common
 		//
 		public static DDPicture Wrapper(DDSubScreen subScreen)
 		{
-			return Wrapper(subScreen.GetHandle(), subScreen.GetSize());
+			return Wrapper(() => subScreen.GetHandle(), subScreen.GetSize());
 		}
 	}
 }
