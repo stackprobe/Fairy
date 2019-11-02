@@ -299,17 +299,9 @@ namespace Charlotte.Games
 				if (this.Map[this.Player.X, this.Player.Y].Script == MapCellScript.GOAL)
 				{
 					Ground.I.Music.Completed.Play();
-					DDCurtain.SetCurtain(30, -0.5);
+					DDCurtain.SetCurtain(30, -0.8);
 
-					foreach (DDScene scene in DDSceneUtils.Create(30))
-					{
-						DungeonScreen.DrawFront(this.Layout);
-						this.DrawDungeon();
-
-						DDEngine.EachFrame();
-					}
-
-					DDEngine.FreezeInput();
+					DDEngine.FreezeInput(30);
 
 					for (; ; )
 					{
