@@ -64,40 +64,7 @@ namespace Charlotte.Games
 
 				DDCurtain.EachFrame();
 
-				// マップの表示
-				{
-					int cell_wh = 400 / Math.Max(this.Map.W, this.Map.H);
-
-					if (cell_wh < 1)
-						throw null; // 2bs?
-
-					for (int x = -1; x <= this.Map.W; x++)
-					{
-						for (int y = -1; y <= this.Map.H; y++)
-						{
-							int l = (DDConsts.Screen_W - cell_wh * this.Map.W) / 2;
-							int t = (DDConsts.Screen_H - cell_wh * this.Map.H) / 2;
-
-							I3Color color = new I3Color(64, 64, 64);
-
-							if (this.Map.DungeonMap[x, y].Wall)
-								color = new I3Color(200, 200, 50);
-
-							if (this.Map.DungeonMap[x, y].Goal)
-								color = new I3Color(255, 0, 0);
-
-							if (x == this.Map.DungeonMap.StartPoint.X && y == this.Map.DungeonMap.StartPoint.Y)
-								color = new I3Color(0, 128, 255);
-
-							DDDraw.SetBright(color);
-							DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, l + x * cell_wh, t + y * cell_wh, cell_wh, cell_wh);
-							DDDraw.Reset();
-						}
-					}
-				}
-
-				DDPrint.SetPrint();
-				DDPrint.Print("※ [青]＝スタート地点 , [赤]＝ゴール地点 , 上方向が北　( パラメータ＝" + this.Map.DungeonMap.ParameterString + " )");
+				this.DrawMap();
 
 				DDPrint.SetPrint(DDConsts.Screen_W / 2 - 90, DDConsts.Screen_H - 16);
 				DDPrint.Print("PRESS Z KEY TO START");
@@ -326,6 +293,107 @@ namespace Charlotte.Games
 
 						DDEngine.EachFrame();
 					}
+
+					// クリア後メニュー
+					{
+						DDEngine.FreezeInput();
+						DDCurtain.SetCurtain(30, -0.8);
+
+						const int ITEM_NUM = 3;
+						int selectIndex = 0;
+
+						for (; ; )
+						{
+							if (DDInput.PAUSE.GetInput() == 1)
+								break;
+
+							if (DDInput.DIR_2.IsPound())
+								selectIndex++;
+
+							if (DDInput.DIR_8.IsPound())
+								selectIndex--;
+
+							selectIndex += ITEM_NUM;
+							selectIndex %= ITEM_NUM;
+
+							if (DDInput.A.GetInput() == 1)
+							{
+								switch (selectIndex)
+								{
+									case 0:
+										{
+											DDEngine.FreezeInput();
+
+											for (; ; )
+											{
+												if (DDInput.A.GetInput() == 1)
+													break;
+
+												if (DDInput.B.GetInput() == 1)
+													break;
+
+												if (DDInput.PAUSE.GetInput() == 1)
+													break;
+
+												DungeonScreen.DrawFront(this.Layout);
+												this.DrawDungeon();
+
+												DDCurtain.EachFrame();
+
+												this.DrawMap();
+
+												DDPrint.SetPrint(DDConsts.Screen_W / 2 - 90, DDConsts.Screen_H - 16);
+												DDPrint.Print("PRESS Z KEY TO RETURN");
+
+												DDEngine.EachFrame();
+											}
+											DDEngine.FreezeInput();
+										}
+										break;
+
+									case 1:
+										goto restart;
+
+									case 2:
+										goto endGame;
+
+									default:
+										throw null; // never
+								}
+							}
+							if (DDInput.B.GetInput() == 1)
+							{
+								if (selectIndex == ITEM_NUM - 1)
+									break;
+
+								selectIndex = ITEM_NUM - 1;
+							}
+							DungeonScreen.DrawFront(this.Layout);
+							this.DrawDungeon();
+
+							DDCurtain.EachFrame();
+
+							DDDraw.SetBright(new I3Color(100, 0, 0));
+							DDDraw.SetAlpha(0.7);
+							DDDraw.DrawBegin(DDGround.GeneralResource.WhiteBox, DDConsts.Screen_W / 2, DDConsts.Screen_H / 2);
+							DDDraw.DrawSetSize(400, 200);
+							DDDraw.DrawEnd();
+							DDDraw.Reset();
+
+							DDPrint.SetPrint(330, 215, 50);
+
+							{
+								int c = 0;
+
+								DDPrint.PrintLine("[" + (selectIndex == c++ ? ">" : " ") + "] マップを確認する");
+								DDPrint.PrintLine("[" + (selectIndex == c++ ? ">" : " ") + "] この迷路をもう一度プレイする");
+								DDPrint.PrintLine("[" + (selectIndex == c++ ? ">" : " ") + "] タイトルに戻る");
+							}
+
+							DDEngine.EachFrame();
+						}
+					}
+
 					break;
 				}
 
@@ -348,6 +416,42 @@ namespace Charlotte.Games
 
 				DDEngine.EachFrame();
 			}
+		}
+
+		private void DrawMap()
+		{
+			int cell_wh = 400 / Math.Max(this.Map.W, this.Map.H);
+
+			if (cell_wh < 1)
+				throw null; // 2bs?
+
+			for (int x = -1; x <= this.Map.W; x++)
+			{
+				for (int y = -1; y <= this.Map.H; y++)
+				{
+					int l = (DDConsts.Screen_W - cell_wh * this.Map.W) / 2;
+					int t = (DDConsts.Screen_H - cell_wh * this.Map.H) / 2;
+
+					I3Color color = new I3Color(64, 64, 64);
+
+					if (this.Map.DungeonMap[x, y].Wall)
+						color = new I3Color(200, 200, 50);
+
+					if (this.Map.DungeonMap[x, y].Goal)
+						color = new I3Color(255, 0, 0);
+
+					if (x == this.Map.DungeonMap.StartPoint.X && y == this.Map.DungeonMap.StartPoint.Y)
+						color = new I3Color(0, 128, 255);
+
+					DDDraw.SetBright(color);
+					DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, l + x * cell_wh, t + y * cell_wh, cell_wh, cell_wh);
+					DDDraw.Reset();
+				}
+			}
+
+			// zantei
+			DDPrint.SetPrint();
+			DDPrint.Print("※ [青]＝スタート地点 , [赤]＝ゴール地点 , 上方向が北　( パラメータ＝" + this.Map.DungeonMap.ParameterString + " )");
 		}
 
 		private double DistanceFromStart = 0.0;
