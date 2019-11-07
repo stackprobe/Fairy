@@ -124,7 +124,7 @@ namespace Charlotte.Mains
 					"マップの幅　　　[ " + Ground.I.MakeMap_W + " ]",
 					"マップの高さ　　[ " + Ground.I.MakeMap_H + " ]",
 					"乱数のシード値　[ " + Ground.I.MakeMap_Seed + " ] ( 0 のときは毎回ランダム )",
-					"壁を透過させる　[ " + Ground.I.UseWallTrans + " ]",
+					"壁を透明にする　[ " + Ground.I.UseWallTrans + " ]",
 					"デフォルトに戻す",
 					"戻る",
 				};
