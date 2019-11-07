@@ -47,6 +47,7 @@ namespace Charlotte
 				lines.Add("" + Ground.I.MakeMap_W);
 				lines.Add("" + Ground.I.MakeMap_H);
 				lines.Add("" + Ground.I.MakeMap_Seed);
+				lines.Add("" + (Ground.I.UseWallTrans ? 1 : 0));
 
 				// 新しい項目をここへ追加...
 			};
@@ -58,6 +59,7 @@ namespace Charlotte
 				Ground.I.MakeMap_W = int.Parse(lines[c++]);
 				Ground.I.MakeMap_H = int.Parse(lines[c++]);
 				Ground.I.MakeMap_Seed = int.Parse(lines[c++]);
+				Ground.I.UseWallTrans = int.Parse(lines[c++]) != 0;
 
 				// 新しい項目をここへ追加...
 			};

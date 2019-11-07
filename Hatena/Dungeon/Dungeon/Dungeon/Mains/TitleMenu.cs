@@ -124,6 +124,7 @@ namespace Charlotte.Mains
 					"マップの幅　　　[ " + Ground.I.MakeMap_W + " ]",
 					"マップの高さ　　[ " + Ground.I.MakeMap_H + " ]",
 					"乱数のシード値　[ " + Ground.I.MakeMap_Seed + " ] ( 0 のときは毎回ランダム )",
+					"壁を透過させる　[ " + Ground.I.UseWallTrans + " ]",
 					"デフォルトに戻す",
 					"戻る",
 				};
@@ -154,12 +155,16 @@ namespace Charlotte.Mains
 						break;
 
 					case 3:
+						Ground.I.UseWallTrans = Ground.I.UseWallTrans == false;
+						break;
+
+					case 4:
 						Ground.I.MakeMap_W = 30;
 						Ground.I.MakeMap_H = 30;
 						Ground.I.MakeMap_Seed = 0;
 						break;
 
-					case 4:
+					case 5:
 						goto endMenu;
 
 					default:

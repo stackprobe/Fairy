@@ -16,6 +16,7 @@ namespace Charlotte.Games
 		public static Game I = null;
 
 		private DDPicture WallPicture;
+		private DDPicture WallBackPicture;
 		private DDPicture GatePicture;
 		private DDPicture BackgroundPicture;
 
@@ -35,7 +36,12 @@ namespace Charlotte.Games
 
 		public void Perform()
 		{
-			this.WallPicture = Ground.I.Picture.Wall;
+			if (Ground.I.UseWallTrans)
+				this.WallPicture = Ground.I.Picture.WallTrans;
+			else
+				this.WallPicture = Ground.I.Picture.Wall;
+
+			this.WallBackPicture = Ground.I.Picture.WallTransBack;
 			this.GatePicture = Ground.I.Picture.Gate;
 			this.BackgroundPicture = Ground.I.Picture.Background;
 
@@ -484,6 +490,11 @@ namespace Charlotte.Games
 			public DDPicture GetWallPicture()
 			{
 				return Game.I.WallPicture;
+			}
+
+			public DDPicture GetWallBackPicture()
+			{
+				return Game.I.WallBackPicture;
 			}
 
 			public DDPicture GetGatePicture()

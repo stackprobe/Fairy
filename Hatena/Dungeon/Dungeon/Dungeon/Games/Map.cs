@@ -28,10 +28,10 @@ namespace Charlotte.Games
 				for (int y = 0; y < this.H; y++)
 				{
 					this.Cells[x, y] = new MapCell();
-					this.Cells[x, y].Wall_2.Kind = this.GetWallKind(this.DungeonMap[x, y + 1]);
-					this.Cells[x, y].Wall_4.Kind = this.GetWallKind(this.DungeonMap[x - 1, y]);
-					this.Cells[x, y].Wall_6.Kind = this.GetWallKind(this.DungeonMap[x + 1, y]);
-					this.Cells[x, y].Wall_8.Kind = this.GetWallKind(this.DungeonMap[x, y - 1]);
+					this.Cells[x, y].Wall_2.Kind = this.GetWallKind(this.DungeonMap[x, y], this.DungeonMap[x, y + 1]);
+					this.Cells[x, y].Wall_4.Kind = this.GetWallKind(this.DungeonMap[x, y], this.DungeonMap[x - 1, y]);
+					this.Cells[x, y].Wall_6.Kind = this.GetWallKind(this.DungeonMap[x, y], this.DungeonMap[x + 1, y]);
+					this.Cells[x, y].Wall_8.Kind = this.GetWallKind(this.DungeonMap[x, y], this.DungeonMap[x, y - 1]);
 
 					if (this.DungeonMap[x, y].Goal)
 						this.Cells[x, y].Script = MapCellScript.GOAL;
@@ -43,12 +43,18 @@ namespace Charlotte.Games
 			this.DefaultCell_8_Wall.Wall_8.Kind = MapWall.Kind_e.WALL;
 		}
 
-		private MapWall.Kind_e GetWallKind(DungeonMapCell dmCell)
+		private MapWall.Kind_e GetWallKind(DungeonMapCell dmCell, DungeonMapCell dmCell2)
 		{
-			if (dmCell.Wall)
+			if (dmCell.Wall && dmCell2.Wall)
+				return MapWall.Kind_e.NONE;
+
+			if (dmCell.Wall && dmCell2.Wall == false)
+				return MapWall.Kind_e.WALL_BACK;
+
+			if (dmCell.Wall == false && dmCell2.Wall)
 				return MapWall.Kind_e.WALL;
 
-			if (dmCell.Goal)
+			if (dmCell.Goal || dmCell2.Goal)
 				return MapWall.Kind_e.GATE;
 
 			return MapWall.Kind_e.NONE;

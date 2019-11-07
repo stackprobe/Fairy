@@ -9,6 +9,7 @@ namespace Charlotte.Games
 	public interface IDungeonLayout
 	{
 		DDPicture GetWallPicture();
+		DDPicture GetWallBackPicture();
 		DDPicture GetGatePicture();
 		DDPicture GetBackgroundPicture();
 

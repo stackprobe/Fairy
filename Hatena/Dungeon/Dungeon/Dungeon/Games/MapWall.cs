@@ -16,6 +16,7 @@ namespace Charlotte.Games
 		{
 			NONE = 1,
 			WALL,
+			WALL_BACK,
 			GATE,
 		}
 	}

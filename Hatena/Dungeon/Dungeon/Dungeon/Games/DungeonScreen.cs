@@ -94,6 +94,10 @@ namespace Charlotte.Games
 					picture = Layout.GetWallPicture();
 					break;
 
+				case MapWall.Kind_e.WALL_BACK:
+					picture = Layout.GetWallBackPicture();
+					break;
+
 				case MapWall.Kind_e.GATE:
 					picture = Layout.GetGatePicture();
 					break;
