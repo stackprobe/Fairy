@@ -149,7 +149,7 @@ namespace Charlotte.Common
 					files = tmp;
 				}
 
-				// memo: makeDDREsourceFile はファイルリストを sortJLinesICase してる。
+				// memo: makeDDResourceFile はファイルリストを sortJLinesICase してる。
 			}
 			return files.Where(file => Path.GetFileName(file)[0] != '_');
 
