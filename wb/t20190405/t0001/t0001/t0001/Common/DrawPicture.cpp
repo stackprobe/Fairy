@@ -321,7 +321,7 @@ static void DrawPicReleaseParam(Param_t *i)
 */
 static void DrawPic(int picId, Layout_t *layout_bind)
 {
-	Param_t *i = nb(Param_t);
+	Param_t *i = nb_(Param_t);
 
 	i->PicId = picId;
 	i->Layout = layout_bind;
@@ -342,7 +342,7 @@ void DrawFree(int picId, double ltx, double lty, double rtx, double rty, double 
 {
 	// layout no-check
 
-	Layout_t *i = nb(Layout_t);
+	Layout_t *i = nb_(Layout_t);
 
 	i->Mode = 'F';
 	i->u.Free.LTX = ltx;
@@ -368,7 +368,7 @@ void DrawRect_LTRB(int picId, double l, double t, double r, double b)
 	errorCase(b < t + 1.0 || (double)IMAX < b);
 	// }
 
-	Layout_t *i = nb(Layout_t);
+	Layout_t *i = nb_(Layout_t);
 
 	i->Mode = 'R';
 	i->u.Rect.L = l;
@@ -395,7 +395,7 @@ void DrawSimple(int picId, double x, double y)
 	errorCase(y < -(double)IMAX || (double)IMAX < y);
 	// }
 
-	Layout_t *i = nb(Layout_t);
+	Layout_t *i = nb_(Layout_t);
 
 	i->Mode = 'S';
 	i->u.Simple.X = x;
@@ -459,7 +459,7 @@ void DrawBegin(int picId, double x, double y)
 {
 	errorCase(DB_L);
 
-	Layout_t *i = nb(Layout_t);
+	Layout_t *i = nb_(Layout_t);
 
 	double w;
 	double h;

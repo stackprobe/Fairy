@@ -40,11 +40,11 @@ void *memClone(void *block, int size);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-#define na(type_t, count) \
+#define na_(type_t, count) \
 	((type_t *)memAlloc(sizeof(type_t) * (count)))
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-#define nb(type_t) \
-	(na(type_t, 1))
+#define nb_(type_t) \
+	(na_(type_t, 1))
