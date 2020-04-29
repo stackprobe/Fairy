@@ -122,7 +122,7 @@ namespace Charlotte.Common
 		//
 		public static void Range(ref double value, double minval, double maxval)
 		{
-			value = DoubleTools.Range(value, minval, maxval);
+			value = DoubleTools.ToRange(value, minval, maxval);
 		}
 
 		//
@@ -130,7 +130,7 @@ namespace Charlotte.Common
 		//
 		public static void Range(ref int value, int minval, int maxval)
 		{
-			value = IntTools.Range(value, minval, maxval);
+			value = IntTools.ToRange(value, minval, maxval);
 		}
 
 		//

@@ -421,7 +421,7 @@ namespace Charlotte.Common
 				}
 				if (chgval)
 				{
-					value = IntTools.Range(value, minval, maxval);
+					value = IntTools.ToRange(value, minval, maxval);
 					valChanged(value);
 				}
 				if (DDEngine.ProcFrame % PULSE_FRM == 0)

@@ -144,9 +144,9 @@ namespace Charlotte.Donut
 			if (CurrDestMusic == null)
 				return;
 
-			frameMax = IntTools.Range(frameMax, 1, 3600); // 1 frame - 1 min
-			destVRate = DoubleTools.Range(destVRate, 0.0, 1.0);
-			startVRate = DoubleTools.Range(startVRate, 0.0, 1.0);
+			frameMax = IntTools.ToRange(frameMax, 1, 3600); // 1 frame - 1 min
+			destVRate = DoubleTools.ToRange(destVRate, 0.0, 1.0);
+			startVRate = DoubleTools.ToRange(startVRate, 0.0, 1.0);
 
 			for (int frmcnt = 0; frmcnt <= frameMax; frmcnt++)
 			{

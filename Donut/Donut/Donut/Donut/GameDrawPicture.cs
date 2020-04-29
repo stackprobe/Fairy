@@ -114,7 +114,7 @@ namespace Charlotte.Donut
 
 		private static void SetBlend(int mode, double a)
 		{
-			a = DoubleTools.Range(a, 0.0, 1.0);
+			a = DoubleTools.ToRange(a, 0.0, 1.0);
 
 			int pal = DoubleTools.ToInt(a * 255.0);
 
@@ -139,9 +139,9 @@ namespace Charlotte.Donut
 			if (cG < -0.5 || 1.5 < cG) throw new GameError();
 			if (cB < -0.5 || 1.5 < cB) throw new GameError();
 
-			cR = DoubleTools.Range(cR, 0.0, 1.0);
-			cG = DoubleTools.Range(cG, 0.0, 1.0);
-			cB = DoubleTools.Range(cB, 0.0, 1.0);
+			cR = DoubleTools.ToRange(cR, 0.0, 1.0);
+			cG = DoubleTools.ToRange(cG, 0.0, 1.0);
+			cB = DoubleTools.ToRange(cB, 0.0, 1.0);
 
 			int palR = DoubleTools.ToInt(cR * 255.0);
 			int palG = DoubleTools.ToInt(cG * 255.0);

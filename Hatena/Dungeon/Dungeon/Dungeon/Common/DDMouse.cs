@@ -65,7 +65,7 @@ namespace Charlotte.Common
 				Rot = 0;
 				status = 0u;
 			}
-			Rot = IntTools.Range(Rot, -IntTools.IMAX, IntTools.IMAX);
+			Rot = IntTools.ToRange(Rot, -IntTools.IMAX, IntTools.IMAX);
 
 			DDUtils.UpdateInput(ref L.Status, (status & (uint)DX.MOUSE_INPUT_LEFT) != 0u);
 			DDUtils.UpdateInput(ref R.Status, (status & (uint)DX.MOUSE_INPUT_RIGHT) != 0u);

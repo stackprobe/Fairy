@@ -61,8 +61,8 @@ namespace Charlotte.Test01
 				{
 					effectCount--;
 				}
-				effectPerFrm = IntTools.Range(effectPerFrm, 1, 10);
-				effectCount = IntTools.Range(effectCount, 1, 100);
+				effectPerFrm = IntTools.ToRange(effectPerFrm, 1, 10);
+				effectCount = IntTools.ToRange(effectCount, 1, 100);
 
 				if (DDEngine.ProcFrame % effectPerFrm == 0)
 				{

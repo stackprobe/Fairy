@@ -38,7 +38,7 @@ namespace Charlotte.Donut
 				MouseRot = 0;
 				status = 0u;
 			}
-			MouseRot = IntTools.Range(MouseRot, -IntTools.IMAX, IntTools.IMAX);
+			MouseRot = IntTools.ToRange(MouseRot, -IntTools.IMAX, IntTools.IMAX);
 
 			GameDefine.UpdateInput(ref MouseStatus[(int)MOUBTN.L], (status & DX.MOUSE_INPUT_LEFT) != 0u);
 			GameDefine.UpdateInput(ref MouseStatus[(int)MOUBTN.M], (status & DX.MOUSE_INPUT_MIDDLE) != 0u);

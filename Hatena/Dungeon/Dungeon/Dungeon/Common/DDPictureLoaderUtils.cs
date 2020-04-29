@@ -157,10 +157,10 @@ namespace Charlotte.Common
 		//
 		public static void SetSoftImageDot(int siHandle, int x, int y, Dot dot)
 		{
-			dot.R = IntTools.Range(dot.R, 0, 255);
-			dot.G = IntTools.Range(dot.G, 0, 255);
-			dot.B = IntTools.Range(dot.B, 0, 255);
-			dot.A = IntTools.Range(dot.A, 0, 255);
+			dot.R = IntTools.ToRange(dot.R, 0, 255);
+			dot.G = IntTools.ToRange(dot.G, 0, 255);
+			dot.B = IntTools.ToRange(dot.B, 0, 255);
+			dot.A = IntTools.ToRange(dot.A, 0, 255);
 
 			if (DX.DrawPixelSoftImage(siHandle, x, y, dot.R, dot.G, dot.B, dot.A) != 0)
 				throw new DDError();

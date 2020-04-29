@@ -90,7 +90,7 @@ namespace Charlotte.Common
 		{
 			int pal = DoubleTools.ToInt(a * 255.0);
 
-			pal = IntTools.Range(pal, 0, 255);
+			pal = IntTools.ToRange(pal, 0, 255);
 
 			Extra.A = pal;
 		}
@@ -102,7 +102,7 @@ namespace Charlotte.Common
 		{
 			int pal = DoubleTools.ToInt(a * 255.0);
 
-			pal = IntTools.Range(pal, 0, 255);
+			pal = IntTools.ToRange(pal, 0, 255);
 
 			Extra.BlendAdd = pal;
 		}
@@ -116,9 +116,9 @@ namespace Charlotte.Common
 			int pG = DoubleTools.ToInt(g * 255.0);
 			int pB = DoubleTools.ToInt(b * 255.0);
 
-			pR = IntTools.Range(pR, 0, 255);
-			pG = IntTools.Range(pG, 0, 255);
-			pB = IntTools.Range(pB, 0, 255);
+			pR = IntTools.ToRange(pR, 0, 255);
+			pG = IntTools.ToRange(pG, 0, 255);
+			pB = IntTools.ToRange(pB, 0, 255);
 
 			Extra.Bright = new I3Color(pR, pG, pB);
 		}
@@ -128,9 +128,9 @@ namespace Charlotte.Common
 		//
 		public static void SetBright(I3Color color)
 		{
-			color.R = IntTools.Range(color.R, 0, 255);
-			color.G = IntTools.Range(color.G, 0, 255);
-			color.B = IntTools.Range(color.B, 0, 255);
+			color.R = IntTools.ToRange(color.R, 0, 255);
+			color.G = IntTools.ToRange(color.G, 0, 255);
+			color.B = IntTools.ToRange(color.B, 0, 255);
 
 			Extra.Bright = color;
 		}

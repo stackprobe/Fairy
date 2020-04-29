@@ -94,7 +94,7 @@ namespace Charlotte.Common
 			if (whiteLevel == 0.0)
 				return;
 
-			whiteLevel = DoubleTools.Range(whiteLevel, -1.0, 1.0);
+			whiteLevel = DoubleTools.ToRange(whiteLevel, -1.0, 1.0);
 
 			if (whiteLevel < 0.0)
 			{

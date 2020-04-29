@@ -71,7 +71,7 @@ namespace Charlotte.Common
 		//
 		public static void SetVolume(int handle, double volume)
 		{
-			volume = DoubleTools.Range(volume, 0.0, 1.0);
+			volume = DoubleTools.ToRange(volume, 0.0, 1.0);
 
 			int pal = DoubleTools.ToInt(volume * 255.0);
 
@@ -87,12 +87,12 @@ namespace Charlotte.Common
 		//
 		public static double MixVolume(double volume1, double volume2)
 		{
-			volume1 = DoubleTools.Range(volume1, 0.0, 1.0);
-			volume2 = DoubleTools.Range(volume2, 0.0, 1.0);
+			volume1 = DoubleTools.ToRange(volume1, 0.0, 1.0);
+			volume2 = DoubleTools.ToRange(volume2, 0.0, 1.0);
 
 			double mixedVolume = volume1 * volume2 * 2.0;
 
-			mixedVolume = DoubleTools.Range(mixedVolume, 0.0, 1.0);
+			mixedVolume = DoubleTools.ToRange(mixedVolume, 0.0, 1.0);
 
 			return mixedVolume;
 		}

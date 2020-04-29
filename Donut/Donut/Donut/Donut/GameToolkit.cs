@@ -58,9 +58,9 @@ namespace Charlotte.Donut
 
 		public static void SetCurtain(int frameMax, double destWhiteLevel, double startWhiteLevel)
 		{
-			frameMax = IntTools.Range(frameMax, 0, 3600); // 0 frame - 1 min
-			destWhiteLevel = DoubleTools.Range(destWhiteLevel, -1.0, 1.0);
-			startWhiteLevel = DoubleTools.Range(startWhiteLevel, -1.0, 1.0);
+			frameMax = IntTools.ToRange(frameMax, 0, 3600); // 0 frame - 1 min
+			destWhiteLevel = DoubleTools.ToRange(destWhiteLevel, -1.0, 1.0);
+			startWhiteLevel = DoubleTools.ToRange(startWhiteLevel, -1.0, 1.0);
 
 			CurtainQueue.Clear();
 

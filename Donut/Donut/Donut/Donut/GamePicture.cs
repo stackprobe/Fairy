@@ -135,10 +135,10 @@ namespace Charlotte.Donut
 
 		public static void SetSIPixel(int si_h, int x, int y, SIPixel i)
 		{
-			i.R = IntTools.Range(i.R, 0, 255);
-			i.G = IntTools.Range(i.G, 0, 255);
-			i.B = IntTools.Range(i.B, 0, 255);
-			i.A = IntTools.Range(i.A, 0, 255);
+			i.R = IntTools.ToRange(i.R, 0, 255);
+			i.G = IntTools.ToRange(i.G, 0, 255);
+			i.B = IntTools.ToRange(i.B, 0, 255);
+			i.A = IntTools.ToRange(i.A, 0, 255);
 
 			if (DX.DrawPixelSoftImage(si_h, x, y, i.R, i.G, i.B, i.A) != 0)
 				throw new GameError();
