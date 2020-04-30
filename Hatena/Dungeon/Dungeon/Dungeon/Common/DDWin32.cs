@@ -12,10 +12,10 @@ namespace Charlotte.Common
 	//
 	public static class DDWin32
 	{
-		[StructLayout(LayoutKind.Sequential)]
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
+		[StructLayout(LayoutKind.Sequential)]
 		public struct POINT
 		{
 			public int X;
