@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Charlotte.Common
 {
+	// memo: ifscene は yield retrun で代用出来そうなので実装しない。--> DDCommonEffect.GetTask()
+
 	public struct DDScene
 	{
 		//
