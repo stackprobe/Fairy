@@ -44,10 +44,10 @@ namespace Charlotte.Common
 				int fontType = DX.DX_FONTTYPE_NORMAL;
 
 				if (this.AntiAliasing)
-					fontType |= DX.DX_FONTTYPE_ANTIALIASING;
+					fontType |= DX.DX_FONTTYPE_ANTIALIASING_8X8;
 
 				if (this.EdgeSize != 0)
-					fontType |= DX.DX_FONTTYPE_ANTIALIASING;
+					fontType |= DX.DX_FONTTYPE_ANTIALIASING_8X8;
 
 				this.Handle = DX.CreateFontToHandle(
 					this.FontName,
