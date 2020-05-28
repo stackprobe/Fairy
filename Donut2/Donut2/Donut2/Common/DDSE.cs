@@ -29,9 +29,17 @@ namespace Charlotte.Common
 			DDSEUtils.Add(this);
 		}
 
-		public void Play()
+		public void Play(bool once = true)
 		{
-			DDSEUtils.Play(this);
+			if (once)
+				DDSEUtils.Play(this);
+			else
+				DDSEUtils.PlayLoop(this);
+		}
+
+		public void Fade(int frameMax = 30)
+		{
+			throw null; // TODO
 		}
 
 		public void Stop()

@@ -56,9 +56,20 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public void Play()
+		public void Play(bool once = true)
 		{
-			DDSEUtils.Play(this);
+			if (once)
+				DDSEUtils.Play(this);
+			else
+				DDSEUtils.PlayLoop(this);
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public void Fade(int frameMax = 30)
+		{
+			throw null; // TODO
 		}
 
 		//
