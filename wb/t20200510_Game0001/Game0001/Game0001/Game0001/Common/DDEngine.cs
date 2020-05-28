@@ -179,7 +179,7 @@ namespace Charlotte.Common
 			if (frame < 1 || IntTools.IMAX < frame)
 				throw new DDError("frame: " + frame);
 
-			FreezeInputFrame = frame;
+			FreezeInputFrame = Math.Max(FreezeInputFrame, frame); // frame より長いフレーム数が既に設定されていたら、そちらを優先する。
 		}
 	}
 }
