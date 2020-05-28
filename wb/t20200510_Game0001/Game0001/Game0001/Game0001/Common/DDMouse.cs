@@ -15,7 +15,18 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public static int Rot;
+		private static int _rot;
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static int Rot
+		{
+			get
+			{
+				return 1 <= DDEngine.FreezeInputFrame ? 0 : _rot;
+			}
+		}
 
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -57,15 +68,15 @@ namespace Charlotte.Common
 
 			if (DDEngine.WindowIsActive)
 			{
-				Rot = DX.GetMouseWheelRotVol();
+				_rot = DX.GetMouseWheelRotVol();
 				status = (uint)DX.GetMouseInput();
 			}
 			else
 			{
-				Rot = 0;
+				_rot = 0;
 				status = 0u;
 			}
-			Rot = IntTools.ToRange(Rot, -IntTools.IMAX, IntTools.IMAX);
+			_rot = IntTools.ToRange(_rot, -IntTools.IMAX, IntTools.IMAX);
 
 			DDUtils.UpdateInput(ref L.Status, (status & (uint)DX.MOUSE_INPUT_LEFT) != 0u);
 			DDUtils.UpdateInput(ref R.Status, (status & (uint)DX.MOUSE_INPUT_RIGHT) != 0u);
