@@ -50,6 +50,19 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
+		private bool MouseEnabled;
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public DDSimpleMenu()
+		{
+			this.MouseEnabled = DDUtils.GetMouseDispMode();
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
 		public int Perform(string title, string[] items, int selectIndex)
 		{
 			DDCurtain.SetCurtain();
@@ -57,6 +70,32 @@ namespace Charlotte.Common
 
 			for (; ; )
 			{
+				if (this.MouseEnabled)
+				{
+					DDMouse.UpdatePos();
+
+					int musSelIdxY = DDMouse.Y - (this.Y + this.YStep);
+
+					if (0 <= musSelIdxY)
+					{
+						int musSelIdx = musSelIdxY / this.YStep;
+
+						if (musSelIdx < items.Length)
+						{
+							selectIndex = musSelIdx;
+						}
+					}
+					if (DDMouse.L.GetInput() == -1)
+					{
+						break;
+					}
+					if (DDMouse.R.GetInput() == -1)
+					{
+						selectIndex = items.Length - 1;
+						break;
+					}
+				}
+
 				if (DDInput.A.IsPound())
 				{
 					break;
@@ -244,10 +283,21 @@ namespace Charlotte.Common
 					}
 					DDPrint.Print("★　カーソルの機能に割り当てるボタンを押して下さい。");
 					DDPrint.PrintRet();
-					DDPrint.Print("★　スペースを押すとキャンセルします。");
-					DDPrint.PrintRet();
 					DDPrint.Print("★　[Z]を押すとボタンの割り当てをスキップします。");
 					DDPrint.PrintRet();
+					DDPrint.Print("★　スペースを押すとキャンセルします。");
+					DDPrint.PrintRet();
+
+					if (this.MouseEnabled)
+					{
+						DDPrint.Print("★　右クリックするとキャンセルします。");
+						DDPrint.PrintRet();
+
+						if (DDMouse.R.GetInput() == -1)
+						{
+							return;
+						}
+					}
 
 					DDEngine.EachFrame();
 				}
@@ -387,16 +437,21 @@ namespace Charlotte.Common
 			{
 				bool chgval = false;
 
-				if (DDInput.A.IsPound())
+				if (DDInput.A.IsPound() || this.MouseEnabled && DDMouse.L.GetInput() == -1)
 				{
 					break;
 				}
-				if (DDInput.B.IsPound())
+				if (DDInput.B.IsPound() || this.MouseEnabled && DDMouse.R.GetInput() == -1)
 				{
 					if (value == origval)
 						break;
 
 					value = origval;
+					chgval = true;
+				}
+				if (this.MouseEnabled)
+				{
+					value += DDMouse.Rot;
 					chgval = true;
 				}
 				if (DDInput.DIR_8.IsPound())
