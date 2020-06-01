@@ -86,9 +86,22 @@ namespace Charlotte
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
 			//new DDMouseTest().Test01();
-			new TitleMenu().Perform();
+			//TitleMenu_Test01();
+			TitleMenu_Test02();
 			//new InputStringDemo().Perform();
 			//new InputStringDemo2().Perform();
+		}
+
+		private void TitleMenu_Test01()
+		{
+			new TitleMenu().Perform();
+		}
+
+		private void TitleMenu_Test02()
+		{
+			DDUtils.SetMouseDispMode(true);
+			new TitleMenu().Perform();
+			DDUtils.SetMouseDispMode(false);
 		}
 
 		private void Test01()
