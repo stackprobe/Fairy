@@ -159,6 +159,12 @@ namespace Charlotte.Test01
 			DDMusicUtils.Fade();
 			DDCurtain.SetCurtain(30, -1.0);
 
+			foreach (DDScene scene in DDSceneUtils.Create(40))
+			{
+				this.DrawWall();
+				DDEngine.EachFrame();
+			}
+
 			GC.Collect();
 		}
 

@@ -94,11 +94,15 @@ namespace Charlotte
 
 		private void TitleMenu_Test01()
 		{
+			DDCurtain.SetCurtain(0, -1.0); // 一旦暗転する。
+
 			new TitleMenu().Perform();
 		}
 
 		private void TitleMenu_Test02()
 		{
+			DDCurtain.SetCurtain(0, -1.0); // 一旦暗転する。
+
 			DDUtils.SetMouseDispMode(true);
 			new TitleMenu().Perform();
 			DDUtils.SetMouseDispMode(false);
