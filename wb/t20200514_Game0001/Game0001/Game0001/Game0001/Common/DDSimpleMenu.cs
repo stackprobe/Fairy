@@ -96,6 +96,8 @@ namespace Charlotte.Common
 					}
 				}
 
+				bool chgsel = false;
+
 				if (DDInput.A.IsPound())
 				{
 					break;
@@ -106,18 +108,29 @@ namespace Charlotte.Common
 						break;
 
 					selectIndex = items.Length - 1;
+					chgsel = true;
 				}
 				if (DDInput.DIR_8.IsPound())
 				{
 					selectIndex--;
+					chgsel = true;
 				}
 				if (DDInput.DIR_2.IsPound())
 				{
 					selectIndex++;
+					chgsel = true;
 				}
 
 				selectIndex += items.Length;
 				selectIndex %= items.Length;
+
+				if (this.MouseEnabled && chgsel)
+				{
+					DDMouse.X = 0;
+					DDMouse.Y = this.Y + (selectIndex + 1) * this.YStep + this.YStep / 2;
+
+					DDMouse.ApplyPos();
+				}
 
 				DDCurtain.DrawCurtain();
 
