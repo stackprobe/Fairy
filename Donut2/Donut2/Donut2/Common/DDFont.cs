@@ -18,11 +18,31 @@ namespace Charlotte.Common
 
 		private int Handle = -1; // -1 == Unloaded
 
+		/*
+			fontThick: 0 ～ 9 (デフォルト値：6)
+
+				値域の根拠
+					マニュアル
+						https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N10
+
+				デフォルト値の根拠
+					マニュアル
+						https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N8
+
+					src
+						C:\wb2\20191209_src\DxLibMake3_20\DxFont.cpp
+							CreateFontToHandle_Static()
+								if( Thick < 0 ) Thick = DEFAULT_FONT_THINCK ;
+
+						C:\wb2\20191209_src\DxLibMake3_20\DxLib.h
+							#define DEFAULT_FONT_THINCK (6)
+		*/
+
 		public DDFont(string fontName, int fontSize, int fontThick = 6, bool antiAliasing = true, int edgeSize = 0, bool italicFlag = false)
 		{
 			if (string.IsNullOrEmpty(fontName)) throw new DDError();
 			if (fontSize < 1 || IntTools.IMAX < fontSize) throw new DDError();
-			if (fontThick < 1 || IntTools.IMAX < fontThick) throw new DDError();
+			if (fontThick < 0 || 9 < fontThick) throw new DDError();
 			// antiAliasing
 			if (edgeSize < 0 || IntTools.IMAX < edgeSize) throw new DDError();
 			// italicFlag
