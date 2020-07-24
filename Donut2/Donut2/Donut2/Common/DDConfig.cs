@@ -18,7 +18,7 @@ namespace Charlotte.Common
 		/// 2  == 3番目のモニタ
 		/// ...
 		/// </summary>
-		public static int DisplayIndex = 1;
+		public static int DisplayIndex = -1;
 
 		public static string LogFile = @"C:\tmp\Game.log";
 		public static int LogCountMax = IntTools.IMAX;
