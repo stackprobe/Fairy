@@ -136,6 +136,8 @@
     <Compile Include="ResourceMusic.cs" />
     <Compile Include="ResourcePicture.cs" />
     <Compile Include="ResourceSE.cs" />
+    <Compile Include="Test01\GameMain.cs" />
+    <Compile Include="Test01\TitleMenu.cs" />
     <Compile Include="Tests\Test0001.cs" />
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
