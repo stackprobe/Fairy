@@ -28,15 +28,7 @@ namespace Charlotte.Test01
 
 			int selectIndex = 0;
 
-			// 常にマウス無効にするため、一時的にマウスを非表示にする。Hack
-			{
-				bool mouseEnabled = DDUtils.GetMouseDispMode();
-				DDUtils.SetMouseDispMode(false);
-
-				this.SmplMenu = new DDSimpleMenu();
-
-				DDUtils.SetMouseDispMode(mouseEnabled); // 元に戻す。
-			}
+			this.SmplMenu = new DDSimpleMenu(false); // 常にマウス無効
 
 			this.SmplMenu.WallColor = new I3Color(0, 0, 64);
 			//this.SmplMenu.WallPicture = Ground.I.Picture.TitleWall;

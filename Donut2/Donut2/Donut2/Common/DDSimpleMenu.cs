@@ -23,8 +23,12 @@ namespace Charlotte.Common
 		private bool MouseEnabled;
 
 		public DDSimpleMenu()
+			: this(DDUtils.GetMouseDispMode())
+		{ }
+
+		public DDSimpleMenu(bool mouseEnabled)
 		{
-			this.MouseEnabled = DDUtils.GetMouseDispMode();
+			this.MouseEnabled = mouseEnabled;
 		}
 
 		public int Perform(string title, string[] items, int selectIndex)
