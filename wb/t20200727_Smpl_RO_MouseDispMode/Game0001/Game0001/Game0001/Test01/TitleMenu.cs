@@ -28,7 +28,15 @@ namespace Charlotte.Test01
 
 			int selectIndex = 0;
 
-			this.SmplMenu = new DDSimpleMenu();
+			// 常にマウス無効にするため、一時的にマウスを非表示にする。Hack
+			{
+				bool mouseEnabled = DDUtils.GetMouseDispMode();
+				DDUtils.SetMouseDispMode(false);
+
+				this.SmplMenu = new DDSimpleMenu();
+
+				DDUtils.SetMouseDispMode(mouseEnabled); // 元に戻す。
+			}
 
 			this.SmplMenu.WallColor = new I3Color(0, 0, 64);
 			//this.SmplMenu.WallPicture = Ground.I.Picture.TitleWall;
@@ -93,6 +101,7 @@ namespace Charlotte.Test01
 				"ウィンドウサイズ変更",
 				"ＢＧＭ音量",
 				"ＳＥ音量",
+				"ゲーム画面上でのマウスカーソルの表示／非表示の切り替え",
 				"戻る",
 			};
 
@@ -140,6 +149,11 @@ namespace Charlotte.Test01
 						break;
 
 					case 4:
+						DDGround.RO_MouseDispMode = DDGround.RO_MouseDispMode == false;
+						DDUtils.SetMouseDispMode(DDGround.RO_MouseDispMode);
+						break;
+
+					case 5:
 						goto endMenu;
 
 					default:
