@@ -44,7 +44,7 @@ namespace Charlotte.Common
 			return this.Handles != null;
 		}
 
-		public int GetHandle(int index)
+		public int GetHandle(int handleIndex)
 		{
 			if (this.Handles == null)
 			{
@@ -62,19 +62,19 @@ namespace Charlotte.Common
 					this.Handles[0] = handle;
 				}
 
-				for (int ndx = 1; ndx < this.HandleCount; ndx++)
+				for (int index = 1; index < this.HandleCount; index++)
 				{
 					int handle = DX.DuplicateSoundMem(this.Handles[0]);
 
 					if (handle == -1) // ? 失敗
 						throw new DDError();
 
-					this.Handles[ndx] = handle;
+					this.Handles[index] = handle;
 				}
 
 				this.PostLoaded();
 			}
-			return this.Handles[index];
+			return this.Handles[handleIndex];
 		}
 	}
 }
