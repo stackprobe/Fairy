@@ -44,11 +44,9 @@ namespace Charlotte
 
 			DDAdditionalEvents.Save = lines =>
 			{
-				lines.Add((DDGround.RO_MouseDispMode ? 1 : 0).ToString());
-
-				//lines.Add(DateTime.Now.ToString()); // Dummy
-				//lines.Add(DateTime.Now.ToString()); // Dummy
-				//lines.Add(DateTime.Now.ToString()); // Dummy
+				lines.Add(DateTime.Now.ToString()); // Dummy
+				lines.Add(DateTime.Now.ToString()); // Dummy
+				lines.Add(DateTime.Now.ToString()); // Dummy
 
 				// 新しい項目をここへ追加...
 			};
@@ -57,17 +55,11 @@ namespace Charlotte
 			{
 				int c = 0;
 
-				DDGround.RO_MouseDispMode = int.Parse(lines[c++]) != 0;
-
-				//DDUtils.Noop(lines[c++]); // Dummy
-				//DDUtils.Noop(lines[c++]); // Dummy
-				//DDUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
+				DDUtils.Noop(lines[c++]); // Dummy
 
 				// 新しい項目をここへ追加...
-
-				// ----
-
-				DDUtils.SetMouseDispMode(DDGround.RO_MouseDispMode); // ここで再設定するしかない。Hack
 			};
 
 			DDMain2.Perform(Main4);
