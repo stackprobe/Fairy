@@ -68,7 +68,7 @@ namespace Charlotte.Test02
 
 		private string EditString(string prompt, string initValue, int maxlen, char mode)
 		{
-			StringBuilder buff = new StringBuilder(maxlen * 3); // todo 必要なバッファ長が不明
+			StringBuilder buff = new StringBuilder(maxlen * 3); // HACK 必要なバッファ長が不明
 
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
