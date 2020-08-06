@@ -1,3 +1,3 @@
-REN wb\t20200510_Smpl_Game3Common\[Japanese-path-name]_0001 "#### Game3Common 追加"
-REN Hatena\Dungeon\doc\[Japanese-path-name]_0001.txt マニュアル.txt
-REN Donut2\Resource\[Japanese-path-name]_0001 "Resource テスト用"
+REN wb\t20200510_Smpl_Game3Common\[Includes-Non-ASCII-characters]_0001 "#### Game3Common 追加"
+REN Hatena\Dungeon\doc\[Includes-Non-ASCII-characters]_0001.txt マニュアル.txt
+REN Donut2\Resource\[Includes-Non-ASCII-characters]_0001 "Resource テスト用"
