@@ -9,7 +9,7 @@ namespace Charlotte.Test01
 {
 	public class TitleMenu
 	{
-		private DDSimpleMenu SmplMenu;
+		private DDSimpleMenu SimpleMenu;
 
 		public void Perform()
 		{
@@ -28,14 +28,14 @@ namespace Charlotte.Test01
 
 			int selectIndex = 0;
 
-			this.SmplMenu = new DDSimpleMenu(false); // 常にマウス無効
+			this.SimpleMenu = new DDSimpleMenu(false); // 常にマウス無効
 
-			this.SmplMenu.WallColor = new I3Color(0, 0, 64);
-			//this.SmplMenu.WallPicture = Ground.I.Picture.TitleWall;
+			this.SimpleMenu.WallColor = new I3Color(0, 0, 64);
+			//this.SimpleMenu.WallPicture = Ground.I.Picture.TitleWall;
 
 			for (; ; )
 			{
-				selectIndex = this.SmplMenu.Perform("Donut2", items, selectIndex);
+				selectIndex = this.SimpleMenu.Perform("Donut2", items, selectIndex);
 
 				switch (selectIndex)
 				{
@@ -101,20 +101,20 @@ namespace Charlotte.Test01
 
 			for (; ; )
 			{
-				selectIndex = this.SmplMenu.Perform("設定", items, selectIndex);
+				selectIndex = this.SimpleMenu.Perform("設定", items, selectIndex);
 
 				switch (selectIndex)
 				{
 					case 0:
-						this.SmplMenu.PadConfig();
+						this.SimpleMenu.PadConfig();
 						break;
 
 					case 1:
-						this.SmplMenu.WindowSizeConfig();
+						this.SimpleMenu.WindowSizeConfig();
 						break;
 
 					case 2:
-						this.SmplMenu.VolumeConfig("ＢＧＭ音量", DDGround.MusicVolume, 0, 100, 1, 10, volume =>
+						this.SimpleMenu.VolumeConfig("ＢＧＭ音量", DDGround.MusicVolume, 0, 100, 1, 10, volume =>
 						{
 							DDGround.MusicVolume = volume;
 							DDMusicUtils.UpdateVolume();
@@ -124,7 +124,7 @@ namespace Charlotte.Test01
 						break;
 
 					case 3:
-						this.SmplMenu.VolumeConfig("ＳＥ音量", DDGround.SEVolume, 0, 100, 1, 10, volume =>
+						this.SimpleMenu.VolumeConfig("ＳＥ音量", DDGround.SEVolume, 0, 100, 1, 10, volume =>
 						{
 							DDGround.SEVolume = volume;
 							DDSEUtils.UpdateVolume();
