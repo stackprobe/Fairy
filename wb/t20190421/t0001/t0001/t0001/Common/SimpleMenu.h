@@ -1,49 +1,49 @@
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_Color;
+extern int SimpleMenu_Color;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_BorderColor;
+extern int SimpleMenu_BorderColor;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_WallColor;
+extern int SimpleMenu_WallColor;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_WallPicId;
+extern int SimpleMenu_WallPicId;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern double SmplMenu_WallCurtain;
+extern double SimpleMenu_WallCurtain;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_X;
+extern int SimpleMenu_X;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_Y;
+extern int SimpleMenu_Y;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern int SmplMenu_YStep;
+extern int SimpleMenu_YStep;
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int SmplMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex = 0);
+int SimpleMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex = 0);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-double SmplVolumeConfig(char *menuTitle, double rate, int minval, int maxval, int valStep, int valFastStep, void (*valChanged)(double), void (*pulse)(void) = NULL);
+double SimpleVolumeConfig(char *menuTitle, double rate, int minval, int maxval, int valStep, int valFastStep, void (*valChanged)(double), void (*pulse)(void) = NULL);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void SmplPadConfig(void);
+void SimplePadConfig(void);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void SmplWindowSizeConfig(void);
+void SimpleWindowSizeConfig(void);
