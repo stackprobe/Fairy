@@ -26,6 +26,8 @@ namespace Charlotte.Common
 		public double ZAdd2 = 0.0;
 		public double AAdd2 = 0.0;
 
+		// <---- prm
+
 		public DDCommonEffect()
 		{ }
 
