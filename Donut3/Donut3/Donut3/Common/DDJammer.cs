@@ -29,15 +29,11 @@ namespace Charlotte.Common
 
 		private static void MaskGZData(byte[] data)
 		{
-			// app > @ MaskGZData
-
 			// $_git:secretBegin
 //
 			////////////////////////////////////////////////
 //
 			// $_git:secretEnd
-
-			// < app
 		}
 	}
 }
