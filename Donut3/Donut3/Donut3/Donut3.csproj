@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2EB218B-F624-4F86-BC32-02D9BAF3FFAC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Charlotte</RootNamespace>
+    <AssemblyName>Donut3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Chocolate">
+      <HintPath>C:\Dev\CSharp\Chocolate\Chocolate\bin\Release\Chocolate.dll</HintPath>
+    </Reference>
+    <Reference Include="DxLibDotNet">
+      <HintPath>C:\Dat\DxLibDotNet\3_20f\DxLibDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\DDList.cs" />
+    <Compile Include="Common\DDRandom.cs" />
+    <Compile Include="Common\DDSimpleMenu.cs" />
+    <Compile Include="Common\DDTable.cs" />
+    <Compile Include="Common\MaskGZDataUtils\MaskGZDataEng.cs" />
+    <Compile Include="Common\Options\Crash.cs" />
+    <Compile Include="Common\Options\CrashUtils.cs" />
+    <Compile Include="Common\Options\CrashView.cs" />
+    <Compile Include="Common\Options\CResource.cs" />
+    <Compile Include="Common\Options\SceneKeeper.cs" />
+    <Compile Include="Common\Options\SlideUtils.cs" />
+    <Compile Include="Ground.cs" />
+    <Compile Include="ResourceMusic.cs" />
+    <Compile Include="Common\DDCoffeeBreak.cs" />
+    <Compile Include="Common\DDCommonEffect.cs" />
+    <Compile Include="Common\DDConfig.cs" />
+    <Compile Include="Common\DDConsts.cs" />
+    <Compile Include="Common\DDCurtain.cs" />
+    <Compile Include="Common\DDDatStrings.cs" />
+    <Compile Include="Common\DDDerivations.cs" />
+    <Compile Include="Common\DDDerivationUtils.cs" />
+    <Compile Include="Common\DDDraw.cs" />
+    <Compile Include="Common\DDEngine.cs" />
+    <Compile Include="Common\DDError.cs" />
+    <Compile Include="Common\DDAdditionalEvents.cs" />
+    <Compile Include="Common\DDFont.cs" />
+    <Compile Include="Common\DDFontRegister.cs" />
+    <Compile Include="Common\DDFontUtils.cs" />
+    <Compile Include="Common\DDGround.cs" />
+    <Compile Include="Common\DDKey.cs" />
+    <Compile Include="Common\DDMain2.cs" />
+    <Compile Include="Common\DDMouse.cs" />
+    <Compile Include="Common\DDMusic.cs" />
+    <Compile Include="Common\DDPad.cs" />
+    <Compile Include="Common\DDPicture.cs" />
+    <Compile Include="Common\DDPictureLoaders.cs" />
+    <Compile Include="Common\DDPictureLoaders2.cs" />
+    <Compile Include="Common\DDPictureLoaderUtils.cs" />
+    <Compile Include="Common\DDPictureUtils.cs" />
+    <Compile Include="Common\DDResource.cs" />
+    <Compile Include="Common\DDGeneralResource.cs" />
+    <Compile Include="Common\DDScene.cs" />
+    <Compile Include="Common\DDSceneUtils.cs" />
+    <Compile Include="Common\DDSEUtils.cs" />
+    <Compile Include="Common\DDSound.cs" />
+    <Compile Include="Common\DDSoundUtils.cs" />
+    <Compile Include="Common\DDSystem.cs" />
+    <Compile Include="Common\DDUserDatStrings.cs" />
+    <Compile Include="Common\DDSubScreenUtils.cs" />
+    <Compile Include="Common\DDInput.cs" />
+    <Compile Include="Common\DDJammer.cs" />
+    <Compile Include="Common\DDMain.cs" />
+    <Compile Include="Common\DDMusicUtils.cs" />
+    <Compile Include="Common\DDPrint.cs" />
+    <Compile Include="Common\DDSaveData.cs" />
+    <Compile Include="Common\DDSE.cs" />
+    <Compile Include="Common\DDSubScreen.cs" />
+    <Compile Include="Common\DDTaskList.cs" />
+    <Compile Include="Common\DDUtils.cs" />
+    <Compile Include="Common\DDWin32.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcePicture.cs" />
+    <Compile Include="ResourceSE.cs" />
+    <Compile Include="Test01\GameMain.cs" />
+    <Compile Include="Test01\TitleMenu.cs" />
+    <Compile Include="Test02\InputStringDemo.cs" />
+    <Compile Include="Test02\InputStringDemo2.cs" />
+    <Compile Include="Tests\Common\DDDrawTest.cs" />
+    <Compile Include="Tests\Common\DDFontRegisterTest.cs" />
+    <Compile Include="Tests\Common\DDKeyTest.cs" />
+    <Compile Include="Tests\Common\DDMouseTest.cs" />
+    <Compile Include="Tests\Common\DDPadTest.cs" />
+    <Compile Include="Tests\Common\DDPictureTest.cs" />
+    <Compile Include="Tests\Common\DDPrintTest.cs" />
+    <Compile Include="Tests\Common\DDResourceTest.cs" />
+    <Compile Include="Tests\Common\Options\CResourceTest.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>COPY C:\Dat\DxLibDotNet\3_20f\DxLib.dll $(TargetDir).
+COPY C:\Dat\DxLibDotNet\3_20f\DxLib_x64.dll $(TargetDir).
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
