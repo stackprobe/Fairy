@@ -37,6 +37,10 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
+			// app > @ enter EachFrame
+
+			// < app
+
 			if (DDSEUtils.EachFrame() == false)
 			{
 				DDMusicUtils.EachFrame();
