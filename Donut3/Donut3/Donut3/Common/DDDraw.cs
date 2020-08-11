@@ -160,10 +160,6 @@ namespace Charlotte.Common
 
 		private static void DrawPicMain(DrawInfo info)
 		{
-			// app > @ enter DrawPicMain
-
-			// < app
-
 			if (info.Extra.A != -1)
 			{
 				SetBlend(DX.DX_BLENDMODE_ALPHA, info.Extra.A);
@@ -317,6 +313,8 @@ namespace Charlotte.Common
 			// app > @ leave DrawPicMain
 
 			// < app
+
+			DDAdditionalEvents.PostDrawPicMain();
 		}
 
 		private static void DrawPic(DDPicture picture, ILayoutInfo layout_binding)

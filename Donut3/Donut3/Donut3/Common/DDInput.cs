@@ -44,6 +44,10 @@ namespace Charlotte.Common
 			}
 		}
 
+		// ボタンの初期化 --> DDGround.INIT()
+		// ボタンの保存・読み込み --> DDSaveData.Save(), DDSaveData.Load()
+		// ボタンの設定 --> DDSimpleMenu.PadConfig()
+
 		public static Button DIR_2 = new Button();
 		public static Button DIR_4 = new Button();
 		public static Button DIR_6 = new Button();
@@ -61,8 +65,8 @@ namespace Charlotte.Common
 
 		private static void MixInput(Button button)
 		{
-			bool keyDown = 1 <= DDKey.GetInput(button.KeyId);
-			bool btnDown = 1 <= DDPad.GetInput(DDGround.PrimaryPadId, button.BtnId);
+			bool keyDown = button.KeyId != -1 && 1 <= DDKey.GetInput(button.KeyId);
+			bool btnDown = button.BtnId != -1 && 1 <= DDPad.GetInput(DDGround.PrimaryPadId, button.BtnId);
 
 			DDUtils.UpdateInput(ref button.Status, keyDown || btnDown);
 		}

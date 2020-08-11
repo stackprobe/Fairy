@@ -37,10 +37,6 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
-			// app > @ enter EachFrame
-
-			// < app
-
 			if (DDSEUtils.EachFrame() == false)
 			{
 				DDMusicUtils.EachFrame();
@@ -71,10 +67,6 @@ namespace Charlotte.Common
 				}
 			}
 
-			// app > @ before ScreenFlip
-
-			// < app
-
 			GC.Collect(0);
 
 			FrameProcessingMillis = (int)(DDUtils.GetCurrTime() - FrameStartTime);
@@ -95,10 +87,6 @@ namespace Charlotte.Common
 			}
 
 			// < DxLib
-
-			// app > @ after ScreenFlip
-
-			// < app
 
 			CheckHz();
 
@@ -136,6 +124,8 @@ namespace Charlotte.Common
 			// app > @ leave EachFrame
 
 			// < app
+
+			DDAdditionalEvents.PostEachFrame();
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...

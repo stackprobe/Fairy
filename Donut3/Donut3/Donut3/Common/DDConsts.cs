@@ -13,12 +13,21 @@ namespace Charlotte.Common
 		public const string ResourceDir = @"C:\Dat\Resource";
 		public const string UserDatStringsFile = "Properties.dat";
 
+#if false
+		// 例 >
+
+		public const int Screen_W = 800;
+		public const int Screen_H = 600;
+
+		// < 例
+#else
 		// app > @ Screen_WH
 
 		public const int Screen_W = 800;
 		public const int Screen_H = 600;
 
 		// < app
+#endif
 
 		public const int Screen_W_Min = 100;
 		public const int Screen_H_Min = 100;

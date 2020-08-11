@@ -24,7 +24,7 @@ namespace Charlotte.Common
 
 		public static Action<List<string>> Save = lines =>
 		{
-			lines.Add(DateTime.Now.ToString()); // Dummy
+			lines.Add("Donut3-SaveData"); // Dummy
 		};
 
 		public static Action<string[]> Load = lines =>
@@ -33,5 +33,8 @@ namespace Charlotte.Common
 
 			DDUtils.Noop(lines[c++]); // Dummy
 		};
+
+		public static Action PostDrawPicMain = () => { };
+		public static Action PostEachFrame = () => { };
 	}
 }

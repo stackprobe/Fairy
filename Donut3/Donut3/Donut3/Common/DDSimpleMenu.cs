@@ -152,15 +152,35 @@ namespace Charlotte.Common
 		{
 			ButtonInfo[] btnInfos = new ButtonInfo[]
 			{
+#if false
+				// 例 >
+
+				new ButtonInfo(DDInput.DIR_2, "下"),
+				new ButtonInfo(DDInput.DIR_4, "左"),
+				new ButtonInfo(DDInput.DIR_6, "右"),
+				new ButtonInfo(DDInput.DIR_8, "上"),
+				new ButtonInfo(DDInput.A, "Ａボタン"),
+				new ButtonInfo(DDInput.B, "Ｂボタン"),
+				new ButtonInfo(DDInput.C, "Ｃボタン"),
+				//new ButtonInfo(DDInput.D, ""), // 使用しないボタン
+				//new ButtonInfo(DDInput.E, ""), // 使用しないボタン
+				//new ButtonInfo(DDInput.F, ""), // 使用しないボタン
+				new ButtonInfo(DDInput.L, "Ｌボタン"),
+				new ButtonInfo(DDInput.R, "Ｒボタン"),
+				//new ButtonInfo(DDInput.PAUSE, ""), // 使用しないボタン
+				//new ButtonInfo(DDInput.START, ""), // 使用しないボタン
+
+				// < 例
+#else
 				// app > @ btnInfos
 
 				new ButtonInfo(DDInput.DIR_2, "下"),
 				new ButtonInfo(DDInput.DIR_4, "左"),
 				new ButtonInfo(DDInput.DIR_6, "右"),
 				new ButtonInfo(DDInput.DIR_8, "上"),
-				new ButtonInfo(DDInput.A, "ショットボタン"),
-				new ButtonInfo(DDInput.B, "低速ボタン"),
-				new ButtonInfo(DDInput.C, "ボムボタン"),
+				new ButtonInfo(DDInput.A, "決定ボタン"),
+				new ButtonInfo(DDInput.B, "キャンセルボタン"),
+				//new ButtonInfo(DDInput.C, ""),
 				//new ButtonInfo(DDInput.D, ""),
 				//new ButtonInfo(DDInput.E, ""),
 				//new ButtonInfo(DDInput.F, ""),
@@ -170,6 +190,7 @@ namespace Charlotte.Common
 				//new ButtonInfo(DDInput.START, ""),
 
 				// < app
+#endif
 			};
 
 			foreach (ButtonInfo btnInfo in btnInfos)

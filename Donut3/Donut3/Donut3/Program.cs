@@ -88,10 +88,10 @@ namespace Charlotte
 			//new DDPadTest().Test01();
 			//new DDMouseTest().Test01();
 			//TitleMenu_Test01();
-			//TitleMenu_Test02();
+			TitleMenu_Test02();
 			//new InputStringDemo().Perform();
 			//new InputStringDemo2().Perform();
-			new CResourceTest().Test01();
+			//new CResourceTest().Test01();
 		}
 
 		private void TitleMenu_Test01()

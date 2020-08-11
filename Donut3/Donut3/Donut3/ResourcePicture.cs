@@ -8,6 +8,6 @@ namespace Charlotte
 {
 	public class ResourcePicture
 	{
-		public DDPicture TitleWall = DDPictureLoaders.Standard("title_wall.png");
+		public DDPicture TitleWall = DDPictureLoaders.Standard(@"Fairy\Donut3\title_wall.png");
 	}
 }
