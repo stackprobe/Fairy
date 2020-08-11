@@ -6,7 +6,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common.Options
 {
-	public static class SlideUtils
+	public static class DDSlideUtils
 	{
 		public static double Slide(double start, double end, double rate)
 		{

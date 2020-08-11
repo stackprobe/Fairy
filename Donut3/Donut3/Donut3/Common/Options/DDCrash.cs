@@ -6,17 +6,17 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common.Options
 {
-	public struct Crash
+	public struct DDCrash
 	{
-		public CrashUtils.Kind_e Kind;
+		public DDCrashUtils.Kind_e Kind;
 		public D2Point Pt;
 		public double R;
 		public D4Rect Rect;
-		public Crash[] Cs;
+		public DDCrash[] Cs;
 
-		public bool IsCrashed(Crash other)
+		public bool IsCrashed(DDCrash other)
 		{
-			return CrashUtils.IsCrashed(this, other);
+			return DDCrashUtils.IsCrashed(this, other);
 		}
 	}
 }

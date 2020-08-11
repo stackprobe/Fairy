@@ -15,9 +15,9 @@ namespace Charlotte.Tests.Common.Options
 			{
 				DDCurtain.DrawCurtain();
 
-				DDDraw.DrawSimple(CResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0001.png"), 0, 0);
-				DDDraw.DrawSimple(CResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0002.png"), 200, 0);
-				DDDraw.DrawSimple(CResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0003.png"), 400, 0);
+				DDDraw.DrawSimple(DDCResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0001.png"), 0, 0);
+				DDDraw.DrawSimple(DDCResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0002.png"), 200, 0);
+				DDDraw.DrawSimple(DDCResource.GetPicture(@"Fairy\Donut3\CResource\Picture\Picture0003.png"), 400, 0);
 
 				DDEngine.EachFrame();
 			}

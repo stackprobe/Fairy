@@ -7,7 +7,7 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common.Options
 {
-	public static class CResource
+	public static class DDCResource
 	{
 		private static Dictionary<string, DDPicture> PictureCache = DictionaryTools.CreateIgnoreCase<DDPicture>();
 

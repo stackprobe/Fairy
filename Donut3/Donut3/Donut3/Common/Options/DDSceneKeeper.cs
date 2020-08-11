@@ -7,12 +7,12 @@ using Charlotte.Common;
 
 namespace Charlotte.Common.Options
 {
-	public class SceneKeeper
+	public class DDSceneKeeper
 	{
 		private int FrameMax;
 		private int StartedProcFrame = -1;
 
-		public SceneKeeper(int frameMax)
+		public DDSceneKeeper(int frameMax)
 		{
 			if (frameMax < 1 || IntTools.IMAX < frameMax)
 				throw new DDError();
