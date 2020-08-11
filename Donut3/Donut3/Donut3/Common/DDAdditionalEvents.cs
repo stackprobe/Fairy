@@ -33,8 +33,5 @@ namespace Charlotte.Common
 
 			DDUtils.Noop(lines[c++]); // Dummy
 		};
-
-		public static Action PostDrawPicMain = () => { };
-		public static Action PostEachFrame = () => { };
 	}
 }

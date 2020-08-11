@@ -124,8 +124,6 @@ namespace Charlotte.Common
 			// app > @ leave EachFrame
 
 			// < app
-
-			DDAdditionalEvents.PostEachFrame();
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...
