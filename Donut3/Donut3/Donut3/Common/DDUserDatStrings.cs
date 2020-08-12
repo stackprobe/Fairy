@@ -9,6 +9,8 @@ namespace Charlotte.Common
 {
 	public static class DDUserDatStrings
 	{
+		// Properties.dat のオリジナルは C:\Dev\Fairy\Donut3\doc にある。
+
 		private static Dictionary<string, string> Name2Value = DictionaryTools.Create<string>();
 
 		public static void INIT()

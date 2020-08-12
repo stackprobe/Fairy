@@ -37,9 +37,7 @@ namespace Charlotte.Common
 
 		public static void EachFrame()
 		{
-			// app > @ enter EachFrame
-
-			// < app
+			// app 設置予定 @ enter EachFrame
 
 			if (DDSEUtils.EachFrame() == false)
 			{
