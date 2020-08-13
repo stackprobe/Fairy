@@ -18,7 +18,7 @@ namespace Charlotte.Tests.Common
 
 		public void Test02()
 		{
-			foreach (string file in EnumerableTools.Sort(DDResource.GetFiles(), StringTools.CompIgnoreCase))
+			foreach (string file in DDResource.GetFiles())
 			{
 				ProcMain.WriteLog("resource file ==> " + file);
 			}

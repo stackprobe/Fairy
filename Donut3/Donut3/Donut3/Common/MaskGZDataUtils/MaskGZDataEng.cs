@@ -7,6 +7,8 @@ using System.Text;
 
 namespace Charlotte.Common.MaskGZDataUtils
 {
+	// discmt >
+
 	// sync > @ MakeGZDataEng
 
 	// $_git:secretBegin
@@ -61,4 +63,6 @@ namespace Charlotte.Common.MaskGZDataUtils
 	// $_git:secretEnd
 
 	// < sync
+
+	// < discmt
 }

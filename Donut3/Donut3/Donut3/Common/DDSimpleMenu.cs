@@ -152,8 +152,8 @@ namespace Charlotte.Common
 		{
 			ButtonInfo[] btnInfos = new ButtonInfo[]
 			{
-#if false
-				// 例 >
+#if false // 例
+				// discmt >
 
 				new ButtonInfo(DDInput.DIR_2, "下"),
 				new ButtonInfo(DDInput.DIR_4, "左"),
@@ -170,7 +170,7 @@ namespace Charlotte.Common
 				//new ButtonInfo(DDInput.PAUSE, ""), // 使用しないボタン
 				//new ButtonInfo(DDInput.START, ""), // 使用しないボタン
 
-				// < 例
+				// < discmt
 #else
 				// app > @ btnInfos
 
