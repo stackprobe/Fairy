@@ -123,8 +123,11 @@ namespace Charlotte.Common
 
 			// app > @ GameStart
 
-			DDFontRegister.Add(@"Fairy\Donut3\Font\Genkai-Mincho-font\genkai-mincho.ttf");
-			DDFontRegister.Add(@"Fairy\Donut3\Font\riitf\RiiT_F.otf");
+			// Font
+			{
+				DDFontRegister.Add(@"Fairy\Donut3\Font\Genkai-Mincho-font\genkai-mincho.ttf");
+				DDFontRegister.Add(@"Fairy\Donut3\Font\riitf\RiiT_F.otf");
+			}
 
 			Ground.I = new Ground();
 
