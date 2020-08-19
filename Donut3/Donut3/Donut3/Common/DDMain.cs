@@ -121,18 +121,24 @@ namespace Charlotte.Common
 
 			DDGround.GeneralResource = new DDGeneralResource();
 
-			DDAdditionalEvents.PostGameStart();
-			DDAdditionalEvents.PostGameStart_G2();
+			// app > @ GameStart
+
+			DDFontRegister.Add(@"Fairy\Donut3\Font\Genkai-Mincho-font\genkai-mincho.ttf");
+			DDFontRegister.Add(@"Fairy\Donut3\Font\riitf\RiiT_F.otf");
+
+			Ground.I = new Ground();
+
+			// < app
 
 			DDSaveData.Load_Delay();
+
+			Finalizers.Add(() =>
+			{
+				DDSaveData.Save();
+			});
 		}
 
-		public static void GameEnd()
-		{
-			DDSaveData.Save();
-		}
-
-		public static void GameEnd2(ExceptionDam eDam)
+		public static void GameEnd(ExceptionDam eDam)
 		{
 			while (1 <= Finalizers.Count)
 			{

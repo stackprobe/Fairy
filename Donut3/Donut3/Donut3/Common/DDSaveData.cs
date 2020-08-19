@@ -13,7 +13,7 @@ namespace Charlotte.Common
 		{
 			List<byte[]> blocks = new List<byte[]>();
 
-			// for Donut3
+			// Donut3 用のセーブデータ
 			{
 				List<string> lines = new List<string>();
 
@@ -68,11 +68,17 @@ namespace Charlotte.Common
 				blocks.Add(DDUtils.SplitableJoin(lines.ToArray()));
 			}
 
-			// for app
+			// アプリ固有のセーブデータ
 			{
 				List<string> lines = new List<string>();
 
-				DDAdditionalEvents.Save(lines);
+				// app > Save
+
+				lines.Add("Donut3-SaveData"); // Dummy
+				lines.Add("Donut3-SaveData"); // Dummy
+				lines.Add("Donut3-SaveData"); // Dummy
+
+				// < app
 
 				blocks.Add(DDUtils.SplitableJoin(lines.ToArray()));
 			}
@@ -97,9 +103,9 @@ namespace Charlotte.Common
 			if (lines[c++] != Program.APP_TITLE)
 				throw new DDError();
 
-			// 項目が増えた場合を想定して try ～ catch しておく。
+			// アプリのアップデートによって項目の更新・増減があっても処理を続行するように try ～ catch しておく。
 
-			try // for Donut3
+			try // Donut3 のセーブデータ
 			{
 				// TODO int.Parse -> IntTools.ToInt
 
@@ -155,11 +161,18 @@ namespace Charlotte.Common
 
 			Load_Delay = () =>
 			{
-				try // for app
-				{
-					lines = DDUtils.Split(blocks[bc++]);
+				lines = DDUtils.Split(blocks[bc++]);
+				c = 0;
 
-					DDAdditionalEvents.Load(lines);
+				try // アプリ固有のセーブデータ
+				{
+					// app > Load
+
+					DDUtils.Noop(lines[c++]); // Dummy
+					DDUtils.Noop(lines[c++]); // Dummy
+					DDUtils.Noop(lines[c++]); // Dummy
+
+					// < app
 				}
 				catch (Exception e)
 				{

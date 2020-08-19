@@ -65,7 +65,11 @@ namespace Charlotte.Common
 			DDInput.PAUSE.KeyId = DX.KEY_INPUT_SPACE;
 			DDInput.START.KeyId = DX.KEY_INPUT_RETURN;
 
-			DDAdditionalEvents.Ground_INIT();
+			// app > @ INIT
+
+			//GameGround.RO_MouseDispMode = true;
+
+			// < app
 		}
 	}
 }

@@ -33,52 +33,14 @@ namespace Charlotte
 
 		public void Main2(ArgsReader ar)
 		{
-			Main3();
+			DDMain2.Perform(Main3);
 		}
 
 		private void Main3()
 		{
-			DDAdditionalEvents.Ground_INIT = () =>
-			{
-				//GameGround.RO_MouseDispMode = true;
-			};
-
-			DDAdditionalEvents.PostGameStart = () =>
-			{
-				// Font >
-
-				DDFontRegister.Add(@"Fairy\Donut3\Font\Genkai-Mincho-font\genkai-mincho.ttf");
-				DDFontRegister.Add(@"Fairy\Donut3\Font\riitf\RiiT_F.otf");
-
-				// < Font
-
-				Ground.I = new Ground();
-			};
-
-			DDAdditionalEvents.Save = lines =>
-			{
-				lines.Add(DateTime.Now.ToString()); // Dummy
-				lines.Add(DateTime.Now.ToString()); // Dummy
-				lines.Add(DateTime.Now.ToString()); // Dummy
-			};
-
-			DDAdditionalEvents.Load = lines =>
-			{
-				int c = 0;
-
-				DDUtils.Noop(lines[c++]); // Dummy
-				DDUtils.Noop(lines[c++]); // Dummy
-				DDUtils.Noop(lines[c++]); // Dummy
-			};
-
-			DDMain2.Perform(Main4);
-		}
-
-		private void Main4()
-		{
 			//Test01();
 			//new DDResourceTest().Test01();
-			new DDResourceTest().Test02();
+			//new DDResourceTest().Test02();
 			//new DDPictureTest().Test01();
 			//new DDDrawTest().Test01();
 			//new DDDrawTest().Test02();
@@ -87,7 +49,7 @@ namespace Charlotte
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
 			//new DDMouseTest().Test01();
-			//TitleMenu_Test01();
+			TitleMenu_Test01();
 			//TitleMenu_Test02();
 			//new InputStringDemo().Perform();
 			//new InputStringDemo2().Perform();

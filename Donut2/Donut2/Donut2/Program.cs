@@ -77,7 +77,7 @@ namespace Charlotte
 		{
 			//Test01();
 			//new DDResourceTest().Test01();
-			new DDResourceTest().Test02();
+			//new DDResourceTest().Test02();
 			//new DDPictureTest().Test01();
 			//new DDDrawTest().Test01();
 			//new DDDrawTest().Test02();
@@ -86,7 +86,7 @@ namespace Charlotte
 			//new DDPrintTest().Test01();
 			//new DDPadTest().Test01();
 			//new DDMouseTest().Test01();
-			//TitleMenu_Test01();
+			TitleMenu_Test01();
 			//TitleMenu_Test02();
 			//new InputStringDemo().Perform();
 			//new InputStringDemo2().Perform();

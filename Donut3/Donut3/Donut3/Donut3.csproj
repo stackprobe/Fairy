@@ -77,7 +77,6 @@
     <Compile Include="Common\DDDraw.cs" />
     <Compile Include="Common\DDEngine.cs" />
     <Compile Include="Common\DDError.cs" />
-    <Compile Include="Common\DDAdditionalEvents.cs" />
     <Compile Include="Common\DDFont.cs" />
     <Compile Include="Common\DDFontRegister.cs" />
     <Compile Include="Common\DDFontUtils.cs" />

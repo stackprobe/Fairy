@@ -22,11 +22,9 @@ namespace Charlotte.Common
 					}
 					catch (DDCoffeeBreak)
 					{ }
-
-					DDMain.GameEnd();
 				});
 
-				DDMain.GameEnd2(eDam);
+				DDMain.GameEnd(eDam);
 			});
 		}
 	}
