@@ -13,15 +13,16 @@ namespace Charlotte.Common
 		public static double CurrWhiteLevel = 0.0;
 		public static int LastFrame = -1;
 
-		public static void EachFrame(bool oncePerFrame = true) // DDEngine.EachFrame()前に呼び出しても可
+		public static void EachFrame() // フレームループの途中から呼び出しても良い。
 		{
-			if (oncePerFrame)
+			// once per frame
 			{
 				if (DDEngine.ProcFrame <= LastFrame)
 					return;
 
 				LastFrame = DDEngine.ProcFrame;
 			}
+
 			double wl;
 
 			if (1 <= WhiteLevels.Count)

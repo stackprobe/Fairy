@@ -8,7 +8,7 @@ namespace Charlotte.Common
 {
 	public class DDCommonEffect
 	{
-		public List<DDPicture> Pictures = new List<DDPicture>();
+		public DDPicture[] Pictures;
 		public int FramePerPicture = 1;
 		public double X = DDConsts.Screen_W / 2.0;
 		public double Y = DDConsts.Screen_H / 2.0;
@@ -28,19 +28,16 @@ namespace Charlotte.Common
 
 		// <---- prm
 
-		public DDCommonEffect()
-		{ }
-
-		public DDCommonEffect(DDPicture picture)
+		public DDCommonEffect(params DDPicture[] pictures)
 		{
-			this.Pictures.Add(picture);
+			this.Pictures = pictures;
+
+			if (this.Pictures.Length == 0) // ? 画像が無い。
+				throw new DDError();
 		}
 
 		private IEnumerable<bool> GetTaskSequence()
 		{
-			if (this.Pictures.Count == 0) // ? 画像が追加されていない。
-				throw new DDError();
-
 			int outOfCameraFrame = 0;
 
 			for (int frame = 0; ; frame++)
@@ -49,7 +46,7 @@ namespace Charlotte.Common
 				double drawY = this.Y - DDGround.ICamera.Y;
 
 				DDDraw.SetAlpha(this.A);
-				DDDraw.DrawBegin(this.Pictures[(frame / this.FramePerPicture) % this.Pictures.Count], drawX, drawY);
+				DDDraw.DrawBegin(this.Pictures[(frame / this.FramePerPicture) % this.Pictures.Length], drawX, drawY);
 				DDDraw.DrawRotate(this.R);
 				DDDraw.DrawZoom(this.Z);
 				DDDraw.DrawEnd();
@@ -67,7 +64,6 @@ namespace Charlotte.Common
 				this.AAdd += this.AAdd2;
 
 				if (DDUtils.IsOutOfScreen(new D2Point(drawX, drawY)))
-				//if (DDUtils.IsOutOfCamera(new D2Point(this.X, this.Y)))
 				{
 					outOfCameraFrame++;
 
