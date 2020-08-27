@@ -130,11 +130,15 @@ namespace Charlotte.Common
 			return GetDistance(pt.X, pt.Y);
 		}
 
-		// ret:
-		// 0.0 ～ Math.PI * 2.0
-		// 右真横(0,0 -> 1,0方向)を0.0として時計回り。(但し、X軸プラス方向を右、Y軸プラス方向を下)
-		// 1周は Math.PI * 2.0
-		//
+		/// <summary>
+		/// <para>原点から指定座標への角度を返す。</para>
+		/// <para>ラジアン角 (0.0 ～ Math.PI * 2.0)</para>
+		/// <para>右真横 (0,0 -> 1,0 方向) を 0.0 として時計回り。但し、X軸プラス方向は右、Y軸プラス方向は下である。</para>
+		/// <para>1周は Math.PI * 2.0</para>
+		/// </summary>
+		/// <param name="x">X座標</param>
+		/// <param name="y">Y座標</param>
+		/// <returns>角度</returns>
 		public static double GetAngle(double x, double y)
 		{
 			if (y < 0.0) return Math.PI * 2.0 - GetAngle(x, -y);
