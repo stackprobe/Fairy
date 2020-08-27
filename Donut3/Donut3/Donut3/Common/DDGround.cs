@@ -27,15 +27,37 @@ namespace Charlotte.Common
 		public static int RealScreenDraw_W = -1; // -1 == RealScreenDraw_LTWH 不使用
 		public static int RealScreenDraw_H;
 
+		// MusicVolume:
+		// 変更を反映するには -> DDMusicUtils.UpdateVolume();
+		// 実際の音量は DDSoundUtils.MixVolume(DDGround.MusicVolume, <DDMusic>.Volume) になる。
+
+		// SEVolume:
+		// 変更を反映するには -> DDSEUtils.UpdateVolume();
+		// 実際の音量は DDSoundUtils.MixVolume(DDGround.SEVolume, <DDSE>.Volume) になる。
+
 		public static double MusicVolume = DDConsts.DefaultVolume;
 		public static double SEVolume = DDConsts.DefaultVolume;
 
+		// RO_MouseDispMode:
+		// マウスカーソルを表示するか
+		// 変更を反映するには -> DDUtils.SetMouseDispMode(DDGround.RO_MouseDispMode);
+
 		public static bool RO_MouseDispMode = false;
 
-		public static DDGeneralResource GeneralResource;
+		// Camera:
+		// ICamera:
+		//
+		// カメラ位置を変更する場合、フレームループ内で描画を行う前に Camera を更新し、その直後に以下のとおり ICamera を更新すること。
+		// DDGround.ICamera.X = DoubleTools.ToInt(DDGround.Camera.X);
+		// DDGround.ICamera.Y = DoubleTools.ToInt(DDGround.Camera.Y);
+		//
+		// カメラ位置に影響を受ける画像の描画には ICamera の座標を使うこと。
+		// 例：DDDraw.DrawCenter(picture, drawX - ICamera.X, drawY - ICamera.Y);
 
 		public static D2Point Camera = new D2Point();
 		public static I2Point ICamera = new I2Point();
+
+		public static DDGeneralResource GeneralResource;
 
 		public static void INIT()
 		{

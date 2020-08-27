@@ -118,9 +118,9 @@ namespace Charlotte.Test01
 				DDPrint.SetTaskList(DDGround.EL);
 				DDPrint.SetColor(new I3Color(255, 128, 0));
 				DDPrint.Print(string.Format(
-					"FST={0},LT={1},FPM={2},FPW={3},FPMA={4:F3}(EPF={5},EC={6},ELC={7})"
+					"FST={0},FCT={1},FPM={2},FPW={3},FPMA={4:F3}(EPF={5},EC={6},ELC={7})"
 					, DDEngine.FrameStartTime
-					, DDEngine.LangolierTime
+					, DDEngine.FrameChaserTime
 					, DDEngine.FrameProcessingMillis
 					, DDEngine.FrameProcessingMillis_Worst
 					, frmProcMilAvg

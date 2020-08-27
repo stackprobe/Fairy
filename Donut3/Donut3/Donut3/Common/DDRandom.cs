@@ -6,6 +6,10 @@ using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
+	/// <summary>
+	/// <para>擬似乱数列</para>
+	/// <para>アルゴリズムは Xorshift-128 を使用する。</para>
+	/// </summary>
 	public class DDRandom
 	{
 		private uint X;
@@ -28,6 +32,10 @@ namespace Charlotte.Common
 			this.A = a;
 		}
 
+		/// <summary>
+		/// [0,2^32)
+		/// </summary>
+		/// <returns>乱数</returns>
 		public uint Next()
 		{
 			uint t;
@@ -45,17 +53,29 @@ namespace Charlotte.Common
 			return t;
 		}
 
-		public double Real() // ret: 0.0 <=, <= 1.0
+		/// <summary>
+		/// [0,1]
+		/// </summary>
+		/// <returns>乱数</returns>
+		public double Real()
 		{
 			return this.Next() / (double)uint.MaxValue;
 		}
 
-		public double Real2() // ret: 0.0 <=, < 1.0
+		/// <summary>
+		/// [0,1)
+		/// </summary>
+		/// <returns>乱数</returns>
+		public double Real2()
 		{
 			return this.Next() / (double)(uint.MaxValue + 1L);
 		}
 
-		public double Real3() // ret: 0.0 <, < 1.0
+		/// <summary>
+		/// (0,1)
+		/// </summary>
+		/// <returns>乱数</returns>
+		public double Real3()
 		{
 			return this.Next() / (double)(uint.MaxValue + 1L) + 0.5;
 		}

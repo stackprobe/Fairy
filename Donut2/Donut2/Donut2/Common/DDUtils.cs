@@ -81,12 +81,12 @@ namespace Charlotte.Common
 			value += target;
 		}
 
-		public static void Range(ref double value, double minval, double maxval)
+		public static void ToRange(ref double value, double minval, double maxval)
 		{
 			value = DoubleTools.ToRange(value, minval, maxval);
 		}
 
-		public static void Range(ref int value, int minval, int maxval)
+		public static void ToRange(ref int value, int minval, int maxval)
 		{
 			value = IntTools.ToRange(value, minval, maxval);
 		}
@@ -167,7 +167,7 @@ namespace Charlotte.Common
 
 		public static double GetAngle(D2Point pt)
 		{
-			return GetDistance(pt.X, pt.Y);
+			return GetAngle(pt.X, pt.Y);
 		}
 
 		public static D2Point AngleToPoint(double angle, double distance)
