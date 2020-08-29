@@ -10,7 +10,7 @@ extern __int64 FrameStartTime;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-extern __int64 LangolierTime;
+extern __int64 HzChaserTime;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

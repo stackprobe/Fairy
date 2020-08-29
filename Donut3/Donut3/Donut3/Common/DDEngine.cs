@@ -12,7 +12,7 @@ namespace Charlotte.Common
 	public static class DDEngine
 	{
 		public static long FrameStartTime;
-		public static long FrameChaserTime;
+		public static long HzChaserTime;
 		public static int FrameProcessingMillis;
 		public static int FrameProcessingMillis_Worst;
 		public static int FrameProcessingMillis_WorstFrame;
@@ -24,10 +24,10 @@ namespace Charlotte.Common
 		{
 			long currTime = DDUtils.GetCurrTime();
 
-			FrameChaserTime += 16L; // 16.666 == 60Hz
-			FrameChaserTime = LongTools.ToRange(FrameChaserTime, currTime - 100L, currTime + 100L);
+			HzChaserTime += 16L; // 16.666 == 60Hz
+			HzChaserTime = LongTools.ToRange(HzChaserTime, currTime - 100L, currTime + 100L);
 
-			while (currTime < FrameChaserTime)
+			while (currTime < HzChaserTime)
 			{
 				Thread.Sleep(1);
 				currTime = DDUtils.GetCurrTime();

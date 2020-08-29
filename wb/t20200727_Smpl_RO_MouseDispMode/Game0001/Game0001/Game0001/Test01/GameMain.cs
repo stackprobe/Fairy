@@ -104,7 +104,7 @@ namespace Charlotte.Test01
 				DDPrint.Print(string.Format(
 					"FST={0},LT={1},FPM={2},FPW={3},FPMA={4:F3}(EPF={5},EC={6},ELC={7})"
 					, DDEngine.FrameStartTime
-					, DDEngine.LangolierTime
+					, DDEngine.HzChaserTime
 					, DDEngine.FrameProcessingMillis
 					, DDEngine.FrameProcessingMillis_Worst
 					, frmProcMilAvg

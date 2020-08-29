@@ -14,7 +14,7 @@ namespace Charlotte.Donut
 
 		// 他のファイルからは read only {
 		public static long FrameStartTime = 0L;
-		public static long LangolierTime;
+		public static long HzChaserTime;
 		public static long LowHzTime;
 		public static double EatenByLangolierEval = 0.5;
 		public static double LowHzErrorRate = 0.0;
@@ -29,16 +29,16 @@ namespace Charlotte.Donut
 
 			if (ProcFrame == 0)
 			{
-				LangolierTime = currTime;
+				HzChaserTime = currTime;
 				LowHzTime = currTime;
 			}
 			else
 			{
-				LangolierTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
+				HzChaserTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
 				LowHzTime += 17;
 			}
 
-			while (currTime < LangolierTime)
+			while (currTime < HzChaserTime)
 			{
 				Thread.Sleep(1);
 
