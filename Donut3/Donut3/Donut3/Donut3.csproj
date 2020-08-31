@@ -56,7 +56,6 @@
     <Compile Include="Common\DDList.cs" />
     <Compile Include="Common\DDRandom.cs" />
     <Compile Include="Common\DDSimpleMenu.cs" />
-    <Compile Include="Common\DDStore.cs" />
     <Compile Include="Common\DDTable.cs" />
     <Compile Include="Common\MaskGZDataUtils\MaskGZDataEng.cs" />
     <Compile Include="Common\Options\DDCrash.cs" />
