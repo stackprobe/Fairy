@@ -9,44 +9,34 @@ namespace Charlotte.Common
 {
 	public static class DDPrint
 	{
-		private class PrintInfo
+		// Extra >
+
+		private class ExtraInfo
 		{
-			public DDTaskList TL = null;
 			public I3Color Color = new I3Color(255, 255, 255);
 			public I3Color BorderColor = new I3Color(-1, 0, 0);
 			public int BorderWidth = 0;
-
-			// ---- Print() 用 ----
-
-			public int X;
-			public int Y;
-			public string Line;
-
-			// ----
 		}
 
-		private static PrintInfo P_Info = new PrintInfo();
+		private static ExtraInfo Extra = new ExtraInfo();
 
 		public static void Reset()
 		{
-			P_Info = new PrintInfo();
-		}
-
-		public static void SetTaskList(DDTaskList tl)
-		{
-			P_Info.TL = tl;
+			Extra = new ExtraInfo();
 		}
 
 		public static void SetColor(I3Color color)
 		{
-			P_Info.Color = color;
+			Extra.Color = color;
 		}
 
 		public static void SetBorder(I3Color color, int width = 1)
 		{
-			P_Info.BorderColor = color;
-			P_Info.BorderWidth = width;
+			Extra.BorderColor = color;
+			Extra.BorderWidth = width;
 		}
+
+		// < Extra
 
 		private static int P_BaseX;
 		private static int P_BaseY;
@@ -69,46 +59,31 @@ namespace Charlotte.Common
 			P_Y += P_YStep;
 		}
 
-		private static void PrintMain(PrintInfo info)
-		{
-			if (info.BorderWidth != 0)
-				for (int xc = -info.BorderWidth; xc <= info.BorderWidth; xc++)
-					for (int yc = -info.BorderWidth; yc <= info.BorderWidth; yc++)
-						DX.DrawString(info.X + xc, info.Y + yc, info.Line, DDUtils.GetColor(info.BorderColor));
-
-			DX.DrawString(info.X, info.Y, info.Line, DDUtils.GetColor(info.Color));
-		}
-
 		public static void Print(string line)
 		{
 			if (line == null)
 				throw new DDError();
 
-			P_Info.X = P_BaseX + P_X;
-			P_Info.Y = P_BaseY + P_Y;
-			P_Info.Line = line;
-
-			if (P_Info.TL == null)
 			{
-				PrintMain(P_Info);
-			}
-			else
-			{
-				PrintInfo info = P_Info;
+				int x = P_BaseX + P_X;
+				int y = P_BaseY + P_Y;
 
-				P_Info.TL.Add(() =>
-				{
-					PrintMain(info);
-					return false;
-				});
+				if (Extra.BorderWidth != 0)
+					for (int xc = -Extra.BorderWidth; xc <= Extra.BorderWidth; xc++)
+						for (int yc = -Extra.BorderWidth; yc <= Extra.BorderWidth; yc++)
+							DX.DrawString(x + xc, y + yc, line, DDUtils.GetColor(Extra.BorderColor));
+
+				DX.DrawString(x, y, line, DDUtils.GetColor(Extra.Color));
 			}
 
-			int w = DX.GetDrawStringWidth(line, StringTools.ENCODING_SJIS.GetByteCount(line));
+			{
+				int w = DX.GetDrawStringWidth(line, StringTools.ENCODING_SJIS.GetByteCount(line));
 
-			if (w < 0 || IntTools.IMAX < w)
-				throw new DDError();
+				if (w < 0 || IntTools.IMAX < w)
+					throw new DDError();
 
-			P_X += w;
+				P_X += w;
+			}
 		}
 
 		public static void PrintLine(string line)
