@@ -8,7 +8,6 @@ namespace Charlotte.Common
 {
 	/// <summary>
 	/// <para>擬似乱数列</para>
-	/// <para>アルゴリズムは Xorshift-128 を使用する。</para>
 	/// </summary>
 	public class DDRandom
 	{
@@ -38,6 +37,8 @@ namespace Charlotte.Common
 		/// <returns>乱数</returns>
 		public uint Next()
 		{
+			// Xorshift-128
+
 			uint t;
 
 			t = this.X;

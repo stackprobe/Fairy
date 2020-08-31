@@ -23,11 +23,11 @@ namespace Charlotte.Common
 
 				値域の根拠
 					マニュアル
-						https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N10
+						--https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N10
 
 				デフォルト値の根拠
 					マニュアル
-						https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N8
+						--https://dxlib.xsrv.jp/function/dxfunc_graph2.html#R17N8
 
 					src
 						C:\wb2\20191209_src\DxLibMake3_20\DxFont.cpp

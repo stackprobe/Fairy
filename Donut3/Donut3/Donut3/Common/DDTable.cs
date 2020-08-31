@@ -92,12 +92,12 @@ namespace Charlotte.Common
 		public IEnumerable<T> Iterate()
 		{
 #if true
-			return this.Inner; // 要素が変更されても問題無いっぽい。
-#else
 			for (int index = 0; index < this.Inner.Length; index++)
 			{
 				yield return this.Inner[index];
 			}
+#else
+			return this.Inner;
 #endif
 		}
 	}

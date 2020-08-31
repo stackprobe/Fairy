@@ -85,14 +85,14 @@ namespace Charlotte.Common
 			return EnumerableTools.Supplier(this.GetTaskSequence());
 		}
 
-		public void Fire()
-		{
-			this.Fire(DDGround.EL);
-		}
-
 		public void Fire(DDTaskList tl)
 		{
 			tl.Add(this.GetTask());
+		}
+
+		public void Fire()
+		{
+			this.Fire(DDGround.EL);
 		}
 	}
 }

@@ -12,11 +12,7 @@ namespace Charlotte.Common
 		// 設定項目 >
 
 		/// <summary>
-		/// -1 == デフォルト
-		/// 0  == 最初のモニタ
-		/// 1  == 2番目のモニタ
-		/// 2  == 3番目のモニタ
-		/// ...
+		/// -1 == デフォルト, { 0, 1, 2, ... } == { 最初のモニタ, 2番目のモニタ, 3番目のモニタ, ... }
 		/// </summary>
 		public static int DisplayIndex = -1;
 
@@ -24,6 +20,8 @@ namespace Charlotte.Common
 		public static int LogCountMax = IntTools.IMAX;
 		public static bool LOG_ENABLED = true;
 		public static string ApplicationLogSaveDirectory = @"C:\tmp";
+
+		// 新しい項目をここへ追加...
 
 		// < 設定項目
 
@@ -45,6 +43,8 @@ namespace Charlotte.Common
 			LogCountMax = int.Parse(lines[c++]);
 			LOG_ENABLED = int.Parse(lines[c++]) != 0;
 			ApplicationLogSaveDirectory = lines[c++];
+
+			// 新しい項目をここへ追加...
 
 			// < 設定項目
 		}
