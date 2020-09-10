@@ -6,6 +6,7 @@ using DxLibDLL;
 using Charlotte.Common;
 using Charlotte.Tools;
 using Charlotte.Tests;
+using Charlotte.Games;
 
 namespace Charlotte
 {
@@ -42,12 +43,14 @@ namespace Charlotte
 
 		private void Main4_Debug()
 		{
-			new Test0001().Test01();
+			this.Main4_Release();
+			//new Test0001().Test01();
 		}
 
 		private void Main4_Release()
 		{
-			throw null;
+			DDUtils.SetMouseDispMode(true);
+			new TitleMenu().Perform();
 		}
 	}
 }

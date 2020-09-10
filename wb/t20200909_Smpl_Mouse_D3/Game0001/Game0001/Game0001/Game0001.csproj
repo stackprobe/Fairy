@@ -129,6 +129,10 @@
     <Compile Include="Common\Options\DDCResource.cs" />
     <Compile Include="Common\Options\DDSceneKeeper.cs" />
     <Compile Include="Common\Options\DDSlideUtils.cs" />
+    <Compile Include="Games\GameTest0001.cs" />
+    <Compile Include="Games\GameTest0002.cs" />
+    <Compile Include="Games\GameTest0003.cs" />
+    <Compile Include="Games\TitleMenu.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>

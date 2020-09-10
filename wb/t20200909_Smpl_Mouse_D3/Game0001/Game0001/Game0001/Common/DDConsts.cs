@@ -41,8 +41,8 @@ namespace Charlotte.Common
 #else
 		// app > @ Screen_WH
 
-		public const int Screen_W = 960;
-		public const int Screen_H = 540;
+		public const int Screen_W = 800;
+		public const int Screen_H = 600;
 
 		// < app
 #endif
