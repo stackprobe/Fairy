@@ -123,6 +123,10 @@
     <Compile Include="Common\DDUserDatStrings.cs" />
     <Compile Include="Common\DDUtils.cs" />
     <Compile Include="Common\DDWin32.cs" />
+    <Compile Include="Games\GameTest0001.cs" />
+    <Compile Include="Games\GameTest0002.cs" />
+    <Compile Include="Games\GameTest0003.cs" />
+    <Compile Include="Games\TitleMenu.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>
