@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DxLibDLL;
 using System.Drawing;
 using Charlotte.Tools;
+using DxLibDLL;
 
 namespace Charlotte.Common
 {
