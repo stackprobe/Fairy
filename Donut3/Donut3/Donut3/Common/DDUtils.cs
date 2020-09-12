@@ -322,5 +322,15 @@ namespace Charlotte.Common
 		}
 
 		public static DDRandom Random = new DDRandom();
+
+		/// <summary>
+		/// (0, 0), (0.5, 1), (1, 0) を通る放物線
+		/// </summary>
+		/// <param name="x">x軸の値</param>
+		/// <returns>y軸の値</returns>
+		public static double Parabola(double x)
+		{
+			return (x - x * x) * 4.0;
+		}
 	}
 }
