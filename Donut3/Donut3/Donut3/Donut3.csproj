@@ -128,7 +128,7 @@
     <Compile Include="Tests\Common\DDPictureTest.cs" />
     <Compile Include="Tests\Common\DDPrintTest.cs" />
     <Compile Include="Tests\Common\DDResourceTest.cs" />
-    <Compile Include="Tests\Common\Options\CResourceTest.cs" />
+    <Compile Include="Tests\Common\Options\DDCResourceTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

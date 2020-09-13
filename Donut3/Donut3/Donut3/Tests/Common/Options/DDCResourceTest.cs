@@ -7,7 +7,7 @@ using Charlotte.Common.Options;
 
 namespace Charlotte.Tests.Common.Options
 {
-	public class CResourceTest
+	public class DDCResourceTest
 	{
 		public void Test01()
 		{
