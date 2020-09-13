@@ -12,6 +12,12 @@ namespace Charlotte.Common
 	//
 	public static class DDResource
 	{
+		// ResourceFile_01 ... ロードのみ
+		// ResourceFile_02 ... ロードのみ(セーブ不可)
+
+		// ResourceDir_01 ... ロードのみ
+		// ResourceDir_02 ... ロード・セーブ
+
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
@@ -22,6 +28,7 @@ namespace Charlotte.Common
 		//
 		private class ResInfo
 		{
+			public string ResFile;
 			public long Offset;
 			public int Size;
 		}
@@ -36,46 +43,59 @@ namespace Charlotte.Common
 		//
 		public static void INIT()
 		{
-			ReleaseMode = File.Exists(DDConsts.ResourceFile);
+			ReleaseMode =
+				File.Exists(DDConsts.ResourceFile_01) &&
+				File.Exists(DDConsts.ResourceFile_02);
 
 			if (ReleaseMode)
 			{
 				List<ResInfo> resInfos = new List<ResInfo>();
 
-				using (FileStream reader = new FileStream(DDConsts.ResourceFile, FileMode.Open, FileAccess.Read))
+				foreach (string resFile in new string[] { DDConsts.ResourceFile_01, DDConsts.ResourceFile_02 })
 				{
-					while (reader.Position < reader.Length)
+					using (FileStream reader = new FileStream(resFile, FileMode.Open, FileAccess.Read))
 					{
-						int size = BinTools.ToInt(FileTools.Read(reader, 4));
-
-						if (size < 0)
-							throw new DDError();
-
-						resInfos.Add(new ResInfo()
+						while (reader.Position < reader.Length)
 						{
-							Offset = reader.Position,
-							Size = size,
-						});
+							int size = BinTools.ToInt(FileTools.Read(reader, 4));
 
-						reader.Seek((long)size, SeekOrigin.Current);
+							if (size < 0)
+								throw new DDError();
+
+							resInfos.Add(new ResInfo()
+							{
+								ResFile = resFile,
+								Offset = reader.Position,
+								Size = size,
+							});
+
+							reader.Seek((long)size, SeekOrigin.Current);
+						}
+					}
+					string[] files = FileTools.TextToLines(StringTools.ENCODING_SJIS.GetString(LoadFile(resInfos[0])));
+
+					if (files.Length != resInfos.Count)
+						throw new DDError(files.Length + ", " + resInfos.Count);
+
+					for (int index = 1; index < files.Length; index++)
+					{
+						string file = files[index];
+
+						if (File2ResInfo.ContainsKey(file))
+							throw new DDError(file);
+
+						File2ResInfo.Add(file, resInfos[index]);
 					}
 				}
-				string[] files = FileTools.TextToLines(StringTools.ENCODING_SJIS.GetString(LoadFile(resInfos[0])));
-
-				if (files.Length != resInfos.Count)
-					throw new DDError(files.Length + ", " + resInfos.Count);
-
-				for (int index = 0; index < files.Length; index++)
-					File2ResInfo.Add(files[index], resInfos[index]);
 			}
 		}
 
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		private static byte[] LoadFile(long offset, int size)
+		private static byte[] LoadFile(string resFile, long offset, int size)
 		{
-			using (FileStream reader = new FileStream(DDConsts.ResourceFile, FileMode.Open, FileAccess.Read))
+			using (FileStream reader = new FileStream(resFile, FileMode.Open, FileAccess.Read))
 			{
 				reader.Seek(offset, SeekOrigin.Begin);
 
@@ -88,7 +108,7 @@ namespace Charlotte.Common
 		//
 		private static byte[] LoadFile(ResInfo resInfo)
 		{
-			return LoadFile(resInfo.Offset, resInfo.Size);
+			return LoadFile(resInfo.ResFile, resInfo.Offset, resInfo.Size);
 		}
 
 		//
@@ -102,7 +122,16 @@ namespace Charlotte.Common
 			}
 			else
 			{
-				return File.ReadAllBytes(Path.Combine(DDConsts.ResourceDir, file));
+				string datFile = Path.Combine(DDConsts.ResourceDir_01, file);
+
+				if (File.Exists(datFile) == false)
+				{
+					datFile = Path.Combine(DDConsts.ResourceDir_02, file);
+
+					if (File.Exists(datFile) == false)
+						throw new Exception(datFile);
+				}
+				return File.ReadAllBytes(datFile);
 			}
 		}
 
@@ -117,7 +146,7 @@ namespace Charlotte.Common
 			}
 			else
 			{
-				File.WriteAllBytes(Path.Combine(DDConsts.ResourceDir, file), fileData);
+				File.WriteAllBytes(Path.Combine(DDConsts.ResourceDir_02, file), fileData);
 			}
 		}
 
@@ -135,13 +164,21 @@ namespace Charlotte.Common
 			IEnumerable<string> files;
 
 			if (ReleaseMode)
+			{
 				files = File2ResInfo.Keys;
+			}
 			else
-				files = Directory.GetFiles(DDConsts.ResourceDir, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir));
+			{
+				files = EnumerableTools.Linearize(new IEnumerable<string>[]
+				{
+					Directory.GetFiles(DDConsts.ResourceDir_01, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir_01)),
+					Directory.GetFiles(DDConsts.ResourceDir_02, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir_02)),
+				});
 
-			// '_' で始まるファイルの除去
-			// makeDDResourceFile はファイルリストを _index として保存するので、どちらの場合でも Where を行わなければならない。
-			files = files.Where(file => Path.GetFileName(file)[0] != '_');
+				// '_' で始まるファイルの除去
+				// makeDDResourceFile は '_' で始まるファイルを含めない。
+				files = files.Where(file => Path.GetFileName(file)[0] != '_');
+			}
 
 			// ソート
 			// makeDDResourceFile はファイルリストを sortJLinesICase してる。

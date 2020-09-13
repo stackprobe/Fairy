@@ -9,8 +9,10 @@ namespace Charlotte.Common
 	{
 		public const string ConfigFile = "Config.conf";
 		public const string SaveDataFile = "SaveData.dat";
-		public const string ResourceFile = "Resource.dat";
-		public const string ResourceDir = @"C:\Dat\Resource";
+		public const string ResourceFile_01 = "Resource.dat";
+		public const string ResourceFile_02 = "res.dat";
+		public const string ResourceDir_01 = @"C:\Dat\Resource";
+		public const string ResourceDir_02 = @"..\..\..\..\res";
 		public const string UserDatStringsFile = "Properties.dat";
 
 #if false // 例

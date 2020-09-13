@@ -7,6 +7,11 @@ C:\Factory\SubTools\makeDDResourceFile.exe ^
 	out\Resource.dat ^
 	C:\Factory\Program\MaskGZDataForDonut3\MaskGZData.exe
 
+C:\Factory\SubTools\makeDDResourceFile.exe ^
+	res ^
+	out\res.dat ^
+	C:\Factory\Program\MaskGZDataForDonut3\MaskGZData.exe
+
 C:\Factory\SubTools\CallConfuserCLI.exe Game0001\Game0001\bin\Release\Game0001.exe out\Game0001.exe
 rem COPY /B Game0001\Game0001\bin\Release\Game0001.exe out
 COPY /B Game0001\Game0001\bin\Release\Chocolate.dll out

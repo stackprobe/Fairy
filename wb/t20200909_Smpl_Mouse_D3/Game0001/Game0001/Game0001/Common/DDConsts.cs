@@ -21,11 +21,19 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public const string ResourceFile = "Resource.dat";
+		public const string ResourceFile_01 = "Resource.dat";
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
-		public const string ResourceDir = @"C:\Dat\Resource";
+		public const string ResourceFile_02 = "res.dat";
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public const string ResourceDir_01 = @"C:\Dat\Resource";
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public const string ResourceDir_02 = @"..\..\..\..\res";
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
