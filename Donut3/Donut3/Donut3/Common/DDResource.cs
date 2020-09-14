@@ -28,9 +28,7 @@ namespace Charlotte.Common
 
 		public static void INIT()
 		{
-			ReleaseMode =
-				File.Exists(DDConsts.ResourceFile_01) &&
-				File.Exists(DDConsts.ResourceFile_02);
+			ReleaseMode = File.Exists(DDConsts.ResourceFile_01);
 
 			if (ReleaseMode)
 			{
@@ -151,7 +149,8 @@ namespace Charlotte.Common
 			}
 
 			// ソート
-			// makeDDResourceFile はファイルリストを sortJLinesICase してる。
+			// makeDDResourceFile はファイルリストを sortJLinesICase している。
+			// ここでソートする必要は無いが、戻り値に統一性を持たせるため(毎回ファイルの並びが違うということのないように)ソートしておく。
 			files = EnumerableTools.Sort(files, StringTools.CompIgnoreCase);
 
 			return files;
