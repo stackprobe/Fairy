@@ -389,5 +389,29 @@ namespace Charlotte.Common
 
 			return exterior;
 		}
+
+		/// <summary>
+		/// 始点から終点までの間の指定レートの位置の値を返す。
+		/// </summary>
+		/// <param name="a">始点</param>
+		/// <param name="b">終点</param>
+		/// <param name="rate">レート</param>
+		/// <returns>レートの値</returns>
+		public static double AToBRate(double a, double b, double rate)
+		{
+			return a + (b - a) * rate;
+		}
+
+		/// <summary>
+		/// 始点から終点までの間の指定レートの位置を返す。
+		/// </summary>
+		/// <param name="a">始点</param>
+		/// <param name="b">終点</param>
+		/// <param name="rate">レート</param>
+		/// <returns>レートの位置</returns>
+		public static D2Point AToBRate(D2Point a, D2Point b, double rate)
+		{
+			return a + (b - a) * rate;
+		}
 	}
 }
