@@ -486,5 +486,31 @@ namespace Charlotte.Common
 				exterior = rect1;
 			}
 		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static D4Rect AdjustRectInterior(D2Size size, D4Rect rect)
+		{
+			D4Rect interior;
+			D4Rect exterior;
+
+			AdjustRect(size, rect, out interior, out exterior);
+
+			return interior;
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static D4Rect AdjustRectExterior(D2Size size, D4Rect rect)
+		{
+			D4Rect interior;
+			D4Rect exterior;
+
+			AdjustRect(size, rect, out interior, out exterior);
+
+			return exterior;
+		}
 	}
 }

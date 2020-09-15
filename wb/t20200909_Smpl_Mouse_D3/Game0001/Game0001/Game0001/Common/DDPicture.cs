@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
@@ -91,6 +92,14 @@ namespace Charlotte.Common
 		public int Get_H()
 		{
 			return this.GetInfo().H;
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public I2Size GetSize()
+		{
+			return new I2Size(this.Get_W(), this.Get_H());
 		}
 	}
 }

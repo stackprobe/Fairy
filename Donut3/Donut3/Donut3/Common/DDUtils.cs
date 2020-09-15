@@ -369,5 +369,25 @@ namespace Charlotte.Common
 				exterior = rect1;
 			}
 		}
+
+		public static D4Rect AdjustRectInterior(D2Size size, D4Rect rect)
+		{
+			D4Rect interior;
+			D4Rect exterior;
+
+			AdjustRect(size, rect, out interior, out exterior);
+
+			return interior;
+		}
+
+		public static D4Rect AdjustRectExterior(D2Size size, D4Rect rect)
+		{
+			D4Rect interior;
+			D4Rect exterior;
+
+			AdjustRect(size, rect, out interior, out exterior);
+
+			return exterior;
+		}
 	}
 }

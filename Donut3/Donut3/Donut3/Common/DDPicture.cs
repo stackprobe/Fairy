@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Tools;
 
 namespace Charlotte.Common
 {
@@ -58,6 +59,11 @@ namespace Charlotte.Common
 		public int Get_H()
 		{
 			return this.GetInfo().H;
+		}
+
+		public I2Size GetSize()
+		{
+			return new I2Size(this.Get_W(), this.Get_H());
 		}
 	}
 }

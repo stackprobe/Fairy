@@ -17,6 +17,10 @@ namespace Charlotte.Tests.Common
 			Test01_a(new D2Size(500.0, 1000.0), new D4Rect(1000.0, 1000.0, 300.0, 200.0));
 			Test01_a(new D2Size(1000.0, 500.0), new D4Rect(1000.0, 1000.0, 300.0, 200.0));
 			Test01_a(new D2Size(1000.0, 1000.0), new D4Rect(1000.0, 1000.0, 300.0, 200.0));
+			Test01_a(new D2Size(100.0, 100.0), new D4Rect(1000.0, 1000.0, 300.0, 300.0));
+			Test01_a(new D2Size(1000.0, 1000.0), new D4Rect(1000.0, 1000.0, 300.0, 300.0));
+			Test01_a(new D2Size(1.0, 5.0), new D4Rect(1000.0, 1000.0, 0.001, 0.001));
+			Test01_a(new D2Size(5.0, 1.0), new D4Rect(1000.0, 1000.0, 0.001, 0.001));
 		}
 
 		private void Test01_a(D2Size size, D4Rect rect)
