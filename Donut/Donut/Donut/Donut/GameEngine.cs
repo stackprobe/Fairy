@@ -12,7 +12,8 @@ namespace Charlotte.Donut
 	{
 		public static bool IgnoreEscapeKey = false;
 
-		// 他のファイルからは read only {
+		// -- 他のファイルからは read only ここから
+
 		public static long FrameStartTime = 0L;
 		public static long HzChaserTime;
 		public static long LowHzTime;
@@ -21,7 +22,8 @@ namespace Charlotte.Donut
 		public static int ProcFrame = 0;
 		public static int FreezeInputFrame = 0;
 		public static bool WindowIsActive = false;
-		// }
+
+		// -- 他のファイルからは read only ここまで
 
 		private static void CheckHz()
 		{

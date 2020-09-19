@@ -76,7 +76,7 @@ namespace Charlotte.Donut
 		public SubScreen MainScreen = null; // null == 不使用
 		public I4Rect MonitorRect;
 
-		// SaveData {
+		// SaveData --->
 
 		public I2Size ScreenSize; // init @ IGameMain.Init()
 		public I2Size RealScreenSize;
@@ -124,6 +124,6 @@ namespace Charlotte.Donut
 
 		public bool RO_MouseDispMode = false;
 
-		// } SaveData
+		// <--- SaveData
 	}
 }

@@ -16,13 +16,14 @@ namespace Charlotte.Donut
 
 			public void Dispose() // Codevil の UnloadMusic()
 			{
-				// reset {
-				while (1 <= PlayList.Count)
-					PlayList.Dequeue().Dispose();
+				// reset
+				{
+					while (1 <= PlayList.Count)
+						PlayList.Dequeue().Dispose();
 
-				CurrDestMusic = null;
-				CurrDestMusicVolumeRate = 0.0;
-				// }
+					CurrDestMusic = null;
+					CurrDestMusicVolumeRate = 0.0;
+				}
 
 				GameSound.UnloadSound(this.Handle);
 			}
