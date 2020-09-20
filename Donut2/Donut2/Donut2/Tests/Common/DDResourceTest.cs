@@ -11,9 +11,9 @@ namespace Charlotte.Tests.Common
 	{
 		public void Test01()
 		{
-			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用\Dummy01.txt")));
-			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用\Dummy02.txt")));
-			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用\Dummy03.txt")));
+			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用 DummyData\Dummy01.txt")));
+			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用 DummyData\Dummy02.txt")));
+			ProcMain.WriteLog(Encoding.ASCII.GetString(DDResource.Load(@"Resource テスト用 DummyData\Dummy03.txt")));
 		}
 
 		public void Test02()
