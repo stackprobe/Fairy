@@ -47,10 +47,10 @@ namespace Charlotte.Common
 
 			if (ReleaseMode)
 			{
-				List<ResInfo> resInfos = new List<ResInfo>();
-
 				foreach (string resFile in new string[] { DDConsts.ResourceFile_01, DDConsts.ResourceFile_02 })
 				{
+					List<ResInfo> resInfos = new List<ResInfo>();
+
 					using (FileStream reader = new FileStream(resFile, FileMode.Open, FileAccess.Read))
 					{
 						while (reader.Position < reader.Length)
