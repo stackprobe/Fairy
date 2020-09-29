@@ -167,7 +167,7 @@ namespace Charlotte.Common
 			}
 			else
 			{
-				files = EnumerableTools.Linearize(new IEnumerable<string>[]
+				files = EnumerableTools.Join(new IEnumerable<string>[]
 				{
 					Directory.GetFiles(DDConsts.ResourceDir_01, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir_01)),
 					Directory.GetFiles(DDConsts.ResourceDir_02, "*", SearchOption.AllDirectories).Select(file => FileTools.ChangeRoot(file, DDConsts.ResourceDir_02)),
