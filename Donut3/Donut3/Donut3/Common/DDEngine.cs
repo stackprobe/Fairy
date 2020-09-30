@@ -44,6 +44,7 @@ namespace Charlotte.Common
 			// < app
 
 			DDGround.EL.ExecuteAllTask();
+			DDMouse.ApplyPosNowIfNeeded();
 			DDCurtain.EachFrame();
 
 			if (DDSEUtils.EachFrame() == false)

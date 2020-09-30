@@ -85,7 +85,23 @@ namespace Charlotte.Common
 			}
 		}
 
+		private static bool ApplyPosDelayFlag = false;
+
 		public static void ApplyPos()
+		{
+			ApplyPosDelayFlag = true;
+		}
+
+		public static void ApplyPosNowIfNeeded()
+		{
+			if (ApplyPosDelayFlag)
+			{
+				ApplyPosDelayFlag = false;
+				ApplyPosNow();
+			}
+		}
+
+		public static void ApplyPosNow()
 		{
 			int mx = X;
 			int my = Y;

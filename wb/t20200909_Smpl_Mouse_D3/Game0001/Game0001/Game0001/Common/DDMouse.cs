@@ -121,7 +121,32 @@ namespace Charlotte.Common
 		//
 		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 		//
+		private static bool ApplyPosDelayFlag = false;
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
 		public static void ApplyPos()
+		{
+			ApplyPosDelayFlag = true;
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static void ApplyPosNowIfNeeded()
+		{
+			if (ApplyPosDelayFlag)
+			{
+				ApplyPosDelayFlag = false;
+				ApplyPosNow();
+			}
+		}
+
+		//
+		//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+		//
+		public static void ApplyPosNow()
 		{
 			int mx = X;
 			int my = Y;
