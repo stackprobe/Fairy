@@ -10,7 +10,7 @@ namespace Charlotte.Common
 	//	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	//
 	/// <summary>
-	/// <para>擬似乱数列</para>
+	/// 擬似乱数列
 	/// </summary>
 	public class DDRandom
 	{

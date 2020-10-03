@@ -7,7 +7,7 @@ using Charlotte.Tools;
 namespace Charlotte.Common
 {
 	/// <summary>
-	/// <para>擬似乱数列</para>
+	/// 擬似乱数列
 	/// </summary>
 	public class DDRandom
 	{

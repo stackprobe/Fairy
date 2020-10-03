@@ -12,11 +12,11 @@ namespace Charlotte.Common
 		// 設定項目 >
 
 		/// <summary>
-		/// -1 == デフォルト
-		/// 0  == 最初のモニタ
-		/// 1  == 2番目のモニタ
-		/// 2  == 3番目のモニタ
-		/// ...
+		/// <para>-1 == デフォルト</para>
+		/// <para>0  == 最初のモニタ</para>
+		/// <para>1  == 2番目のモニタ</para>
+		/// <para>2  == 3番目のモニタ</para>
+		/// <para>...</para>
 		/// </summary>
 		public static int DisplayIndex = -1;
 

@@ -7,8 +7,8 @@ using Charlotte.Tools;
 namespace Charlotte.Common
 {
 	/// <summary>
-	/// Unload()する必要あり。
-	/// 必要なし -> DDPictureLoader2
+	/// <para>Unload()する必要あり。</para>
+	/// <para>必要なし -> DDPictureLoader2</para>
 	/// </summary>
 	public static class DDPictureLoaders
 	{
